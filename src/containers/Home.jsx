@@ -1,9 +1,13 @@
-import Carousel from "../components/carousel/Carousel";
+
+
+
 import Footer from "../components/Footer";
 import Navbar from "../components/navbar/Navbar";
 import CallToAction from "../components/CallToAction";
 import Sponsors from "../components/Sponsors";
 import SectionWhy from "../components/sectionWhy/SectionWhy";
+import Carousel from '../components/carousel/Carousel'
+
 
 const Home = () => {
 
@@ -17,7 +21,12 @@ const Home = () => {
             <div className="hero" data-component="fadereveal">
               <Navbar />
               <div className="hero__wrapper container">
-                <Carousel />
+
+              <div>
+                   <Carousel />
+              </div>
+                
+
               </div>
               <CallToAction />
             </div>
