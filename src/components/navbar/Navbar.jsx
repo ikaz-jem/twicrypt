@@ -1,17 +1,9 @@
 import { navigation } from "./navigation"
-import { ConnectWallet } from "@thirdweb-dev/react";
-import { useLogin } from "@thirdweb-dev/react";
+import { Web3Button } from "@web3modal/react";
 
 
 const Navbar = () => {
 
-const config = {
-loginOptional:true ,
-onLogin:()=>console.log('logged'),
- onLogout:()=>console.log('logged out')
-}
-
-const { isLoading, login } = useLogin();
 
     return (
 
@@ -46,23 +38,10 @@ const { isLoading, login } = useLogin();
                     </div>
 
                     <div className="grid__column grid__column--2 hidden hidden@medium"></div>
-               
-                <ConnectWallet
-                      
-                            theme="dark"
-                            btnTitle="Login"
-                            dropdownPosition={{
-                                side: "bottom", // "top" | "bottom" | "left" | "right";
-                                align: "center", // "start" | "center" | "end";
-                            }}
-                            modalTitle="Create Account / Login"
-                            auth={config}
-                            />
+              
+                        <Web3Button/>
 
-<button onClick={() => login()}>
-      {isLoading ? "Loading..." : "Sign in with Ethereum"}
-    </button>
-
+                            
 
                 </div>
             </div>
