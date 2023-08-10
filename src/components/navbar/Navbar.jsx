@@ -2,11 +2,16 @@ import { navigation } from "./navigation"
 import { ConnectWallet } from "@thirdweb-dev/react";
 import { useLogin } from "@thirdweb-dev/react";
 
+
 const Navbar = () => {
 
+const config = {
+loginOptional:true ,
+onLogin:()=>console.log('logged'),
+ onLogout:()=>console.log('logged out')
+}
 
-   
-
+const { isLoading, login } = useLogin();
 
     return (
 
@@ -41,20 +46,23 @@ const Navbar = () => {
                     </div>
 
                     <div className="grid__column grid__column--2 hidden hidden@medium"></div>
-           <ConnectWallet
-                style={{backgroundColor:'#445069'}}
-                    theme="dark"
-                    btnTitle="Login"
-                    dropdownPosition={{
-                        side: "bottom", // "top" | "bottom" | "left" | "right";
-                        align: "center", // "start" | "center" | "end";
-                    }}
-                    modalTitle="Create Account / Login"
-                    auth={{
-                        onLogin:()=>console.log('logged'),
-                        onLogout:()=>console.log('logged out')
-                      }}
-                    />
+               
+                <ConnectWallet
+                      
+                            theme="dark"
+                            btnTitle="Login"
+                            dropdownPosition={{
+                                side: "bottom", // "top" | "bottom" | "left" | "right";
+                                align: "center", // "start" | "center" | "end";
+                            }}
+                            modalTitle="Create Account / Login"
+                            auth={config}
+                            />
+
+<button onClick={() => login()}>
+      {isLoading ? "Loading..." : "Sign in with Ethereum"}
+    </button>
+
 
                 </div>
             </div>

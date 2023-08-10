@@ -10,7 +10,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
       
-      <ThirdwebProvider   
+      <ThirdwebProvider 
+  authConfig={{
+    domain:'http://localhost:3000/',
+    authUrl:'authUrl'
+  }
+  }
       activeChain={56}
       supportedWallets={[
         metamaskWallet(),
@@ -22,8 +27,12 @@ root.render(
       secretKey='87wMTlEkIsIsUnNNyaukEU3W0NjvQrdrbLRw0AyttkKimOQGKAOmOsbByNmc6M-zru29Sq9FfiKaJCUIzoyhtQ'
       >
         
-      <App />
+             <App />
+
+
+
       </ThirdwebProvider>
+
   </React.StrictMode>
 );
 
