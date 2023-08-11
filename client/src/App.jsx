@@ -1,17 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
 import { HashLoader } from 'react-spinners';
 
 import { lazy, Suspense } from 'react';
 
-const Home = lazy(()=>import ( './containers/Home'))
+const Routes = lazy(()=>import ( './router/index'))
 
 function App() {
   return (
     <div className="index ">
 
         <Suspense fallback={ <>  <HashLoader size={100} color="#000" style={{text:'center'}}/>  </>} >
-            <Home/>
+          
+        <Routes/>
+
         </Suspense>
 
     </div>

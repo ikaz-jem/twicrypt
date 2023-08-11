@@ -17,24 +17,16 @@ const Home = () => {
     <>
      
         <div className="index__header header">
-          <div className="space space--xlarge">
-            <div className="hero" data-component="fadereveal">
-              <Navbar />
-              <div className="hero__wrapper container">
-
-              <div>
-                   <Carousel />
-              </div>
-                
-
-              </div>
-              <CallToAction />
+            <div className="space space--xlarge">
+                  {/* <Navbar /> */}
+                    <div className="hero__wrapper container">
+                            <Carousel />
+                    </div>
+                  <CallToAction />
             </div>
-          </div>
         </div>
         <SectionWhy />
         <Sponsors />
-        <Footer />
   
     </>
   )

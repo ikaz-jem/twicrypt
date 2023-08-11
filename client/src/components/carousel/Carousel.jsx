@@ -9,6 +9,7 @@ const SvgTitle = () => {
 
     return (
         <>
+        
             <div className="container-xxxxlg ">
 
                 {/* <svg className="hero__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.154 12.761" dataref="fadereveal[el]  ">

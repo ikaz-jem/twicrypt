@@ -1,8 +1,9 @@
 
 export const navigation = [
-    { name: 'about ', url: '' } , 
-    { name: 'Preparations', url: '' } ,
-    { name: 'Earn', url: '' } ,
-    { name: 'Sponsor us', url: '' } , 
+    { name: 'about ', url: '/about' } , 
+    { name: 'Preparations', url: '/preparations' } ,
+    { name: 'Earn', url: '/earn' } ,
+    { name: 'Sponsor us', url: '/sponsor' } , 
+    { name: 'Dashboard', url: '/dashboard' } , 
     
 ]

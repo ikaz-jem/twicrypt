@@ -6,7 +6,7 @@ const CallToAction = ()=>{
 
     return (
 
-        <div  className="wrapper container container--large container--center space space--xlarge light-ball"style={{marginTop: 30  }}>
+        <div  className="wrapper container container--large container--center space space--xlarge light-ball"style={{marginTop: 30 , marginBottom:120 }}>
         <div className="space space--xlarge">
           <h4 className="hero__lead lead heading" dataref="fadereveal[el]">All your Web3 and investing Needs in one Place !</h4>
 

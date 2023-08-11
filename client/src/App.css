@@ -902,6 +902,10 @@ a:hover {
 .heading, .paragraph {
   margin: 0;
 }
+
+.align-left {
+  text-align: left;
+}
 .button {
   font-size: 1em;
   padding: 0.375em 1.125em;
@@ -1688,7 +1692,10 @@ blockquote {
   color: #fff;
 }
 .logo {
-  font-size: 4em;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .lead {
   font-family: Nunito Sans, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -2300,6 +2307,7 @@ pre.line-numbers > code {
   border: 1px solid #32333f;
   max-width: 160px;
 }
+
 .ad #carbonads a {
   text-decoration: none;
 }

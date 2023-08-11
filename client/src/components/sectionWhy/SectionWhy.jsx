@@ -1,5 +1,4 @@
 
-import { FaTelegram } from 'react-icons/fa'
 import { data } from './data'
 import './style.css'
 const SectionWhy = () => {
@@ -27,13 +26,13 @@ const SectionWhy = () => {
             {
               data.map((item,i) => {
                 return (
-                  <div className="grid__column grid__column--4 space space--xlarge" dataref="fadereveal[el]" key={i}>
+                  <div className="grid__column grid__column--4 space space--xlarge  " dataref="fadereveal[el]" key={i}>
 
                    
 
-                    <h4 className="heading">  {<item.icon className='icon'/>} {item.title}</h4>
+                    <h4 className="heading align-left">  {<item.icon className='icon'/>} {item.title}</h4>
 
-                    <p className="paragraph">{item.desc}</p>
+                    <p className="paragraph align-left">{item.desc}</p>
                   </div>)
               })
             }
