@@ -85,33 +85,32 @@ const Sponsors = () => {
   useEffect(() => {
     // @ts-ignore
     const OPTIONS = {
-      type:'slider',
-      perView: 4,
+      type:'carouzel',
+      perView: 5,
       gap: 0,
       
-      bound: true,
       autoplay:2000,
       hoverpause:true,
       direction:'ltr',
       breakpoints: {
         1280: {
-          gap: 5,
+          gap: 0,
           perView: 3,
         },
         1279: {
-          gap: 5,
+          gap: 0,
           perView: 3,
         },
         1023: {
-          gap: 5,
+          gap: 0,
           perView: 2,
         },
         768: {
-          gap: 5,
+          gap: 0,
           perView: 1,
         },
         500: {
-          gap: 5,
+          gap: 0,
           perView: 1,
         },
       },
@@ -125,12 +124,12 @@ const Sponsors = () => {
   }, [UNIQUE_CLASS]);
 
   return (
-    <div className={` overflow-hidden  ${UNIQUE_CLASS} `}>
+    <div className={` container mx-auto  overflow-hidden  ${UNIQUE_CLASS} `}>
       <h1>Sponsors </h1>
-      <div className="" data-glide-el="track">
+      <div className="  overflow-hidden" data-glide-el="track">
         <ul className="glide__slides">
           {CATS_DISCOVER.map((item, index) => (
-            <li key={index} className={`glide__slide`}>
+            <li key={index} className={`glide__slide flex gap-5 m-0 p-0 items-center justify-center `} >
               <Card
                 name={item.name}
                 desc={item.desc}

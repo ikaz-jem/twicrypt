@@ -8,8 +8,6 @@ import {Provider} from 'react-redux'
 import {store} from './app/store/store'
 
 
-import Web3Provider from './Providers/Web3';
-
 
 // bscTestnet
 // chainImages={
@@ -20,9 +18,9 @@ root.render(
   <React.StrictMode>
  
             <Provider store={store} >
-                 <Web3Provider >
+
                         <App />
-                 </Web3Provider>
+              
               </Provider>
 
   </React.StrictMode>

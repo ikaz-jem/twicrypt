@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useMount } from "../../hooks/useMount"
 import './carousel.css';
 import { carouselData } from "./carouselData";
+import { Link } from "react-router-dom";
 
 
 const SvgTitle = () => {
@@ -38,20 +39,20 @@ const Carousel = () => {
 
             <div className="slider slider--big glide " data-component="hero">
                 <div className="slider__arrows" data-glide-el="controls">
-                    <button className="slider__arrow slider__arrow--prev glide__arrow glide__arrow--prev" dataref="fadereveal[el]" data-glide-dir="<">
+
+                    <button className="slider__arrow slider__arrow--prev glide__arrow glide__arrow--prev  text-white flex items-center  justify-center" dataref="fadereveal[el]" data-glide-dir="<">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path d="M0 12l10.975 11 2.848-2.828-6.176-6.176H24v-3.992H7.646l6.176-6.176L10.975 1 0 12z" />
                         </svg>
                     </button>
 
-                    <button className="slider__arrow slider__arrow--next glide__arrow glide__arrow--next" dataref="fadereveal[el]" data-glide-dir=">">
+                    <button className="slider__arrow slider__arrow--next glide__arrow glide__arrow--next text-white flex items-center  justify-center" dataref="fadereveal[el]" data-glide-dir=">">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
                         </svg>
                     </button>
                 </div>
-                <div className="frames glide__track " data-component="slidereveal" data-glide-el="track">
-sponsors :
+                <div className="frames glide__track my-14 " data-component="slidereveal" data-glide-el="track">
 
                     {/* {hero mapping carouzel items } */}
                     <ul className="frames__list glide__slides">
@@ -63,13 +64,14 @@ sponsors :
                                         <div className="frame-front">
                                             <img src={item.image} alt="" className="carousel-img" />
 
+                                    <div className="flex items-center justify-center">
 
-                                            <a href={item.link}>
-                                                <div className="frame-title">
+                                            <Link to={item.link} className="flex items-center justify-center gap-2 w-[80%] h-[60%]">
                                                     <p> {<item.icon />}</p>
                                                     <p>{item.title}</p>
-                                                </div>
-                                            </a>
+
+                                            </Link>
+                                    </div>
                                         </div>
 
                                         {/* right side */}

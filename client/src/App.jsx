@@ -6,11 +6,11 @@ const Routes = lazy(()=>import ( './router/index'))
 
 function App() {
   return (
-    <div className="index ">
+    <div className="index h-screen">
 
         <Suspense fallback={ <>  <HashLoader size={100} color="#000" style={{text:'center'}}/>  </>} >
-          
-        <Routes/>
+
+               <Routes/>
 
         </Suspense>
 

@@ -29,7 +29,7 @@ const themeVariables = {
 }
 
 
-const Web3Provider = ({children})=> {
+const MyProvider = ({children})=> {
 
 return (
 <>
@@ -48,4 +48,4 @@ return (
 
 }
 
-export default Web3Provider
+export default MyProvider

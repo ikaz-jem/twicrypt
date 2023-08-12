@@ -1,7 +1,7 @@
 import {useEffect } from "react";
 import { useAccount } from 'wagmi'
 import { useDispatch} from 'react-redux'
-import { getUser } from "../app/features/session/sessionSlice";
+import { handleUserData } from "../app/features/session/sessionSlice";
 import { useSignMessage } from "wagmi";
 import { disconnect } from '@wagmi/core'
 
@@ -20,7 +20,6 @@ connect => sign => login
 
 
 export const UseStartSession = ()=>{
-let isLoggedIn = false
 
 const dispatch = useDispatch()
 
@@ -43,33 +42,31 @@ const signWalletMessage = useSignMessage({
 const userConnected = useAccount({
     onConnect({ address, connector, isReconnected }) {
         if (isReconnected) {
-            isLoggedIn = true
-            console.log('reconected')
+          dispatch(handleUserData({ address, isReconnected, isLoggedIn:true}));
+
         }else{
             // signWalletMessage.signMessageAsync()
-             console.log('user connected'); 
-
-             isLoggedIn = true
+            dispatch(handleUserData({ address,isLoggedIn:true }));
             }
         
     } , 
+    onDisconnect() {
+      dispatch(handleUserData({
+        isDisconnected : true ,
+         isLoggedIn:false}))
+    },
  
     
 })
 
-const disconnect = useAccount({
-    onDisconnect() {
-        console.log('Disconnected')
-     },
-})
 
-console.log(disconnect)
+
 
 
 useEffect(() => {
     var controller = new AbortController();
     // Dispatch the action to get user data
-    dispatch(getUser({ ...userConnected.address, ...userConnected.isConnecting ,...userConnected.isDisconnected }));
+    dispatch(handleUserData({ address: userConnected.address,isDisconnected : userConnected.isDisconnected }));
 
     return () => {
       controller.abort();

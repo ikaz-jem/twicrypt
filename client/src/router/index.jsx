@@ -11,44 +11,45 @@ import {
 import Home from '../containers/Home'
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
-import Dashboard from "../containers/Dashboard";
-import SponsorUs from "../containers/SponsorUs";
+import Dashboard from "../containers/Dashboard/Dashboard";
+import SponsorUs from "../containers/sponsorUs/SponsorUs";
+
 import Earn from "../containers/Earn";
 import About from "../containers/About";
 import Preparations from "../containers/Preparations";
-
+import MyProvider from "../Providers/Web3";
 
 const routes = [
     {
         path:'/',
         component:Home,
-        requiresAuth:'',
+        requiresAuth:false,
     },
     {
         path:'/earn',
         component:Earn,
-        requiresAuth:'',
+        requiresAuth:false,
     },
     {
         path:'/sponsor',
         component:SponsorUs,
-        requiresAuth:'',
+        requiresAuth:false,
     },
     {
         path:'/preparations',
         component:Preparations,
-        requiresAuth:'',
+        requiresAuth:false,
     },
     {
         path:'/dashboard',
         component:Dashboard,
-        requiresAuth:'',
+        requiresAuth:false,
     },
     
     {
         path:'/about',
         component:About,
-        requiresAuth:'',
+        requiresAuth:false,
     },
 
 ]
@@ -62,19 +63,22 @@ return (
 
 <BrowserRouter>
 
-<div className="hero" data-component="fadereveal">
+    <MyProvider>
+<div className="hero h-100" data-component="fadereveal">
+
 
                   <Navbar/>
                         <Routes>
-                                {routes.map(({component:Component , path},index)=>{
+                                {routes.map(({component:Component , path ,requiresAuth},index)=>{
                                     
-                                    return  <Route key={index} path={path} element={<Component />} />
+                                    return requiresAuth ? null :  <Route key={index} path={path} element={<Component />} />
                                     
                                 })}
                         </Routes>
                                 </div>
 
                 <Footer/>
+    </MyProvider>
 
 </BrowserRouter>
 

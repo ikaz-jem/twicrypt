@@ -4,36 +4,44 @@ import { UseStartSession } from "../../hooks/useConnectUser";
 import { userData } from "../../app/features/session/sessionSlice";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { NavLink,Link } from "react-router-dom";
+import logo from '../../media/logo.png'
+
 
 const Navbar = () => {
 
 const user = useSelector(userData)
-UseStartSession()
 
-    return (
+    UseStartSession()
 
-        <div className="navbar  ">
+console.log(user)
+return (
+
+        <div className="navbar sticky top-0 ">
            
 
 
-            <div className="navbar__wrapper wrapper container container--xlarge container--center">
-                <div className="grid grid--middle">
-                    <div className="grid__column grid__column--2 hidden hidden@medium" data-component="fadereveal">
-
-<Link className='logo hero__logo' to={'./'} >
-           Logo             {/* <h3 className=" " dataref="fadereveal[el]">Logo</h3> */}
+            <div className=" navbar__wrapper wrapper container container--xlarge container--center  shadow-xl  backdrop-blur-sm rounded-3xl overfllow-hidden ">
+                <div className="grid grid--middle h-100">
+                    <div className="grid__column grid__column--2 hidden hidden@medium h-full" data-component="fadereveal">
+                    
+            
+<Link className='logo hero__logo link' to={'./'} >
+           <img src={logo} alt="logo" className="w-10 h-10 " />
+            {/* <h3 className=" " dataref="fadereveal[el]">Logo</h3> */}
 </Link>
                     </div>
-                    <div className="navbar__menu grid__column">
+                    <div className="navbar__menu grid__column  ">
 
-                        <nav className="menu">
-                            <ul className="list list--inline list--unstyle gutter gutter--large" data-component="fadereveal">
-                            
+                        <nav className="menu ">
+                            <ul className="list list--inline list--unstyle gutter gutter--medium  " data-component="fadereveal">
                                 {
                                     navigation.map(
                                         (link,i) => {
-                                        return <li className="list__item" dataref="fadereveal[el]" key={i}>
-                                            <NavLink to={link.url} > {link.name}</NavLink>
+                                            return <li className="list__item h-100" dataref="fadereveal[el]" key={i}>
+                                           {
+                                               link.requireAuth ? null : <NavLink to={link.url} className='link'> {link.name}</NavLink>
+                                               
+                                            }
                                         </li>
                                     })
                                 }
@@ -43,7 +51,6 @@ UseStartSession()
                     </div>
 
                     <div className="grid__column grid__column--2 hidden hidden@medium"></div>
-              
                         <Web3Button/>
 
                             

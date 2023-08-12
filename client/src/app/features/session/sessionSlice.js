@@ -17,7 +17,7 @@ export const sessionSlice = createSlice({
 
     },extraReducers:(builder)=>{
         return builder.addCase (
-            getUser.fulfilled, (state,action)=>{
+            handleUserData.fulfilled, (state,action)=>{
                 return state = {...state ,...action.payload}
             }
         )
@@ -25,11 +25,11 @@ export const sessionSlice = createSlice({
 })
 
 
-export const getUser = createAsyncThunk(
+export const handleUserData = createAsyncThunk(
     'session/setUser',
-    async (address)=>{
+    async (data)=>{
     
-        const res = await address
+        const res = await data
         return res
     }
 )
