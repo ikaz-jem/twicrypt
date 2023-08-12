@@ -1,5 +1,5 @@
 import symbolObservable from 'symbol-observable';
-
+import { carouselSlice } from '../features/carousel/carouselSlice';
 
 
 import { configureStore } from '@reduxjs/toolkit';
@@ -28,7 +28,8 @@ if (!Symbol.observable) {
 
 
 const rootReducer = combineReducers({
-[sessionSlice.name]:sessionSlice.reducer
+[sessionSlice.name]:sessionSlice.reducer,
+[carouselSlice.name]: carouselSlice.reducer
 })
 
 const middleware = [ thunk];

@@ -2,22 +2,30 @@
 import './style.css'
 import CarouselDemo from './demo/Demo'
 import { useState } from 'react'
-
+import { useAccount } from 'wagmi'
+import { addSlide } from '../../../app/features/carousel/carouselThunks'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchedCarouselData } from '../../../app/features/carousel/carouselSlice'
 
 
 const CarouselSponsor = () => {
+const {address } =useAccount()
+const [ad, setAd] = useState({
+  bodyAddress : address,
+  name: "solana",
+  image: "https://cimg.co/news/119428/317537/solana.jpg",
+  link: "https://www.solana.com",
+  icon: "https://www.pngall.com/wp-content/uploads/10/Solana-Crypto-Logo-PNG-File.png",
+  amount: 1
+})
 
-  const [link, setLink] = useState({
-    name: null,
-    link: null,
-    icon: null,
-    amount: null
-  })
+
+const sliderData= useSelector(fetchedCarouselData)
 
 
   const handleChange = ({ target }) => {
     const { name, value } = target
-    setLink((prev) => (
+    setAd((prev) => (
       {
         ...prev,
         [name]: value
@@ -27,7 +35,6 @@ const CarouselSponsor = () => {
 
 
   const checkDuration = (num) => {
-
     switch (true) {
       case num >= 0.1 && num < 0.5:
         return 'sponsored us 1 week';
@@ -44,11 +51,19 @@ const CarouselSponsor = () => {
       default:
         return '';
     }
-
   }
 
+  const dispatch = useDispatch()
+
+  const submit = (e) => {
+    e.preventDefault();
+    dispatch(addSlide(ad))
+    console.log("submited")
+    console.log(sliderData)
+  }
 
   const SvgTitle = () => {
+
 
 
     return (
@@ -89,28 +104,31 @@ const CarouselSponsor = () => {
 
 <div className=' w-40 '>
 
-        <div className='absolute top-0 z-10  '>
+        <div className='absolute top-0 z-10 '>
 
           <div className='flex flex-col ml-10 mt-10  rounded-xl border-white border-opacity-10 shadow-2xl bg-black bg-opacity-60 backdrop-blur-sm  py-20 px-10  '>
 
             <h4 className="heading align-left"> Appear on The Home page Main Slider for 1 year : </h4>
             <p className="paragraph align-left">descriptioniojdioazjdajizjdaoizdo</p>
 
-            <p className="paragraph align-left">image link :</p>
-            <input type="text" name='link' onChange={handleChange} />
+            <p className="paragraph align-left">website :</p>
+            <input type="text" name='link' placeholder='Project website' onChange={handleChange} />
+            
+            <p className="paragraph align-left">image :</p>
+            <input type="text" name='image' placeholder='image link' onChange={handleChange} />
 
-            <p className="paragraph align-left">Project Name :</p>
-            <input type="text" name='name' onChange={handleChange} />
+            <p className="paragraph align-left">Brand Name :</p>
+            <input type="text" name='name' placeholder='ex : snadbox , binance' onChange={handleChange} />
 
             <p className="paragraph align-left">icon link:</p>
-            <input type="text" name='icon' onChange={handleChange} />
+            <input type="text" name='icon' placeholder='icon link' onChange={handleChange} />
 
 
             <p className="paragraph align-left">BNB amount:</p>
-            <input type="text" name='amount' onChange={handleChange} />
+            <input type="text" name='amount' placeholder='2.5 BNB' onChange={handleChange} />
 
-            <button className='button button--hollow my-10'> sponsor now</button>
-            <p className='paragraph'> {checkDuration(link.amount)}  </p>
+            <button className='button button--hollow my-10' onClick={submit}> sponsor now</button>
+            <p className='paragraph'> {checkDuration(ad.amount)}  </p>
           </div>
         </div>
 
@@ -119,7 +137,7 @@ const CarouselSponsor = () => {
 
 <div className=' w-[100%] flex'>
 
-        <CarouselDemo link={link} />
+        <CarouselDemo carouselData={ad} />
 </div>
 
 

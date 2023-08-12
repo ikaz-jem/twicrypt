@@ -13,7 +13,6 @@ const user = useSelector(userData)
 
     UseStartSession()
 
-console.log(user)
 return (
 
         <div className="navbar sticky top-0 ">

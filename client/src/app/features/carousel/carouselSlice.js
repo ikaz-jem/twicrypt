@@ -1,0 +1,32 @@
+
+import {  createSlice } from "@reduxjs/toolkit";
+
+import { getCarouselData,addSlide } from "./carouselThunks";
+
+
+export const carouselSlice = createSlice({
+    name :'carousel',
+    initialState:{
+        data:null,
+        isLoading:null,
+        hasError:null
+    } ,
+    reducers:{},
+    extraReducers:(builder)=>{
+        builder.addCase(getCarouselData.fulfilled,(state,action)=>{
+            state.data = action.payload
+            state.isLoading =false
+        });
+        builder.addCase(getCarouselData.rejected,(state)=>{
+            state.hasError = true
+            state.isLoading=false
+        });
+        builder.addCase(getCarouselData.pending,(state)=>{
+            state.isLoading =true
+        });
+    }
+})
+
+
+
+export const fetchedCarouselData = state=>state.carousel
