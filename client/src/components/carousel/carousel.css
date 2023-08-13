@@ -48,3 +48,7 @@ border-radius: 10px;
     font-family: 'Pacifico', cursive;
     font-size: 80px;
 }
+
+div {
+    color: rgba(0, 0, 0, 0.315);
+}

@@ -41,13 +41,13 @@ useMount()
         <>
 
 
-        <div className="slider slider--big glide " data-component="hero">
+        <div className="  glide " data-glide-el="track">
 
           
-            <div className="frames  " data-glide-el="track">
+            <div className="  " data-glide-el="track">
 
                 {/* {hero mapping carouzel items } */}
-                <ul className="frames__list glide__slides">
+                <ul className="frames__list glide__slides" >
                   
                         <li className="frames__item glide__slide" >
                             <div dataref="slidereveal[el]">

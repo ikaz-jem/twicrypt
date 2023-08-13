@@ -1,5 +1,4 @@
 
-import { useEffect } from "react";
 import Glide from "@glidejs/glide";
 
 
@@ -86,6 +85,6 @@ export const MountCarousel = ()=>{
       
       
 
-return
+
 
 }
