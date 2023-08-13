@@ -1,6 +1,6 @@
 
 import {  createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
+import { getCarouselData } from "./carouselThunks";
 import { addSlide } from "./carouselThunks";
 import { GiConsoleController } from "react-icons/gi";
 import axios from "axios";
@@ -31,14 +31,14 @@ export const carouselSlice = createSlice({
 
 
 
-export const getCarouselData = createAsyncThunk(
-    'carousel/getCarouselData',
-    async()=>{
+// export const getCarouselData = createAsyncThunk(
+//     'carousel/getCarouselData',
+//     async()=>{
 
-        const res = await axios.get('https://fakestoreapi.com/products').then((res)=>res.data)
-        return res
-    }
-)
+//         const res = await axios.get('https://fakestoreapi.com/products').then((res)=>res.data)
+//         return res
+//     }
+// )
 
 
 export const fetchedCarouselData = state=>state.carousel

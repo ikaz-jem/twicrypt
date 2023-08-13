@@ -18,7 +18,7 @@ export const getCarouselData = createAsyncThunk(
 
 
 export const addSlide = createAsyncThunk(
-    'carousel/getData',
+    'carousel/addSlide',
     async(data)=>{
     const { image, name, link, icon, bodyAddress } = data
     const endpoint='http://localhost:4001/users/create_ad'
@@ -33,9 +33,8 @@ export const addSlide = createAsyncThunk(
         'content-type':'application/json',
         'apiKey':'abc123'
     }
-    console.log(body)
     const res = await axios.post(endpoint ,body,{headers}).then((res)=>res.data)
-    console.log(res)
-        return res
+    console.log(res)  
+    return res
     }
 )

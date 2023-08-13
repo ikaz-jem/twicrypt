@@ -6,17 +6,17 @@ import { useAccount } from 'wagmi'
 import { addSlide } from '../../../app/features/carousel/carouselThunks'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchedCarouselData } from '../../../app/features/carousel/carouselSlice'
-
+import { Transition } from '@headlessui/react'
 
 const CarouselSponsor = () => {
   const { address } = useAccount()
   const [ad, setAd] = useState({
     bodyAddress: address,
-    name: "solana",
-    image: "https://cimg.co/news/119428/317537/solana.jpg",
-    link: "https://www.solana.com",
-    icon: "https://www.pngall.com/wp-content/uploads/10/Solana-Crypto-Logo-PNG-File.png",
-    amount: 1
+    name: null,
+    image: null,
+    link: null,
+    icon: null,
+    amount: 0
   })
 
 
@@ -65,7 +65,7 @@ const CarouselSponsor = () => {
 
 
   const RenderForm = ({setAd}) => {
-
+const [show,setShow] = useState(false)
     const handleChange = ({ target }) => {
       const { name, value } = target
       setAd((prev) => (
@@ -79,15 +79,17 @@ const CarouselSponsor = () => {
     const submit = (e) => {
       e.preventDefault();
       dispatch(addSlide(ad))
-      console.log("submited")
-      console.log(sliderData)
+    
     }
   
   
     return (
+<>
+<button onClick={()=> setShow(!show)}> transition</button>
+
       <div className='absolute top-0 z-10 '>
 
-        <div className='flex flex-col ml-10 mt-10  rounded-xl border-white border-opacity-10 shadow-2xl bg-black bg-opacity-60 backdrop-blur-sm  py-20 px-10  '>
+        <div className='flex flex-col ml-10 mt-10  rounded-xl border-white border-opacity-10 shadow-2xl bg-black bg-opacity-60 backdrop-blur-sm  py-20 px-10 '>
 
           <h4 className="heading align-left"> Appear on The Home page Main Slider for 1 year : </h4>
           <p className="paragraph align-left">descriptioniojdioazjdajizjdaoizdo</p>
@@ -112,8 +114,7 @@ const CarouselSponsor = () => {
           <p className='paragraph'> {checkDuration(ad.amount)}  </p>
         </div>
       </div>
-
-    )
+</>    )
   }
 
 
@@ -126,7 +127,24 @@ const CarouselSponsor = () => {
 
       <div className="index__body bg-light light-ball">
 
-       {RenderForm({setAd})}
+       {
+        
+      <Transition
+      appear
+      show={true}
+      className={"z-max"}
+      enter="transition-all duration-150 z-max"
+      enterFrom="opacity-0 translate-x-20 z-max"
+      enterTo="opacity-100 translate-x-0 z-max"
+      leave="transition-all duration-150 z-max"
+      leaveFrom="opacity-100 translate-x-0 z-max"
+      leaveTo="opacity-0 translate-x-20 z-max"
+    >
+
+      { RenderForm({setAd})}
+    </Transition>
+       
+       }
 
         {/* 
       <div className='flex justify-center items-center border'>
@@ -151,7 +169,20 @@ const CarouselSponsor = () => {
             </div>
             <div className='col-span-6  w-full '>
             col carouzel description something explaine ras l9eli3a
+            <Transition
+        appear
+        className="z-0 "
+        show={true}
+        enter="transition-all duration-150 z-0"
+      enterFrom="opacity-0 translate-x-20 z-0"
+      enterTo="opacity-100 translate-x-0 z-0"
+      leave="transition-all duration-150 z-0"
+      leaveFrom="opacity-100 translate-x-0 z-0"
+      leaveTo="opacity-0 translate-x-20 z-0"
+        >
             <CarouselDemo carouselData={ad} />
+            </Transition>
+
             </div>
 
 

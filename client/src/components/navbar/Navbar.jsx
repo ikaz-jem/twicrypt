@@ -5,19 +5,22 @@ import { userData } from "../../app/features/session/sessionSlice";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { NavLink,Link } from "react-router-dom";
 import logo from '../../media/logo.png'
-
+import { userSession } from "../../app/features/session/sessionSlice";
 
 const Navbar = () => {
 
 const user = useSelector(userData)
+const isLogedIn = useSelector(userSession)
 
-    UseStartSession()
+
+const modal = UseStartSession(user.hasAccount)
+
 
 return (
 
         <div className="navbar sticky top-0 ">
            
-
+{isLogedIn && modal}
 
             <div className=" navbar__wrapper wrapper container container--xlarge container--center  shadow-xl  backdrop-blur-sm rounded-3xl overfllow-hidden ">
                 <div className="grid grid--middle h-100">
@@ -38,7 +41,7 @@ return (
                                         (link,i) => {
                                             return <li className="list__item h-100" dataref="fadereveal[el]" key={i}>
                                            {
-                                               link.requireAuth ? null : <NavLink to={link.url} className='link'> {link.name}</NavLink>
+                                               link.requireAuth && !isLogedIn ? null : <NavLink to={link.url} className='link'> {link.name}</NavLink>
                                                
                                             }
                                         </li>

@@ -1,38 +1,26 @@
-import {useEffect } from "react";
+import {useEffect ,useState} from "react";
 import { useAccount } from 'wagmi'
 import { useDispatch} from 'react-redux'
 import { handleUserData } from "../app/features/session/sessionSlice";
 import { useSignMessage } from "wagmi";
 import { disconnect } from '@wagmi/core'
+import UserModal from "../shared/userModal/UserModal";
+import { logIn,logOut } from "../app/features/session/sessionSlice";
+import { getUserSession } from "../app/features/session/sessionThunks";
+import { watchAccount } from '@wagmi/core'
 
-
-
-
-/*
-
-connect => sign => login
-
-
-
-
-*/
-
-
-
-export const UseStartSession = ()=>{
-
+export const UseStartSession = (data)=>{
+const [userChanged,setUserChanged]=useState(null)
 const dispatch = useDispatch()
-
 
 const signWalletMessage = useSignMessage({
     message: "Please Sign To Verify Your DC Profile Ownership, If You Don't Have one it will be automatically created for you",
     onError() {
       disconnect()
-     console.log('couldnt sign message')
+     dispatch(logOut())
     },
     onSuccess(data) {
-     console.log('message signed')
-     console.log(data)
+      dispatch(logIn())
     }
   })
 
@@ -42,26 +30,41 @@ const signWalletMessage = useSignMessage({
 const userConnected = useAccount({
     onConnect({ address, connector, isReconnected }) {
         if (isReconnected) {
+          setUserChanged(address)
           dispatch(handleUserData({ address, isReconnected, isLoggedIn:true}));
-
+          dispatch(logIn())
+          dispatch(getUserSession(address))
         }else{
+          dispatch(logIn())
+          setUserChanged(address)
             // signWalletMessage.signMessageAsync()
             dispatch(handleUserData({ address,isLoggedIn:true }));
+            dispatch(getUserSession(address))
             }
         
     } , 
     onDisconnect() {
-      dispatch(handleUserData({
-        isDisconnected : true ,
-         isLoggedIn:false}))
+      dispatch(logOut())
     },
+   
+  
  
     
 })
 
+console.log(userChanged)
+
+const unwatch = watchAccount((account) =>{
+ return account.address === undefined || account.address === userConnected.address ? null : setUserChanged(account.address)
+})
 
 
 
+console.log(unwatch)
+useEffect(()=>{
+  userChanged !== null &&
+  dispatch(getUserSession(userChanged))
+},[userChanged])
 
 useEffect(() => {
     var controller = new AbortController();
@@ -74,6 +77,7 @@ useEffect(() => {
 
   }, []);
 
+  return <UserModal address={userChanged} show={!data} />
 
 
 }

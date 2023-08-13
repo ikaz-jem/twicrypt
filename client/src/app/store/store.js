@@ -1,7 +1,6 @@
 import symbolObservable from 'symbol-observable';
 import { carouselSlice } from '../features/carousel/carouselSlice';
 
-
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from '@reduxjs/toolkit';
 import { applyMiddleware, compose } from 'redux';
