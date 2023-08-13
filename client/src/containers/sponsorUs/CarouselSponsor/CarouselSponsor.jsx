@@ -23,15 +23,6 @@ const CarouselSponsor = () => {
   const sliderData = useSelector(fetchedCarouselData)
 
 
-  const handleChange = ({ target }) => {
-    const { name, value } = target
-    setAd((prev) => (
-      {
-        ...prev,
-        [name]: value
-      }
-    ))
-  }
 
 
   const checkDuration = (num) => {
@@ -55,12 +46,6 @@ const CarouselSponsor = () => {
 
   const dispatch = useDispatch()
 
-  const submit = (e) => {
-    e.preventDefault();
-    dispatch(addSlide(ad))
-    console.log("submited")
-    console.log(sliderData)
-  }
 
   const SvgTitle = () => {
 
@@ -79,9 +64,26 @@ const CarouselSponsor = () => {
   }
 
 
-  const RenderForm = () => {
+  const RenderForm = ({setAd}) => {
 
+    const handleChange = ({ target }) => {
+      const { name, value } = target
+      setAd((prev) => (
+        {
+          ...prev,
+          [name]: value
+        }
+      ))
+    }
 
+    const submit = (e) => {
+      e.preventDefault();
+      dispatch(addSlide(ad))
+      console.log("submited")
+      console.log(sliderData)
+    }
+  
+  
     return (
       <div className='absolute top-0 z-10 '>
 
@@ -123,7 +125,8 @@ const CarouselSponsor = () => {
     
 
       <div className="index__body bg-light light-ball">
-        <RenderForm />
+
+       {RenderForm({setAd})}
 
         {/* 
       <div className='flex justify-center items-center border'>
