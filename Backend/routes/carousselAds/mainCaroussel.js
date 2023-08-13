@@ -18,9 +18,9 @@ router.get('/carousel', async (req, res) => {
 })
 
 // checking if user existe send his data otherwise create user will be done by middleware
-router.get('/get_user/:paramAddress', isUserParam, async (req, res) => {
+router.post('/user_session', isUserBody, async (req, res) => {
     try {
-        const user_id = req.paramAddress
+        const user_id = req.bodyAddress
         const [userData] = await db.execute('SELECT * FROM users WHERE id = ?', [user_id])
         return res.status(200).json(userData)
     } catch (error) {
@@ -29,29 +29,40 @@ router.get('/get_user/:paramAddress', isUserParam, async (req, res) => {
     }
 })
 
-router.post('/create_ad',isUserBody, async (req, res) => {
-try {
-    const user_id = req.bodyAddress
-       // Data input validation 
-       const { error, value } = createAd.validate(req.body, {
-        allowUnknown: true, // Allow other fields in the request body
-      })
-      
-    if (error) {
-        // Return validation error response
-        console.log(error);
-        return res.status(400).json({ error: error.details[0].message })
-    }
+router.post('/create_ad', isUserBody, async (req, res) => {
+    try {
+        const user_id = req.bodyAddress
+        // Data input validation 
+        const { error, value } = createAd.validate(req.body, {
+            allowUnknown: true, // Allow other fields in the request body
+        })
 
-    const { name, link, image, icon } = value
-    
-    //await db.execute(`INSERT INTO caroussel_ads (name, user_id, link, image, icon) VALUES (?,?,?,?,?)`, [name, user_id, link, image, icon])
-    
-    return res.status(200).json({Message : "Ad Created Successfully Thank You For Sponsoring Us"})
-} catch (error) {
-    console.log(error)
-    return res.status(500).json({Error : "Internal Server Error !"})
-}
+        if (error) {
+            // Return validation error response
+            console.log(error);
+            return res.status(200).json({ error: error.details[0].message })
+        }
+
+        const { name, link, image, icon } = value
+
+        await db.execute(`INSERT INTO caroussel_ads (name, user_id, link, image, icon) VALUES (?,?,?,?,?)`, [name, user_id, link, image, icon])
+
+        return res.status(200).json({ Message: "Ad Created Successfully Thank You For Sponsoring Us" })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ Error: "Internal Server Error !" })
+    }
+})
+
+router.get('/user/:paramAddress', isUserParam, async (req, res) => {
+    try {
+        const user = req.user
+        console.log(user);
+        return res.status(200).json(user)
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json({ Error: "Internal Server Error !" })
+    }
 })
 
 module.exports = router
