@@ -23,7 +23,7 @@ export const createAccount = createAsyncThunk(
 export const getUserSession = createAsyncThunk(
     'session/getUserSession',
     async(address)=> {
-       
+        
         const headers = {
             'content-type': 'application/json',
             'apikey': 'abc123'

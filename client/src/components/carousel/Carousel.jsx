@@ -6,7 +6,6 @@ import { useMount } from "../../hooks/useMount";
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { fetchedCarouselData } from '../../app/features/carousel/carouselSlice';
 import { Transition } from '@headlessui/react'
-import { useState } from 'react';
 
 
 
@@ -50,16 +49,16 @@ const Spinner = ({ data }) => {
 const Carousel = () => {
 
 
-    const storeData = useSelector(fetchedCarouselData)
+const PlaceHolder = [1,2,3,4]
 
+    const storeData = useSelector(fetchedCarouselData)
+    
     const RenderCarouselItems = () => {
         useMount()
 
         return (
             <>
-
-
-                {storeData.data &&
+                {storeData.data!==null ?
                     storeData.data.map(({ name, image, link, icon }, i) => {
                         return (<li className="frames__item glide__slide" key={i}>
                             <div dataref="slidereveal[el]">
@@ -86,65 +85,75 @@ const Carousel = () => {
                                 </div>
                             </div>
                         </li>)
-                    })}
+                    }): 
+                    PlaceHolder.map((item, i) => {
+                        return (<li className="frames__item glide__slide" key={i}>
+                            <div dataref="slidereveal[el]">
+                                            
+                                <div className="frame " dataref="hero[el]">
 
+                                    <div className="frame-front ">
 
+                                        <div className="flex items-center justify-center">
+
+                                            <Link  target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%]">
+                                              
+                                                <p className='text-gray-500'>brand name / img</p>
+
+                                            </Link>
+                                        </div>
+                                    </div>
+
+                                    {/* right side */}
+                                    <div> </div>
+                                    {/* left side */}
+                                    <div> </div>
+
+                                </div>
+                            </div>
+                        </li>)
+                    }) }
             </>
-        )
-
-
+             )
     }
 
 
     return (
         <>
+        {/* {hero mapping carouzel items } */}
+        {storeData.data && !storeData.data.hasError || storeData.data==null ?
 
-            {/* {hero mapping carouzel items } */}
-            {storeData.data && !storeData.data.hasError ?
+            <div className="slider slider--big glide " data-component="hero">
+                <div className="slider__arrows" data-glide-el="controls">
+                    <button className="slider__arrow slider__arrow--prev glide__arrow glide__arrow--prev" dataref="fadereveal[el]" data-glide-dir="<">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M0 12l10.975 11 2.848-2.828-6.176-6.176H24v-3.992H7.646l6.176-6.176L10.975 1 0 12z" />
+                        </svg>
+                    </button>
 
-
-                <div className="slider slider--big glide " data-component="hero">
-                    <div className="slider__arrows" data-glide-el="controls">
-                        <button className="slider__arrow slider__arrow--prev glide__arrow glide__arrow--prev" dataref="fadereveal[el]" data-glide-dir="<">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M0 12l10.975 11 2.848-2.828-6.176-6.176H24v-3.992H7.646l6.176-6.176L10.975 1 0 12z" />
-                            </svg>
-                        </button>
-
-                        <button className="slider__arrow slider__arrow--next glide__arrow glide__arrow--next " dataref="fadereveal[el]" data-glide-dir=">">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className='flex items-center justify-center'>
-                                <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div className="frames glide__track my-14 " data-component="slidereveal" data-glide-el="track">
-                        <ul className="frames__list glide__slides   ">
-
-                            <RenderCarouselItems />
-
-                        </ul>
-
-
-
-                        <div className="hero__heading">
-                            {<SvgTitle />}
-                        </div>
-
-                    </div>
+                    <button className="slider__arrow slider__arrow--next glide__arrow glide__arrow--next " dataref="fadereveal[el]" data-glide-dir=">">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className='flex items-center justify-center'>
+                            <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
+                        </svg>
+                    </button>
                 </div>
+                <div className="frames glide__track my-14 " data-component="slidereveal" data-glide-el="track">
 
+                    <ul className="frames__list glide__slides">
+                        
+                        <RenderCarouselItems />
+                    </ul>
 
-                :
+                    <div className="hero__heading">
+                        {<SvgTitle />}
+                    </div>
 
-                <Spinner data={storeData.isLoading} />
-            }
-
-
-
-
-
-
-        </>
+                </div>
+            </div>
+            :
+            <Spinner data={storeData.isLoading} />
+        }
+    </>
     )
 }
 

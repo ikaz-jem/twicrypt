@@ -10,6 +10,7 @@ import { getUserSession } from "../app/features/session/sessionThunks";
 import { watchAccount } from '@wagmi/core'
 
 export const UseStartSession = (data)=>{
+
 const [userChanged,setUserChanged]=useState(null)
 const dispatch = useDispatch()
 
@@ -24,6 +25,11 @@ const signWalletMessage = useSignMessage({
     }
   })
 
+const getSession = async ()=> dispatch(getUserSession(userChanged));
+const signIn = ()=> dispatch(logIn())
+const signOut = ()=> dispatch(logOut())
+
+
 
 
 
@@ -32,19 +38,19 @@ const userConnected = useAccount({
         if (isReconnected) {
           setUserChanged(address)
           dispatch(handleUserData({ address, isReconnected, isLoggedIn:true}));
-          dispatch(logIn())
-          dispatch(getUserSession(address))
+          signIn()
+          getSession()
         }else{
-          dispatch(logIn())
+          // signWalletMessage.signMessageAsync()
           setUserChanged(address)
-            // signWalletMessage.signMessageAsync()
-            dispatch(handleUserData({ address,isLoggedIn:true }));
-            dispatch(getUserSession(address))
+          dispatch(handleUserData({ address,isLoggedIn:true }));
+          getSession()
+          signIn()
             }
         
     } , 
     onDisconnect() {
-      dispatch(logOut())
+      signOut()
     },
    
   
@@ -63,7 +69,7 @@ const unwatch = watchAccount((account) =>{
 console.log(unwatch)
 useEffect(()=>{
   userChanged !== null &&
-  dispatch(getUserSession(userChanged))
+ getSession()
 },[userChanged])
 
 useEffect(() => {
@@ -77,7 +83,7 @@ useEffect(() => {
 
   }, []);
 
-  return <UserModal address={userChanged} show={!data} />
+  return {userChanged}
 
 
 }

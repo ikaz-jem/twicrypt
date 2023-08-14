@@ -11,8 +11,22 @@ export const getCarouselData = createAsyncThunk(
             'apiKey':'abc123'
         }
         const endpoint = 'http://localhost:4001/users/carousel'
-        const res =await  axios.get(endpoint,{headers}).then((res)=>res.data)
-            return res
+
+        try {
+            const res =await axios.get(endpoint,{headers}).then((res)=>{
+                if (res.data){
+                    return res.data
+                }else {
+                    return null
+                    
+                }
+            })
+          
+        
+        }catch(err){
+            console.error("Error fetching carousel data:", err.message);
+            return null;
+        }
     }
 )
 
