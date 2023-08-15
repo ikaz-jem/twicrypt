@@ -17,7 +17,7 @@ export const useMount = () => {
             startAt: 1,
             perView: 4,
             peek: 50,
-            gap: 40,
+            gap: 10,
             autoplay: 3000,
             hoverpause: !1,
             animationDuration: 1e3,

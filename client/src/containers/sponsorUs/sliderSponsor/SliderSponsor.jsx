@@ -54,7 +54,7 @@ const SliderSponsor = ({show,setShow}) => {
       <SponsorForm show={show} ad={ad} setAd={setAd} />
 </FormTransition>
 
-      <div className=" bg-light light-ball  ">
+      <div className=" bg-light light-ball   ">
 
         {
 //index__body bg-light light-ball 

@@ -77,7 +77,7 @@ const PlaceHolder = [1,2,3,4]
 
                                             <Link to={image} target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%]">
                                                 <img src={image} alt="icon" className="w-5 h-5" />
-                                                <p className='text-gray-500'>{name}</p>
+                                                <p className='text-gray-500'>{name.slice(0,4)}</p>
 
                                             </Link>
                                         </div>

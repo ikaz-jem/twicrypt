@@ -42,7 +42,7 @@ useEffect(()=>{
 
     <>
      
-        <div className="index__header header">
+<div className="index__header header ">
             <div className="space space--xlarge ">
                   {/* <Navbar /> */}
                     <div className="hero__wrapper container  ">

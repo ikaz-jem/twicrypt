@@ -1,12 +1,14 @@
 import { HashLoader } from 'react-spinners';
 
-import { lazy, Suspense } from 'react';
-
+import { lazy, Suspense,useState } from 'react';
 const AppRoutes = lazy(()=>import ( './router/index'))
 
 function App() {
+  const [show,setShow]=useState(true)
+
+
   return (
-    <div className="index h-screen">
+    <div className=" h-screen hero">
 
         <Suspense fallback={
            <>
@@ -18,7 +20,9 @@ function App() {
            </div>
              </>} >
 
+          
                <AppRoutes/>
+               
 
         </Suspense>
 

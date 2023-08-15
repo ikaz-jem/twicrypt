@@ -14,14 +14,14 @@ import Footer from "../components/Footer";
 import Dashboard from "../containers/Dashboard/Dashboard";
 import SponsorUs from "../containers/sponsorUs/SponsorUs";
 
-import Earn from "../containers/Earn";
+import Earn from "../containers/Earn/Earn";
 import About from "../containers/About";
 import Preparations from "../containers/Preparations";
 import MyProvider from "../Providers/Web3";
 import { userSession } from "../app/features/session/sessionSlice";
 import { useSelector } from "react-redux";
 
-
+import RoutesTransition from '../shared/transitions/RoutesTransition'
 
 const routes = [
     {
@@ -62,6 +62,7 @@ const routes = [
 
    const AppRoutes = ()=>{
 
+
     const isLogedIn = useSelector(userSession)
 
 return (
@@ -69,18 +70,22 @@ return (
 <BrowserRouter>
 
     <MyProvider>
-<div className="hero h-100" >
+                        <>
 
 
                   <Navbar/>
+                  
                         <Routes>
                                 {routes.map(({component:Component , path ,requiresAuth},index)=>{
                                     
-                                    return requiresAuth && !isLogedIn ? null :  <Route key={index} path={path} element={<Component />} />
+                                    return requiresAuth && !isLogedIn ? null 
+                                    : 
+                                   
+                                        <Route key={index} path={path} element={<Component />} />
                                     
                                 })}
                         </Routes>
-                                </div>
+                                </>
 
                 <Footer/>
     </MyProvider>
