@@ -1,18 +1,32 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { createAccount,getUserSession } from '../../app/features/session/sessionThunks'
 import { useDispatch } from 'react-redux'
+import { continueAsGuest } from '../../app/features/session/sessionSlice'
 
 const  UserModal =({show, address})=> {
 
+  const userLoginModal = {
+    show :true
+  }
+
+useEffect(()=>{
+localStorage.clear('userLoginModal')
+
+  
+},[])
 
   const dispatch=useDispatch()
 
 
 
-  const signUp = (e)=> {
-    dispatch(createAccount(address))
-  }
+const guest = ()=> dispatch(continueAsGuest())
+ 
+const signUp = ()=> dispatch(createAccount(address))
+
+
+
+
 
 
   return (
@@ -52,7 +66,7 @@ const  UserModal =({show, address})=> {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white bg-opacity-20 backdrop-blur-sm p-10 text-left align-middle shadow-xl transition-all border border-gray-400">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-xl bg-black bg-opacity-50 backdrop-blur-sm p-10 text-left align-middle shadow-xl transition-all border border-gray-400">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-white"
@@ -61,18 +75,30 @@ const  UserModal =({show, address})=> {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-200">
-                      you need an account to get accessto all features and to earn points blabla  
+                      you need an account to get access to all features and services 
+                      
                     </p>
+                         
+
                   </div>
 
-                  <div className="mt-4">
+                  <div className="mt-4 flex justify-between">
                     <button
                       type="button"
-                      className="button"
+                      className="button  text-sm"
                       onClick={signUp}
                     >
-                     create one in one Click
+                     one Click account
                     </button>
+
+                    <button
+                      type="button"
+                      className="button button--hollow"
+                      onClick={guest}
+                    >
+                     continue as guest
+                    </button>
+             
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

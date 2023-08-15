@@ -11,10 +11,10 @@ const SectionWhy = () => {
 
 
   return (
-    <div className="index__body bg-light">
+    <div className="index__body bg-light ">
 
-      <div className="space space--small">
-        <div className="wrapper container container--xxlarge container--center">
+      <div className="space space--small ">
+        <div className="wrapper container container--xxlarge container--center ">
           
           
           <h3 className=' title'> one account , get it All:</h3>

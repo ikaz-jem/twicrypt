@@ -3,6 +3,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 
 
+
+//fetches the data of the main carousel 
 export const getCarouselData = createAsyncThunk(
     'carousel/getData',
     async()=>{
@@ -10,10 +12,10 @@ export const getCarouselData = createAsyncThunk(
             'content-type':'application/json',
             'apiKey':'abc123'
         }
-        const endpoint = 'http://localhost:4001/users/carousel'
+        const endpoint = 'https://fakestoreapi.com/products'
 
         try {
-            const res =await axios.get(endpoint,{headers}).then((res)=>{
+            const res =await axios.get(endpoint).then((res)=>{
                 if (res.data){
                     return res.data
                 }else {
@@ -22,6 +24,7 @@ export const getCarouselData = createAsyncThunk(
                 }
             })
           
+            return res
         
         }catch(err){
             console.error("Error fetching carousel data:", err.message);
@@ -31,6 +34,8 @@ export const getCarouselData = createAsyncThunk(
 )
 
 
+
+//sends request to add slide to the main carousel 
 export const addSlide = createAsyncThunk(
     'carousel/addSlide',
     async(data)=>{

@@ -24,6 +24,7 @@ const Home = () => {
   const dispatch = useDispatch()
 const controller = new AbortController()
   
+
 useEffect(()=>{    
     dispatch(getCarouselData())
     toast.custom(
@@ -35,15 +36,16 @@ useEffect(()=>{
     return()=> controller.abort()
 },[])
 
+
     
   return (
 
     <>
      
         <div className="index__header header">
-            <div className="space space--xlarge">
+            <div className="space space--xlarge ">
                   {/* <Navbar /> */}
-                    <div className="hero__wrapper container">
+                    <div className="hero__wrapper container  ">
                          <Carousel/>
                          {/* <UserModal show={true} /> */}
                      {/*  */}

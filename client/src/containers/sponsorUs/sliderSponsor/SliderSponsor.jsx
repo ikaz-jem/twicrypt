@@ -1,20 +1,18 @@
 
 import './style.css'
-import CarouselDemo from './demo/Demo'
 import { useEffect, useState } from 'react'
 import { useAccount } from 'wagmi'
 import { addSlide } from '../../../app/features/carousel/carouselThunks'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchedCarouselData } from '../../../app/features/carousel/carouselSlice'
 import { Transition } from '@headlessui/react'
-import SponsorForm from './SponsorForm'
 import FormTransition from '../../../shared/transitions/FormTransition'
 import CarouselTransition from '../../../shared/transitions/CarouselTransition'
+import SliderDemo from './SliderDemo'
+import SponsorForm from '../CarouselSponsor/SponsorForm'
+import CarouselDemo from '../CarouselSponsor/demo/Demo'
 
-
-
-const CarouselSponsor = ({show,setShow}) => {
-
+const SliderSponsor = ({show,setShow}) => {
 
   const { address } = useAccount()
   const [ad, setAd] = useState({
@@ -27,9 +25,9 @@ const CarouselSponsor = ({show,setShow}) => {
   })
   
 
-  // useEffect(() => {
-  //   setShow(true)
-  // }, [])
+//   useEffect(() => {
+//     setShow(true)
+//   }, [])
 
   const SvgTitle = () => {
 
@@ -56,12 +54,12 @@ const CarouselSponsor = ({show,setShow}) => {
       <SponsorForm show={show} ad={ad} setAd={setAd} />
 </FormTransition>
 
-      <div className=" bg-light light-ball">
+      <div className=" bg-light light-ball  ">
 
         {
-
-          
-          
+//index__body bg-light light-ball 
+            
+            
         }
 
 
@@ -74,30 +72,29 @@ const CarouselSponsor = ({show,setShow}) => {
         {/* <div className="grid__column grid__column--3 space space--xlarge  " dataref="fadereveal[el]"> */}
 
 
-<div className='  flex justify-center w-full relative  aa py-10 '>
 
-        <div className='w-[20%] '>
-          </div>
+    
 
-            <div className=' w-[80%]   rounded-2xl  border-opacity-30 border border-white py-5 shadow-lg'>
+          <div className='  flex justify-center w-full relative aa py-10  '>
 
-            
-    <button className='button' onClick={() => setShow(show)}> Show on slider</button>
-            <p className='text-gray-400'>
-              col carouzel description something explaine ras l9eli3a
-            </p>
-            <div className='w-full'>
+            <div className='w-[30%] '>
+                                                      
+             </div>
 
+            <div className=' w-[50%]   rounded-2xl  border-opacity-30 border border-white py-5 shadow-lg '>
+
+    <button className='button' onClick={() => setShow(!show)}> Main Cazousel</button>
+                <p className='text-gray-400'>Sponsor us and get on twicrypt for long periods even lifetime ! ... </p>
+              
               <CarouselTransition show={show}>
-                <CarouselDemo carouselData={ad} />
+                <SliderDemo data={ad} />
               </CarouselTransition>
             </div>
           </div>
         </div>
-      </div>
     </>
   )
 
 }
 
-export default CarouselSponsor
+export default SliderSponsor

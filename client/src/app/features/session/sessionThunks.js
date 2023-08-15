@@ -20,6 +20,7 @@ export const createAccount = createAsyncThunk(
     }
 )
 
+//send request and checks i user has account , returns the user data
 export const getUserSession = createAsyncThunk(
     'session/getUserSession',
     async(address)=> {

@@ -8,18 +8,22 @@ export const sessionSlice = createSlice({
     name : 'session',
     initialState:{
         user :[],
-        isLogedIn:false,
-        hasAccount:true ,
+        accountType:'',
+        isLoggedIn:false,
+        hasAccount:false ,
     },
     reducers:{
         logIn:(state)=>{
-            state.isLogedIn = true
+            state.isLoggedIn = true
         },
         logOut:(state)=>{
-        state.isLogedIn=false
+        state.isLoggedIn=false
         },
         setUserData : (state,action)=>{
             state = {...state ,...action.payload}
+        },
+        continueAsGuest:(state)=>{
+            state.accountType = 'guest'
         }
 
     },extraReducers:(builder)=>{
@@ -30,12 +34,14 @@ export const sessionSlice = createSlice({
         );
         builder.addCase(createAccount.fulfilled,(state,action)=>{
             state.user = action.payload 
-            state.isLogedIn = true
+            state.isLoggedIn = true
             state.hasAccount= true
+            state.accountType = 'user'
         });
         builder.addCase(getUserSession.fulfilled,(state,action)=>{
             state.user = action.payload
             state.hasAccount = true
+            state.accountType='user'
         });
         builder.addCase(getUserSession.rejected,(state)=>{
             state.hasAccount = false
@@ -54,9 +60,9 @@ export const handleUserData = createAsyncThunk(
     }
 )
 
-export const {setUserData,logIn,logOut} = sessionSlice.actions
+export const {setUserData,logIn,logOut,continueAsGuest} = sessionSlice.actions
 export const userData = state=>state.session
-export const userSession = state=>state.session.isLogedIn
+export const userSession = state=>state.session.isLoggedIn
 
 
 

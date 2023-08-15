@@ -12,6 +12,7 @@ import { watchAccount } from '@wagmi/core'
 export const UseStartSession = (data)=>{
 
 const [userChanged,setUserChanged]=useState(null)
+
 const dispatch = useDispatch()
 
 const signWalletMessage = useSignMessage({
@@ -37,7 +38,7 @@ const userConnected = useAccount({
     onConnect({ address, connector, isReconnected }) {
         if (isReconnected) {
           setUserChanged(address)
-          dispatch(handleUserData({ address, isReconnected, isLoggedIn:true}));
+          dispatch(handleUserData({ address, isReconnected}));
           signIn()
           getSession()
         }else{
@@ -58,7 +59,6 @@ const userConnected = useAccount({
     
 })
 
-console.log(userChanged)
 
 const unwatch = watchAccount((account) =>{
  return account.address === undefined || account.address === userConnected.address ? null : setUserChanged(account.address)
@@ -66,7 +66,6 @@ const unwatch = watchAccount((account) =>{
 
 
 
-console.log(unwatch)
 useEffect(()=>{
   userChanged !== null &&
  getSession()

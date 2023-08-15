@@ -124,10 +124,10 @@ const Sponsors = () => {
   }, [UNIQUE_CLASS]);
 
   return (
-    <div className={` container mx-auto  overflow-hidden  ${UNIQUE_CLASS} `}>
+    <div className={` container mx-auto  overflow-hidden   ${UNIQUE_CLASS} `}>
       <h1>Sponsors </h1>
-      <div className="  overflow-hidden" data-glide-el="track">
-        <ul className="glide__slides">
+      <div className="  overflow-hidden " data-glide-el="track">
+        <ul className="glide__slides ">
           {CATS_DISCOVER.map((item, index) => (
             <li key={index} className={`glide__slide flex gap-5 m-0 p-0 items-center justify-center `} >
               <Card

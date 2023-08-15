@@ -6,6 +6,8 @@ import { useMount } from "../../hooks/useMount";
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { fetchedCarouselData } from '../../app/features/carousel/carouselSlice';
 import { Transition } from '@headlessui/react'
+import CarouselTransition from '../../shared/transitions/CarouselTransition';
+import { useEffect, useState } from 'react';
 
 
 
@@ -15,7 +17,7 @@ const SvgTitle = () => {
     return (
         <>
             <div className="container-xxxxlg ">
-                <h1 className="hero_title">TwiCrypt</h1>
+                <h1 className="hero_title animate-bounce ">TwiCrypt</h1>
                 <h4 className=" heading bg-dark">1# All in one Decentralized Application ... </h4>
             </div>
         </>
@@ -47,19 +49,23 @@ const Spinner = ({ data }) => {
 
 
 const Carousel = () => {
+const [show,setShow]=useState(false)
+useEffect(()=>{
+setShow(true)
 
-
+},[])
 const PlaceHolder = [1,2,3,4]
 
     const storeData = useSelector(fetchedCarouselData)
-    
+
+
     const RenderCarouselItems = () => {
         useMount()
 
         return (
             <>
                 {storeData.data!==null ?
-                    storeData.data.map(({ name, image, link, icon }, i) => {
+                    storeData.data.map(({ title:name, image}, i) => {
                         return (<li className="frames__item glide__slide" key={i}>
                             <div dataref="slidereveal[el]">
                                 <div className="frame" dataref="hero[el]">
@@ -69,8 +75,8 @@ const PlaceHolder = [1,2,3,4]
 
                                         <div className="flex items-center justify-center">
 
-                                            <Link to={link} target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%]">
-                                                <img src={icon} alt="icon" className="w-5 h-5" />
+                                            <Link to={image} target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%]">
+                                                <img src={image} alt="icon" className="w-5 h-5" />
                                                 <p className='text-gray-500'>{name}</p>
 
                                             </Link>
@@ -124,6 +130,7 @@ const PlaceHolder = [1,2,3,4]
         {storeData.data && !storeData.data.hasError || storeData.data==null ?
 
             <div className="slider slider--big glide " data-component="hero">
+                <CarouselTransition show={show}>
                 <div className="slider__arrows" data-glide-el="controls">
                     <button className="slider__arrow slider__arrow--prev glide__arrow glide__arrow--prev" dataref="fadereveal[el]" data-glide-dir="<">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -144,11 +151,28 @@ const PlaceHolder = [1,2,3,4]
                         <RenderCarouselItems />
                     </ul>
 
-                    <div className="hero__heading">
-                        {<SvgTitle />}
-                    </div>
 
                 </div>
+                </CarouselTransition>
+
+                <div className="hero__heading ">
+                <Transition
+  appear
+  show={show}
+  className={"relative z-10"}
+  enter="transition-all duration-1000  ease-in z-0"
+  enterFrom="opacity-0 scale-0 z-10"
+  enterTo="opacity-100 scale-100 z-10"
+  leave="transition-all duration-1000 z-10"
+  leaveFrom="opacity-100 translate-x-0 z-10"
+  leaveTo="opacity-0 translate-x-20 z-0"
+>
+                        {<SvgTitle />}
+
+</Transition>
+                    </div>
+
+                    
             </div>
             :
             <Spinner data={storeData.isLoading} />
