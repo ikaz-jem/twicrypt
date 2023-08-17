@@ -1,7 +1,6 @@
 import {useEffect ,useState} from "react";
 import { useAccount } from 'wagmi'
 import { useDispatch} from 'react-redux'
-import { handleUserData } from "../app/features/session/sessionSlice";
 import { useSignMessage } from "wagmi";
 import { disconnect } from '@wagmi/core'
 import UserModal from "../shared/userModal/UserModal";
@@ -26,7 +25,7 @@ const signWalletMessage = useSignMessage({
     }
   })
 
-const getSession = async ()=> dispatch(getUserSession(userChanged));
+// const getSession = async ()=> dispatch(getUserSession(userChanged));
 const signIn = ()=> dispatch(logIn())
 const signOut = ()=> dispatch(logOut())
 
@@ -38,14 +37,14 @@ const userConnected = useAccount({
     onConnect({ address, connector, isReconnected }) {
         if (isReconnected) {
           setUserChanged(address)
-          dispatch(handleUserData({ address, isReconnected}));
-          signIn()
-          getSession()
+          // signIn()
+          console.log('get session from is reconected')
         }else{
           // signWalletMessage.signMessageAsync()
-          setUserChanged(address)
-          dispatch(handleUserData({ address,isLoggedIn:true }));
-          getSession()
+          // setUserChanged(address)
+          console.log('get session from first connect')
+       
+        
           signIn()
             }
         
@@ -60,27 +59,40 @@ const userConnected = useAccount({
 })
 
 
-const unwatch = watchAccount((account) =>{
- return account.address === undefined || account.address === userConnected.address ? null : setUserChanged(account.address)
-})
-
+// const unwatch = watchAccount((account) =>{
+//  return account.address === undefined || account.address === userConnected.address ? null : setUserChanged(account.address)
+// })
+console.log(userChanged)
 
 
 useEffect(()=>{
-  userChanged !== null &&
- getSession()
+  // userChanged !== null && getSession()
+      var controller = new AbortController();
+
+  const unwatch = watchAccount((account) =>{
+   return account.address  && setUserChanged(account.address)
+  })
+  
+  
+  console.log('get session from is useEffect')
+
+  
+  return () => {
+    controller.abort();
+  };
+
 },[userChanged])
 
-useEffect(() => {
-    var controller = new AbortController();
-    // Dispatch the action to get user data
-    dispatch(handleUserData({ address: userConnected.address,isDisconnected : userConnected.isDisconnected }));
+// useEffect(() => {
+//     var controller = new AbortController();
+//     // Dispatch the action to get user data
+//     dispatch(handleUserData({ address: userConnected.address,isDisconnected : userConnected.isDisconnected }));
 
-    return () => {
-      controller.abort();
-    };
+//     return () => {
+//       controller.abort();
+//     };
 
-  }, []);
+//   }, []);
 
   return {userChanged}
 

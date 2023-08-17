@@ -27,11 +27,7 @@ export const sessionSlice = createSlice({
         }
 
     },extraReducers:(builder)=>{
-         builder.addCase (
-            handleUserData.fulfilled, (state,action)=>{
-                return state = {...state ,...action.payload}
-            }
-        );
+  
         builder.addCase(createAccount.fulfilled,(state,action)=>{
             state.user = action.payload 
             state.isLoggedIn = true
@@ -51,14 +47,6 @@ export const sessionSlice = createSlice({
 })
 
 
-export const handleUserData = createAsyncThunk(
-    'session/setUser',
-    async (data)=>{
-    
-        const res = await data
-        return res
-    }
-)
 
 export const {setUserData,logIn,logOut,continueAsGuest} = sessionSlice.actions
 export const userData = state=>state.session

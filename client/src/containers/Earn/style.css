@@ -1,0 +1,12 @@
+
+
+
+.circle::before {
+    content: '';
+    width: 10%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(49, 53, 53, 0.24);
+}

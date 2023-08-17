@@ -10,11 +10,6 @@ const  UserModal =({show, address})=> {
     show :true
   }
 
-useEffect(()=>{
-localStorage.clear('userLoginModal')
-
-  
-},[])
 
   const dispatch=useDispatch()
 

@@ -14,7 +14,8 @@ const Navbar = () => {
 const user = useSelector(userData)
 const isLogedIn = useSelector(userSession)
 
-const {userChanged:address} = UseStartSession(user.hasAccount)
+const {userChanged:address} = UseStartSession()
+
 
 
 
@@ -23,7 +24,7 @@ return (
 
         <div className="navbar sticky top-0 ">
            
-{isLogedIn && user.accountType !== 'guest' && !user.hasAccount && <UserModal address={address} show={!user.hasAccount} />}
+{/* {isLogedIn && user.accountType !== 'guest' && !user.hasAccount && <UserModal address={address} show={!user.hasAccount} />} */}
 
             <div className=" navbar__wrapper wrapper container container--xlarge container--center  shadow-xl  backdrop-blur-sm rounded-3xl overfllow-hidden ">
                 <div className="grid grid--middle h-100">
@@ -44,7 +45,7 @@ return (
                                         (link,i) => {
                                             return <li className="list__item h-100" dataref="fadereveal[el]" key={i}>
                                            {
-                                               link.requireAuth && !isLogedIn ? null : <NavLink to={link.url} className='link'> {link.name}</NavLink>
+                                               link.requireAuth && !isLogedIn ? null : <NavLink to={link.url} className='link  '> {link.name}</NavLink>
                                                
                                             }
                                         </li>
