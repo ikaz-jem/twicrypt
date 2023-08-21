@@ -66,14 +66,14 @@ const PlaceHolder = [1,2,3,4]
             <>
                 {storeData.data!==null ?
                     storeData.data.map(({ title:name, image}, i) => {
-                        return (<li className="frames__item glide__slide" key={i}>
-                            <div dataref="slidereveal[el]">
-                                <div className="frame" dataref="hero[el]">
+                        return (<li className="frames__item glide__slide " key={i}>
+                            <div dataref="slidereveal[el] ">
+                                <div className="frame " dataref="hero[el]">
 
-                                    <div className="frame-front">
+                                    <div className="frame-front ">
                                         <img src={image} alt="" className="carousel-img" />
 
-                                        <div className="flex items-center justify-center">
+                                        <div className="flex items-center justify-center  ">
 
                                             <Link to={image} target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%]">
                                                 <img src={image} alt="icon" className="w-5 h-5" />
@@ -93,7 +93,7 @@ const PlaceHolder = [1,2,3,4]
                         </li>)
                     }): 
                     PlaceHolder.map((item, i) => {
-                        return (<li className="frames__item glide__slide" key={i}>
+                        return (<li className="frames__item glide__slide " key={i}>
                             <div dataref="slidereveal[el]">
                                             
                                 <div className="frame " dataref="hero[el]">

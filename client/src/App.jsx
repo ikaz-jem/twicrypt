@@ -8,7 +8,7 @@ function App() {
 
 
   return (
-    <div className=" h-screen hero">
+    <div className=" h-screen hero  ">
 
         <Suspense fallback={
            <>

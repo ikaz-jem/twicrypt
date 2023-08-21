@@ -1,13 +1,16 @@
 
-
-
+import RoadMap from "../components/Roadmap/Roadmap"
 
 
 const Preparations = ()=> {
 
     return (
-    
-    <h1>Preparations</h1>
+    <>
+<div className='  w-full h-auto container ' >
+    <div className="color-ball w-full h-auto"><RoadMap/></div>
+
+</div>
+    </>
     
     )
     

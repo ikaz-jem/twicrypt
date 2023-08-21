@@ -6,74 +6,100 @@
 const Data = [
 
 
-{
-    title : 'Staking',
-    desc :  ' when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-    link:1
-},
+    {
+        title: 'Staking',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+        page: 'home',
+        component:'/earn/home'
+    },
 
-{
-    title : 'AP2E',
-    desc :  ' when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-    link:2
+    {
+        title: 'AP2E',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+        page: 'stats',
+        component:'/earn/stats'
 
-},
+    },
 
-{
-    title : 'Daily Free Rewards',
-    desc :  ' when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-    link:3
-},
+    {
+        title: 'Daily Free Rewards',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+        page:'sectionWhy',
+        component:'/earn/section-why'
+    },
 
-{
-    title : 'Staking',
-    desc :  ' when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-    link:1
-},
+    {
+        title: 'Staking',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+        link: 1
+    },
+    {
+        title: 'Staking',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+        link: 1
+    },
+    {
+        title: 'Staking',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+        link: 1
+    },
 
 
 ]
 
 
 
-const EarnHome = ({setComponent})=> {
-    return(
+const EarnHome = ({ handleChangePage }) => {
+    return (
 
-<ul className=" w-auto color-ball bg rounded-xl my-10 shadow-2xl shadow-black overflow-hidden ">
+        <div className=" w-full relative p-10 bg rounded-xl my-10 shadow-2xl shadow-black overflow-hidden  color-ball ">
+            <h3 className="m-0 py-2 text-[#995533]">Start Earning</h3>
+            <h1 className="m-0 mb-2">Before Token and Project Launch</h1>
 
-{
-    Data.map((item,i)=>{
-        return <li className="border border-neutral-500 bg-neutral-200 bg-opacity-10  m-5 w-auto flex rounded-xl relative text-white overflow-hidden hover:bg-[#4D3C77] - hover:scale-[102%] transition transition-all ease-in cursor-pointer shadow-xl " key={i} onClick={()=>setComponent(item.link)}>
-            
-            <div className=" flex flex-col relative lg:flex-row xl:flex-row  w-full h-auto gap-5  lg:items-center ">
-                <img src="https://picsum.photos/200/200?grayscale" alt="" className="w-20 h-20 m-5 lg:w-40 lg:h-40 md:w-20 object-contain     rounded-full"/>
-                <div className="flex flex-col items-start justify-start p-5">
+            <div className="flex flex-wrap justify-center">
+                {
+                    Data.map((item, i) => {
+                        return <div className="border border-neutral-500 hover:border-neutral-200 bg-neutral-200 bg-opacity-10  m-5 w-80 flex rounded-xl relative text-white overflow-hidden flex-wrap hover:bg-blue-500 - hover:scale-[102%] transition transition-all duration-150 ease-in cursor-pointer shadow-2xl shadow-[#721533] hover:shadow-blue-600 " key={i} onClick={(e) => handleChangePage(item,e)}>
 
+                            <div className=" flex flex-col relative  w-full h-auto gap-0  lg:items-center relative">
+                                <img src="https://thirdweb.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Frevenue-streams.10c7bba1.png&w=750&q=75" alt="" className=" object-contain p-0 m-0  w-full  " />
 
-<div className='flex  justify-between items-center relative  w-full'>
-
-                    <h5 className=" text-md font-bold p-0 m-0 relative ">
-                    {item.title}
-                    </h5>
-
-                    <p className=" text-white p-0 m-0 relative bg-[#4D3C77] px-10 rounded-xl">
-                    "hello"
-                    </p>
-</div>
+                                <div className="flex flex-col items-start justify-start px-5 py-2 gap-2 ">
 
 
-                    <p className="text-left text-neutral-300"> 
-                        {item.desc}
-                    </p>
+                                    <div className='flex flex-col  justify-center items-start relative  w-full '>
+
+                                        <h5 className=" text-md font-bold  m-0 relative ">
+                                            {item.title}
+                                        </h5>
+                                    </div>
+                                    <div className="flex justify-start items-start gap-2   w-full">
+
+                                        <p className=" text-white p-0 m-0 relative bg-green-500 px-5 rounded-xl">
+                                            tag
+                                        </p>
+                                        <p className=" text-white p-0 m-0 relative bg-pink-500 px-5 rounded-xl">
+                                            tag
+                                        </p>
+                                        <p className=" text-white p-0 m-0 relative bg-[#4D3C77] px-5 rounded-xl">
+                                            tag
+                                        </p>
+
+                                    </div>
+
+
+                                    <p className="text-left text-neutral-300 p-0 m-0">
+                                        {item.desc}
+                                    </p>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    })
+                }
             </div>
-                </div>
-
-
-        </li>
-    })
-}
-
-</ul>
+        </div>
 
     )
 }

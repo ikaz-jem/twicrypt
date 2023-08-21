@@ -32,7 +32,7 @@ return (
                     
             
 <Link className='logo hero__logo link' to={'./'} >
-           <img src={logo} alt="logo" className="w-10 h-10 " />
+           <img src={logo} alt="logo" className="w-14 h-14 " />
             {/* <h3 className=" " dataref="fadereveal[el]">Logo</h3> */}
 </Link>
                     </div>

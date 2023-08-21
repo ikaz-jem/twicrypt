@@ -62,7 +62,6 @@ const userConnected = useAccount({
 // const unwatch = watchAccount((account) =>{
 //  return account.address === undefined || account.address === userConnected.address ? null : setUserChanged(account.address)
 // })
-console.log(userChanged)
 
 
 useEffect(()=>{

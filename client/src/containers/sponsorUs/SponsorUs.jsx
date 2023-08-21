@@ -35,7 +35,7 @@ useEffect(()=>{
   return (
 <div className="flex  flex-col ">
 
-<div className="h-screen  ">
+<div className="h-full  ">
 
 <button className=" text-black text-bold animate-bg w-full">{show ?" Your sponsorship will Appear on the main slider you can switch to cazousel" : "Your sponsorship will Appear on main carousel switch to slider view"}</button>
 

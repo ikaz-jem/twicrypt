@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Disclosure } from "@headlessui/react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FcInvite } from "react-icons/fc";
 import { AiOutlineArrowDown} from 'react-icons/ai'
 
@@ -16,7 +16,8 @@ const  NAVIGATION_DEMO_2 = [
     name: "Stats",
     tooltip: "Inbox",
     icon:FcDoughnutChart,
-    component:1
+    component:'/earn/home',
+    page:'home'
   },
   {
     
@@ -24,7 +25,8 @@ const  NAVIGATION_DEMO_2 = [
     name: "Daily rewards",
     tooltip: "Inbox",
     icon:FcCurrencyExchange,
-    component:2
+    component:'/earn/stats',
+    page:'stats'
   },
   {
     
@@ -32,7 +34,7 @@ const  NAVIGATION_DEMO_2 = [
     name: "Beauty",
     tooltip: "Inbox",
     icon:FcEmptyTrash,
-    component:3
+    component:"./3"
   },
   
   {
@@ -41,7 +43,7 @@ const  NAVIGATION_DEMO_2 = [
     name: "Sport",
     tooltip: "Inbox",
     icon:FcPortraitMode,
-    component:4
+    component:"./1"
   },
   {
     
@@ -49,7 +51,7 @@ const  NAVIGATION_DEMO_2 = [
     name: "Sport",
     tooltip: "Inbox",
     icon:FcElectronics,
-    component:1
+    component:'./2'
   },
   {
     
@@ -57,7 +59,7 @@ const  NAVIGATION_DEMO_2 = [
     name: "Withdraw",
     tooltip: "Inbox",
     icon:FcDownLeft,
-    component:1
+    component:"./3"
   },
   {
     
@@ -65,7 +67,7 @@ const  NAVIGATION_DEMO_2 = [
     name: "Sport",
     tooltip: "Inbox",
     icon:FcAnswers,
-    component:1
+    component:"/1"
   },
   
 ];
@@ -76,27 +78,51 @@ const  NAVIGATION_DEMO_2 = [
 
 
 const Menu= ({
-  onClickClose,setShow,show,setComponent,component
+  onClickClose,setShow,show,setComponent,component , handleChangePage
 }) => {
   const [width,setWidth]=useState({
     class: "w-20 ",
     isOpen: false
   })
 
+const navigate = useNavigate()
 
-const handleChangePage = async (item,e)=> {
-e.preventDefault()
 
-if(component == item) {
-  return null 
-} else 
- await setShow(false)
- setTimeout(()=>{
- setComponent(item)
- setShow(true)
- },200)
+// const handleChangePage = async (item,e)=> {
+// e.preventDefault()
 
-}
+// if(component == item.page) {
+//   return null 
+// } else 
+//  await setShow(false)
+//  setTimeout(()=>{
+//  setComponent(item.page)
+//  setShow(true)
+//  navigate(item.component)
+
+//  },500)
+
+
+// }
+
+
+const toggleTest = async ()=> {
+
+  if(component == 'sectionWhy') {
+    return null 
+  } else 
+   await setShow(false)
+   setTimeout(()=>{
+   setComponent('sectionWhy')
+   setShow(true)
+   navigate('/earn/section-why')
+  
+   },500)
+
+
+
+} 
+
 
   const data = NAVIGATION_DEMO_2
   
@@ -188,10 +214,11 @@ return  <button
       >
         <NavLink
           className={({ isActive }) =>
-            `flex w-full items-center py-2.5 px-4 font-medium  uppercase tracking-wide text-sm  transition transition-all ease-out duration-200 hover:bg-[#4D3C77] rounded-lg ${isActive ? "text-primary  rounded-2xl bg-neutral-200 text-black"  : "bg-slate-800"
+            `flex w-full items-center py-2.5 px-4 font-medium  uppercase tracking-wide text-sm  transition transition-all ease-out duration-200 hover:bg-blue-500 shadow-md hover:shadow-blue-500 rounded-lg ${isActive ? "text-primary  rounded-2xl bg-neutral-200 text-black"  : "bg-[#721533]"
 }`
           }
-          onClick={(e)=> handleChangePage(item.component , e)}
+          onClick={(e)=> handleChangePage(item , e)}
+          to={item.component}
           data-tooltip-id="MenuTooltip"
           data-tooltip-hidden={width.isOpen}
           data-tooltip-content={item.tooltip}
@@ -237,7 +264,7 @@ return  <button
 
  
   return (
-    <div className={` overflow-x-none ${width.class} ${!width.isOpen ?"no-scrollbar " : "overflow-y-scroll overflow-x-hidden " } h-[99vh] py-2  backdrop-blur-md   transform shadow-r-xl  divide-y-2 divide-neutral-800 transition transition-all ease-in-out duration-400 delay-100 `}>
+    <div className={` overflow-x-none ${width.class} ${!width.isOpen ?"no-scrollbar " : " overflow-x-hidden " } h-[99vh] py-2 border-r border-[#721533] border-opacity-40 backdrop-blur-md   transform shadow-r-xl  divide-y-2 divide-neutral-800 transition transition-all ease-in-out duration-400 delay-100 `}>
    
       <div className="py-6 px-5 mt-10 ">
        {/* { width.isOpen && <Logo className="w-20 h-20"/>} */}
@@ -249,7 +276,7 @@ return  <button
         <div className="flex flex-col mt-5 text-slate-300 text-sm items-center justify-center">
           <span>
           <div className={"" }>
-        <FcInvite className="text-5xl p-2 bg-slate-800 rounded-full " onClick={()=>setShow(!show)}/>   {   width.isOpen && 'Compose' }
+        <FcInvite className="text-5xl p-2 bg-slate-800 rounded-full " onClick={toggleTest}/>   {   width.isOpen && 'Compose' }
         {/* </ButtonPrimary> */}
       </div>
           </span>
@@ -257,7 +284,7 @@ return  <button
         </div>
 
       </div>
-      <ul className={`flex flex-col content-center align-center py-6 px-2 space-y-1 transition overflow-y-auto transition-opacity  transform  delay-40  duration-400  ${!width.isOpen ? "opacity-80 overflow-x-hidden" :"opacity-100 overflow-x-hidden"}`} >
+      <ul className={`flex flex-col bordercontent-center align-center py-6 px-2 gap-1 space-y-1 transition overflow-y-auto transition-opacity  transform  delay-40  duration-400  ${!width.isOpen ? "opacity-80 overflow-x-hidden" :"opacity-100 overflow-x-hidden"}`} >
         {  data.map(_renderItem)}
        
       </ul>

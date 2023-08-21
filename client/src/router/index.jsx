@@ -29,11 +29,13 @@ const routes = [
         component:Home,
         requiresAuth:false,
     },
+
     {
-        path:'/earn',
+        path:'/earn/:id',
         component:Earn,
         requiresAuth:false,
     },
+
     {
         path:'/sponsor',
         component:SponsorUs,
@@ -84,10 +86,11 @@ return (
                                         <Route key={index} path={path} element={<Component />} />
                                     
                                 })}
+                                
                         </Routes>
+                {/* <Footer/> */}
                                 </>
 
-                <Footer/>
     </MyProvider>
 
 </BrowserRouter>

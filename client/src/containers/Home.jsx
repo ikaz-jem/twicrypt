@@ -4,6 +4,7 @@
 import CallToAction from "../components/CallToAction";
 import Sponsors from "../components/sponsorsSlider/Sponsors";
 import SectionWhy from "../components/sectionWhy/SectionWhy";
+import SectionToken from "../components/SectionToken";
 // import Carousel from '../components/carousel/Carousel'
 import { useEffect,lazy, Suspense} from "react";
 
@@ -42,8 +43,8 @@ useEffect(()=>{
 
     <>
      
-<div className="index__header header ">
-            <div className="space space--xlarge ">
+<div className="index__header header  ">
+            <div className="space space--xlarge color-ball">
                   {/* <Navbar /> */}
                     <div className="hero__wrapper container  ">
                          <Carousel/>
@@ -54,6 +55,7 @@ useEffect(()=>{
             </div>
         </div>
         <SectionWhy />
+        <SectionToken />
         <Sponsors />
   
     </>
