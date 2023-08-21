@@ -3,14 +3,16 @@ const db = require('../database/database')
 const isUserParam = async (req, res, next) => {
     try {
         const { paramAddress } = req.params
-        const [paramUser_id] = await db.execute('SELECT id FROM users WHERE walletAddress = ?', [paramAddress])
+
+        const [paramUser] = await db.execute('SELECT * FROM users WHERE walletAddress = ?', [paramAddress])
         
-        if (paramUser_id.length === 0 ) {
-            res.status(404).json({Message : "User Not Found !"})
+        if (paramUser.length === 0 ) {
+            console.log("User not Found")
+            return res.status(404).json({Message : "User Not Found !"})
         } else {
             console.log("User_id from params recognized and passed to next middleware");
-            req.paramAddress = paramUser_id[0].id
-            req.user = paramUser_id[0]
+            req.paramId = paramUser[0].id
+            req.paramUser = paramUser[0]
             return next()
         }
     } catch (err) {
