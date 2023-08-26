@@ -12,7 +12,7 @@ function App() {
 
         <Suspense fallback={
            <>
-           <div className="hero h-screen light-ball flex justify-center items-center " >
+           <div className=" h-screen  flex justify-center items-center " >
 
              <HashLoader size={100} color="#fff" style={{text:'center'}} />  
            

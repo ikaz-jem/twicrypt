@@ -16,7 +16,7 @@ const  NAVIGATION_DEMO_2 = [
     name: "Stats",
     tooltip: "Inbox",
     icon:FcDoughnutChart,
-    component:'/earn/home',
+    component:'/earn',
     page:'home'
   },
   {

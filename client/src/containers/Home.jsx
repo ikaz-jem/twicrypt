@@ -15,6 +15,9 @@ import Popup from "../shared/popup/Popup";
 import toast from 'react-hot-toast';
 import UserModal from "../shared/userModal/UserModal";
 
+import Cta from "./Cta";
+
+
 const Carousel = lazy(()=> import('../components/carousel/Carousel'))
 
 
@@ -43,10 +46,10 @@ useEffect(()=>{
 
     <>
      
-<div className="index__header header  ">
+<div className="index__header   ">
             <div className="space space--xlarge color-ball">
                   {/* <Navbar /> */}
-                    <div className="hero__wrapper container  ">
+                    <div className="hero__wrapper   ">
                          <Carousel/>
                          {/* <UserModal show={true} /> */}
                      {/*  */}
@@ -54,6 +57,7 @@ useEffect(()=>{
                   <CallToAction />
             </div>
         </div>
+        <Cta />
         <SectionWhy />
         <SectionToken />
         <Sponsors />

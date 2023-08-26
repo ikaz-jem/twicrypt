@@ -47,7 +47,11 @@ const Data = [
 
 ]
 
-
+const stats = [
+    { id: 1, name: 'Transactions every 24 hours', value: '300k$+ Rewards' },
+    { id: 2, name: 'Assets under holding', value: '$119 trillion' },
+    { id: 3, name: 'New users annually', value: '46,000' },
+  ]
 
 const EarnHome = ({ handleChangePage }) => {
     return (
@@ -55,6 +59,26 @@ const EarnHome = ({ handleChangePage }) => {
         <div className=" w-full relative p-10 bg rounded-xl my-10 shadow-2xl shadow-black overflow-hidden  color-ball ">
             <h3 className="m-0 py-2 text-[#995533]">Start Earning</h3>
             <h1 className="m-0 mb-2">Before Token and Project Launch</h1>
+          
+
+
+            <div className="bg-slate-300 py-10 sm:py-5 rounded-md">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+          {stats.map((stat) => (
+            <div key={stat.id} className="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt className="text-base leading-7 text-gray-600">{stat.name}</dt>
+              <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+                {stat.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+
+
+
 
             <div className="flex flex-wrap justify-center">
                 {
@@ -75,14 +99,17 @@ const EarnHome = ({ handleChangePage }) => {
                                     </div>
                                     <div className="flex justify-start items-start gap-2   w-full">
 
-                                        <p className=" text-white p-0 m-0 relative bg-green-500 px-5 rounded-xl">
-                                            tag
+                                        <p className=" text-white p-0 m-0 relative bg-green-500 h-2 px-5 animate-pulse rounded-full">
+                                          
                                         </p>
-                                        <p className=" text-white p-0 m-0 relative bg-pink-500 px-5 rounded-xl">
-                                            tag
+                                        <p className=" text-white p-0 m-0 relative bg-pink-500 px-5 h-2 animate-pulse rounded-full">
+                                          
                                         </p>
-                                        <p className=" text-white p-0 m-0 relative bg-[#4D3C77] px-5 rounded-xl">
-                                            tag
+                                        <p className=" text-white p-0 m-0 relative bg-[#4D3C77] px-5 h-2 animate-pulse rounded-full">
+                                          
+                                        </p>
+                                        <p className=" text-white p-0 m-0 relative bg-[#ebce29] px-5 h-2 animate-pulse rounded-full">
+                                          
                                         </p>
 
                                     </div>

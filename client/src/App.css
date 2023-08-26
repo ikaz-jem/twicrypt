@@ -2126,8 +2126,8 @@ blockquote {
   content: "";
   display: block;
   width: 100%;
-  height: 20px;
-  background: linear-gradient(90deg, #ffffff00 , #ffffffa6 80% , #ffffff00  );
+  height: 15px;
+  background: linear-gradient(90deg, #ffffff00 , #ff00f2c9 80% , #ffffff00  );
   background-size: 200% 100%;
   animation: navbaranim 5s infinite linear ;
   transition-timing-function: ease-in-out;
