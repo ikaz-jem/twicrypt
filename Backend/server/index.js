@@ -10,6 +10,9 @@ app.use(bodyParser.json())
 app.use(checkAPI)
 app.use('/users', carousselAds)
 
+
+
+
 app.listen(4001, () => {
     console.log(`server running on port 4001`)
 })

@@ -1,11 +1,45 @@
-POST http://localhost:4001/users/create_ad
+# POST http://localhost:4001/users/create_ad
+# Content-Type: application/json
+# apikey: abc123
+
+# {
+#     "bodyAddress" : "0x21111b0C84E33D2c3aF2EA3E4D851186b9F204C0",
+#     "name" : "Project X",
+#     "link" : "https://www.spacex.com/",
+#     "image" : "https://thumbs.dreamstime.com/z/white-spacex-logo-black-background-new-york-city-us-march-private-company-designs-manufactures-space-launch-275740260.jpg?w=992",
+#     "icon" : "https://cdn.icon-icons.com/icons2/2389/PNG/512/spacex_logo_icon_144865.png"
+# }
+
+# POST http://localhost:4001/users/create/0x3e92b652e5849d6432C59384401F0AA77d91F10A
+# Content-Type: application/json
+# apikey: abc123
+
+# {
+#     "signature" : "6911374f726b688f61d37d1896c29508fdd83a14e5e4eb887a4a914a347269320xa7eC8C039F0e00cC6a1FabB9642d5f869116Dc800xa7eC8C039F0e00cC6a1FabB964"
+# }
+
+# POST http://localhost:4001/users/interact
+# Content-Type: application/json
+# apikey: abc123
+
+# {
+#     "bodyAddress" : "0x2D7388ff942377a5E9AdA77061B094eF2DBA0d91",
+#     "signature" : "1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7xa7eC8C039F0e00cC6a1FabB9642d5f869116Dc800xa7eC8C039F0e00cC6a1FabaFabcdef10A3e9"
+# }
+
+//6911374f726b688f61d37d1896c29508fdd83a14e5e4eb887a4a914a347269320xa7eC8C039F0e00cC6a1FabB9642d5f869116Dc800xa7eC8C039F0e00cC6a1FabB9
+
+// 1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7xa7eC8C039F0e00cC6a1FabB9642d5f869116Dc800xa7eC8C039F0e00cC6a1FabaFabcdef10A3e9
+
+# POST http://localhost:4001/users/guest/0x2D7388ff942377a5E9AdA77061B094eF2DBA0d9
+# Content-Type: application/json
+# apikey: abc123
+
+
+POST http://localhost:4001/users/referal/0x21111b0C84E33D2c3aF2EA3E4D851186b9F204C0
 Content-Type: application/json
 apikey: abc123
 
 {
-    "bodyAddress" : "0x21111b0C84E33D2c3aF2EA3E4D851186b9F204C0",
-    "name" : "Project X",
-    "link" : "https://www.spacex.com/",
-    "image" : "https://thumbs.dreamstime.com/z/white-spacex-logo-black-background-new-york-city-us-march-private-company-designs-manufactures-space-launch-275740260.jpg?w=992",
-    "icon" : "https://cdn.icon-icons.com/icons2/2389/PNG/512/spacex_logo_icon_144865.png"
+    "bodyAddress" : "0x17200Fb6DC67beEf805C3013F92A13f165EE27A7"
 }
