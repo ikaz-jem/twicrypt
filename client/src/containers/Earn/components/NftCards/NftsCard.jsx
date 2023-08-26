@@ -1,9 +1,8 @@
 
 const NftsCard = ({ data }) => {
-  console.log(data)
   return (
 
-    <div className=" border rounded-2xl w-60 h-auto shadow-sm border-slate-700 hover:shadow-lg pb-0 relative hover:translate-y-[-4%] transition-all cursor-pointer overflow-hidden ">
+    <div className=" border rounded-2xl w-60 h-auto shadow-sm border-neutral-800 hover:shadow-lg pb-0 relative hover:translate-y-[-4%] transition-all cursor-pointer overflow-hidden ">
 
 
       <div className="flex flex-col  h-60 w-full ">

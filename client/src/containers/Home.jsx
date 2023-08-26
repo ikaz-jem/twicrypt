@@ -16,7 +16,7 @@ import toast from 'react-hot-toast';
 import UserModal from "../shared/userModal/UserModal";
 
 import Cta from "./Cta";
-
+import EarnHome from "./Earn/components/EarnHome";
 
 const Carousel = lazy(()=> import('../components/carousel/Carousel'))
 
@@ -58,6 +58,7 @@ useEffect(()=>{
             </div>
         </div>
         <Cta />
+        <EarnHome />
         <SectionWhy />
         <SectionToken />
         <Sponsors />

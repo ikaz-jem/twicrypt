@@ -81,6 +81,31 @@ const Earn = () => {
 
 
 
+    const RenderStats = ()=>{
+        const stats = [
+            { id: 1, name: 'Up to 1BTC in Random Nfts', value: '300k$+ Rewards' },
+            { id: 2, name: 'Assets under holding', value: '$119 trillion' },
+            { id: 3, name: 'New users annually', value: '46,000' },
+            { id: 3, name: 'New users annually', value: '46,000' },
+          ]
+        return (
+            <div className="bg-slate-300 py-5 sm:py-2 rounded-md">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+              <dl className="grid grid-cols-1 gap-x-5 gap-y-5 text-center lg:grid-cols-3">
+                {stats.map((stat) => (
+                  <div key={stat.id} className="mx-auto flex max-w-xs flex-col gap-y-0">
+                    <dt className="text-base  text-gray-600">{stat.name}</dt>
+                    <dd className="order-first text-lg font-semibold tracking-tight text-gray-900 sm:text-lg">
+                      {stat.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        )
+    }
+
 
     const handleChangePage = async (item, e) => {
         // e.preventDefault()
@@ -190,10 +215,12 @@ userNft && userNft.map((nft)=>nft.image_url ? <img src={nft.image_url} key={nft.
         <a className="link" onClick={showIndex}> showIndex</a >
     <a className="link" onClick={showTable}> showTable</a > */}
                 <div className="flex flex-col gap-0  w-full relative  h-full   container--xxxlarge px-10 pl-28 sm:pl-25 md:pl-26 lg:pl-10  container--center ">
-                    {RenderMenu()}
+                        {/* {RenderMenu()} */}
 
 
                     <MenuTopLinks handleMenuLinks={handleMenuLinks} />
+    <RenderStats />
+                    <hr className=" mb-10 border-neutral-900 " />
 
 
 

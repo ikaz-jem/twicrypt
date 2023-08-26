@@ -284,7 +284,7 @@ return  <button
         </div>
 
       </div>
-      <ul className={`flex flex-col bordercontent-center align-center py-6 px-2 gap-1 space-y-1 transition overflow-y-auto transition-opacity  transform  delay-40  duration-400  ${!width.isOpen ? "opacity-80 overflow-x-hidden" :"opacity-100 overflow-x-hidden"}`} >
+      <ul className={`flex flex-col bordercontent-center align-center py-6 px-2 gap-1 space-y-1  overflow-y-auto transition-opacity  transform  delay-40  duration-400  ${!width.isOpen ? "opacity-60 overflow-x-hidden" :"opacity-100 overflow-x-hidden"}`} >
         {  data.map(_renderItem)}
        
       </ul>

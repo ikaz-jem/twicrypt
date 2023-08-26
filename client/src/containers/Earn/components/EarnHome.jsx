@@ -47,11 +47,7 @@ const Data = [
 
 ]
 
-const stats = [
-    { id: 1, name: 'Transactions every 24 hours', value: '300k$+ Rewards' },
-    { id: 2, name: 'Assets under holding', value: '$119 trillion' },
-    { id: 3, name: 'New users annually', value: '46,000' },
-  ]
+
 
 const EarnHome = ({ handleChangePage }) => {
     return (
@@ -62,30 +58,17 @@ const EarnHome = ({ handleChangePage }) => {
           
 
 
-            <div className="bg-slate-300 py-10 sm:py-5 rounded-md">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
-          {stats.map((stat) => (
-            <div key={stat.id} className="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt className="text-base leading-7 text-gray-600">{stat.name}</dt>
-              <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
-                {stat.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    </div>
+       
 
 
 
 
-            <div className="flex flex-wrap justify-center">
+            <div className="flex flex-wrap justify-center w-auto h">
                 {
                     Data.map((item, i) => {
                         return <div className="border border-neutral-500 hover:border-neutral-200 bg-neutral-200 bg-opacity-10  m-5 w-80 flex rounded-xl relative text-white overflow-hidden flex-wrap hover:bg-blue-500 - hover:scale-[102%] transition transition-all duration-150 ease-in cursor-pointer shadow-2xl shadow-[#721533] hover:shadow-blue-600 " key={i} onClick={(e) => handleChangePage(item,e)}>
 
-                            <div className=" flex flex-col relative  w-full h-auto gap-0  lg:items-center relative">
+                            <div className=" flex flex-col   w-full h-auto gap-0  lg:items-center relative">
                                 <img src="https://thirdweb.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Frevenue-streams.10c7bba1.png&w=750&q=75" alt="" className=" object-contain p-0 m-0  w-full  " />
 
                                 <div className="flex flex-col items-start justify-start px-5 py-2 gap-2 ">

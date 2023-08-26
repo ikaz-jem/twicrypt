@@ -1,0 +1,27 @@
+
+const NftsCardCat2 = ({ data }) => {
+  return (
+
+    <div className=" border rounded-3xl w-100 h-auto shadow-md border-neutral-800 hover:shadow-lg p-0 m-0 relative hover:translate-y-[-4%] transition-all cursor-pointer overflow-hidden group ">
+
+
+      <div className="flex  h-80 w-80 ">
+        <div className=" rounded-lg overflow-hidden flex-col flex items-center jusify-center relative h-full">
+          <img src={data.thumbnail} className=" object-cover w-full h-full rounded-lg hover:scale-[120%] transition-all duration-300" />
+        </div>
+        <div className="absolute bottom-0 w-full ">
+          <div className="bg-gradient-to-t from-[#000000] via-[#000000c9] to-[#00000000] h-full w-full flex flex-col justify-center items-start p-5">
+            <dd className="order-first text-2xl font-semibold tracking-tight text-gray-200 sm:text-lg">
+              {data.title}
+            </dd>
+            <dt className="text-base leading-7 text-gray-400">{data.price + ' '}BNB</dt>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  )
+
+}
+
+export default NftsCardCat2;
