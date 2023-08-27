@@ -12,7 +12,7 @@ export const getCarouselData = createAsyncThunk(
             'content-type':'application/json',
             'apiKey':'abc123'
         }
-        const endpoint = 'https://fakestoreapi.com/products'
+        const endpoint = 'https://jsonplaceholder.typicode.com/photos'
 
         try {
             const res =await axios.get(endpoint).then((res)=>{

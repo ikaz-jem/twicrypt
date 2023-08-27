@@ -10,73 +10,73 @@ export const CATS_DISCOVER = [
   {
     title: "Explore new arrivals",
     desc: "Shop the latest <br /> from top brands",
-    thumbnail: 'https://picsum.photos/204',
+    thumbnailUrl: 'https://picsum.photos/204',
     price: "bg-yellow-50",
   },
   {
     title: "Digital gift cards",
     desc: "Give the gift <br /> of choice",
-    thumbnail: 'https://picsum.photos/201',
+    thumbnailUrl: 'https://picsum.photos/201',
     price: "bg-red-50",
   },
   {
     title: "Sale collection",
     desc: "Up to <br /> 80% off retail",
-    thumbnail: 'https://picsum.photos/500',
+    thumbnailUrl: 'https://picsum.photos/500',
     price: "bg-blue-50",
   },
   {
     title: "Sale collection",
     desc: "Up to <br /> 80% off retail",
-    thumbnail: 'https://picsum.photos/300',
+    thumbnailUrl: 'https://picsum.photos/300',
     price: "bg-green-50",
   },
   {
     title: "Sale collection",
     desc: "Up to <br /> 80% off retail",
-    thumbnail: 'https://picsum.photos/210',
+    thumbnailUrl: 'https://picsum.photos/210',
     price: "bg-green-50",
   },
   {
     title: "Sale collection",
     desc: "Up to <br /> 80% off retail",
-    thumbnail: 'https://picsum.photos/290',
+    thumbnailUrl: 'https://picsum.photos/290',
     price: "bg-green-50",
   },
   {
     title: "Sale collection",
     desc: "Up to <br /> 80% off retail",
-    thumbnail: 'https://picsum.photos/230',
+    thumbnailUrl: 'https://picsum.photos/230',
     price: "bg-green-50",
   },
   {
     title: "Sale collection",
     desc: "Up to <br /> 80% off retail",
-    thumbnail: 'https://picsum.photos/240',
+    thumbnailUrl: 'https://picsum.photos/240',
     price: "bg-green-50",
   },
   {
     title: "Sale collection",
     desc: "Up to <br /> 80% off retail",
-    thumbnail: 'https://picsum.photos/260',
+    thumbnailUrl: 'https://picsum.photos/260',
     price: "bg-green-50",
   },
   {
     title: "Sale collection",
     desc: "Up to <br /> 80% off retail",
-    thumbnail: 'https://picsum.photos/210',
+    thumbnailUrl: 'https://picsum.photos/210',
     price: "bg-green-50",
   },
   {
     title: "Sale collection",
     desc: "Up to <br /> 80% off retail",
-    thumbnail: 'https://picsum.photos/320',
+    thumbnailUrl: 'https://picsum.photos/320',
     price: "bg-green-50",
   },
   {
     title: "Sale collection",
     desc: "Up to <br /> 80% off retail",
-    thumbnail: 'https://picsum.photos/120',
+    thumbnailUrl: 'https://picsum.photos/120',
     price: "bg-green-50",
   },
 ];
@@ -131,20 +131,20 @@ const NftSlider = ({data}) => {
   return (
     <div className={` container-xxlarge  group  overflow-hidden w-[80vw]   ${UNIQUE_CLASS} `}>
 
-<div class="glide group w-full h-full relative">
+<div className="glide group w-full h-full relative">
          
          
-            <div class="absolute shadow-lg group-hover:opacity-100 transition-all opacity-0 p-0 flex items-center justify-center duration-500  top-1/3 left-0 z-10 bg-white rounded-full " data-glide-el="controls">
-            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+            <div className="absolute shadow-lg group-hover:opacity-100 transition-all opacity-0 p-0 flex items-center justify-center duration-500  top-1/3 left-0 z-10 bg-white rounded-full " data-glide-el="controls">
+            <button className="glide__arrow glide__arrow--left" data-glide-dir="<">
                  <AiFillLeftCircle className="text-5xl hover:text-blue-600 transition-all"/>
             </button>
             </div>
-            <div class="absolute shadow-lg group-hover:opacity-100 transition-all opacity-0 p-0 flex items-center justify-center  duration-500 top-1/3 right-0 z-10 bg-white rounded-full" data-glide-el="controls">
-            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+            <div className="absolute shadow-lg group-hover:opacity-100 transition-all opacity-0 p-0 flex items-center justify-center  duration-500 top-1/3 right-0 z-10 bg-white rounded-full" data-glide-el="controls">
+            <button className="glide__arrow glide__arrow--right" data-glide-dir=">">
             <AiFillRightCircle className="text-5xl hover:text-blue-600 transition-all"/>
             </button>
             </div>
-        <div class="glide__track" data-glide-el="track">
+        <div className="glide__track" data-glide-el="track">
      
 
         <ul className="glide__slides m-0 p-0">

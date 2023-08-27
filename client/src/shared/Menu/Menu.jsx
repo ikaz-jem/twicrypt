@@ -16,7 +16,7 @@ const  NAVIGATION_DEMO_2 = [
     name: "Stats",
     tooltip: "Inbox",
     icon:FcDoughnutChart,
-    component:'/earn',
+    component:'/earn/stats',
     page:'home'
   },
   {
@@ -32,9 +32,9 @@ const  NAVIGATION_DEMO_2 = [
     
     href: "/page-collection-2",
     name: "Beauty",
-    tooltip: "Inbox",
+    tooltip: "/earn/nfts",
     icon:FcEmptyTrash,
-    component:"./3"
+    component:"/earn/nfts"
   },
   
   {
@@ -164,7 +164,7 @@ return  <button
               }}
               className={({ isActive }) =>
                 `flex text-sm rounded-lg hover:bg-neutral-800 mt-0.5 pr-4 ${itemClass} ${
-                  isActive ? "text-secondary " : ""
+                  isActive ? "text-secondary bg-none " : ""
                 }`
               }
             >
@@ -214,7 +214,7 @@ return  <button
       >
         <NavLink
           className={({ isActive }) =>
-            `flex w-full items-center py-2.5 px-4 font-medium  uppercase tracking-wide text-sm  transition transition-all ease-out duration-200 hover:bg-blue-500 shadow-md hover:shadow-blue-500 rounded-lg ${isActive ? "text-primary  rounded-2xl bg-neutral-200 text-black"  : "bg-[#721533]"
+            `flex w-full items-center py-2.5 px-4 font-medium   tracking-wide text-sm   transition-all ease-out duration-200 hover:bg-neutral-500  rounded-lg ${isActive ? "text-primary  rounded-2xl bg-neutral-200 text-black"  : "bg-neutral-900 border-b border-neutral-700"
 }`
           }
           onClick={(e)=> handleChangePage(item , e)}
@@ -230,7 +230,7 @@ return  <button
             onClick={onClickClose}
           >
             {<item.icon className={"text-3xl "}/>}
-            <span className={` opacity-100 transition delay-200 duration-100 ${width.isOpen ? "opacity-100 overflow-x-hidden" : "opacity-0 overflow-x-hidden"}`}>
+            <span className={` opacity-100 transition delay-200 duration-100 ${width.isOpen ? "opacity-100 overflow-x-hidden flex justify-center items-center text-xs" : "opacity-0 overflow-x-hidden"}`}>
          {   width.isOpen && item.name}
             </span>
           </span>
@@ -264,11 +264,11 @@ return  <button
 
  
   return (
-    <div className={` overflow-x-none ${width.class} ${!width.isOpen ?"no-scrollbar " : " overflow-x-hidden " } h-[99vh] py-2 border-r border-[#721533] border-opacity-40 backdrop-blur-md   transform shadow-r-xl  divide-y-2 divide-neutral-800 transition transition-all ease-in-out duration-400 delay-100 `}>
+    <div className={` overflow-x-none ${width.class} ${!width.isOpen ?"no-scrollbar " : " overflow-x-hidden " } h-[99vh] py-2 border-r border-neutral-700 border-opacity-40 backdrop-blur-md   transform shadow-r-xl  divide-y-2 divide-neutral-800  transition-all ease-in-out duration-400 delay-100 `}>
    
       <div className="py-6 px-5 mt-10 ">
        {/* { width.isOpen && <Logo className="w-20 h-20"/>} */}
-          <div className= { ` ${!width.isOpen ? " flex justify-between items-center mt-4 transition transition-all" : "flex justify-end items-center mt-4 transition transition-all"} `}>
+          <div className= { ` ${!width.isOpen ? " flex justify-between items-center mt-4  transition-all" : "flex justify-end items-center mt-4  transition-all"} `}>
         <div className=  { ` ${!width.isOpen ? "right-2 top-2  mb-5 hover:bg-slate-500 transition rounded-md " : " mb-5 transition rounded-md"} `}>
          {burgerButton()}
         </div>
@@ -276,7 +276,7 @@ return  <button
         <div className="flex flex-col mt-5 text-slate-300 text-sm items-center justify-center">
           <span>
           <div className={"" }>
-        <FcInvite className="text-5xl p-2 bg-slate-800 rounded-full " onClick={toggleTest}/>   {   width.isOpen && 'Compose' }
+        <FcInvite className="text-5xl p-2 bg-neutral-800 rounded-full " onClick={toggleTest}/>   {   width.isOpen && 'Compose' }
         {/* </ButtonPrimary> */}
       </div>
           </span>

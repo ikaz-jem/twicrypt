@@ -39,26 +39,47 @@ const Cta=()=> {
         </svg>
         <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Boost your productivity.
+            Wy Twicrypt ?
             <br />
-            Start using our app today.
+           worth it ?
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-300">
-            Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla.
+           Twicrypt DC app has the first ever combined NFT utilities in one single Asset !
           </p>
           <p className="mt-6 text-lg leading-8 text-gray-300">
-            Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla.
+           Beside Nfts And all the benifits behinde , twicrypt offers much more than a simple Nft project :
           </p>
-   
+                    <div className='grid grid-cols-2 w-auto gap-5 text-left'>
+            <ul className='text-neutral-200 text-xs'>
+              <h4 className='py-1 m-0'>Twicrypt NFTs :</h4>
+              <li>First interaction based mining </li>
+              <li>First self value estimated NFT</li>
+              <li>Stackable </li>
+              <li>Auto Play to Earn (AP2E) </li>
+              <li>Assets attached with up to 1BTC of value </li>
+              <li>Twicrypt Platform Combined use Cases</li>
+              <li>much more ... </li>
+            </ul>
+            <ul className='text-neutral-200 text-xs text-left'>
+            <h4 className='py-1 m-0'>Twicrypt Platform:</h4>
+              <li>Launchpad</li>
+              <li>decentralized Email</li>
+              <li>Decentralized social media platform</li>
+              <li>web3 Automations</li>
+              <li>Listing Services</li>
+              <li>KYC Audit Providers</li>
+              <li>swap SponsorShip system ...</li>
+            </ul>
+                    </div>
           <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
             <a
               href="#"
               className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              Get started
+              Discover more
             </a>
             <a href="#" className="text-sm font-semibold leading-6 text-white">
-              Learn more <span aria-hidden="true">→</span>
+              NFT utilities <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>

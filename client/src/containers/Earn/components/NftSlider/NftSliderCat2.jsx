@@ -79,7 +79,7 @@ export const CATS_DISCOVER = [
   },
 ];
 
-const NftSliderCat2 = ({data}) => {
+const NftSliderCat2 = () => {
   const id = useId();
   const UNIQUE_CLASS = "glidejs" + id.replace(/:/g, "_");
 
@@ -127,22 +127,22 @@ const NftSliderCat2 = ({data}) => {
   }, [UNIQUE_CLASS]);
 
   return (
-    <div className={` container-xxlarge  group  overflow-hidden w-[80vw]   ${UNIQUE_CLASS} `}>
+    <div className={` container-xxlarge  group  overflow-hidden w-[80vw]    ${UNIQUE_CLASS} `}>
 
-<div class="glide group w-full h-full relative">
+<div className="glide group w-full h-full relative">
          
          
-            <div class="absolute shadow-lg group-hover:opacity-100 transition-all opacity-0 p-0 flex items-center justify-center duration-500  top-[40%] left-0 z-10 bg-white rounded-full " data-glide-el="controls">
-            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+            <div className="absolute shadow-lg group-hover:opacity-100 transition-all opacity-0 p-0 flex items-center justify-center duration-500  top-[40%] left-0 z-10 bg-white rounded-full " data-glide-el="controls">
+            <button className="glide__arrow glide__arrow--left" data-glide-dir="<">
                  <AiFillLeftCircle className="text-5xl hover:text-blue-600 transition-all"/>
             </button>
             </div>
-            <div class="absolute shadow-lg group-hover:opacity-100 transition-all opacity-0 p-0 flex items-center justify-center  duration-500 top-[40%] right-0 z-10 bg-white rounded-full" data-glide-el="controls">
-            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+            <div className="absolute shadow-lg group-hover:opacity-100 transition-all opacity-0 p-0 flex items-center justify-center  duration-500 top-[40%] right-0 z-10 bg-white rounded-full" data-glide-el="controls">
+            <button className="glide__arrow glide__arrow--right" data-glide-dir=">">
             <AiFillRightCircle className="text-5xl hover:text-blue-600 transition-all"/>
             </button>
             </div>
-        <div class="glide__track" data-glide-el="track">
+        <div className="glide__track" data-glide-el="track">
      
 
         <ul className="glide__slides m-0 p-0">

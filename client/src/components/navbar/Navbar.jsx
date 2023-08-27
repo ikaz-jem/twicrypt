@@ -8,7 +8,7 @@ import logo from '../../media/logo.png'
 import { userSession } from "../../app/features/session/sessionSlice";
 import UserModal from "../../shared/userModal/UserModal";
 import { useEffect } from "react";
-
+import { HashLoader } from "react-spinners";
 const Navbar = () => {
 
 const user = useSelector(userData)
@@ -32,7 +32,8 @@ return (
                     
             
 <Link className='logo hero__logo link' to={'./'} >
-           <img src={logo} alt="logo" className="w-14 h-14 " />
+           {/* <img src={logo} alt="logo" className="w-14 h-14 " /> */}
+           <HashLoader color={"#e461f6"} size={30}/>
             {/* <h3 className=" " dataref="fadereveal[el]">Logo</h3> */}
 </Link>
                     </div>

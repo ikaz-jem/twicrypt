@@ -62,7 +62,7 @@ const Accordion = ({
           <Disclosure key={index} defaultOpen={index < 0}>
             {({ open }) => (
               <>
-                <Disclosure.Button className="flex items-center transition-all justify-between w-full px-4 py-2 group/icon font-medium text-left bg-black hover:bg-neutral-400 text-white  hover:text-black rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-slate-500 focus-visible:ring-opacity-75 ">
+                <Disclosure.Button className="flex items-center border border-neutral-800 transition-all justify-between w-full px-4 py-2 group/icon font-medium text-left bg-neutral-900 hover:bg-neutral-800 text-white  rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-slate-500 focus-visible:ring-opacity-75 ">
                   <span>{item.name}</span>
                   {!open ? (
                     <AiOutlineCaretDown className="w-4 h-4 text-slate-400 group-hover/icon:text-black" />

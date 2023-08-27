@@ -16,7 +16,7 @@ export const carouselSlice = createSlice({
     reducers:{},
     extraReducers:(builder)=>{
         builder.addCase(getCarouselData.fulfilled,(state,action)=>{
-            state.data = action.payload
+            state.data = action.payload.slice(0,50)
             state.isLoading =false
         });
         builder.addCase(getCarouselData.rejected,(state)=>{

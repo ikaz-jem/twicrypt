@@ -7,6 +7,7 @@ import {
 
 import '../App.css';
 
+import {Toaster} from 'react-hot-toast';
 
 import Home from '../containers/Home'
 import Navbar from "../components/navbar/Navbar";
@@ -26,6 +27,7 @@ import { useSelector } from "react-redux";
 import RoutesTransition from '../shared/transitions/RoutesTransition'
 import Example from "../containers/Earn/components/Example";
 import EarnHome from "../containers/Earn/components/EarnHome";
+import MintPage from "../containers/Earn/components/Nfts/MintPage";
 
 const routes = [
     {
@@ -96,6 +98,11 @@ const NestedRoutes = [
         component: Example,
         requiresAuth: false,
     },
+    {
+        path: 'nfts/mint',
+        component: MintPage,
+        requiresAuth: false,
+    },
 
 
 ]
@@ -109,6 +116,7 @@ const AppRoutes = () => {
     return (
 
         <BrowserRouter>
+                <Toaster />
             <MyProvider>
                 <>
                     <Navbar />

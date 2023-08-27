@@ -108,7 +108,7 @@ export const Table = () => {
 				data-testid="loader"
 				/>	
 			</div> :
-			<table className="table  text-gray-400 border-separate  text-sm border-neutral-700 w-full flex justify-center  shrink ">
+			<table className="table  text-gray-400 border-separate  text-sm border-neutral-700 w-full  justify-center  shrink ">
 
 				<thead className=" text-gray-500  shadow-sm items-left  ">
 					<tr className="text-left m-5 p-10 " >
