@@ -25,9 +25,16 @@ import { userSession } from "../app/features/session/sessionSlice";
 import { useSelector } from "react-redux";
 
 import RoutesTransition from '../shared/transitions/RoutesTransition'
-import Example from "../containers/Earn/components/Example";
+import TwiWallet from "../containers/Earn/components/TwiWallet";
 import EarnHome from "../containers/Earn/components/EarnHome";
 import MintPage from "../containers/Earn/components/Nfts/MintPage";
+import Docs from "../containers/Docs/Docs";
+import TokenSale from "../containers/TokenSale/TokenSale";
+import Blog from "../containers/Blog/Blog";
+import Withdraw from "../containers/Withdraw/Withdraw";
+import Faq from "../containers/Faq/Faq";
+import DailyRewards from "../containers/DailyRewards/DailyRewards";
+import Community from "../containers/Community/Community";
 
 const routes = [
     {
@@ -56,6 +63,16 @@ const routes = [
         component: About,
         requiresAuth: false,
     },
+    {
+        path: '/documentations',
+        component: Docs,
+        requiresAuth: false,
+    },
+    {
+        path: '/token-sale',
+        component: TokenSale,
+        requiresAuth: false,
+    },
 
 
 ]
@@ -70,7 +87,7 @@ const NestedRoutes = [
     },
     {
         path: 'stats',
-        component: Example,
+        component: TwiWallet,
         requiresAuth: false,
     },
     {
@@ -85,22 +102,32 @@ const NestedRoutes = [
     },
     {
         path: 'withdraw',
-        component: Example,
+        component: Withdraw,
         requiresAuth: false,
     },
     {
         path: 'support',
-        component: Example,
+        component: Faq,
         requiresAuth: false,
     },
     {
         path: 'daily-rewards',
-        component: Example,
+        component: DailyRewards,
         requiresAuth: false,
     },
     {
-        path: 'nfts/mint',
+        path: 'mint',
         component: MintPage,
+        requiresAuth: false,
+    },
+    {
+        path: 'last-news',
+        component: Blog,
+        requiresAuth: false,
+    },
+    {
+        path: 'community',
+        component: Community,
         requiresAuth: false,
     },
 

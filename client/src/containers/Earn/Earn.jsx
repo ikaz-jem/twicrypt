@@ -20,20 +20,18 @@ import SidePanel from "./components/SidePanel/SidePanel";
 //Pages components 
 import EarnHome from "./components/EarnHome";
 import QuickLinks from "./components/QuickLinks";
-import Example from "./components/Example";
+import TwiWallet from "./components/TwiWallet";
 import Link2 from "./components/Link2";
 import Nfts from "./components/Nfts/Nfts";
 import { Outlet } from "react-router-dom";
-
-
-
+import QuickMint from "./components/Nfts/QuickMint";
 
 const Earn = () => {
 
     const [show, setShow] = useState(false)
     const [component, setComponent] = useState('home')
     const [userNft, setUserNft] = useState()
-
+const [showPanel,setShowPanel]=useState(false)
 
     useEffect(() => {
 
@@ -143,7 +141,7 @@ const Earn = () => {
 
     const Components = {
         'home': <EarnHome handleChangePage={handleChangePage} />,
-        'stats': <Example />,
+        'stats': <TwiWallet />,
         2: <QuickLinks />,
         3: <Link2 />,
         'sectionWhy': <SectionWhy />,
@@ -207,7 +205,7 @@ userNft && userNft.map((nft)=>nft.image_url ? <img src={nft.image_url} key={nft.
             <div className="lg:flex bg-gradient-to-b from-[#111111] to-black bg-opacity-70 relative h-auto w-full  ">
 
                 <div className="h-full lg:z-10 lg:sticky xl:sticky xl:top-22 lg-top-20 overflow-x-none fixed top-0  z-10  ">
-                    <Menu setShow={setShow} show={show} component={component} setComponent={setComponent} handleChangePage={handleChangePage} />
+                    <Menu setShow={setShow} show={show} component={component} setComponent={setComponent} handleChangePage={handleChangePage} setShowPanel={setShowPanel} />
                 </div>
 
 
@@ -223,13 +221,13 @@ userNft && userNft.map((nft)=>nft.image_url ? <img src={nft.image_url} key={nft.
 
 
 
-                    <SidePanel >
-                        <MenuTopLinks />
+                    <SidePanel show={showPanel} setShow={setShowPanel} >
+                        <QuickMint setShowPanel={setShowPanel} />
 
                     </SidePanel >
 
 
-                    {/* <Example /> */}
+                    {/* <TwiWallet /> */}
 
                     {/* <MenuTransition show={show}> */}
 
@@ -239,7 +237,7 @@ userNft && userNft.map((nft)=>nft.image_url ? <img src={nft.image_url} key={nft.
                             {/* <Routes>
 
                                 <Route  path={'/5'} element={<EarnHome setComponent={setComponent} />} />
-                                <Route  path={'./'} element={<Example />} />
+                                <Route  path={'./'} element={<TwiWallet />} />
                                 </Routes> */}
                             {/* {Component} */}
                         </div>

@@ -19,6 +19,9 @@ import Cta from "./Cta";
 import EarnHome from "./Earn/components/EarnHome";
 import NftSliderCat2 from "./Earn/components/NftSlider/NftSliderCat2";
 import ButtonPrimary from "../shared/Button/ButtonPrimary";
+import Nav from "../shared/Nav/Nav";
+import NavItem from "../shared/NavItem/NavItem";
+import { useNavigate } from "react-router-dom";
 
 const Carousel = lazy(() => import('../components/carousel/Carousel'));
 
@@ -29,6 +32,8 @@ const Home = () => {
   const controller = new AbortController()
   const [show, setShow] = useState(true)
 
+
+  const Navigate = useNavigate()
 
   const showPopup = () => {
     const popToast = toast.custom(
@@ -105,21 +110,35 @@ const Home = () => {
             <Carousel />
             {/* <UserModal show={true} /> */}
             {/*  */}
+
           </div>
-          <button className="button" onClick={() => showPopup()}>show popup</button>
+
+          <Nav className="flex items-center justify-center gap-5 flex-wrap">
+            <NavItem onClick={()=> Navigate('/earn/mint')}>Mint</NavItem>
+            <NavItem onClick={()=>Navigate('/token-sale')} >Token Sale</NavItem>
+            <NavItem onClick={() => Navigate('/preparations')}>RoadMap</NavItem>
+            <NavItem onClick={() => showPopup()}>show popup</NavItem>
+            <NavItem onClick={()=> Navigate('/sponsor')}>Sponsor </NavItem>
+            <NavItem onClick={()=> Navigate('/documentations')}>Docs </NavItem>
+          </Nav>
+
+
           <CallToAction />
         </div>
       </div>
-            <div className="flex flex-col justify-start  items-center py-20">
-              <div className="flex justify-between ">
+      <div className="flex flex-col justify-start  items-center py-20">
+        <div className="flex justify-between ">
 
-                <h3 className="text-left my-5 p-0 border-b border-neutral-900 w-auto">  <span className="m-0 pl-5 text-neutral-400 text-xl">Highest Reward Nfts</span>  </h3>
-              </div>
-              <span className="m-0 pl-5 text-neutral-400 text-sm">Win up to 1BTC ! each NFT contains claimable cache Rewards ! enjoy 2 utilities in one Art !</span>
+          <h3 className="text-left my-5 p-0 border-b border-neutral-900 w-auto">  <span className="m-0 pl-5 text-neutral-400 text-xl">Highest Reward Nfts</span>  </h3>
+        </div>
 
-              <NftSliderCat2 />
-              <ButtonPrimary className="w-auto">View More</ButtonPrimary>
-            </div>
+
+        <span className="m-0 pl-5 text-neutral-400 text-sm">Win up to 1BTC ! each NFT contains claimable cache Rewards ! enjoy 2 utilities in one Art !</span>
+
+
+        <NftSliderCat2 />
+        <ButtonPrimary className="w-auto">View More</ButtonPrimary>
+      </div>
 
       <Cta />
       <EarnHome />

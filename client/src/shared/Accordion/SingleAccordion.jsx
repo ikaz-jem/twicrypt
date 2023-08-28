@@ -33,9 +33,8 @@ const SingleAccordion = ({
 
 
 
-           {desc}rgzggrzgzrgzrgzrgzrgz
-           {desc}rgzggrzgzrgzrgzrgzrgz
-           {desc}rgzggrzgzrgzrgzrgzrgz
+           {desc}
+   
     
 
 

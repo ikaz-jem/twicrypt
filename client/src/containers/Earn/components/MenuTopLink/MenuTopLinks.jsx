@@ -4,11 +4,11 @@ import NavItem from "../../../../shared/NavItem/NavItem";
 // import LaunchpadTabFilter from "./LaunchpadTabFilter";
 import { useNavigate } from "react-router-dom";
 //redux 
-
+import PopoverMenu from "./Popover";
 
 import { Transition } from "@headlessui/react";
 
-const MenuTopLinks= ({handleMenuLinks,tab}) => {
+const MenuTopLinks= () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [tabActive, setTabActive] = useState("");
@@ -16,8 +16,30 @@ const MenuTopLinks= ({handleMenuLinks,tab}) => {
 const Navigate = useNavigate()
 
 
-  const FilterCategoory = ["NFTs", "my-collection", "Mint", "nft-sale" ,"Last-News" ] ;
 
+const navigation =[
+{
+title:"NFTs",
+link: 'nfts'
+},
+{
+title:"my collection",
+link: 'my-collection'
+},
+{
+title:"Mint Nfts",
+link: 'mint'
+},
+{
+title:"My Wallet",
+link: 'stats'
+},
+{
+title:"Last News",
+link: 'last-news'
+},
+
+]
 
 let   className = "my-5";
 
@@ -25,32 +47,34 @@ let   className = "my-5";
 
   return (
     <div className={`flex flex-col   ${className}`}>
+
       <div className="flex  flex-wrap   items-center   justify-start  py-2  rounded-xl relative ">
         <Nav
           className="sm:space-x-2  flex flex-wrap gap-1"
           containerClassName="relative flex w-auto  text-sm md:text-base   "
         >
-          {FilterCategoory.map(
+          {navigation.map(
             (item, index) => (
               <NavItem
                 key={index}
-                isActive={tabActive === item}
+                isActive={tabActive === item.title}
                 onClick={(e)=>{
-                  setTabActive(item)
+                  setTabActive(item.title)
                 //   item!=='clear filter' ? dispatch(setSearch({['filter']: item})): dispatch(clearFilter())
-                Navigate(`./${item.toLowerCase()}`)
+                Navigate(`./${item.link}`)
                  }
                 
                 }
               >
-                {item}
+                {item.title}
               </NavItem>
             )
-          )}
+            )}
         </Nav>
         
 
                 
+        <PopoverMenu/>
 
         {/* <span className="block flex-shrink-0 text-right">
           <ButtonPrimary

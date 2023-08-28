@@ -3,7 +3,7 @@ import Stats from './Stats'
 
 
 
-const Example = () => {
+const TwiWallet = () => {
 
     const data = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
@@ -58,4 +58,4 @@ const Example = () => {
 }
 
 
-export default Example
+export default TwiWallet

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { FcInvite } from "react-icons/fc";
+import { RiNftFill } from "react-icons/ri";
 import { AiOutlineArrowDown} from 'react-icons/ai'
 
 
 import {  FcDoughnutChart, FcDownLeft, FcEmptyTrash, FcPortraitMode,FcAnswers,FcElectronics,FcCurrencyExchange } from "react-icons/fc";
+import ButtonSecondary from "../Button/ButtonSecondary";
 
 
 
@@ -25,13 +26,13 @@ const  NAVIGATION_DEMO_2 = [
     name: "Daily rewards",
     tooltip: "Inbox",
     icon:FcCurrencyExchange,
-    component:'/earn/stats',
+    component:'./daily-rewards',
     page:'stats'
   },
   {
     
     href: "/page-collection-2",
-    name: "Beauty",
+    name: "Nfts",
     tooltip: "/earn/nfts",
     icon:FcEmptyTrash,
     component:"/earn/nfts"
@@ -40,18 +41,10 @@ const  NAVIGATION_DEMO_2 = [
   {
     
     href: "/page-collection-2",
-    name: "Sport",
-    tooltip: "Inbox",
-    icon:FcPortraitMode,
-    component:"./1"
-  },
-  {
-    
-    href: "/page-collection-2",
-    name: "Sport",
+    name: "Community",
     tooltip: "Inbox",
     icon:FcElectronics,
-    component:'./2'
+    component:'./community'
   },
   {
     
@@ -59,15 +52,23 @@ const  NAVIGATION_DEMO_2 = [
     name: "Withdraw",
     tooltip: "Inbox",
     icon:FcDownLeft,
-    component:"./3"
+    component:"./withdraw"
   },
   {
     
     href: "/page-collection-2",
-    name: "Sport",
+    name: "Sponsor Us",
+    tooltip: "Inbox",
+    icon:FcPortraitMode,
+    component:"/sponsor"
+  },
+  {
+    
+    href: "/page-collection-2",
+    name: "Support",
     tooltip: "Inbox",
     icon:FcAnswers,
-    component:"/1"
+    component:"./support"
   },
   
 ];
@@ -78,7 +79,7 @@ const  NAVIGATION_DEMO_2 = [
 
 
 const Menu= ({
-  onClickClose,setShow,show,setComponent,component , handleChangePage
+  onClickClose,setShow,show,setComponent,component , handleChangePage,setShowPanel
 }) => {
   const [width,setWidth]=useState({
     class: "w-20 ",
@@ -276,7 +277,9 @@ return  <button
         <div className="flex flex-col mt-5 text-slate-300 text-sm items-center justify-center">
           <span>
           <div className={"" }>
-        <FcInvite className="text-5xl p-2 bg-neutral-800 rounded-full " onClick={toggleTest}/>   {   width.isOpen && 'Compose' }
+        <RiNftFill className="text-5xl p-2 bg-neutral-800 hover:bg-neutral-400 transition-all rounded-full cursor-pointer " onClick={()=>setShowPanel(true)}/> 
+        <p>Mint</p>
+
         {/* </ButtonPrimary> */}
       </div>
           </span>

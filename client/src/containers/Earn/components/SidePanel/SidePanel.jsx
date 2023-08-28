@@ -2,12 +2,11 @@ import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { AiFillCloseCircle } from 'react-icons/ai'
 
-const SidePanel=({children })=> {
-  const [open, setOpen] = useState(false)
+const SidePanel=({children ,show ,setShow})=> {
 
   return (
-    <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-50" onClose={setOpen}>
+    <Transition.Root show={show} as={Fragment}>
+      <Dialog as="div" className="relative z-50" onClose={setShow}>
         <Transition.Child
           as={Fragment}
           enter="ease-in-out duration-500"
@@ -20,7 +19,7 @@ const SidePanel=({children })=> {
           <div className="fixed inset-0 backdrop-blur-md  transition-opacity" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-hidden">
+        <div className="fixed inset-0 overflow-hidden w-auto">
           <div className="absolute inset-0 overflow-hidden">
             <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
               <Transition.Child
@@ -46,7 +45,7 @@ const SidePanel=({children })=> {
                       <button
                         type="button"
                         className="relative rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-                        onClick={() => setOpen(false)}
+                        onClick={() => setShow(false)}
                       >
                         <span className="absolute -inset-2.5" />
                         <span className="sr-only">Close panel</span>
@@ -60,7 +59,7 @@ const SidePanel=({children })=> {
                         Panel title
                       </Dialog.Title>
                     </div>
-                    <div className="relative mt-6 flex-1 px-4 sm:px-6">{/* Your content */}
+                    <div className="relative mt-6 flex-1 px-4 sm:px-6  w-auto ">{/* Your content */}
             {children}
                     
                     </div>
