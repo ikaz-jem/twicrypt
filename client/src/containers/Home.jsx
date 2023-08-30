@@ -115,7 +115,7 @@ const Home = () => {
 
           <Nav className="flex items-center justify-center gap-5 flex-wrap">
             <NavItem onClick={()=> Navigate('/earn/mint')}>Mint</NavItem>
-            <NavItem onClick={()=>Navigate('/token-sale')} >Token Sale</NavItem>
+            <NavItem onClick={()=>Navigate('/earn/token-sale')} >Token Sale</NavItem>
             <NavItem onClick={() => Navigate('/preparations')}>RoadMap</NavItem>
             <NavItem onClick={() => showPopup()}>show popup</NavItem>
             <NavItem onClick={()=> Navigate('/sponsor')}>Sponsor </NavItem>

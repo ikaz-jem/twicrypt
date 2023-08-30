@@ -1,15 +1,36 @@
 
 import { useState, useEffect } from "react"
 import axios from "axios"
-import SingleAccordion from "../../shared/Accordion/SingleAccordion"
-import SaleStagesCards from "../TokenSale/SaleStages/SaleStagesCards"
-import Contribute from "../TokenSale/Contribute/Contribute"
+import SingleAccordion from "../../../shared/Accordion/SingleAccordion"
+import SaleStagesCards from "../../TokenSale/SaleStages/SaleStagesCards"
+import Contribute from "../../TokenSale/Contribute/Contribute"
+
 import { RiMoneyDollarCircleLine } from 'react-icons/ri'
 import { MdOutlinePending, MdGeneratingTokens } from 'react-icons/md'
 import { AiOutlineCheckCircle } from 'react-icons/ai'
 import { FaUsers } from 'react-icons/fa'
 
-const Community = ()=> {
+
+
+
+const Posts = () => {
+    const [post, setPost] = useState(null)
+
+    const fetchData = async () => {
+
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts').then((res) => res.data)
+        setPost(response)
+
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    console.log(post)
+
+
+    
 
     const RenderMenu = () => {
 
@@ -51,37 +72,37 @@ const Community = ()=> {
     
         )
     }
-return (
-    <div className=" w-auto container--xxxlarge p-0 container--center ">
-        <SaleStagesCards />
-        <div className="grid grid-cols-2 gap-10  w-auto container--xxxlarge px-5 container--center  place-items-start place-content-start relative   ">
+
+    return (
+        <div className=" w-auto container--xxxlarge p-0 container--center ">
+            <SaleStagesCards />
+            <div className="grid grid-cols-2 gap-10  w-auto container--xxxlarge px-5 container--center  place-items-start place-content-start relative   ">
 {RenderMenu()}
-                {/* <ul className="flex justify-start gap-10 py-2 wrap my-2  w-full border-b border-neutral-800  rounded-xl text-sm text-neutral-400">
-                    <li>Total purchased Tokens : 0</li>
-                    <li>Totla Assets Value : 0</li>
-                    <li>Address:</li>
-                </ul> */}
-            <div className="w-full lg:w-[45%] h-full my-5">
-                <div className="w-full flex justify-center items-center overflow-clip relative gap-10  ">
+                    {/* <ul className="flex justify-start gap-10 py-2 wrap my-2  w-full border-b border-neutral-800  rounded-xl text-sm text-neutral-400">
+                        <li>Total purchased Tokens : 0</li>
+                        <li>Totla Assets Value : 0</li>
+                        <li>Address:</li>
+                    </ul> */}
+                <div className="w-full lg:w-[45%] h-full my-5">
+                    <div className="w-full flex justify-center items-center overflow-clip relative gap-10  ">
+                    </div>
+                    <div className="m-0 p-0 flex flex-col gap-1">
+                     
+                        <SingleAccordion title={'Private Sale'}  >
+                        <h1 className="p-10 m-0">hello</h1>
+                        </SingleAccordion >
+                        <SingleAccordion title={'Presale Stage 1'} desc={'some descriptions'} />
+                        <SingleAccordion title={'Presale Stage 2'} desc={'some descriptions'} />
+                    </div>
                 </div>
-                <div className="m-0 p-0 flex flex-col gap-1">
-                 
-                    <SingleAccordion title={'Private Sale'}  >
-                    <h1 className="p-10 m-0">hello</h1>
-                    </SingleAccordion >
-                    <SingleAccordion title={'Presale Stage 1'} desc={'some descriptions'} />
-                    <SingleAccordion title={'Presale Stage 2'} desc={'some descriptions'} />
+                <div className=" w-full lg:w-[50%] ">
+                    <Contribute />
                 </div>
-            </div>
-            <div className=" w-full lg:w-[50%] ">
-                <Contribute />
             </div>
         </div>
-    </div>
-)
-
+    )
 
 }
 
 
-export default Community
+export default Posts

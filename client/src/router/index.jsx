@@ -130,13 +130,17 @@ const NestedRoutes = [
         component: Community,
         requiresAuth: false,
     },
+    {
+        path: 'token-sale',
+        component: TokenSale,
+        requiresAuth: false,
+    },
 
 
 ]
 
 
 const AppRoutes = () => {
-
 
     const isLogedIn = useSelector(userSession)
 

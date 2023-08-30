@@ -7,11 +7,11 @@ const NumberInput= ({
   min = 1,
   max = 99,
   onChange,
-  label,
-  desc,
+  setBNB
+
 }) => {
   const [value, setValue] = useState(defaultValue);
-
+console.log(value)
   useEffect(() => {
     setValue(defaultValue);
   }, [defaultValue]);
@@ -21,36 +21,25 @@ const NumberInput= ({
     setValue((state) => {
       return state - 1;
     });
-    onChange && onChange(value - 1);
+  
+    onChange && onChange((value - 1) /10);
+    
   };
   const handleClickIncrement = () => {
     if (max && max <= value) return;
     setValue((state) => {
       return state + 1;
     });
-    onChange && onChange(value + 1);
+  
+
+    onChange && onChange((value + 1 )/10) ;
   };
 
-  const renderLabel = () => {
-    return (
-      <div className="flex flex-col">
-        <span className="font-medium text-neutral-100">
-          {label}
-        </span>
-        {desc && (
-          <span className="text-xs text-neutral-500 dark:text-neutral-400 font-normal">
-            {desc}
-          </span>
-        )}
-      </div>
-    );
-  };
-
+  
   return (
     <div
       className={`nc-NcInputNumber flex items-center justify-between space-x-5 ${className}`}
     >
-      {label && renderLabel()}
 
       <div
         className={`nc-NcInputNumber__content flex items-center justify-between w-[104px] sm:w-28`}

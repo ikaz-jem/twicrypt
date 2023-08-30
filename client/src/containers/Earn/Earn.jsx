@@ -8,7 +8,6 @@ import { AiOutlineCheckCircle } from 'react-icons/ai'
 import { FaUsers } from 'react-icons/fa'
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-
 import SectionWhy from "../../components/sectionWhy/SectionWhy";
 import axios from "axios";
 
@@ -77,7 +76,33 @@ const [showPanel,setShowPanel]=useState(false)
     }, [component, location.pathname])
 
 
-
+    const topMenuNavigation =[
+        {
+        title:"NFTs",
+        link: 'nfts'
+        },
+        {
+        title:"Token Sale",
+        link: 'token-sale'
+        },
+        {
+        title:"Mint Nfts",
+        link: 'mint'
+        },
+        {
+        title:"My Wallet",
+        link: 'stats'
+        },
+        {
+        title:"Last News",
+        link: 'last-news'
+        },
+        {
+        title:"MarketPlace",
+        link: 'last-news'
+        },
+        
+        ]
 
     const RenderStats = () => {
         const stats = [
@@ -213,10 +238,10 @@ userNft && userNft.map((nft)=>nft.image_url ? <img src={nft.image_url} key={nft.
         <a className="link" onClick={showIndex}> showIndex</a >
     <a className="link" onClick={showTable}> showTable</a > */}
                 <div className="flex flex-col gap-0  w-full relative  h-full   container--xxxlarge px-10 pl-28 sm:pl-25 md:pl-26 lg:pl-10  container--center ">
-                    {/* {RenderMenu()} */}
+                        {/* {RenderMenu()} */}
 
 
-                    <MenuTopLinks handleMenuLinks={handleMenuLinks} />
+                    <MenuTopLinks navigation={topMenuNavigation}/>
                     {/* <RenderStats /> */}
 
 
@@ -227,7 +252,7 @@ userNft && userNft.map((nft)=>nft.image_url ? <img src={nft.image_url} key={nft.
                     </SidePanel >
 
 
-                    {/* <TwiWallet /> */}
+              
 
                     {/* <MenuTransition show={show}> */}
 

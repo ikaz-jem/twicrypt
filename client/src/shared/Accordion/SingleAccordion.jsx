@@ -7,7 +7,8 @@ import { BiUpArrow } from 'react-icons/bi'
 const SingleAccordion = ({
   panelClassName = "p-0 mx-1 overflow-hidden pt-0 last:pb-0  text-sm text-slate-300 leading-6 rounded-md transition-all duration-500",
   title,
-  desc
+  desc,
+  children
 }) => {
   return (
     <div className="w-full rounded-2xl space-y-1">
@@ -32,8 +33,8 @@ const SingleAccordion = ({
                   <div className="flex h-full w-full  gap-0 items-center justify-start relative flex-wrap bg-neutral-900 ">
 
 
-
-           {desc}
+                    {desc}
+           {children}
    
     
 

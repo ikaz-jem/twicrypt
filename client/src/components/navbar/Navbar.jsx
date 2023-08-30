@@ -9,12 +9,17 @@ import { userSession } from "../../app/features/session/sessionSlice";
 import UserModal from "../../shared/userModal/UserModal";
 import { useEffect } from "react";
 import { HashLoader } from "react-spinners";
+import PopoverMenu from "../../containers/Earn/components/MenuTopLink/Popover";
+import { useWeb3Modal } from '@web3modal/react'
+
 const Navbar = () => {
+
 
 const user = useSelector(userData)
 const isLogedIn = useSelector(userSession)
 
 const {userChanged:address} = UseStartSession()
+const { isOpen, open, close, setDefaultChain } = useWeb3Modal()
 
 
 
@@ -39,12 +44,12 @@ return (
                     </div>
                     <div className="navbar__menu grid__column  ">
 
-                        <nav className="menu ">
+                        <nav className=" ">
                             <ul className="list list--inline list--unstyle gutter gutter--medium  " data-component="fadereveal">
                                 {
                                     navigation.map(
                                         (link,i) => {
-                                            return <li className="list__item h-100" dataref="fadereveal[el]" key={i}>
+                                            return <li className="list__item h-100" key={i}>
                                            {
                                                link.requireAuth && !isLogedIn ? null : <NavLink to={link.url} className='link  '> {link.name}</NavLink>
                                                
@@ -52,13 +57,20 @@ return (
                                         </li>
                                     })
                                 }
+                                <div className="inline-block my-2 items-center justify-center h-100 ">
+
+                                <PopoverMenu/>
+                                </div>
                             </ul>
                         </nav>
 
                     </div>
 
                     <div className="grid__column grid__column--2 hidden hidden@medium"></div>
-                        <Web3Button/>
+                    <div className="flex justify-center items-center ">
+
+                        <Web3Button icon="hide" label="Connect" balance="show" avatar="hide"/>
+                    </div>
 
                             
 
