@@ -55,12 +55,12 @@ const Blog = ()=> {
     
         )
     }
-const imgUrl = "https://media.tokize.com/fr/app/uploads/2023/05/BTC.jpg"
+const imgUrl = "https://openseauserdata.com/files/09624c7e32cfffae3b4270c44d5b7025.gif?auto=format&dpr=1&w=1000"
 
 return (
     <div className=" w-auto container--xxxlarge p-0 container--center ">
 
- <W3mQrCode size={200} imageUrl={imgUrl} uri="ipfs://bafybeiefzvptnmjns6mq37wgey3hhh5hth7vznnrdrv2km6nkhvs23kthq/1.png" />
+ <W3mQrCode size={150} imageUrl={imgUrl} uri="ipfs://bafybeiefzvptnmjns6mq37wgey3hhh5hth7vznnrdrv2km6nkhvs23kthq/1.png" />
 
 
         <SaleStagesCards />

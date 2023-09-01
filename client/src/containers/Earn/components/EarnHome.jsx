@@ -4,47 +4,35 @@
 
 
 const Data = [
-
-
     {
         title: 'Staking',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
         page: 'home',
         component:'/earn/home'
     },
-
     {
         title: 'AP2E',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
         page: 'stats',
         component:'/earn/stats'
 
     },
-
     {
         title: 'Daily Free Rewards',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
         page:'sectionWhy',
         component:'/earn/section-why'
     },
-
     {
-        title: 'Staking',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+        title: 'Gift Cards and Coupons',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
         link: 1
     },
     {
-        title: 'Staking',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+        title: 'Nft Leveling',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
         link: 1
     },
-    {
-        title: 'Staking',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-        link: 1
-    },
-
-
 ]
 
 
@@ -52,7 +40,7 @@ const Data = [
 const EarnHome = ({ handleChangePage }) => {
     return (
 
-        <div className=" w-full relative p-10 bg rounded-xl my-10 shadow-2xl shadow-black overflow-hidden  color-ball ">
+        <div className=" w-full relative p-10 bg rounded-xl   color-ball ">
             <h3 className="m-0 py-2 text-[#995533]">Start Earning</h3>
             <h1 className="m-0 mb-2">Before Token and Project Launch</h1>
           
@@ -66,7 +54,7 @@ const EarnHome = ({ handleChangePage }) => {
             <div className="flex flex-wrap justify-center w-auto h">
                 {
                     Data.map((item, i) => {
-                        return <div className="border border-neutral-500 hover:border-neutral-200 bg-neutral-200 bg-opacity-10  m-5 w-80 flex rounded-xl relative text-white overflow-hidden flex-wrap hover:bg-blue-500 - hover:scale-[102%] transition transition-all duration-150 ease-in cursor-pointer shadow-2xl shadow-[#721533] hover:shadow-blue-600 " key={i} onClick={(e) => handleChangePage(item,e)}>
+                        return <div className="border border-neutral-500 hover:border-neutral-200 bg-neutral-200 bg-opacity-10  m-5 w-60 flex rounded-xl relative text-white overflow-hidden flex-wrap hover:bg-blue-500 - hover:scale-[102%]  transition-all duration-150 ease-in cursor-pointer shadow-2xl shadow-[#721533] hover:shadow-blue-600 " key={i} onClick={(e) => handleChangePage(item,e)}>
 
                             <div className=" flex flex-col   w-full h-auto gap-0  lg:items-center relative">
                                 <img src="https://thirdweb.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Frevenue-streams.10c7bba1.png&w=750&q=75" alt="" className=" object-contain p-0 m-0  w-full  " />

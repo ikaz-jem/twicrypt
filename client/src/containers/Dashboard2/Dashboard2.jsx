@@ -8,13 +8,13 @@ import { Table } from "../../shared/Table"
 
 
 
-const Dashboard = ()=> {
+const Dashboard2 = ()=> {
 const [Component,setComponent]=useState(<Table/>)
 
 
 
 const showIndex =async ()=>{
- const comp = await import("./Index").then(({Index})=><Index />)
+ const comp = await import("./Index2").then(({Index})=><Index />)
  setComponent(comp)
 }
 const showTable =async ()=>{
@@ -42,4 +42,4 @@ const showTable =async ()=>{
     )
 }
 
-export default Dashboard
+export default Dashboard2

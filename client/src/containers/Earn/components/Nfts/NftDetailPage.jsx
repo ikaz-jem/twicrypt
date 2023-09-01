@@ -4,7 +4,7 @@ import ButtonPrimary from "../../../../shared/Button/ButtonPrimary"
 import ButtonSecondary from "../../../../shared/Button/ButtonSecondary"
 import { Table } from "../../../../shared/Table"
 
-const Nfts = () => {
+const NftDetailsPage = () => {
 
 
     return (
@@ -72,7 +72,7 @@ const Nfts = () => {
 }
 
 
-export default Nfts
+export default NftDetailsPage
 
 
 /*

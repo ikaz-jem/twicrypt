@@ -23,8 +23,8 @@ const TwiWallet = () => {
 
                         <div className="flex  justify-between flex-wrap gap-10 p-0 m-0   px-10 py-10 ">
                             {
-                                data.map(() => {
-                                    return <div className="bg-neutral-600 shadow-xl border border-neutral-500 hover:bg-neutral-500 transtition transition-all duration-200 hover:translate-y-[-3%] h-80 w-60 rounded-xl flex flex-col items-center justify-start relative ">
+                                data.map((item,i) => {
+                                    return <div key={"t-"+i} className="bg-neutral-600 shadow-xl border border-neutral-500 hover:bg-neutral-500 transtition transition-all duration-200 hover:translate-y-[-3%] h-80 w-60 rounded-xl flex flex-col items-center justify-start relative ">
 
                                         <img src="https://picsum.photos/200" alt="" className="w-full h-auto p-2 rounded-2xl" />
 

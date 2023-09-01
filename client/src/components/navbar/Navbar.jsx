@@ -7,8 +7,6 @@ import { NavLink,Link } from "react-router-dom";
 import logo from '../../media/logo.png'
 import { userSession } from "../../app/features/session/sessionSlice";
 import UserModal from "../../shared/userModal/UserModal";
-import { useEffect } from "react";
-import { HashLoader } from "react-spinners";
 import PopoverMenu from "../../containers/Earn/components/MenuTopLink/Popover";
 import { useWeb3Modal } from '@web3modal/react'
 
@@ -36,10 +34,9 @@ return (
                     <div className="grid__column grid__column--2 hidden hidden@medium h-full" data-component="fadereveal">
                     
             
-<Link className='logo hero__logo link' to={'./'} >
-           {/* <img src={logo} alt="logo" className="w-14 h-14 " /> */}
-           <HashLoader color={"#e461f6"} size={30}/>
-            {/* <h3 className=" " dataref="fadereveal[el]">Logo</h3> */}
+<Link className='logo ' to={'./'} >
+           <img src={logo} alt="logo" className="w-10 h-10 " />
+            <p className="m-0 p-0 text-sm">Twicrypt</p>
 </Link>
                     </div>
                     <div className="navbar__menu grid__column  ">

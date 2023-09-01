@@ -1,4 +1,5 @@
 import { AiOutlineUserAdd} from 'react-icons/ai'
+import logo from '../media/3d2.png'
 
 const features = [
   {
@@ -22,6 +23,7 @@ const features = [
 const Cta=()=> {
   return (
     <div className=" h-auto color-ball  w-auto relative">
+      
     <div className="mx-auto max-w-[90%] py-24 sm:px-6 sm:py-32 lg:px-8 h-auto">
       <div className="relative isolate overflow-hidden bg-black px-6 pt-16 shadow-2xl shadow-black sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
         <svg
@@ -85,8 +87,8 @@ const Cta=()=> {
         </div>
         <div className="relative mt-16 h-80 lg:mt-8">
           <img
-            className="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
-            src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+            className="absolute left-0 top-0 max-w-[50rem] w-auto rounded-md"
+            src={logo}
             alt="App screenshot"
             width={1824}
             height={1080}

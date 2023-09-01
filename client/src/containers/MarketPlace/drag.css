@@ -1,0 +1,15 @@
+.draggable-component {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    color: white;
+    cursor: grab;
+    user-select: none;
+    z-index: 100;
+  }
+  
+  .dragging {
+    cursor: grabbing;
+    z-index: 100;
+  }

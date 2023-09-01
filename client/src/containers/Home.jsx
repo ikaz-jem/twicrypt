@@ -22,6 +22,8 @@ import ButtonPrimary from "../shared/Button/ButtonPrimary";
 import Nav from "../shared/Nav/Nav";
 import NavItem from "../shared/NavItem/NavItem";
 import { useNavigate } from "react-router-dom";
+import logo from '../media/3d.png'
+import AccordionTabs from "../shared/AccordionTabs/AccordionTabs";
 
 const Carousel = lazy(() => import('../components/carousel/Carousel'));
 
@@ -76,7 +78,7 @@ const Home = () => {
         </div>
         <div className="flex border-l border-gray-200">
           <button
-            onClick={() => toast.dismiss(t.id)}
+            onClick={() => toast.remove(t.id)}
             className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             Close
@@ -105,6 +107,7 @@ const Home = () => {
 
       <div className="index__header   ">
         <div className="space space--xlarge color-ball">
+         
           {/* <Navbar /> */}
           <div className="hero__wrapper   ">
             <Carousel />
@@ -113,15 +116,16 @@ const Home = () => {
 
           </div>
 
-          <Nav className="flex items-center justify-center gap-5 flex-wrap">
+          {/* <Nav className="flex items-center justify-center gap-5 flex-wrap">
             <NavItem onClick={()=> Navigate('/earn/mint')}>Mint</NavItem>
             <NavItem onClick={()=>Navigate('/earn/token-sale')} >Token Sale</NavItem>
             <NavItem onClick={() => Navigate('/preparations')}>RoadMap</NavItem>
             <NavItem onClick={() => showPopup()}>show popup</NavItem>
+            <NavItem onClick={() => toastP()}>show popup 2</NavItem>
             <NavItem onClick={()=> Navigate('/sponsor')}>Sponsor </NavItem>
             <NavItem onClick={()=> Navigate('/documentations')}>Docs </NavItem>
-          </Nav>
-
+          </Nav> */}
+<AccordionTabs/>
 
           <CallToAction />
         </div>

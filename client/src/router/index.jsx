@@ -7,19 +7,19 @@ import {
 
 import '../App.css';
 
-import {Toaster} from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 import Home from '../containers/Home'
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
-import Dashboard from "../containers/Dashboard/Dashboard";
+import Dashboard2 from "../containers/Dashboard2/Dashboard2";
 import SponsorUs from "../containers/sponsorUs/SponsorUs";
 import NftsPage from "../containers/Earn/components/Nfts/NftsPage";
-import Nfts from "../containers/Earn/components/Nfts/Nfts";
+import NftDetailsPage from "../containers/Earn/components/Nfts/NftDetailPage";
 
-import Earn from "../containers/Earn/Earn";
+import Dashboard from "../containers/Earn/Dashboard";
 import About from "../containers/About";
-import Preparations from "../containers/Preparations";
+import Preparations from "../containers/Preparations/Preparations";
 import MyProvider from "../Providers/Web3";
 import { userSession } from "../app/features/session/sessionSlice";
 import { useSelector } from "react-redux";
@@ -35,8 +35,9 @@ import Withdraw from "../containers/Withdraw/Withdraw";
 import Faq from "../containers/Faq/Faq";
 import DailyRewards from "../containers/DailyRewards/DailyRewards";
 import Community from "../containers/Community/Community";
+import MarketPlace from "../containers/MarketPlace/MarketPlace";
 
-const routes = [
+const Pages = [
     {
         path: '/',
         component: Home,
@@ -53,7 +54,7 @@ const routes = [
         requiresAuth: false,
     },
     {
-        path: '/dashboard',
+        path: '/earn',
         component: Dashboard,
         requiresAuth: true,
     },
@@ -71,6 +72,11 @@ const routes = [
     {
         path: '/token-sale',
         component: TokenSale,
+        requiresAuth: false,
+    },
+    {
+        path: 'marketplace',
+        component: MarketPlace,
         requiresAuth: false,
     },
 
@@ -97,7 +103,7 @@ const NestedRoutes = [
     },
     {
         path: 'nfts/:id',
-        component: Nfts,
+        component: NftDetailsPage,
         requiresAuth: false,
     },
     {
@@ -136,9 +142,30 @@ const NestedRoutes = [
         requiresAuth: false,
     },
 
-
 ]
 
+const marketPlaceRoutes = [
+    {
+        path: 'nfts',
+        component: NftsPage,
+        requiresAuth: false,
+    },
+    {
+        path: 'nfts/my-collection',
+        component: EarnHome,
+        requiresAuth: false,
+    },
+    {
+        path: 'nfts/on-sale',
+        component: Withdraw,
+        requiresAuth: false,
+    },
+    {
+        path: 'nfts/my-listings',
+        component: Withdraw,
+        requiresAuth: false,
+    },
+]
 
 const AppRoutes = () => {
 
@@ -147,32 +174,42 @@ const AppRoutes = () => {
     return (
 
         <BrowserRouter>
-                <Toaster />
+            <Toaster />
             <MyProvider>
                 <>
                     <Navbar />
-                    <Routes>
-                        {routes.map(({ component: Component, path, requiresAuth }, index) => {
 
+
+                    <Routes>
+                        {Pages.map(({ component: Component, path, requiresAuth }, index) => {
                             return requiresAuth && !isLogedIn ? null
                                 :
-
                                 <Route key={index} path={path} element={<Component />} />
-
                         })}
 
-                        <Route path="/earn" element={<Earn />}>
-
+                        <Route path="/earn" element={<Dashboard />}>
                             <Route index element={<EarnHome />} />
-
                             {NestedRoutes.map(({ component: Component, path, requiresAuth }, index) => {
-
                                 return requiresAuth && !isLogedIn ? null
                                     :
-
                                     <Route key={index} path={path} element={<Component />} />
-
                             })}
+
+                            <Route path="marketplace" element={<MarketPlace />}>
+                                <Route index element={<NftsPage />} />
+                                {marketPlaceRoutes.map(({ component: Component, path, requiresAuth }, index) => {
+                                    return requiresAuth && !isLogedIn ? null
+                                        :
+                                        <Route key={index} path={path} element={<Component />} />
+                                    })}
+                            </Route>
+
+
+
+                                    <Route path="marketplace/nfts/:id" element={<NftDetailsPage />}/>
+
+
+
                         </Route>
                     </Routes>
                     {/* <Footer/> */}

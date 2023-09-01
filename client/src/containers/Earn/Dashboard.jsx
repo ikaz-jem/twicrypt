@@ -2,14 +2,9 @@
 import CarouselTransition from "../../shared/transitions/CarouselTransition";
 import './style.css';
 import { useEffect, useState } from "react";
-import { RiMoneyDollarCircleLine } from 'react-icons/ri'
-import { MdOutlinePending, MdGeneratingTokens } from 'react-icons/md'
-import { AiOutlineCheckCircle } from 'react-icons/ai'
-import { FaUsers } from 'react-icons/fa'
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import SectionWhy from "../../components/sectionWhy/SectionWhy";
-import axios from "axios";
 
 import Menu from "../../shared/Menu/Menu";
 import MenuTransition from "../../shared/transitions/MenuTransition";
@@ -21,16 +16,16 @@ import EarnHome from "./components/EarnHome";
 import QuickLinks from "./components/QuickLinks";
 import TwiWallet from "./components/TwiWallet";
 import Link2 from "./components/Link2";
-import Nfts from "./components/Nfts/Nfts";
+import Nfts from "./components/Nfts/NftDetailPage";
 import { Outlet } from "react-router-dom";
 import QuickMint from "./components/Nfts/QuickMint";
 
-const Earn = () => {
+const Dashboard = () => {
 
     const [show, setShow] = useState(false)
     const [component, setComponent] = useState('home')
     const [userNft, setUserNft] = useState()
-const [showPanel,setShowPanel]=useState(false)
+    const [showPanel, setShowPanel] = useState(false)
 
     useEffect(() => {
 
@@ -53,9 +48,6 @@ const [showPanel,setShowPanel]=useState(false)
     }, [])
 
 
-    const navigate = useNavigate()
-
-
     // const {id} = useParams();
     const location = useLocation()
 
@@ -76,33 +68,33 @@ const [showPanel,setShowPanel]=useState(false)
     }, [component, location.pathname])
 
 
-    const topMenuNavigation =[
+    const topMenuNavigation = [
         {
-        title:"NFTs",
-        link: 'nfts'
+            title: "NFTs",
+            link: 'nfts'
         },
         {
-        title:"Token Sale",
-        link: 'token-sale'
+            title: "Token Sale",
+            link: 'token-sale'
         },
         {
-        title:"Mint Nfts",
-        link: 'mint'
+            title: "Mint Nfts",
+            link: 'mint'
         },
         {
-        title:"My Wallet",
-        link: 'stats'
+            title: "My Wallet",
+            link: 'stats'
         },
         {
-        title:"Last News",
-        link: 'last-news'
+            title: "Last News",
+            link: 'last-news'
         },
         {
-        title:"MarketPlace",
-        link: 'last-news'
+            title: "MarketPlace",
+            link: 'marketplace'
         },
-        
-        ]
+
+    ]
 
     const RenderStats = () => {
         const stats = [
@@ -130,42 +122,10 @@ const [showPanel,setShowPanel]=useState(false)
     }
 
 
-    const handleChangePage = async (item, e) => {
-        // e.preventDefault()
-
-        // if (component == item.page) {
-        //     return null
-        // } else
-        //     await setShow(false)
-        // setTimeout(() => {
-        //     setComponent(item.page)
-        //     setShow(true)
-        //     navigate(item.component)
-
-        // }, 500)
-
-
-    }
-
-    const handleMenuLinks = async (item,) => {
-        // if (component == item.toLowerCase()) {
-        //     return null
-        // } else
-        //     await setShow(false)
-        // setTimeout(() => {
-        //     setComponent(item.toLowerCase())
-        //     setShow(true)
-        //     navigate(`/earn/${item.toLowerCase()}`)
-
-        // }, 500)
-
-
-    }
-
 
 
     const Components = {
-        'home': <EarnHome handleChangePage={handleChangePage} />,
+        'home': <EarnHome />,
         'stats': <TwiWallet />,
         2: <QuickLinks />,
         3: <Link2 />,
@@ -174,112 +134,50 @@ const [showPanel,setShowPanel]=useState(false)
     }
 
 
-
-
-
-    const RenderMenu = () => {
-
-
-        return (
-
-            <div className={`w-auto shadow-md shadow-black  h-auto border-b    bg-opacity-30 rounded-3xl mt-5 panel-1 py-2 relative flex gap-20 items-center pl-10`}>
-
-
-                {/* 
-{
-userNft && userNft.map((nft)=>nft.image_url ? <img src={nft.image_url} key={nft.created_at} />:'' )
-
-} */}
-
-                <div className="flex items-center justify-start  m-0 p-0">
-                    <RiMoneyDollarCircleLine className="text-white text-2xl m-0" />
-                    <h6 className="m-0 pl-4">106587</h6>
-                </div>
-                <div className="flex items-center justify-start  m-0 p-0">
-                    <MdGeneratingTokens className="text-white text-2xl m-0" />
-                    <h6 className="m-0 pl-4">58486</h6>
-                </div>
-                <div className="flex items-center justify-start  m-0 p-0">
-                    <AiOutlineCheckCircle className="text-white text-2xl m-0" />
-                    <h6 className="m-0 pl-4">84487</h6>
-                </div>
-                <div className="flex items-center justify-start  m-0 p-0">
-                    <MdOutlinePending className="text-white text-2xl m-0" />
-                    <h6 className="m-0 pl-4">Pending</h6>
-                </div>
-
-                <div className="flex items-center justify-start  m-0 p-0">
-                    <FaUsers className="text-white text-2xl m-0" />
-                    <h6 className="m-0 pl-4">10</h6>
-                </div>
-
-            </div>
-
-        )
-    }
-
-
-
     return (
         <>
-
-
-
-
-
             <div className="lg:flex bg-gradient-to-b from-[#111111] to-black bg-opacity-70 relative h-auto w-full  ">
 
                 <div className="h-full lg:z-10 lg:sticky xl:sticky xl:top-22 lg-top-20 overflow-x-none fixed top-0  z-10  ">
-                    <Menu setShow={setShow} show={show} component={component} setComponent={setComponent} handleChangePage={handleChangePage} setShowPanel={setShowPanel} />
+                    <Menu show={show}setShowPanel={setShowPanel} />
                 </div>
-
-
                 {/*                         
         <a className="link" onClick={showIndex}> showIndex</a >
     <a className="link" onClick={showTable}> showTable</a > */}
-                <div className="flex flex-col gap-0  w-full relative  h-full   container--xxxlarge px-10 pl-28 sm:pl-25 md:pl-26 lg:pl-10  container--center ">
-                        {/* {RenderMenu()} */}
+                <div className="flex flex-col gap-0  w-full relative  h-full   container--xxxlarge px-10 pl-28 sm:pl-25 md:pl-24 lg:pl-5  container--center ">
+                    {/* {RenderMenu()} */}
 
 
-                    <MenuTopLinks navigation={topMenuNavigation}/>
+                    <MenuTopLinks navigation={topMenuNavigation} />
                     {/* <RenderStats /> */}
-
-
 
                     <SidePanel show={showPanel} setShow={setShowPanel} >
                         <QuickMint setShowPanel={setShowPanel} />
 
                     </SidePanel >
 
-
-              
-
                     {/* <MenuTransition show={show}> */}
 
-                        <div className="w-full h-auto relative   ">
-                            <Outlet />
-                            {/* {Components[component]} */}
-                            {/* <Routes>
+                    <div className="w-full h-auto relative   ">
+                        <Outlet />
+                        {/* {Components[component]} */}
+                        {/* <Routes>
 
                                 <Route  path={'/5'} element={<EarnHome setComponent={setComponent} />} />
                                 <Route  path={'./'} element={<TwiWallet />} />
                                 </Routes> */}
-                            {/* {Component} */}
-                        </div>
+                        {/* {Component} */}
+                    </div>
 
                     {/* </MenuTransition> */}
 
                 </div>
             </div>
             {/* <SectionWhy/> */}
-
-
-
-
         </>
     )
 
 }
 
 
-export default Earn
+export default Dashboard

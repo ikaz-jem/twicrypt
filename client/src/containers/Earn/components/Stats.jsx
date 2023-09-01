@@ -79,7 +79,7 @@ const Stats = () => {
 
                     return (
 
-                        <div className=" bg-neutral-200 w-75 h-auto grow rounded-xl flex-col p-2 shadow-lg ">
+                        <div key={'s-'+i} className=" bg-neutral-200 w-75 h-auto grow rounded-xl flex-col p-2 shadow-lg ">
 
                             <div className="flex items-center justify-between mx-5">
 
