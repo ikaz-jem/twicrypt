@@ -36,6 +36,8 @@ import Faq from "../containers/Faq/Faq";
 import DailyRewards from "../containers/DailyRewards/DailyRewards";
 import Community from "../containers/Community/Community";
 import MarketPlace from "../containers/MarketPlace/MarketPlace";
+import NftDetailPage from "../containers/MarketPlace/NftDetailPage/NftDetailPage";
+import MyNfts from "../containers/MarketPlace/MyNfts/MyNfts";
 
 const Pages = [
     {
@@ -151,20 +153,12 @@ const marketPlaceRoutes = [
         requiresAuth: false,
     },
     {
-        path: 'nfts/my-collection',
-        component: EarnHome,
+        path: ':page',
+        component: MarketPlace,
         requiresAuth: false,
     },
-    {
-        path: 'nfts/on-sale',
-        component: Withdraw,
-        requiresAuth: false,
-    },
-    {
-        path: 'nfts/my-listings',
-        component: Withdraw,
-        requiresAuth: false,
-    },
+
+
 ]
 
 const AppRoutes = () => {
@@ -206,7 +200,7 @@ const AppRoutes = () => {
 
 
 
-                                    <Route path="marketplace/nfts/:id" element={<NftDetailsPage />}/>
+                                    <Route path="marketplace/:page/nft/:id" element={<NftDetailsPage />}/>
 
 
 

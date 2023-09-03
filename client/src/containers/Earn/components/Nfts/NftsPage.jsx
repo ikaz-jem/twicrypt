@@ -39,7 +39,7 @@ const NftsPage = ({ className = "" }) => {
         return (
             <>
 
-                {!Nfts.data ?
+                {!Nfts?.data ?
 
                     <div className="  h-40 flex relative" >
                         <HashLoader size={50} color="#fff" style={{ text: 'center' }} />
@@ -67,9 +67,8 @@ const NftsPage = ({ className = "" }) => {
 
                         <div className="flex justify-between ">
                             <h3 className="text-left font-bold text-xl my-2 p-0 border-b border-neutral-800 w-full text-pink-600 pb-2">Collections <span className="m-0 pl-5 text-neutral-400 text-base ">Newest collections</span>  </h3>
-
                         </div>
-                        {<NftSlider data={Nfts.data} />}
+                        {<NftSlider data={Nfts?.data} />}
                         <h3 className="text-left my-2 p-0 border-b  border-neutral-800 w-full text-pink-600 font-bold text-xl pb-2">All Arts <span className="m-0 pl-5 text-neutral-400 text-base ">Twicrypt Nfts</span>  </h3>
                     </div>
                 }

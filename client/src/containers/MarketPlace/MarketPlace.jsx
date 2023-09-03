@@ -1,19 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Suspense } from "react";
 import { HashLoader } from 'react-spinners';
-
-
+import { useGetNftByAccount } from "./hooks/useGetNftByAccount";
+import MyNfts from "./MyNfts/MyNfts";
+import MyListings from "./MyListings/MyListings";
 import TabFilter from "./TabFilter/TabFilter";
-
+import { useParams, useSearchParams } from "react-router-dom";
 //pages
 import NftsPage from "../Earn/components/Nfts/NftsPage";
+import { getNftPlaceholder } from "./data/requestPlaceholder";
 
 
+///web3
+import { useContractRead } from 'wagmi'
 
 const MarketPlace = ({ className = "" }) => {
-    const [component, setComponent] = useState(1)
+    const {page}=useParams()
+    const [component, setComponent] = useState('all-nfts')
+    const [nftFilter, setNftFilter] = useState(getNftPlaceholder)
+    let [searchParams, setSearchParams] = useSearchParams();
+// const openSea = useGetNftByAccount({ 
+//   chain:'ethereum',
+//   walletAddress:'0x21111b0C84E33D2c3aF2EA3E4D851186b9F204C0',
+//   execute:true,
+//   limit:50
 
-    const Components = {1: <NftsPage />,2: <NftsPage />,3: <NftsPage />,4: <NftsPage />,5: <NftsPage />}
+// })
+
+
+const paramChain = searchParams.get('chain')
+
+// const marketplaceAbi = require('./abi/MarketPlace.json')
+
+// const { data, isError, isLoading } = useContractRead({
+//     address: '0x5333d0d6387C2F5f50902249c2E6334A8a066367',
+//     abi: marketplaceAbi,
+//     functionName: 'getAllPlugins',
+//     // args:[0,1000000]
+  
+//   })
+
+
+useEffect(()=>{
+!!page && setComponent(page)
+!!paramChain && setNftFilter((prev)=> ({
+    ...prev,
+    chain:paramChain
+}))
+},[page])
+
+
+
+
+
+    const Components = {'all-nfts': <NftsPage  />,'all-listings': <NftsPage />,'my-listings': <MyListings  />,'my-nfts': <MyNfts nftFilter={nftFilter} setNftFilter={setNftFilter} setSearchParams={searchParams} />,5: <NftsPage  />}
 
     return (
         <React.Fragment>
@@ -25,7 +65,7 @@ const MarketPlace = ({ className = "" }) => {
                 <div className="flex flex-col gap-0  w-full relative  h-full   container--xxxlarge px-10 pl-28 sm:pl-25 md:pl-26 lg:pl-10  container--center ">
 
                     <div className="w-full h-auto relative   ">
-                        <TabFilter setComponent={setComponent} />
+                        <TabFilter setComponent={setComponent} setNftFilter={setNftFilter} page={page} setSearchParams={setSearchParams} nftFilter={nftFilter}/>
                         <Suspense fallback={
                             <>
                                 <div className=" h-screen  flex justify-center items-center " >

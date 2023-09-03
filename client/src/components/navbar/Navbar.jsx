@@ -8,7 +8,6 @@ import logo from '../../media/logo.png'
 import { userSession } from "../../app/features/session/sessionSlice";
 import UserModal from "../../shared/userModal/UserModal";
 import PopoverMenu from "../../containers/Earn/components/MenuTopLink/Popover";
-import { useWeb3Modal } from '@web3modal/react'
 
 const Navbar = () => {
 
@@ -16,8 +15,7 @@ const Navbar = () => {
 const user = useSelector(userData)
 const isLogedIn = useSelector(userSession)
 
-const {userChanged:address} = UseStartSession()
-const { isOpen, open, close, setDefaultChain } = useWeb3Modal()
+// const {userChanged:address} = UseStartSession()
 
 
 
@@ -36,7 +34,7 @@ return (
             
 <Link className='logo ' to={'./'} >
            <img src={logo} alt="logo" className="w-10 h-10 " />
-            <p className="m-0 p-0 text-sm">Twicrypt</p>
+            <p className="m-0 p-0 text-xs text-pink-600 font-bold bg-yellow-400 bord">Twi<span className="text-yellow-300 ml-1 bg-pink-600">Crypt</span></p>
 </Link>
                     </div>
                     <div className="navbar__menu grid__column  ">
@@ -44,11 +42,11 @@ return (
                         <nav className=" ">
                             <ul className="list list--inline list--unstyle gutter gutter--medium  " data-component="fadereveal">
                                 {
-                                    navigation.map(
+                                    navigation && navigation?.map(
                                         (link,i) => {
                                             return <li className="list__item h-100" key={i}>
                                            {
-                                               link.requireAuth && !isLogedIn ? null : <NavLink to={link.url} className='link  '> {link.name}</NavLink>
+                                               link?.requireAuth && !isLogedIn ? null : <NavLink to={link?.url} className='link  '> {link?.name}</NavLink>
                                                
                                             }
                                         </li>

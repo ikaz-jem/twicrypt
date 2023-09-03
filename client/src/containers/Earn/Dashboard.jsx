@@ -153,7 +153,6 @@ const Dashboard = () => {
 
                     <SidePanel show={showPanel} setShow={setShowPanel} >
                         <QuickMint setShowPanel={setShowPanel} />
-
                     </SidePanel >
 
                     {/* <MenuTransition show={show}> */}

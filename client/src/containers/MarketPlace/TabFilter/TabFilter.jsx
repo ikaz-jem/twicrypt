@@ -1,86 +1,84 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Tab } from '@headlessui/react'
 import { useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { FilterData } from './FilterData'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const TabFilter=({setComponent})=> {
-  let [Tabs] = useState([
-
-    {
-    tab:'All Nfts',
-    url:1,
-    links:[
-      {
-        title:'Create Listing',
-        url:''
-      },
-      {
-        title:'Create Listing',
-        url:''
-      },
-      {
-        title:'Create Listing',
-        url:''
-      },
-    ]
-    },
-
-    {
-    tab:'Listings on sale',
-    url:2
-    },
-
-    {
-    tab:'My listings',
-    url:3
-    },
-
-    {
-    tab:'My-Nfts',
-    url:4
-    }
-
-  ])
-
-  
+const TabFilter=({page,setSearchParams,setNftFilter ,nftFilter})=> {
 const Navigate = useNavigate()
 
-  const handleNavigate = (item)=> {
-console.log(item)
-Navigate(item)
+
+
+
+
+
+
+    const handleChangeNftChain = (val,e) => {
+      if (val.url ==1){
+  e.preventDefault()
+        console.log('clicked tab 1')
+      }else {
+        e.preventDefault()
+      setSearchParams((prev) => ({
+        ...prev,
+        chain: val
+      }));
+      setNftFilter((prev) => ({
+        ...prev,
+        chain: val
+    }))
   }
+      }
+ 
+const handleClickTab = (tab)=>{
+  Navigate(`/earn/marketplace/${tab.url}`)
+  // setSearchParams((prev) => ({
+  //   ...prev,
+  //   filter: tab.tab
+  // }));
+
+}
+
+
+
 
   return (
     <div className=" p-3 container--xxlarge container--center  mx-auto ">
       <Tab.Group>
         <Tab.List className="flex space-x-1 rounded-xl bg-white/5 p-1 flex-wrap lg:flex-nowrap md:flex-nowrap w-auto  ">
-          {Tabs.map((tab,i) => (
-            <Tab
-              key={i}
-              onClick={()=>  setComponent(tab.url)}
-              className={({ selected }) =>
-                classNames(
-                  'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-neutral-200  h-full',
-                  'ring-white ring-opacity-60 ',
-                  selected
-                    ? 'bg-neutral-300 text-neutral-800 '
-                    : 'text-black hover:bg-pink-600/[0.52] hover:text-white'
+          {FilterData.map((tab,i) => (
+            <NavLink
+              to={`/earn/marketplace/${tab.url}`}
+              key={i+'nav'}
+              // onClick={()=>  handleClickTab(tab)}
+              className={({ isActive }) =>
+              classNames(
+                'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-neutral-200  h-full',
+                'ring-white ring-opacity-60 ',
+                isActive
+                ? 'bg-neutral-300 text-neutral-800 '
+                : 'text-black hover:bg-pink-600/[0.52] hover:text-white'
                 )
               }
-            >
-              <span className='w-full h-full'>
-
+              >
+              <span key={'s-'+i} className='w-full h-full'>
               {tab.tab}
               </span>
-            </Tab>
+            </NavLink>
+
+
+
+              
           ))}
         </Tab.List>
         <Tab.Panels className="mt-2">
 
-          { Tabs.map((tab,i)=> tab?.links && <Tab.Panel
+          { FilterData.map((tab,i)=> tab?.links && tab?.url === page && <Tab.Panel
               key={'p'+i}
               className={classNames(
                 'rounded-xl bg-transparent ',
@@ -90,15 +88,28 @@ Navigate(item)
               <ul>
              
                   <li
-                    key={'p'+'i'}
-                    className="relative rounded-md p-2">
-                  
+                    key={'p'+i}
+                    className="relative rounded-md py-2 ">
 
-                    <ul className="mt-1 flex gap-5 space-x-1 text-xs  font-normal leading-4 text-gray-500 justify-start">
-                  {  tab.links.map((list)=> <li className='hover:text-pink-500 cursor-pointer'>{list.title}</li>
+                    <ul className="mt-1 flex gap-5 space-x-1 text-xs flex-wrap font-semibold leading-2 text-gray-500 justify-center border-b border-neutral-800 rounded-xl pb-2">
+                  {  tab?.links.map((list,i)=> list!== "" &&<NavLink  
+                    
+                    className={({ isActive }) =>
+                     classNames(
+                       'w-auto rounded-lg py-2 px-5 text-xs  leading-2 text-neutral-200  h-full',
+                       'ring-white ring-opacity-60 ',
+                       nftFilter?.chain === list.val
+                       ? 'bg-pink-600 text-white '
+                       : 'text-black hover:bg-neutral-200/[0.52] hover:text-white'
+                       )
+                     }
+                    key={'tab-'+i} 
+                   onClick={(e)=>handleChangeNftChain(list.val ,e)} >{list.title}</NavLink>
  )}
                     </ul>                
                   </li>
+                 
+
           
               </ul>
             </Tab.Panel> )

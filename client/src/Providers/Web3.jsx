@@ -4,12 +4,13 @@
 
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { bsc, polygon, mainnet } from 'wagmi/chains';
+import { bsc, polygon, mainnet ,bscTestnet , goerli } from 'wagmi/chains';
 import { Web3Modal } from '@web3modal/react';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 
+
 //wallet config 
-const chains = [bsc, polygon, mainnet]
+const chains = [bsc, polygon, mainnet ,bscTestnet,goerli]
 const projectId = 'de4ffe006432dcdd103fde1b34b54824';
 
 const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])

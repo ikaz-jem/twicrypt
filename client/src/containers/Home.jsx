@@ -144,6 +144,7 @@ const Home = () => {
         <ButtonPrimary className="w-auto">View More</ButtonPrimary>
       </div>
 
+
       <Cta />
       <EarnHome />
       <SectionWhy />

@@ -24,6 +24,9 @@ const Cta=()=> {
   return (
     <div className=" h-auto color-ball  w-auto relative">
       
+
+
+
     <div className="mx-auto max-w-[90%] py-24 sm:px-6 sm:py-32 lg:px-8 h-auto">
       <div className="relative isolate overflow-hidden bg-black px-6 pt-16 shadow-2xl shadow-black sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
         <svg

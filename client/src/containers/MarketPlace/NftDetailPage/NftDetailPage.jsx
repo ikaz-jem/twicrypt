@@ -1,26 +1,10 @@
-import { useContractRead ,useContractWrite} from "wagmi"
-import Accordion from "../../../../shared/Accordion/Accordion"
-import SingleAccordion from "../../../../shared/Accordion/SingleAccordion"
-import ButtonPrimary from "../../../../shared/Button/ButtonPrimary"
-import ButtonSecondary from "../../../../shared/Button/ButtonSecondary"
-import { Table } from "../../../../shared/Table"
+import Accordion from "../../../shared/Accordion/Accordion";
+import SingleAccordion from "../../../shared/Accordion/SingleAccordion";
+import ButtonPrimary from "../../../shared/Button/ButtonPrimary";
+import ButtonSecondary from "../../../shared/Button/ButtonSecondary";
+import AccordionTabs from '../../../shared/AccordionTabs/AccordionTabs'
 
-const NftDetailsPage = () => {
-
-
-const ERC721Abi = require('../../../../utils/contracts/ABIs/ERC721.json')
-
-
-
-const { data, isError, isLoading } = useContractRead({
-    address: '0x18030912135Af1C122d1a79DC095CFa40d7C4D88',
-    abi: ERC721Abi,
-    functionName: 'baseURI',
-   
-  
-  })
-
-console.log(data)
+const NftDetailPage = () => {
 
 
     return (
@@ -34,7 +18,7 @@ console.log(data)
                 <div className=" flex flex-col gap-5 w-full   lg:w-1/2 ">
                     <div className="flex flex-col justify-start items-center  rounded-xl  bg-[#00000050] w-auto h-auto overflow-hidden border border-neutral-900 ">
                         {/* <div className="bg-[#4b005575] w-full h-10 "> hell</div> */}
-                        <img src={!!data && data} alt="Fetching image"  className="  object-contain w-80 relative rounded-b-md" />
+                        <img src="https://dl.openseauserdata.com/cache/originImage/files/d744f8d0efa5ca742637606cdf95170b.png" className="  object-contain w-80 relative rounded-b-md" />
                     </div>
                     <div className="">
                         <Accordion />
@@ -88,7 +72,7 @@ console.log(data)
 }
 
 
-export default NftDetailsPage
+export default NftDetailPage
 
 
 /*

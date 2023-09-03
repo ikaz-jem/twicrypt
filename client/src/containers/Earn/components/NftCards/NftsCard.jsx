@@ -1,23 +1,26 @@
+import { PlaceholderImage } from "../../../../shared/Placeholders/Placeholder";
+
+
+
 
 const NftsCard = ({ data }) => {
+
+
+  
   return (
-
-    <div className=" border rounded-2xl w-60 h-auto shadow-sm border-neutral-800 hover:shadow-lg pb-0 relative hover:translate-y-[-4%] transition-all cursor-pointer overflow-clip ">
-
-
+    <div className={`border rounded-2xl ${!data.title && 'cursor-wait'} w-60 h-auto shadow-sm border-neutral-800 hover:shadow-lg pb-0 relative hover:translate-y-[-4%] transition-all cursor-pointer overflow-clip` }>
       <div className="flex flex-col  h-60 w-full ">
         <div className=" rounded-lg overflow-hidden flex-col flex items-center jusify-center relative h-full">
-          <img src={data.thumbnailUrl} className="pb-5 object-cover w-full h-full rounded-lg" />
+          <img src={data?.thumbnailUrl ||PlaceholderImage } className="pb-5 object-cover w-full h-full rounded-lg " />
         </div>
         <div className="flex justify-center items-start flex-col gap-2 mx-2 my-2 px-2 ralative  ">
           <dd className="order-first text-2xl font-semibold tracking-tight text-gray-400 sm:text-lg w-full text-left truncate text-ellipsis overflow-hidden  ">
-           {data.title}
+           {data?.title || "loading ..."}
           </dd>
-          <dt className="text-base leading-7 text-gray-600 truncate text-ellipsis overflow-hidden ">{data.id + ' '}BNB</dt>
+          <dt className="text-base leading-7 text-gray-600 truncate text-ellipsis overflow-hidden ">{data?.id || 0+ ' '}BNB</dt>
         </div>
       </div>
     </div>
-
   )
 
 }
