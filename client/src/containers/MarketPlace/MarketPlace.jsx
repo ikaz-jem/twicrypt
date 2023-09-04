@@ -53,7 +53,7 @@ useEffect(()=>{
 
 
 
-    const Components = {'all-nfts': <NftsPage  />,'all-listings': <NftsPage />,'my-listings': <MyListings  />,'my-nfts': <MyNfts nftFilter={nftFilter} setNftFilter={setNftFilter} setSearchParams={searchParams} />,5: <NftsPage  />}
+    const Components = {'all-nfts': <NftsPage  />,'all-listings': <NftsPage />,'my-listings': <MyListings  />,'my-nfts': <MyNfts nftFilter={nftFilter} setNftFilter={setNftFilter} setSearchParams={setSearchParams} searchParams={searchParams} />,5: <NftsPage  />}
 
     return (
         <React.Fragment>

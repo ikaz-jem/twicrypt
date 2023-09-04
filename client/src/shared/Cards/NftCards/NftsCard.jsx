@@ -4,9 +4,11 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const CardCategory1 = ({ data }) => {
 const {page}= useParams()
-const Navigate = useNavigate()
+
+
+
   return (
-    <div onClick={()=>Navigate(`${page}/nft/${data.title}`)} className={`border rounded-2xl ${!data.title && 'cursor-wait'} w-60 h-auto shadow-sm border-neutral-800 hover:shadow-lg pb-0 relative hover:translate-y-[-1%] transition-all cursor-pointer overflow-clip` }>
+    <div  className={`border rounded-2xl ${!data.title && 'cursor-wait'} w-60 h-auto shadow-sm border-neutral-800 hover:shadow-lg pb-0 relative hover:translate-y-[-1%] transition-all cursor-pointer overflow-clip` }>
       <div className="flex flex-col  h-80 w-full ">
         <div className=" rounded-lg overflow-hidden flex-col flex items-center jusify-center relative h-full">
           <img src={data?.thumbnailUrl ||PlaceholderImage } className="pb-5  w-full h-full rounded-lg " />

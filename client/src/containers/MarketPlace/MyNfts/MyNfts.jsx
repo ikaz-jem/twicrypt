@@ -5,11 +5,19 @@ import CardCategory1 from "../../../shared/Cards/NftCards/NftsCard"
 import Spinner from "../../../shared/Spinner/Spinner"
 import { useNavigate } from "react-router-dom"
 
-const MyNfts = ({ nftFilter }) => {
-
+const MyNfts = ({ nftFilter,searchParams }) => {
+    
+    const Navigate = useNavigate()
     const { data, isLoading, hasError } = useGetNftByAccount(nftFilter)
 
+    const handleClick = (e, meta)=>{
+        e.preventDefault()
+        
+        Navigate({pathname:`my-nfts/nft/`,search: `?address=${meta.contract}&id=${meta.identifier}`})
 
+      }
+
+      console.log(searchParams)
 
     const RenderAllMyNfts = () => {
         if (hasError) {
@@ -27,8 +35,10 @@ const MyNfts = ({ nftFilter }) => {
                 {
                     !!data && !isLoading ? data.map((nft,i) => {
                         return (
-
-                            <CardCategory1 key={i} data={{ title: nft.name, thumbnailUrl: nft.image_url, id: nft.identifier }}  />
+                            
+                            <div onClick={(e)=> handleClick(e,nft)}>
+                            <CardCategory1 key={i} data={{ title: nft.name, thumbnailUrl: nft.image_url, id: nft.identifier , contract: nft.contract}} />
+                            </div>
                         )
                     }) :
                         <div className="flex flex-col gap-5">

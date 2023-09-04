@@ -159,6 +159,7 @@ const marketPlaceRoutes = [
     },
 
 
+
 ]
 
 const AppRoutes = () => {
@@ -189,7 +190,7 @@ const AppRoutes = () => {
                                     <Route key={index} path={path} element={<Component />} />
                             })}
 
-                            <Route path="marketplace" element={<MarketPlace />}>
+                            <Route path="marketplace/*" element={<MarketPlace />}>
                                 <Route index element={<NftsPage />} />
                                 {marketPlaceRoutes.map(({ component: Component, path, requiresAuth }, index) => {
                                     return requiresAuth && !isLogedIn ? null
@@ -200,7 +201,7 @@ const AppRoutes = () => {
 
 
 
-                                    <Route path="marketplace/:page/nft/:id" element={<NftDetailsPage />}/>
+                                    <Route path="marketplace/:page/nft" element={<NftDetailsPage />}/>
 
 
 
