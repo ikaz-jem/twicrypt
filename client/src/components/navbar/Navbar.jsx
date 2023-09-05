@@ -15,7 +15,7 @@ const Navbar = () => {
 const user = useSelector(userData)
 const isLogedIn = useSelector(userSession)
 
-// const {userChanged:address} = UseStartSession()
+const {userChanged:address} = UseStartSession()
 
 
 

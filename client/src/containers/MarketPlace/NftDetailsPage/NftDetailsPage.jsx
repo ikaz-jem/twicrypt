@@ -1,17 +1,16 @@
 import { useContractRead } from "wagmi";
-import Accordion from "../../../../shared/Accordion/Accordion";
-import SingleAccordion from "../../../../shared/Accordion/SingleAccordion";
-import ButtonPrimary from "../../../../shared/Button/ButtonPrimary";
-import ButtonSecondary from "../../../../shared/Button/ButtonSecondary";
+import Accordion from "../../../shared/Accordion/Accordion";
+import SingleAccordion from "../../../shared/Accordion/SingleAccordion";
+import ButtonPrimary from "../../../shared/Button/ButtonPrimary";
+import ButtonSecondary from "../../../shared/Button/ButtonSecondary";
 import axios from 'axios'
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import Spinner from "../../../../shared/Spinner/Spinner";
+import Spinner from "../../../shared/Spinner/Spinner";
 
 
-
-const NftDetailPage = () => {
+const NftDetailsPage = () => {
     const [metadata, setMetadata] = useState({
         metadata: null,
         protocolGateaway: null,
@@ -98,12 +97,25 @@ const NftDetailPage = () => {
 
 
     const RenderNftImage = () => {
+        const [imgLoad,setImgLoad]=useState(false)
+        const loaded = ()=>{
+            setImgLoad(true)
+            console.log("image loaded")
+        }
+
+      
+
+const generateImageLink = ()=>{
+    const Cid = metadata?.metadata?.image.slice(7, metadata?.metadata?.image.length);
+    const imageLink = `https://ipfs.io/ipfs/${Cid}`
+    if (metadata?.protocolGateaway == 'ipfs' && metadata?.metadata ){
+        return imageLink
+    }return metadata?.metadata?.image 
+    
+}
 
 
-        const Cid = metadata?.metadata?.image.slice(7, metadata?.metadata?.image.length);
-        const imageLink = `https://ipfs.io/ipfs/${Cid}`
-
-        if (!metadata?.metadata?.image) {
+        if (!metadata?.metadata?.image && !imgLoad) {
 
             return (
                 <div className="flex flex-col justify-start items-center  rounded-xl  bg-[#00000050] w-auto h-auto overflow-hidden border border-neutral-900 relative ">
@@ -116,7 +128,7 @@ const NftDetailPage = () => {
 
             <div className="flex flex-col justify-start items-center  rounded-xl  bg-[#00000050] w-auto h-auto overflow-hidden border border-neutral-900 relative ">
                 {/* <div className="bg-[#4b005575] w-full h-10 "> hell</div> */}
-                <img src={metadata?.protocolGateaway == 'ipfs' && metadata?.metadata ? imageLink : metadata?.metadata?.image || ''} alt="Fetching image" className="  object-contain w-80 relative rounded-b-md" />
+                <img onLoad={loaded} src={generateImageLink()} alt="Fetching image" className=" object-contain w-80 relative rounded-b-md" />
             </div>
 
 
@@ -185,7 +197,7 @@ const NftDetailPage = () => {
 }
 
 
-export default NftDetailPage
+export default NftDetailsPage
 
 
 /*

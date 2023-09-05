@@ -9,14 +9,12 @@ import '../App.css';
 
 import { Toaster } from 'react-hot-toast';
 
-import Home from '../containers/Home'
+import Home from '../containers/Home';
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
 import Dashboard2 from "../containers/Dashboard2/Dashboard2";
 import SponsorUs from "../containers/sponsorUs/SponsorUs";
 import NftsPage from "../containers/Earn/components/Nfts/NftsPage";
-import NftDetailsPage from "../containers/Earn/components/Nfts/NftDetailPage";
-
 import Dashboard from "../containers/Earn/Dashboard";
 import About from "../containers/About";
 import Preparations from "../containers/Preparations/Preparations";
@@ -36,9 +34,7 @@ import Faq from "../containers/Faq/Faq";
 import DailyRewards from "../containers/DailyRewards/DailyRewards";
 import Community from "../containers/Community/Community";
 import MarketPlace from "../containers/MarketPlace/MarketPlace";
-import NftDetailPage from "../containers/MarketPlace/NftDetailPage/NftDetailPage";
-import MyNfts from "../containers/MarketPlace/MyNfts/MyNfts";
-
+import NftDetailsPage from "../containers/MarketPlace/NftDetailsPage/NftDetailsPage";
 const Pages = [
     {
         path: '/',

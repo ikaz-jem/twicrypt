@@ -26,7 +26,7 @@ const signWalletMessage = useSignMessage({
   })
 
 // const getSession = async ()=> dispatch(getUserSession(userChanged));
-const signIn = ()=> dispatch(logIn())
+const signIn = (address)=> dispatch(logIn(address))
 const signOut = ()=> dispatch(logOut())
 
 
@@ -37,7 +37,7 @@ const userConnected = useAccount({
     onConnect({ address, connector, isReconnected }) {
         if (isReconnected) {
           setUserChanged(address)
-          // signIn()
+          signIn(address)
           console.log('get session from is reconected')
         }else{
           // signWalletMessage.signMessageAsync()
@@ -45,7 +45,7 @@ const userConnected = useAccount({
           console.log('get session from first connect')
        
         
-          signIn()
+          signIn(address)
             }
         
     } , 
@@ -69,11 +69,12 @@ useEffect(()=>{
       var controller = new AbortController();
 
   const unwatch = watchAccount((account) =>{
-   return account.address  && setUserChanged(account.address)
+    signIn(account.address)
+   return account.address  && setUserChanged(account.address) 
   })
   
   
-  console.log('get session from is useEffect')
+  console.log('get session from is useEffect watch account')
 
   
   return () => {

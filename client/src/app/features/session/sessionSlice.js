@@ -7,14 +7,16 @@ import { createAccount, getUserSession } from "./sessionThunks";
 export const sessionSlice = createSlice({
     name : 'session',
     initialState:{
+        address:null,
         user :[],
         accountType:'',
         isLoggedIn:false,
         hasAccount:false ,
     },
     reducers:{
-        logIn:(state)=>{
+        logIn:(state,action)=>{
             state.isLoggedIn = true
+            state.address = action.payload
         },
         logOut:(state)=>{
         state.isLoggedIn=false

@@ -1,9 +1,11 @@
 
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { headers } from "./Headers";
+import { headers,Testnetheaders } from "./Headers";
+import { userData } from "../../../app/features/session/sessionSlice";
+import { useSelector } from "react-redux";
 
-export const useGetNftByAccount = (data) => {
+export const useGetNftByAccount = () => {
     const [Nfts, setNfts] = useState({
         data: null,
         isLoading: false,
@@ -11,38 +13,83 @@ export const useGetNftByAccount = (data) => {
     
     })
 
+    const {address}=useSelector(userData)
+    const data = useSelector((state)=>state.marketPlace.nftFilter)
+    
     const Base = 'https://testnets-api.opensea.io/v2/chain/'
     const nftlimit = `?limit=${data?.limit || ""}`
-    const constructed = `${Base}${data?.chain}/account/${data?.walletAddress}/nfts${nftlimit}`
+    const constructed = `${Base}${data?.chain}/account/${address}/nfts${nftlimit}`
+
+const mainnetData = async ()=> {
+    const Base = 'https://api.opensea.io/v2/chain/'
+    const nftlimit = `?limit=${data?.limit || ""}`
+    const constructed = `${Base}${data?.chain}/account/${address}/nfts${nftlimit}`
+    setNfts((prev) => ({
+        ...prev,
+        isLoading: true,
+    }))
+    
+    try {
+        const response = await axios.get(constructed, { headers }).then((res) => setNfts((prev) => ({
+            ...prev,
+            data: res.data.nfts,
+            isLoading: false,
+            hasError:false
+        })))
+    } catch (err) {
+        err && setNfts((prev) => ({
+            ...prev,
+            data:null,
+            isLoading: false,
+            hasError: true
+        }))
+        return null
+    }
+}
+
+
+const testnetData = async ()=> {
+
+    setNfts((prev) => ({
+        ...prev,
+        isLoading: true,
+    }))
+    
+    try {
+        const response = await axios.get(constructed, { Testnetheaders }).then((res) => setNfts((prev) => ({
+            ...prev,
+            data: res.data.nfts,
+            isLoading: false,
+            hasError:false
+        })))
+    } catch (err) {
+        err && setNfts((prev) => ({
+            ...prev,
+            data:null,
+            isLoading: false,
+            hasError: true
+        }))
+        return null
+    }
+
+}
+
 
     const fetchData = async () => {
-        setNfts((prev) => ({
-            ...prev,
-            isLoading: true,
-        }))
-        
-        try {
-            const response = await axios.get(constructed, { headers }).then((res) => setNfts((prev) => ({
-                ...prev,
-                data: res.data.nfts,
-                isLoading: false,
-                hasError:false
-            })))
-        } catch (err) {
-            err && setNfts((prev) => ({
-                ...prev,
-                isLoading: false,
-                hasError: true
-            }))
-            return null
+       
+        if (data?.chain === 'bsctestnet' || data?.chain ==='goerli' ){
+            await testnetData()
+        } else {
+            await mainnetData()
         }
+
     }
 
     useEffect(() => {
-        const controller = new AbortController()
-        !!data?.execute && fetchData()
-        return () => controller.abort()
-    }, [data?.walletAddress,data])
+       
+        !!data?.execute && address && fetchData()
+    
+    }, [address,data?.chain])
 
 return Nfts
 }

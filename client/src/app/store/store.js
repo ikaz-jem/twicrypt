@@ -13,6 +13,8 @@ import thunk from 'redux-thunk'
 import { sessionSlice } from '../features/session/sessionSlice';
 
 
+//marketplace
+import { MarketPlaceSlice } from '../features/MarketPlace/MarketplaceSlice';
 
 
 
@@ -28,7 +30,8 @@ if (!Symbol.observable) {
 
 const rootReducer = combineReducers({
 [sessionSlice.name]:sessionSlice.reducer,
-[carouselSlice.name]: carouselSlice.reducer
+[carouselSlice.name]: carouselSlice.reducer,
+[MarketPlaceSlice.name]:MarketPlaceSlice.reducer
 })
 
 const middleware = [ thunk];

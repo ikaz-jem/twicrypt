@@ -1,23 +1,22 @@
-import { useEffect, useState } from 'react'
 import { Tab } from '@headlessui/react'
-import { useNavigate } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 import { FilterData } from './FilterData'
+import { useSelector } from 'react-redux/es/hooks/useSelector'
+import { useDispatch } from 'react-redux'
+import { setFilter } from '../../../app/features/MarketPlace/MarketplaceSlice'
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const TabFilter=({page,setSearchParams,setNftFilter ,nftFilter})=> {
-const Navigate = useNavigate()
+const TabFilter=({page,setSearchParams})=> {
 
+const {chain} = useSelector(state=>state.marketPlace.nftFilter)
+const dispatch = useDispatch()
 
-
-
-
-
-
+const setNftFilter = (item)=> dispatch(setFilter(item))
+ 
     const handleChangeNftChain = (val,e) => {
       if (val.url ==1){
   e.preventDefault()
@@ -28,23 +27,10 @@ const Navigate = useNavigate()
         ...prev,
         chain: val
       }));
-      setNftFilter((prev) => ({
-        ...prev,
-        chain: val
-    }))
-  }
+
+    setNftFilter({chain:val})  }
       }
  
-const handleClickTab = (tab)=>{
-  Navigate(`/earn/marketplace/${tab.url}`)
-  // setSearchParams((prev) => ({
-  //   ...prev,
-  //   filter: tab.tab
-  // }));
-
-}
-
-
 
 
   return (
@@ -98,7 +84,7 @@ const handleClickTab = (tab)=>{
                      classNames(
                        'w-auto rounded-lg py-2 px-5 text-xs  leading-2 text-neutral-200  h-full',
                        'ring-white ring-opacity-60 ',
-                       nftFilter?.chain === list.val
+                          chain === list.val
                        ? 'bg-pink-600 text-white '
                        : 'text-black hover:bg-neutral-200/[0.52] hover:text-white'
                        )
