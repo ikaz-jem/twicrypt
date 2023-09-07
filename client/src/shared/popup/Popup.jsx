@@ -20,10 +20,13 @@ const Popup= ({
   
   };
   const spinner = ()=>{
+
+    
+
     return(
-     <div className="flex align-center justify-center items-center justify-content-center">          
+     <div className="flex align-center justify-center items-center justify-content-center ">          
            <HashLoader
-         color={"#ffffff"}
+         color={"#00ff00"}
          loading={show}
          cssOverride={override}
          size={35}
@@ -51,7 +54,7 @@ const Popup= ({
           <div>
             <div className="flex justify-between items-start ">
               <div>
-                <h3 className="text-base font-medium m-0 p-0 text-left">{'hello from the other side'}</h3>
+                <h5 className="text-sm font-medium m-0 p-0 text-left">Listing available only for twicrypt collection at the time !</h5>
                 <p className="mt-1 text-sm text-neutral-300 p-0 ">
                   <span className="m-0 p-0 text-left">
                     { `Natural`}
@@ -71,7 +74,7 @@ const Popup= ({
             <div className="flex">
               <Link
                 onClick={()=>toast.remove(t.id)}
-                className="font-medium text-neutral-400 button "
+                className="font-medium text-white hover:bg-blue-500 bg-pink-600 rounded-full py-2 px-5 "
               >
                 Dismiss
               </Link>
@@ -94,8 +97,8 @@ const Popup= ({
       leaveFrom="opacity-100 translate-x-0"
       leaveTo="opacity-0 translate-x-20"
     >
-      <p className="block text-base font-semibold leading-none m-0 p-0 text-left text-white">
-        Added to cart!
+      <p className="block text-sm font-semibold leading-none m-0 p-0 text-left text-white">
+       Public MarketPlace is comming Soon !
       </p>
       <hr className=" border-slate-700 my-4" />
       {renderProductCartOnNotify()}

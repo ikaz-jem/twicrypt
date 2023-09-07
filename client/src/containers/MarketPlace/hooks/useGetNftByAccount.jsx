@@ -30,7 +30,7 @@ const mainnetData = async ()=> {
     }))
     
     try {
-        const response = await axios.get(constructed, { headers }).then((res) => setNfts((prev) => ({
+        await axios.get(constructed, { headers }).then((res) => setNfts((prev) => ({
             ...prev,
             data: res.data.nfts,
             isLoading: false,
@@ -56,7 +56,7 @@ const testnetData = async ()=> {
     }))
     
     try {
-        const response = await axios.get(constructed, { Testnetheaders }).then((res) => setNfts((prev) => ({
+         await axios.get(constructed, { Testnetheaders }).then((res) => setNfts((prev) => ({
             ...prev,
             data: res.data.nfts,
             isLoading: false,

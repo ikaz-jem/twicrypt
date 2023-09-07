@@ -1,3 +1,8 @@
+
+import bsc from '../../../media/icons/bsc.svg'
+import bsctestnet from '../../../media/icons/bsctestnet.svg'
+import eth from '../../../media/icons/eth.svg'
+import eth2 from '../../../media/icons/eth2.svg'
 export const  FilterData = ([
 
   {
@@ -38,19 +43,23 @@ export const  FilterData = ([
     },
     {
       title:'Binance Smart Chain',
-      val:'bsc'
+      val:'bsc',
+      icon:bsc
     },
     {
       title:'Ethereum',
-      val:'ethereum'
+      val:'ethereum',
+      icon:eth2
     },
     {
       title:'binance Testnet',
-      val:'bsctestnet'
+      val:'bsctestnet',
+      icon:bsctestnet
     },
     {
       title:'goerli',
-      val:'goerli'
+      val:'goerli',
+      icon:eth
     },
   ]
   }

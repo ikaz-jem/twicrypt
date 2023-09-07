@@ -64,7 +64,7 @@ const setNftFilter = (item)=> dispatch(setFilter(item))
         </Tab.List>
         <Tab.Panels className="mt-2">
 
-          { FilterData.map((tab,i)=> tab?.links && tab?.url === page && <Tab.Panel
+          { FilterData?.map((tab,i)=> tab?.links && tab?.url === page && <Tab.Panel
               key={'p'+i}
               className={classNames(
                 'rounded-xl bg-transparent ',
@@ -77,21 +77,22 @@ const setNftFilter = (item)=> dispatch(setFilter(item))
                     key={'p'+i}
                     className="relative rounded-md py-2 ">
 
-                    <ul className="mt-1 flex gap-5 space-x-1 text-xs flex-wrap font-semibold leading-2 text-gray-500 justify-center border-b border-neutral-800 rounded-xl pb-2">
+                    <ul className="mt-1 flex gap-5 space-x-1 text-xs flex-wrap font-semibold leading-2 text-gray-500 justify-center items-center border-b border-neutral-800 rounded-xl pb-2">
                   {  tab?.links.map((list,i)=> list!== "" &&<NavLink  
                     
                     className={({ isActive }) =>
                      classNames(
-                       'w-auto rounded-lg py-2 px-5 text-xs  leading-2 text-neutral-200  h-full',
+                       'w-auto rounded-lg py-2 px-5 text-xs  leading-2 text-neutral-200  h-full flex items-center justify-start',
                        'ring-white ring-opacity-60 ',
                           chain === list.val
                        ? 'bg-pink-600 text-white '
                        : 'text-black hover:bg-neutral-200/[0.52] hover:text-white'
                        )
+                                     
                      }
                     key={'tab-'+i} 
-                   onClick={(e)=>handleChangeNftChain(list.val ,e)} >{list.title}</NavLink>
- )}
+                   onClick={(e)=>handleChangeNftChain(list.val ,e)} >{list?.icon && <img src={list.icon} className='rounded-md mr-2 h-6' />} {list.title}</NavLink>
+ )}                 
                     </ul>                
                   </li>
                  
