@@ -34,12 +34,13 @@ export const useCancelListing = (props) => {
  
          },
         onError(error) {
-            return toast.custom(
+             toast.custom(
              (t) => (
-               <Popup productImage={image && image || null} show={true} t={t} title={` ${'error'} ...`} desc={` ${error?.details || "something went wrong ... " }`}/>
+               <Popup productImage={image && image || null} show={true} t={t} title={` ${'error'} ...`} desc={` ${error?.details ||  "something went wrong , recheck token ownership ... " }`}/>
              ),
              { position: "bottom-center", duration: 3000 }
            );
+           console.log(error)
            },
     
     })

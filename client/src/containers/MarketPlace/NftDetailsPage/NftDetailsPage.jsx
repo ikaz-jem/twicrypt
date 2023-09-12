@@ -10,6 +10,8 @@ import { useNftOwner } from "../hooks/web3Hooks/useNftOwner";
 import SingleAccordion from "../../../shared/Accordion/SingleAccordion";
 import { MdOutlineLocalOffer, MdLabelOutline } from 'react-icons/md';
 import { BsListColumnsReverse,BsListTask } from 'react-icons/bs';
+import { useSearchParams } from "react-router-dom";
+
 
 const NftDetailsPage = () => {
     const location = useLocation()
@@ -22,12 +24,14 @@ const NftDetailsPage = () => {
         chainId: null
     })
 
-
+    const [searchParams] = useSearchParams()
+console.log(urlall)
     const extractUrl = () => {
-        const contractAddress = new URLSearchParams(location?.search).get('address')
-        const tokenId = new URLSearchParams(location?.search).get('id')
-        const metadata_Url = new URLSearchParams(location?.search).get('cid')
-        const chainId = new URLSearchParams(location?.search).get('chain')
+        const contractAddress = searchParams.get('address')
+        const tokenId = searchParams.get('id')
+        const metadata_Url = searchParams.get('cid')
+        const chainId = searchParams.get('chain')
+
         contractAddress && tokenId && chainId && setMetadata((prev) => ({
             ...prev,
             metadata_Url: metadata_Url,
