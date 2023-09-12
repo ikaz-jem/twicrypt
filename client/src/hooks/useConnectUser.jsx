@@ -38,11 +38,11 @@ const userConnected = useAccount({
         if (isReconnected) {
           setUserChanged(address)
           signIn(address)
-          console.log('get session from is reconected')
+          // console.log('get session from is reconected')
         }else{
           // signWalletMessage.signMessageAsync()
           // setUserChanged(address)
-          console.log('get session from first connect')
+          // console.log('get session from first connect')
        
         
           signIn(address)
@@ -74,7 +74,7 @@ useEffect(()=>{
   })
   
   
-  console.log('get session from is useEffect watch account')
+  // console.log('get session from is useEffect watch account')
 
   
   return () => {

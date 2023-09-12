@@ -136,7 +136,7 @@ const Dashboard = () => {
 
     return (
         <>
-            <div className="lg:flex bg-gradient-to-b from-[#111111] to-black bg-opacity-70 relative h-auto w-full  ">
+            <div className="lg:flex bg-gradient-to-b from-[#111111] to-black bg-opacity-70 relative h-auto w-full   ">
 
                 <div className="h-full lg:z-10 lg:sticky xl:sticky xl:top-22 lg-top-20 overflow-x-none fixed top-0  z-10  ">
                     <Menu show={show}setShowPanel={setShowPanel} />
@@ -144,7 +144,7 @@ const Dashboard = () => {
                 {/*                         
         <a className="link" onClick={showIndex}> showIndex</a >
     <a className="link" onClick={showTable}> showTable</a > */}
-                <div className="flex flex-col gap-0  w-full relative  h-full   container--xxxlarge px-10 pl-28 sm:pl-25 md:pl-24 lg:pl-5  container--center ">
+                <div className="flex  flex-col w-full h-full pl-20  md:pl-18 lg:pl-0">
                     {/* {RenderMenu()} */}
 
 
@@ -156,8 +156,8 @@ const Dashboard = () => {
                     </SidePanel >
 
                     {/* <MenuTransition show={show}> */}
-
-                    <div className="w-full h-auto relative   ">
+                    {/* flex flex-col gap-0  w-full relative  h-full   container--xxxlarge px-10 pl-28 sm:pl-25 md:pl-24 lg:pl-5  container--center  */}
+                    <div className="w-full h-auto relative lg:px-10   ">
                         <Outlet />
                         {/* {Components[component]} */}
                         {/* <Routes>

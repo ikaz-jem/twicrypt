@@ -105,10 +105,10 @@ const MintPage = () => {
         <div className="my-10 flex flex-col gap-2">
 
 
-                <SingleAccordion title={'Mining'} desc={'some descriptions'} />
-                <SingleAccordion title={'Interaction Mining'} desc={'some descriptions'} />
-                <SingleAccordion title={'All Assets'} desc={'some descriptions'} />
-                <SingleAccordion title={'title'} desc={'some descriptions'} />
+                <SingleAccordion title={'Mining'}  children={null}/>
+                <SingleAccordion title={'Interaction Mining'}  children={null}/>
+                <SingleAccordion title={'All Assets'}  children={null} />
+                <SingleAccordion title={'title'}  children={null} />
                 </div>
                
 

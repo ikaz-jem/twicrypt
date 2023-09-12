@@ -11,12 +11,15 @@ export const MarketPlaceSlice = createSlice({
 
     name: 'marketPlace',
     initialState: {
+       
         marketplacePage:'all-nfts',
         nftFilter: {
-        chain:'bsctestnet',
-        execute: true,
-        limit: 50
-    }
+                    chain:'bsctestnet',
+                    execute: true,
+                    limit: 50,
+                    },
+          allListings:null,
+          myListings:null,               
     },
     reducers: {
 
@@ -28,6 +31,12 @@ export const MarketPlaceSlice = createSlice({
             }  ,
             setMarketplacePage:(state,action)=>{
                 state.marketplacePage = action.payload
+            },
+            setListings:(state,action)=>{
+                state.allListings = action.payload
+            },
+            setMyListings:(state,action)=> {
+                state.myListings = action.payload
             }
 
     }
@@ -35,7 +44,7 @@ export const MarketPlaceSlice = createSlice({
 })
 
 
-export const nftFilter = state=> state.MarketPlaceSlice.nftFilter
-export const marketplacePage = state=> state.marketPlace.marketplacePage
 
-export const {setFilter,setMarketplacePage} = MarketPlaceSlice.actions
+
+//actions
+export const {setFilter,setMarketplacePage,setListings,setMyListings} = MarketPlaceSlice.actions

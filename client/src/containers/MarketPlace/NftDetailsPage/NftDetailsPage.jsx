@@ -8,7 +8,8 @@ import Spinner from "../../../shared/Spinner/Spinner";
 import SingleAccordionTab from "../../../shared/AccordionTabs/SingleAccordionTab";
 import { useNftOwner } from "../hooks/web3Hooks/useNftOwner";
 import SingleAccordion from "../../../shared/Accordion/SingleAccordion";
-import { MdOutlineLocalOffer, MdLabelOutline } from 'react-icons/md'
+import { MdOutlineLocalOffer, MdLabelOutline } from 'react-icons/md';
+import { BsListColumnsReverse,BsListTask } from 'react-icons/bs';
 
 const NftDetailsPage = () => {
     const location = useLocation()
@@ -112,7 +113,7 @@ const NftDetailsPage = () => {
         } else return (
             <div className="flex flex-col justify-start items-center  rounded-xl  bg-[#000000d2] w-auto h-auto overflow-hidden border border-neutral-900 relative ">
                 {/* <div className="bg-[#4b005575] w-full h-10 "> hell</div> */}
-                <img onLoad={loaded} src={generateImageLink()} alt="Fetching image" className=" object-contain w-80 relative rounded-b-md" />
+              {<img onLoad={loaded} src={generateImageLink()} alt="Fetching image" className=" object-contain w-80 relative rounded-b-md" />}
             </div>
         )
     }
@@ -124,7 +125,7 @@ const NftDetailsPage = () => {
                 <div className="my-5 px-5 rounded-2xl ">
                     <div className="  rounded-xl w-full flex flex-col items-start justify-center">
                         <h2 className="m-0 p-0 font-extrabold">{metadata?.metadata?.name}</h2>
-                        <p className="text-left text-neutral-400 font-bold text-sm p-0 m-0">Owned by : {nftOwner?.slice(0, 20)}...</p>
+                        <p className="text-left text-neutral-400 font-bold text-sm p-0 m-0">Owned by : {isOwner ? "you": nftOwner?.slice(0, 30)+" ..."}</p>
                     </div>
 
                     {isVisitorConnected ?
@@ -133,7 +134,7 @@ const NftDetailsPage = () => {
 
                             <div className="px-5 border-b border-neutral-700">
                                 <p className="text-left m-0 p-0">{metadata?.metadata?.description || 'getting informations ...'}</p>
-                                <p className="text-left m-0 p-0"> nft owner ? : {isOwner.toString()}</p>
+                                {/* <p className="text-left m-0 p-0"> nft owner ? : {isOwner.toString()}</p> */}
                                
                             </div>
                             <div className="px-5 py-5">
@@ -161,16 +162,16 @@ const NftDetailsPage = () => {
         return (
             <>
                 <div className=" p-5 ">
-                    <SingleAccordion title={"offers"} Icon={MdOutlineLocalOffer} >
+                    <SingleAccordion title={"offers"} Icon={MdOutlineLocalOffer} open={true} >
 
-                        {isVisitorConnected ?
+         
                             <div className="border border-neutral-700  rounded-b-2xl bg-neutral-900 flex flex-col overflow-hidden ">
 
-                                <li className="flex justify-center items-center mx-auto px-auto w-full pl-3  py-2 border-b bg-[#0003] font-bold border-neutral-800" >
-                                    <div className="w-1/4 flex">item</div>
-                                    <div className="w-1/4 flex">item</div>
-                                    <div className="w-1/4 flex">item</div>
-                                    <div className="w-1/4 flex">item</div>
+                                <li className="flex  justify-center text-white items-center mx-auto px-auto w-full pl-3  py-2 border-b bg-[#0003] font-bold border-neutral-800" >
+                                    <p className="w-1/4 flex">item</p>
+                                    <p className="w-1/4 flex">item</p>
+                                    <p className="w-1/4 flex">item</p>
+                                    <p className="w-1/4 flex">item</p>
                                 </li>
 
                                 <div className="w-full overflow-y-scroll h-60" >
@@ -178,16 +179,16 @@ const NftDetailsPage = () => {
 
                                     <ul className=" flex w-full  flex-col justify-start items-start m-0 p-0" role="table">
                                         <li className=" flex justify-start items-start w-full border-b border-neutral-800 py-3 pl-3 " role="row">
-                                            <div className="w-1/4 flex">item</div>
-                                            <div className="w-1/4 flex">item</div>
-                                            <div className="w-1/4 flex">item</div>
-                                            <div className="w-1/4 flex">item</div>
+                                            <p className="w-1/4 flex">item</p>
+                                            <p className="w-1/4 flex">item</p>
+                                            <p className="w-1/4 flex">item</p>
+                                            <p className="w-1/4 flex">item</p>
                                         </li>
                                         <li className=" flex justify-start items-start w-full border-b border-neutral-800 py-3 pl-3" role="row">
-                                            <div className="w-1/4 flex">item</div>
-                                            <div className="w-1/4 flex">item</div>
-                                            <div className="w-1/4 flex">item</div>
-                                            <div className="w-1/4 flex">item</div>
+                                            <p className="w-1/4 flex">item</p>
+                                            <p className="w-1/4 flex">item</p>
+                                            <p className="w-1/4 flex">item</p>
+                                            <p className="w-1/4 flex">item</p>
                                         </li>
 
                                     </ul>
@@ -195,7 +196,7 @@ const NftDetailsPage = () => {
                                 </div>
 
 
-                            </div> : "please connect your wallet "}
+                            </div> 
 
                     </SingleAccordion >
                 </div>
@@ -208,10 +209,27 @@ const NftDetailsPage = () => {
 
         return (
             <>
-                <div className=" py-5 w-full">
-                    <SingleAccordion title={"Traits"} Icon={MdLabelOutline} >
+                <div className=" my-5 w-full bg-neutral-900 border border-neutral-700">
+                    <SingleAccordion title={"description"} Icon={BsListColumnsReverse} className={"rounded-none "} open={true}>
                     
-                            <div className="border border-neutral-700 w-auto rounded-b-2xl bg-neutral-900 flex flex-wrap p-2 ">
+                            <div className=" w-auto  bg-neutral-900 flex flex-wrap p-2 ">
+                                        {
+                                            
+                                                    <div  className="flex gap-0 p-1  flex-wrap relative w-full">
+                                                        <div className="border border-neutral-700 p-2 rounded-md flex flex-col w-40 grow bg-[#aaa1]">
+                                                        <p className="text-left m-0 p-0">{metadata?.metadata?.description || 'getting informations ...'}</p>
+                                                       
+                                                        </div>
+
+                                                    </div>
+                                            
+                                        }
+                            </div> 
+
+                    </SingleAccordion >
+                    <SingleAccordion title={"Traits"} Icon={MdLabelOutline} className={"rounded-none "} open={false}>
+                    
+                            <div className=" w-auto  bg-neutral-900 flex flex-wrap p-2 ">
                                         {
                                             metadata?.metadata?.attributes?.map((att, i) => {
                                                 return (
@@ -227,6 +245,28 @@ const NftDetailsPage = () => {
                             </div> 
 
                     </SingleAccordion >
+                    <SingleAccordion title={"Details"} Icon={BsListTask} className={"rounded-none "} open={false}>
+                    
+                            <div className=" w-auto  bg-neutral-900 flex flex-wrap p-2 ">
+                                        {
+                                            metadata?.metadata?.attributes?.map((att, i) => {
+                                                return (
+                                                    <div key={i} className="flex gap-0 p-1  flex-wrap relative w-1/3">
+                                                        <div className="border border-neutral-700 p-2 rounded-md flex flex-col w-40 grow bg-[#aaa1]">
+                                                            <p className="p-0 m-0">{att.trait_type}: </p>
+                                                            <p className="p-0 m-0"> {att.value} </p>
+                                                        </div>
+
+                                                    </div>)
+                                            })
+                                        }
+                            </div> 
+
+                    </SingleAccordion >
+
+
+
+                    
                 </div>
 
             </>
@@ -234,7 +274,7 @@ const NftDetailsPage = () => {
     }
 
     return (
-        <div className="m-0  shadow-lg  border-t   border-[#353d284b] h-auto relative flex rounded-xl overflow-hidden  flex-wrap mb-10">
+        <div className="m-0 mb-10  shadow-lg  border-t   border-[#353d284b] h-auto relative flex rounded-xl overflow-hidden  flex-wrap ">
             <div className="flex h-full w-full m-2 flex-wrap lg:flex-nowrap gap-0 lg:gap-0  ">
                 <div className=" flex flex-col gap-2 w-full  lg:w-1/2 ">
 

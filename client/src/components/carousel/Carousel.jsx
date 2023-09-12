@@ -17,9 +17,10 @@ const SvgTitle = () => {
 
     return (
         <>
-            <div className="container-xxxxlg ">
-                <h1 className="hero_title animate-bounce ">TwiCrypt</h1>
-                <h4 className=" heading bg-dark">1# All in one Decentralized Application ... </h4>
+            <div className="container-xxxxlg flex container--center items-center justify-center ">
+            <img src={logo} className="opacity-10" />
+                <h1 className="hero_title animate-bounce "> TwiCrypt</h1>
+                {/* <h4 className=" heading bg-dark">1# All in one Decentralized Application ... </h4> */}
             </div>
         </>
     )
@@ -93,7 +94,7 @@ const Carousel = () => {
                             </div>
                         </li>)
                     }) :
-                    PlaceHolder.map((item, i) => {
+                    PlaceHolder?.map((item, i) => {
                         return (<li className="frames__item glide__slide " key={i}>
                             <div dataref="slidereveal[el]">
 

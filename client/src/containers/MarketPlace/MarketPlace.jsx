@@ -11,6 +11,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { setMarketplacePage,setFilter } from "../../app/features/MarketPlace/MarketplaceSlice";
 ///web3
 import { useDispatch } from "react-redux";
+import CreateListing from "./CreateListing/CreateListing";
 //all-nfts
 
 
@@ -47,16 +48,17 @@ return ()=> controller.abort()
     'all-listings': <NftsPage />,
     'my-listings': <MyListings />,
     'my-nfts': <MyNfts />,
-    5: <NftsPage  />}
+    'create-listing': <CreateListing />
+}
 
     return (
         <React.Fragment>
-            <div className="lg:flex bg-gradient-to-b from-[#111111] to-black bg-opacity-70 relative h-auto w-full  ">
+            <div className="lg:flex  relative h-auto w-auto   ">
 
                 <div className="h-full lg:z-10 lg:sticky xl:sticky xl:top-22 lg-top-20 overflow-x-none fixed top-0  z-10  ">
 
                 </div>
-                <div className="flex flex-col gap-0  w-full relative  h-full   container--xxxlarge px-10 pl-28 sm:pl-25 md:pl-26 lg:pl-10  container--center ">
+                <div className="flex flex-col gap-0  w-full relative  h-full   container--xxxlarge px-10 pl-18 mx-auto sm:pl-25 md:pl-26 lg:pl-10  container--center ">
                     <div className="w-full h-auto relative   ">
                         <TabFilter  page={page} setSearchParams={setSearchParams} />
                <div className="w-80 flex items-center justify-start">
@@ -65,11 +67,11 @@ return ()=> controller.abort()
                </div>
                         <Suspense fallback={
                             <>
-                                <div className=" h-screen  flex justify-center items-center " >
+                                <div className=" h-screen  flex justify-center items-center  w-auto" >
                                     <HashLoader size={50} color="#fff" style={{ text: 'center' }} />
                                 </div>
                             </>}>
-                        { marketPage && Components[marketPage]}
+                        { marketPage && Components[marketPage] ?  Components[marketPage] : <h1>something wrong !!</h1> }
                         </Suspense>
                     </div>
                 </div>

@@ -35,6 +35,10 @@ import DailyRewards from "../containers/DailyRewards/DailyRewards";
 import Community from "../containers/Community/Community";
 import MarketPlace from "../containers/MarketPlace/MarketPlace";
 import NftDetailsPage from "../containers/MarketPlace/NftDetailsPage/NftDetailsPage";
+import UserProfile from "../containers/UserProfile/UserProfile";
+import CreateListing from "../containers/MarketPlace/CreateListing/CreateListing";
+
+
 const Pages = [
     {
         path: '/',
@@ -120,7 +124,7 @@ const NestedRoutes = [
         requiresAuth: false,
     },
     {
-        path: 'mint',
+        path:'mint',
         component: MintPage,
         requiresAuth: false,
     },
@@ -139,6 +143,16 @@ const NestedRoutes = [
         component: TokenSale,
         requiresAuth: false,
     },
+    {
+        path: 'account',
+        component: UserProfile,
+        requiresAuth: false,
+    },
+    {
+        path: 'account/:address',
+        component: UserProfile,
+        requiresAuth: false,
+    },
 
 ]
 
@@ -153,6 +167,9 @@ const marketPlaceRoutes = [
         component: MarketPlace,
         requiresAuth: false,
     },
+
+
+ 
 
 
 
@@ -186,7 +203,7 @@ const AppRoutes = () => {
                                     <Route key={index} path={path} element={<Component />} />
                             })}
 
-                            <Route path="marketplace/*" element={<MarketPlace />}>
+                            <Route path="marketplace" element={<MarketPlace />}>
                                 <Route index element={<NftsPage />} />
                                 {marketPlaceRoutes.map(({ component: Component, path, requiresAuth }, index) => {
                                     return requiresAuth && !isLogedIn ? null
