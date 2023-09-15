@@ -31,11 +31,8 @@ const Carousel = lazy(() => import('../components/carousel/Carousel'));
 const Home = () => {
 
   const dispatch = useDispatch()
-  const controller = new AbortController()
-  const [show, setShow] = useState(true)
+    const [show, setShow] = useState(true)
 
-
-  const Navigate = useNavigate()
 
   const showPopup = () => {
     const popToast = toast.custom(
@@ -46,7 +43,6 @@ const Home = () => {
       ),
       { position: "bottom-right", duration: 50000 }
     );
-    console.log('popup invoked')
     return popToast
   }
 

@@ -1,8 +1,7 @@
 
 import CarouselTransition from "../../shared/transitions/CarouselTransition";
 import './style.css';
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 import SectionWhy from "../../components/sectionWhy/SectionWhy";
 
@@ -17,55 +16,25 @@ import QuickLinks from "./components/QuickLinks";
 import TwiWallet from "./components/TwiWallet";
 import Link2 from "./components/Link2";
 import Nfts from "./components/Nfts/NftDetailPage";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import QuickMint from "./components/Nfts/QuickMint";
+import { useDispatch, useSelector } from "react-redux";
+import { setMenuPosition, toggleMintPanel } from "../../app/features/States/StatesSlice";
 
 const Dashboard = () => {
 
-    const [show, setShow] = useState(false)
-    const [component, setComponent] = useState('home')
-    const [userNft, setUserNft] = useState()
-    const [showPanel, setShowPanel] = useState(false)
-
-    useEffect(() => {
-
-        // const fetchNFT = async() =>{
-        //     const endpoint = 'https://api.opensea.io/v2/chain/ethereum/account/0x21111b0C84E33D2c3aF2EA3E4D851186b9F204C0/nfts?limit=50'
-        //     const key = "96522280541248628ae1852268fb8dab"
-        // const  headers = {
-        //     'accept': 'application/json' ,
-        //   'X-API-KEY': key
-        // }
-
-
-        //   const response = await axios.get(endpoint , {headers}).then((res)=> res.data.nfts)
-        // console.log(response)
-        // setUserNft(response)
-        // }
-
-
-        // fetchNFT()
-    }, [])
-
-
-    // const {id} = useParams();
-    const location = useLocation()
+    const dispatch = useDispatch()
+    const menuPosition = (data) => dispatch(setMenuPosition(data))
+    const togglePanel = () => dispatch(toggleMintPanel())
+    
+    const showPanel = useSelector(state => state.states.showMintPanel)
+    const width = window.innerWidth
+const location = useLocation()
 
 
     useEffect(() => {
-        // location.pathname == '/earn/home' && setComponent('home')
-        // location.pathname == '/earn/stats' && setComponent('stats')
-        // location.pathname == '/earn/nfts' && setComponent('nfts')
-
-        setShow(false)
-
-        setTimeout(() => {
-
-            setShow(true)
-
-        }, 1000)
-        //    id!= undefined && setComponent(id)
-    }, [component, location.pathname])
+        width <= 1250 && menuPosition(true)
+    }, [width, location.pathname])
 
 
     const topMenuNavigation = [
@@ -139,7 +108,7 @@ const Dashboard = () => {
             <div className="lg:flex bg-gradient-to-b from-[#111111] to-black bg-opacity-70 relative h-auto w-full   ">
 
                 <div className="h-full lg:z-10 lg:sticky xl:sticky xl:top-22 lg-top-20 overflow-x-none fixed top-0  z-10  ">
-                    <Menu show={show}setShowPanel={setShowPanel} />
+                    <Menu />
                 </div>
                 {/*                         
         <a className="link" onClick={showIndex}> showIndex</a >
@@ -151,8 +120,8 @@ const Dashboard = () => {
                     <MenuTopLinks navigation={topMenuNavigation} />
                     {/* <RenderStats /> */}
 
-                    <SidePanel show={showPanel} setShow={setShowPanel} >
-                        <QuickMint setShowPanel={setShowPanel} />
+                    <SidePanel show={showPanel} togglePanel={togglePanel} >
+                        <QuickMint togglePanel={togglePanel} />
                     </SidePanel >
 
                     {/* <MenuTransition show={show}> */}

@@ -3,6 +3,7 @@ import { Fragment } from "react"
 import { useState } from "react"
 import { useEditListing } from "../hooks/web3Hooks/useEditListing";
 import {BiEdit} from 'react-icons/bi'
+import { bigIntToFormated } from "../../../utils/web3Functions";
 
 const EditListingModal =({nft})=> {
     let [isOpen, setIsOpen] = useState(false)
@@ -41,12 +42,11 @@ const EditListingModal =({nft})=> {
 
       
     };
-    console.log(newPrice)
+
     const handleChangePrice =(e)=> {
         setNewPrice(Number(e.target.value))
         e.target.setCustomValidity('')
     }
-    console.log(newPrice)
 
     return (
       <>
@@ -90,19 +90,23 @@ const EditListingModal =({nft})=> {
                       as="h3"
                       className="text-lg font-medium leading-6 text-neutral-300"
                     >
-                      {`Edit  ${nft.tokenId}`}
+                      {`Edit  ${nft?.name}`}
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-neutral-200">
                        {`change price for : ${nft.name || nft.tokenId }`}
 
                       </p>
+                      <img src={nft?.image} alt="Art image" className="rounded-2xl" />
 
                     </div>
 <form  onSubmit={(e)=> editListing(e)}>
-  <input  required className='rounded-md mt-5 px-5 outline-none border text-neutral-900 ' type="text" placeholder="new price" onChange={handleChangePrice}/>
+
+  <p className="p-0 mt-3">set New price :</p>
+  <input  required className='rounded-md mt-2 px-5 outline-none border text-neutral-900 ' type="text" placeholder="new price" onChange={handleChangePrice}/>
   
-                    <div className="mt-4 flex gap-5">
+                      <p className="p-0 text-xs pt-2 ">previous Price : {bigIntToFormated(Number(nft?.price),18) + ' BNB'}</p>
+                    <div className="mt-2 flex gap-5">
                       <button
                         type="submit"
                         className="inline-flex justify-center items-center gap-2 rounded-md border border-transparent bg-blue-500 hover:bg-pink-500 px-4 py-2 text-sm font-medium text-white transition-all duration-300"

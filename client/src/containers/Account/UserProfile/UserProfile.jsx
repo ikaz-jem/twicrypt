@@ -1,7 +1,7 @@
-import NftSliderCat2 from "../Earn/components/NftSlider/NftSliderCat2"
+import NftSliderCat2 from "../../Earn/components/NftSlider/NftSliderCat2"
 import React from "react"
-import SingleAccordionTab from "../../shared/AccordionTabs/SingleAccordionTab"
-import SingleAccordion from "../../shared/Accordion/SingleAccordion"
+import SingleAccordionTab from "../../../shared/AccordionTabs/SingleAccordionTab"
+import SingleAccordion from "../../../shared/Accordion/SingleAccordion"
 
 const UserProfile = () => {
 

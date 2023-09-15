@@ -40,3 +40,12 @@ export const getUserSession = createAsyncThunk(
     return res
     }
 )
+
+
+
+export const startSession = createAsyncThunk(
+    'session/startSesion',
+    async(data)=> {
+return data
+    }
+)

@@ -20,6 +20,7 @@ export const sessionSlice = createSlice({
         },
         logOut:(state)=>{
         state.isLoggedIn=false
+        state.address=null
         },
         setUserData : (state,action)=>{
             state = {...state ,...action.payload}

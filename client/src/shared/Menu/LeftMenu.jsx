@@ -5,8 +5,9 @@ import { RiNftFill } from "react-icons/ri";
 import { AiOutlineArrowDown} from 'react-icons/ai'
 import { BsArrowBarDown} from 'react-icons/bs'
 
-
 import {  FcDoughnutChart, FcDownLeft, FcEmptyTrash, FcPortraitMode,FcAnswers,FcElectronics,FcCurrencyExchange } from "react-icons/fc";
+import { useDispatch } from "react-redux";
+import { setMenuPosition,toggleMintPanel } from "../../app/features/States/StatesSlice";
 
 const  NAVIGATION_DEMO_2 = [
   {
@@ -78,35 +79,14 @@ const  NAVIGATION_DEMO_2 = [
 
 
 const LeftMenu= ({
-  onClickClose,show ,setShowPanel ,changePosition
+  onClickClose  
 }) => {
   const [width,setWidth]=useState({
     class: "w-20 ",
     isOpen: false
   })
 
-const navigate = useNavigate()
-
-
-// const handleChangePage = async (item,e)=> {
-// e.preventDefault()
-
-// if(component == item.page) {
-//   return null 
-// } else 
-//  await setShow(false)
-//  setTimeout(()=>{
-//  setComponent(item.page)
-//  setShow(true)
-//  navigate(item.component)
-
-//  },500)
-
-
-// }
-
-
-
+const dispatch = useDispatch()
 
   const data = NAVIGATION_DEMO_2
   
@@ -114,7 +94,8 @@ const navigate = useNavigate()
     width.class == "w-20" ? setWidth({isOpen: true,class:'w-[50vw] md:w-[30vw] sm:w-[25vw] lg:w-[25vw] xl:w-[15vw]'}) : setWidth({isOpen: false,class:'w-20'})
   }
 
-const ChangePosition =()=> changePosition(false)
+const ChangePosition =()=>dispatch(setMenuPosition(false))
+const toggleMint =()=>dispatch(toggleMintPanel())
 
 const burgerButton = ()=>{
 return  <button
@@ -257,7 +238,7 @@ return  <button
         <div className={`flex ${width.isOpen && "flex-row"}  mt-5 text-slate-300 text-sm items-center justify-center`}>
           <span>
           <div className={`flex ${!width.isOpen && "flex-col"} gap-2 mt-5 text-slate-300 text-sm items-center justify-center`}>
-        <RiNftFill className="text-5xl p-2 bg-neutral-800 hover:bg-pink-600 transition-all rounded-full cursor-pointer " onClick={()=>setShowPanel(true)}/> 
+        <RiNftFill className="text-5xl p-2 bg-neutral-800 hover:bg-pink-600 transition-all rounded-full cursor-pointer " onClick={()=> toggleMint()}/> 
      
 
         {/* </ButtonPrimary> */}

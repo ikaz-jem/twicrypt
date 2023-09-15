@@ -12,6 +12,7 @@ import { setMarketplacePage,setFilter } from "../../app/features/MarketPlace/Mar
 ///web3
 import { useDispatch } from "react-redux";
 import CreateListing from "./CreateListing/CreateListing";
+import AllListings from "./AllListings/AllListings";
 //all-nfts
 
 
@@ -45,7 +46,7 @@ return ()=> controller.abort()
 
     const Components = {
     'all-nfts': <NftsPage  />,
-    'all-listings': <NftsPage />,
+    'all-listings': <AllListings />,
     'my-listings': <MyListings />,
     'my-nfts': <MyNfts />,
     'create-listing': <CreateListing />
@@ -53,11 +54,8 @@ return ()=> controller.abort()
 
     return (
         <React.Fragment>
-            <div className="lg:flex  relative h-auto w-auto   ">
+            <div className="lg:flex  relative h-auto w-auto  ">
 
-                <div className="h-full lg:z-10 lg:sticky xl:sticky xl:top-22 lg-top-20 overflow-x-none fixed top-0  z-10  ">
-
-                </div>
                 <div className="flex flex-col gap-0  w-full relative  h-full   container--xxxlarge px-10 pl-18 mx-auto sm:pl-25 md:pl-26 lg:pl-10  container--center ">
                     <div className="w-full h-auto relative   ">
                         <TabFilter  page={page} setSearchParams={setSearchParams} />
@@ -67,7 +65,7 @@ return ()=> controller.abort()
                </div>
                         <Suspense fallback={
                             <>
-                                <div className=" h-screen  flex justify-center items-center  w-auto" >
+                                <div className=" h-screen  flex justify-center items-center  w-auto " >
                                     <HashLoader size={50} color="#fff" style={{ text: 'center' }} />
                                 </div>
                             </>}>

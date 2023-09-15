@@ -4,12 +4,11 @@ import { toDecimals } from '../../../../utils/web3Functions'
 import Popup from '../../../../shared/popup/Popup'
 import toast from 'react-hot-toast'
 import { marketplace_contract } from '../../data/Addresses'
-
+import abi from '../../abi/marketPlace2.json'
 export const useEditListing = (props) => {
     const [approveHash, setApproveHash] = useState(null)
     
     const { tokenId ,image ,name ,price} = props
-    const abi = require('../../abi/marketPlace2.json');
 
     const toNumber = (num)=> {
         return Number(num)
@@ -17,7 +16,7 @@ export const useEditListing = (props) => {
 
     const canselListing = useContractWrite({
         address: marketplace_contract && marketplace_contract,
-        abi: abi,
+        abi: abi&&abi,
         functionName: 'editListing',
         chainId: 97,
         args: [price && toDecimals(price,18) ,tokenId && toNumber(tokenId)],

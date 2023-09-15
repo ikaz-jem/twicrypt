@@ -1,24 +1,26 @@
 
 import {useSelector } from "react-redux/es/hooks/useSelector"
 import { useContractRead, useNetwork } from "wagmi"
-
+import abi from '../../abi/ERC721.json'
 
 export const useHasNft = ({contract ,execute ,chain})=> {
 
-const abi = require('../../abi/ERC721.json')
 let isOwner = false
 const {address } = useSelector((state=>state.session))
 
 
 const {data,isLoading,hasError}= useContractRead({
 address:contract && contract,
-abi:abi,
+abi:abi && abi,
 functionName:'tokensOfOwner',
 args:[address && address],
 enabled:execute,
-chainId: chain && chain
+chainId: chain && chain,
+enabled:address ? true : false
 
 })
+
+
 let nftOwner=data
 let pageVisitor = address
 let error = hasError

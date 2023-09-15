@@ -3,15 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 
-
-
-
-
 export const MarketPlaceSlice = createSlice({
 
     name: 'marketPlace',
     initialState: {
-       
         marketplacePage:'all-nfts',
         nftFilter: {
                     chain:'bsctestnet',
@@ -19,10 +14,14 @@ export const MarketPlaceSlice = createSlice({
                     limit: 50,
                     },
           allListings:null,
-          myListings:null,               
+          mylistings:null,  
+          createListing:null ,
+          mynfts:null,
+          nftDetailsPageState:{
+            metadata:null
+          },          
     },
     reducers: {
-
             setFilter:(state,action)=>{
                 state.nftFilter = {
                     ...state.nftFilter,
@@ -36,7 +35,26 @@ export const MarketPlaceSlice = createSlice({
                 state.allListings = action.payload
             },
             setMyListings:(state,action)=> {
-                state.myListings = action.payload
+                state.mylistings = action.payload
+            },
+            setListingDetails:(state,action)=>{
+                state.createListing={
+                    ...state.createListing,
+                    ...action.payload
+                }
+            },
+            setMyNfts:(state,action)=>{
+                state.mynfts = {
+                    ...state.mynfts,
+                    ...action.payload
+                }
+            },
+            setNftDetailsPageState:(state,action)=>{
+
+                state.nftDetailsPageState = {
+                    ...state.nftDetailsPageState,
+                    ...action.payload,
+                }
             }
 
     }
@@ -45,6 +63,13 @@ export const MarketPlaceSlice = createSlice({
 
 
 
-
 //actions
-export const {setFilter,setMarketplacePage,setListings,setMyListings} = MarketPlaceSlice.actions
+export const {
+    setFilter,
+    setMarketplacePage,
+    setListings,
+    setMyListings,
+    setListingDetails,
+    setMyNfts,
+    setNftDetailsPageState
+} = MarketPlaceSlice.actions

@@ -1,32 +1,59 @@
 
-import {useSelector } from "react-redux/es/hooks/useSelector"
-import { useContractRead, useNetwork } from "wagmi"
+import { useSelector } from "react-redux/es/hooks/useSelector"
+import { useContractRead } from "wagmi"
+import abi from '../../abi/ERC721.json'
+import { useDispatch } from "react-redux"
+import { setNftDetailsPageState } from "../../../../app/features/MarketPlace/MarketplaceSlice"
+import { useEffect } from "react"
+
+export const useNftOwner = () => {
+
+    const dispatch = useDispatch()
+    const { address } = useSelector((state => state.session))
+    const setNftDetailsData = (data) => dispatch(setNftDetailsPageState(data))
+const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
 
 
-export const useNftOwner = ({contract , tokenId,execute ,chain})=> {
+    let isOwner = false
+    const { data, isLoading, hasError } = useContractRead({
+        address: nftDetails?.contractAddress && nftDetails?.contractAddress,
+        abi: abi && abi,
+        functionName: 'ownerOf',
+        args: [nftDetails?.tokenId && nftDetails?.tokenId],
+        enabled: nftDetails?.tokenId && nftDetails?.contractAddress && nftDetails?.chainId && true,
+        chainId: nftDetails?.chainId && nftDetails?.chainId,
+        onError(){
+            return null
+        }
 
-const abi = require('../../abi/ERC721.json')
-let isOwner = false
-const {address } = useSelector((state=>state.session))
+    })
+    let nftOwner = data
+    let pageVisitor = address
+    let error = hasError
+    let loading = isLoading
+    let isVisitorConnected = address ? true : false
+    address === nftOwner ? isOwner = true : isOwner = false
 
 
-const {data,isLoading,hasError}= useContractRead({
-address:contract && contract,
-abi:abi,
-functionName:'ownerOf',
-args:[tokenId && tokenId],
-enabled:execute,
-chainId: chain && chain
+    //setting store with comming data
+    useEffect(()=>{
+            data ? setNftDetailsData({ nftOwner:nftOwner, 
+                pageVisitor:pageVisitor, 
+                isOwner:isOwner, 
+                loading:loading, 
+                error:error, 
+                isVisitorConnected:isVisitorConnected,
+             }) : setNftDetailsData({ nftOwner:nftOwner, 
+                pageVisitor:pageVisitor, 
+                isOwner:isOwner, 
+                loading:loading, 
+                error:error, 
+                isVisitorConnected:isVisitorConnected,
+             })
 
-})
-let nftOwner=data
-let pageVisitor = address
-let error = hasError
-let loading = isLoading
-let isVisitorConnected = address ? true : false
-// chain && console.log(getChainId())
-address === nftOwner ? isOwner = true : isOwner = false
-return {nftOwner ,pageVisitor, isOwner ,loading , error ,isVisitorConnected}
+        },[data,address])
+
+       return { nftOwner, pageVisitor, isOwner, loading, error, isVisitorConnected }
 
 
 }

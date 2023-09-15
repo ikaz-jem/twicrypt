@@ -8,6 +8,7 @@ return formated
 
 
 const toDecimals = (number, decimals) => {
+  
   const multiplier = 10 ** decimals;
   return number * multiplier;
 }

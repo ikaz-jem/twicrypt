@@ -4,12 +4,12 @@ import NavItem from "../../../../shared/NavItem/NavItem"
 import NumberInput from "../../../../shared/NumberInput/NumberInput"
 
 const
-    QuickMint = ({setShowPanel}) => {
+    QuickMint = ({togglePanel}) => {
 
 const handleSwithAdvancedMode = ()=> {
 
 Navigate('/earn/mint')
-setShowPanel(false)
+togglePanel()
 
 }
 

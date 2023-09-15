@@ -1,5 +1,5 @@
 import { Transition } from "@headlessui/react";
-import React, { FC } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader";
 import toast from "react-hot-toast";
@@ -11,7 +11,8 @@ const Popup= ({
   button,
   show,
   productImage,
-  t
+  t,
+  showSpinner
   
 
 }) => {
@@ -46,22 +47,22 @@ const Popup= ({
     return (
       <div className="flex p-0 m-0 ">
         <div className="h-24 w-20 flex-shrink-0 overflow-hidden rounded-xl ">
-         {productImage&& <img
+         {productImage ? (<img
             src={productImage}
             alt={'name hello from the other side'}
             className="h-full w-full object-cover object-center "
-          /> ||<img
+          />) :(<img
           src={logo}
           alt={'name hello from the other side'}
-          className="h-full w-full object-cover object-center "
-        /> }
+          className="h-full w-full object-contain object-center "
+        />) }
         </div>
 
         <div className="ml-4 flex flex-1 flex-col ">
           <div>
             <div className="flex justify-between items-start ">
               <div>
-                <h5 className="text-sm font-medium m-0 p-0 text-left word-break break-keep text-ellipsis ">{desc && desc || ''}</h5>
+                <h5 className="text-sm font-medium m-0 p-0 text-left word-break break-keep text-ellipsis ">{desc ? desc : ''}</h5>
                 {/* <p className="mt-1 text-sm text-neutral-300 p-0 ">
                   <span className="m-0 p-0 text-left">
                     { `Natural`}
@@ -71,7 +72,7 @@ const Popup= ({
                 </p> */}
               </div>
 
-{spinner()}
+{showSpinner !== false  ? spinner() : null  }
 {/* <p className="p-0 m-0 text-white">price 150</p> */}
             </div>
           </div>
@@ -109,7 +110,7 @@ const Popup= ({
       leaveTo="opacity-0 translate-y-20"
     >
       <p className="block text-sm font-semibold leading-none m-0 p-0 text-left text-white">
-      {title && title || ''}
+      {title ? title : ''}
       </p>
       <hr className=" border-slate-700 my-4" />
       {renderProductCartOnNotify()}

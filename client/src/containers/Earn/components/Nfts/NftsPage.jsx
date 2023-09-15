@@ -59,7 +59,7 @@ const NftsPage = ({ className = "" }) => {
                                         <HashLoader size={50} color="#fff" style={{ text: 'center' }} />
                                     </div>
                                 </>}>
-                                <NftSliderCat2 />
+                                <NftSliderCat2 data={false} />
                             </Suspense>
                         }
 
@@ -90,7 +90,7 @@ const NftsPage = ({ className = "" }) => {
                         <p className="text-whie">Getting All Nfts data ...</p>
                     </div>
                     :
-                    data.map((item, index) => (
+                    data?.map((item, index) => (
                         <NftsCard data={item} key={index} />
                     ))
 
@@ -116,7 +116,7 @@ const NftsPage = ({ className = "" }) => {
                 </div>
                 {/* <hr className=" mt-5 mb-5 border-slate-700 " /> */}
                 <div className="flex flex-col  gap-10  w-auto h-auto items-center justify-center   ">
-                    <Sliders />
+                    {<Sliders />}
                     <div className="grid gap-10 place-content-center">
 
                         <RenderCards />

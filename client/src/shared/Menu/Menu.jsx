@@ -1,18 +1,20 @@
 
 import LeftMenu from "./LeftMenu"
 import BottomMenu from "./BottomMenu"
-import React, { useState } from "react"
+import { useSelector } from "react-redux"
+import { Fragment } from "react"
 
-const Menu = ({setShowPanel})=> {
-const [menuPosition , setMenuPosition] = useState(false)
+const Menu = ()=> {
+
+const position =useSelector(state=>state.states.menuposition)
 
 return (
 
-<React.Fragment>
+<Fragment>
 
- {menuPosition ? <LeftMenu changePosition={setMenuPosition}setShowPanel={setShowPanel} />  : <BottomMenu changePosition={setMenuPosition}  setShowPanel={setShowPanel}/>}
+ {position ? <LeftMenu />  : <BottomMenu />}
 
-</React.Fragment>
+</Fragment>
 
 )
 

@@ -9,8 +9,8 @@ import '../App.css';
 
 import { Toaster } from 'react-hot-toast';
 
-import Home from '../containers/Home';
 import Navbar from "../components/navbar/Navbar";
+import Home from '../containers/Home';
 import Footer from "../components/Footer";
 import Dashboard2 from "../containers/Dashboard2/Dashboard2";
 import SponsorUs from "../containers/sponsorUs/SponsorUs";
@@ -25,7 +25,7 @@ import { useSelector } from "react-redux";
 import RoutesTransition from '../shared/transitions/RoutesTransition'
 import TwiWallet from "../containers/Earn/components/TwiWallet";
 import EarnHome from "../containers/Earn/components/EarnHome";
-import MintPage from "../containers/Earn/components/Nfts/MintPage";
+import MintPage from "../containers/Earn/components/Nfts/Mint/MintPage";
 import Docs from "../containers/Docs/Docs";
 import TokenSale from "../containers/TokenSale/TokenSale";
 import Blog from "../containers/Blog/Blog";
@@ -35,9 +35,9 @@ import DailyRewards from "../containers/DailyRewards/DailyRewards";
 import Community from "../containers/Community/Community";
 import MarketPlace from "../containers/MarketPlace/MarketPlace";
 import NftDetailsPage from "../containers/MarketPlace/NftDetailsPage/NftDetailsPage";
-import UserProfile from "../containers/UserProfile/UserProfile";
+import UserProfile from "../containers/Account/UserProfile/UserProfile";
 import CreateListing from "../containers/MarketPlace/CreateListing/CreateListing";
-
+import AccountPage from '../containers/Account/AccountPage'
 
 const Pages = [
     {
@@ -145,7 +145,7 @@ const NestedRoutes = [
     },
     {
         path: 'account',
-        component: UserProfile,
+        component: AccountPage,
         requiresAuth: false,
     },
     {
@@ -176,7 +176,6 @@ const marketPlaceRoutes = [
 ]
 
 const AppRoutes = () => {
-
     const isLogedIn = useSelector(userSession)
 
     return (
@@ -190,7 +189,7 @@ const AppRoutes = () => {
 
                     <Routes>
                         {Pages.map(({ component: Component, path, requiresAuth }, index) => {
-                            return requiresAuth && !isLogedIn ? null
+                            return requiresAuth  ? null
                                 :
                                 <Route key={index} path={path} element={<Component />} />
                         })}
@@ -198,7 +197,7 @@ const AppRoutes = () => {
                         <Route path="/earn" element={<Dashboard />}>
                             <Route index element={<EarnHome />} />
                             {NestedRoutes.map(({ component: Component, path, requiresAuth }, index) => {
-                                return requiresAuth && !isLogedIn ? null
+                                return requiresAuth  ? null
                                     :
                                     <Route key={index} path={path} element={<Component />} />
                             })}
@@ -206,7 +205,7 @@ const AppRoutes = () => {
                             <Route path="marketplace" element={<MarketPlace />}>
                                 <Route index element={<NftsPage />} />
                                 {marketPlaceRoutes.map(({ component: Component, path, requiresAuth }, index) => {
-                                    return requiresAuth && !isLogedIn ? null
+                                    return requiresAuth  ? null
                                         :
                                         <Route key={index} path={path} element={<Component />} />
                                     })}

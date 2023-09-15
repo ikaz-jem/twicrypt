@@ -9,54 +9,76 @@ import { getUserSession } from "../app/features/session/sessionThunks";
 import { watchAccount } from '@wagmi/core'
 
 export const UseStartSession = (data)=>{
-
-const [userChanged,setUserChanged]=useState(null)
-
-const dispatch = useDispatch()
-
-const signWalletMessage = useSignMessage({
-    message: "Please Sign To Verify Your DC Profile Ownership, If You Don't Have one it will be automatically created for you",
-    onError() {
-      disconnect()
-     dispatch(logOut())
-    },
-    onSuccess(data) {
-      dispatch(logIn())
-    }
-  })
-
-// const getSession = async ()=> dispatch(getUserSession(userChanged));
-const signIn = (address)=> dispatch(logIn(address))
-const signOut = ()=> dispatch(logOut())
-
-
-
-
-
-const userConnected = useAccount({
+  
+  const [userChanged,setUserChanged]=useState(null)
+  
+  const dispatch = useDispatch()
+  
+  // const signWalletMessage = useSignMessage({
+    //     message: "Please Sign To Verify Your DC Profile Ownership, If You Don't Have one it will be automatically created for you",
+    //     onError() {
+      //       disconnect()
+//      dispatch(logOut())
+//     },
+//     onSuccess(data) {
+  //       dispatch(logIn())
+  //     }
+  //   })
+  
+  // const getSession = async ()=> dispatch(getUserSession(userChanged));
+  const signIn = (address)=> dispatch(logIn(address))
+  const signOut = ()=> dispatch(logOut())
+  
+  
+  
+  
+  
+  const userConnected = useAccount({
     onConnect({ address, connector, isReconnected }) {
-        if (isReconnected) {
-          setUserChanged(address)
-          signIn(address)
+      if (isReconnected) {
+        // setUserChanged(address)
+          // signIn(address)
           // console.log('get session from is reconected')
+          
         }else{
           // signWalletMessage.signMessageAsync()
-          // setUserChanged(address)
+          setUserChanged(address)
           // console.log('get session from first connect')
-       
-        
+          
+          dispatch(logIn(userConnected.address))
+          
           signIn(address)
-            }
+        }
         
-    } , 
-    onDisconnect() {
-      signOut()
-    },
-   
-  
- 
-    
-})
+      } , 
+      // onDisconnect() {
+        //   signOut()
+        // },
+        
+        
+        
+        
+      })
+      
+      useEffect(()=>{
+        // userChanged !== null && getSession()
+            var controller = new AbortController();
+            userConnected?.address && dispatch(logIn(userConnected?.address))
+
+        const unwatch = watchAccount((account) =>{
+          signIn(account.address)
+         return account.address  && setUserChanged(account.address) 
+        })
+        
+        
+        // console.log('get session from is useEffect watch account')
+      
+        
+        return () => {
+          controller.abort();
+        };
+      
+      },[userChanged])
 
 
 // const unwatch = watchAccount((account) =>{
@@ -64,24 +86,6 @@ const userConnected = useAccount({
 // })
 
 
-useEffect(()=>{
-  // userChanged !== null && getSession()
-      var controller = new AbortController();
-
-  const unwatch = watchAccount((account) =>{
-    signIn(account.address)
-   return account.address  && setUserChanged(account.address) 
-  })
-  
-  
-  // console.log('get session from is useEffect watch account')
-
-  
-  return () => {
-    controller.abort();
-  };
-
-},[userChanged])
 
 // useEffect(() => {
 //     var controller = new AbortController();

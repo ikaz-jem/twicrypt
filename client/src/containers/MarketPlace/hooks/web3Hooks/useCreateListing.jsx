@@ -5,6 +5,9 @@ import Popup from '../../../../shared/popup/Popup'
 import toast from 'react-hot-toast'
 import { marketplace_contract } from '../../data/Addresses'
 import { nft_contract } from '../../data/Addresses'
+import abi from '../../abi/marketPlace2.json'
+import erc721 from '../../abi/ERC721.json'
+
 
 export const useCreateListing = (props) => {
     const [approveHash, setApproveHash] = useState(null)
@@ -15,8 +18,6 @@ export const useCreateListing = (props) => {
 
     const { tokenId, price, value ,image ,name} = props
 
-    const abi = require('../../abi/marketPlace2.json');
-    const erc721 = require('../../abi/ERC721.json')
 
 
    
@@ -29,10 +30,10 @@ export const useCreateListing = (props) => {
 
     const listSale = useContractWrite({
         address: marketplace_contract  && marketplace_contract ,
-        abi: abi,
+        abi: abi&&abi,
         functionName: 'listSale',
         chainId: 97,
-        args: [tokenId && toNumber(tokenId), toDecimals(price, 18)],
+        args: [tokenId && toNumber(tokenId), toDecimals(price, 18),image&&image,name&&name],
         value: value && value,
         onSuccess(data, error) {
              toast.custom(
@@ -93,7 +94,7 @@ export const useCreateListing = (props) => {
                 (t) => (
                   <Popup productImage={image && image || null} show={true} t={t} button={{title:'view your listings',link:'earn/marketplace/my-listings'}} title={`${name&&name} Listed successfully !`} desc={`${name&&name} Has been listed for sale : ${price} BNB`}/>
                 ),
-                { position: "bottom-center", duration: 6000 }
+                { position: "bottom-center", duration: 5000 }
               )
            
         },

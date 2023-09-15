@@ -67,7 +67,7 @@ const AccordionTabs =(props)=> {
               <ul className='text-neutral-300' key={index}>
 
            { item?.ul?.map((li,i)=>{
-           return <li className='' key={i}>{li.title}</li>    
+           return <li className='' key={i}>{li}</li>    
         })}
             </ul> : ''
           }

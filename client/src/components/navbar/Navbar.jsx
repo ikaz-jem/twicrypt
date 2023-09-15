@@ -8,6 +8,7 @@ import logo from '../../media/logo.png'
 import { userSession } from "../../app/features/session/sessionSlice";
 import UserModal from "../../shared/userModal/UserModal";
 import PopoverMenu from "../../containers/Earn/components/MenuTopLink/Popover";
+import { useEffect } from "react";
 
 const Navbar = () => {
 
@@ -15,10 +16,7 @@ const Navbar = () => {
 const user = useSelector(userData)
 const isLogedIn = useSelector(userSession)
 
-const {userChanged:address} = UseStartSession()
-
-
-
+const {userChanged} = UseStartSession()
 
 
 return (
@@ -33,8 +31,8 @@ return (
                     
             
 <Link className='logo ' to={'./'} >
-           <img src={logo} alt="logo" className="w-10 h-10 " />
-            <p className="m-0 p-0 text-xs text-pink-600 font-bold bg-yellow-400 bord">Twi<span className="text-yellow-300 ml-1 bg-pink-600">Crypt</span></p>
+           <img src={logo} alt="logo" className="w-6 h-6 mr-1 " />
+            <p className="ml-1 p-0 text-xs text-pink-600 font-bold bg-yellow-400 bord">Twi<span className="text-yellow-300 ml-1 bg-pink-600">Crypt</span></p>
 </Link>
                     </div>
                     <div className="navbar__menu grid__column  ">

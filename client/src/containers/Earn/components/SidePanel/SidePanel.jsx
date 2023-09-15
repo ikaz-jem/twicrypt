@@ -1,12 +1,12 @@
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { AiFillCloseCircle } from 'react-icons/ai'
 
-const SidePanel=({children ,show ,setShow})=> {
+const SidePanel=({children ,show ,togglePanel})=> {
 
   return (
     <Transition.Root show={show} as={Fragment}>
-      <Dialog as="div" className="relative z-50" onClose={setShow}>
+      <Dialog as="div" className="relative z-50" onClose={()=>togglePanel()}>
         <Transition.Child
           as={Fragment}
           enter="ease-in-out duration-500"
@@ -45,7 +45,7 @@ const SidePanel=({children ,show ,setShow})=> {
                       <button
                         type="button"
                         className="relative rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-                        onClick={() => setShow(false)}
+                        onClick={() => togglePanel()}
                       >
                         <span className="absolute -inset-2.5" />
                         <span className="sr-only">Close panel</span>

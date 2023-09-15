@@ -11,7 +11,7 @@ import thunk from 'redux-thunk'
 
 //coins slice for CRUD coin operations and Data
 import { sessionSlice } from '../features/session/sessionSlice';
-
+import { StatesSlice } from '../features/States/StatesSlice';
 
 //marketplace
 import { MarketPlaceSlice } from '../features/MarketPlace/MarketplaceSlice';
@@ -31,7 +31,8 @@ if (!Symbol.observable) {
 const rootReducer = combineReducers({
 [sessionSlice.name]:sessionSlice.reducer,
 [carouselSlice.name]: carouselSlice.reducer,
-[MarketPlaceSlice.name]:MarketPlaceSlice.reducer
+[MarketPlaceSlice.name]:MarketPlaceSlice.reducer,
+[StatesSlice.name]:StatesSlice.reducer
 })
 
 const middleware = [ thunk];

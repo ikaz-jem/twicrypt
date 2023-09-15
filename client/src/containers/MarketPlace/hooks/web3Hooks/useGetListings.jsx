@@ -3,6 +3,7 @@ import { setListings } from "../../../../app/features/MarketPlace/MarketplaceSli
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { marketplace_contract } from "../../data/Addresses";
+import abi from '../../abi/marketPlace2.json'
 
 export const useGetListing = ()=> {
 const dispatch = useDispatch();
@@ -11,11 +12,10 @@ const dispatch = useDispatch();
 const setData = (data)=> dispatch(setListings(data))
 
 
-const abi = require('../../abi/marketPlace2.json')
 
         const {data,isLoading,hasError}  = useContractRead({
             address: marketplace_contract,
-            abi :abi,
+            abi :abi&&abi,
             functionName:'getActiveListings',
             chainId:97,
         })
@@ -29,7 +29,7 @@ data && setData(data);
 return ()=> controller.abort()
 },[data])
 
-
+return {isLoading,hasError}
 
 
 }

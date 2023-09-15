@@ -1,8 +1,10 @@
 import { Transition,Dialog } from "@headlessui/react"
-import { Fragment } from "react"
+import { Fragment, useEffect } from "react"
 import { useState } from "react"
 import { useCancelListing } from "../hooks/web3Hooks/useCancelListing";
 import {AiOutlineDelete} from 'react-icons/ai'
+import { unixToDate } from "../../../utils/unixToDate";
+import { bigIntToFormated, toFormated } from "../../../utils/web3Functions";
 
 
 const DeleteListingModal =({nft})=> {
@@ -17,10 +19,13 @@ const DeleteListingModal =({nft})=> {
     }
   
 
-    const cancelListing = useCancelListing({
-        tokenId:nft.tokenId && nft.tokenId,
-    })
+    const {cancelListing,approveHash} = useCancelListing({
+        tokenId:nft?.tokenId && nft.tokenId,
+        image:nft?.image && nft.image,
+        name:nft?.name && nft.name
+      })
 
+   
 
     const delist =(e) => {
       e.preventDefault()
@@ -72,12 +77,21 @@ const DeleteListingModal =({nft})=> {
                       as="h3"
                       className="text-lg font-medium leading-6 text-neutral-200"
                     >
-                      {`you are about to delete ${nft.tokenId}`}
+                      {`you are about to delist ${nft?.name}`}
                     </Dialog.Title>
                     <div className="mt-2">
                     <p className="text-sm text-neutral-200">
-                       {`are you sur you want to delist nft : ${nft.name || nft.tokenId }`}
+                       {`are you sur you want to delist nft : ${nft?.name || nft?.tokenId }`}
                       </p>
+
+                      <div className="p-5 flex flex-col gap-1 w-full">
+
+                      <img src={nft?.image} alt="Nft are" loading="lazy" className="rounded-3xl" />
+
+                      <p>name :{nft?.name}</p>
+                      <p className="w-full flex">listed at: {unixToDate( Number(nft?.listedAt))}</p>
+                      <p>price : { toFormated( Number(nft?.price),18) + ' BNB'}</p>
+                      </div>
                     </div>
   
                     <div className="mt-4 flex gap-5">
@@ -86,14 +100,14 @@ const DeleteListingModal =({nft})=> {
                         className="inline-flex justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white "
                         onClick={delist}
                       >
-                        yes Remove
+                        yes delist ✖️
                       </button>
                       <button
                         type="button"
                         className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                         onClick={closeModal}
                       >
-                        change my mind
+                        changed my mind 😎
                       </button>
                     </div>
                   </Dialog.Panel>

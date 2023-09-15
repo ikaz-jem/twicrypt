@@ -1,23 +1,25 @@
 import { useContractWrite, useWaitForTransaction } from 'wagmi'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toDecimals } from '../../../../utils/web3Functions'
 import Popup from '../../../../shared/popup/Popup'
 import toast from 'react-hot-toast'
 import { marketplace_contract } from '../../data/Addresses'
+import marketAbi from '../../abi/marketPlace2.json'
 
 export const useCancelListing = (props) => {
     const [approveHash, setApproveHash] = useState(null)
     
     const { tokenId ,image ,name} = props
-    const abi = require('../../abi/marketPlace2.json');
-
-    const toNumber = (num)=> {
+    
+      const toNumber = (num)=> {
         return Number(num)
     }
 
-    const canselListing = useContractWrite({
+
+
+    const cancelListing = useContractWrite({
         address: marketplace_contract && marketplace_contract,
-        abi: abi,
+        abi: marketAbi && marketAbi,
         functionName: 'cancelListing',
         chainId: 97,
         args: [tokenId && toNumber(tokenId)],
@@ -56,11 +58,14 @@ export const useCancelListing = (props) => {
                 ),
                 { position: "bottom-center", duration: 5000 }
               )
+             
         },
     })
-  
+  useEffect(()=>{
 
-    return canselListing
+  },[approveHash])
+
+    return {cancelListing,approveHash}
 
 
 }

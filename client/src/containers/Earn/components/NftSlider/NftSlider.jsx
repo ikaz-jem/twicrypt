@@ -6,80 +6,7 @@ import {AiFillLeftCircle ,AiFillRightCircle} from 'react-icons/ai'
 
 import Glide from "@glidejs/glide";
 
-export const CATS_DISCOVER = [
-  {
-    title: "Explore new arrivals",
-    desc: "Shop the latest <br /> from top brands",
-    thumbnailUrl: 'https://picsum.photos/204',
-    price: "bg-yellow-50",
-  },
-  {
-    title: "Digital gift cards",
-    desc: "Give the gift <br /> of choice",
-    thumbnailUrl: 'https://picsum.photos/201',
-    price: "bg-red-50",
-  },
-  {
-    title: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    thumbnailUrl: 'https://picsum.photos/500',
-    price: "bg-blue-50",
-  },
-  {
-    title: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    thumbnailUrl: 'https://picsum.photos/300',
-    price: "bg-green-50",
-  },
-  {
-    title: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    thumbnailUrl: 'https://picsum.photos/210',
-    price: "bg-green-50",
-  },
-  {
-    title: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    thumbnailUrl: 'https://picsum.photos/290',
-    price: "bg-green-50",
-  },
-  {
-    title: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    thumbnailUrl: 'https://picsum.photos/230',
-    price: "bg-green-50",
-  },
-  {
-    title: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    thumbnailUrl: 'https://picsum.photos/240',
-    price: "bg-green-50",
-  },
-  {
-    title: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    thumbnailUrl: 'https://picsum.photos/260',
-    price: "bg-green-50",
-  },
-  {
-    title: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    thumbnailUrl: 'https://picsum.photos/210',
-    price: "bg-green-50",
-  },
-  {
-    title: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    thumbnailUrl: 'https://picsum.photos/320',
-    price: "bg-green-50",
-  },
-  {
-    title: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    thumbnailUrl: 'https://picsum.photos/120',
-    price: "bg-green-50",
-  },
-];
+
 
 const NftSlider = ({data}) => {
   const id = useId();
@@ -148,7 +75,7 @@ const NftSlider = ({data}) => {
      
 
         <ul className="glide__slides m-0 p-0">
-          {CATS_DISCOVER.map((item, index) => (
+          {data.map((item, index) => (
             <li key={index} className={`flex justify-center items-center glide__slide py-8 m-0  `} >
               <NftsCard data={item}
               /> 

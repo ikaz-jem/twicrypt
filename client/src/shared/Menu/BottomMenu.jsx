@@ -7,6 +7,8 @@ import { BsArrowBarLeft } from 'react-icons/bs'
 
 
 import { FcDoughnutChart, FcDownLeft, FcEmptyTrash, FcPortraitMode, FcAnswers, FcElectronics, FcCurrencyExchange } from "react-icons/fc";
+import { setMenuPosition, toggleMintPanel } from "../../app/features/States/StatesSlice";
+import { useDispatch } from "react-redux";
 
 const NAVIGATION_DEMO_2 = [
     {
@@ -78,38 +80,18 @@ const NAVIGATION_DEMO_2 = [
 
 
 const BottomMenu = ({
-    onClickClose, show, setShowPanel, changePosition
+    onClickClose, setShowPanel
 }) => {
     const [width, setWidth] = useState({
         class: "h-20 ",
         isOpen: false
     })
 
-    const navigate = useNavigate()
+const dispatch = useDispatch()
 
-
-    // const handleChangePage = async (item,e)=> {
-    // e.preventDefault()
-
-    // if(component == item.page) {
-    //   return null 
-    // } else 
-    //  await setShow(false)
-    //  setTimeout(()=>{
-    //  setComponent(item.page)
-    //  setShow(true)
-    //  navigate(item.component)
-
-    //  },500)
-
-
-    // }
-
-
-
-
-    const data = NAVIGATION_DEMO_2
-    const toggleMenu = () => changePosition(true)
+const data = NAVIGATION_DEMO_2
+const toggleMenu = () => dispatch(setMenuPosition(true))
+const toggleMintNftPanel = ()=> dispatch(toggleMintPanel())
 
 
     const BurgerButton = () => {
@@ -251,7 +233,7 @@ const BottomMenu = ({
                 <div className="flex items-center justify-center ">
                             <div className={`   rounded-md m-0 flex items-center justify-center gap-2 `}>
                                 <BurgerButton/>
-                        <RiNftFill className="text-5xl p-2  bg-neutral-800 text-white hover:bg-pink-500 transition-all rounded-full cursor-pointer " onClick={() => setShowPanel(true)} />
+                        <RiNftFill className="text-5xl p-2  bg-neutral-800 text-white hover:bg-pink-500 transition-all rounded-full cursor-pointer " onClick={() => toggleMintNftPanel()} />
                             </div>
 
                     <ul className={`flex  items-center justify-center px-2 gap-1 space-y-1/2  overflow-y-auto   overflow-x-hidden`} >
