@@ -8,11 +8,13 @@ import { MdOutlineLocalOffer } from 'react-icons/md'
 import { unixToDate } from "../../../utils/unixToDate";
 import { useEffect } from "react";
 import Spinner from "../../../shared/Spinner/Spinner";
-
+import { Link } from "react-router-dom";
+import { nft_contract } from "../data/Addresses";
 const UserListings = ()=> {
 
 const myListings = useSelector(state=>state?.marketPlace?.mylistings)
 const {address} = useSelector(state=>state.session)
+
 
 
 useEffect(()=> {
@@ -31,11 +33,9 @@ const userHasListings =  checkListing()
 
 
 
-
 const RenderMyListings = ()=> {
 return(
 <>
-
     {
         myListings?.length > 0  && userHasListings ? myListings?.map((item, i) => {
 
@@ -47,12 +47,12 @@ const price = Number(item?.price)
 const tokenId = Number(item?.tokenId)
 
                 return (
-                    <div key={i} className=" flex justify-start items-center w-full border-b border-neutral-800 py-2 pl-4 gap-5" >
+                    <div  key={i} className=" flex justify-start items-center w-full border-b border-neutral-800 py-2 pl-4 gap-5 hover:bg-neutral-800 transition-all duration-300" >
                        <img className="w-14 h-14 object-fit rounded-full" src={item?.image} />
                       
 
                        <div className="w-20 flex text-white">{tokenId}</div>
-                        <div className="w-1/6 flex font-bold text-white">{item?.name}</div>
+                        <Link to={`/earn/marketplace/my-nfts/nft/?address=${nft_contract}&id=${(item.tokenId)}&cid=${item.metadata_url}&chain=97`}  className="w-1/6 flex font-bold text-white">{item?.name}</Link >
                         <div className="w-1/6 flex  text-white ">{unixToDate(Number((item?.listedAt).toString()))}</div>
                         <div className="w-1/6 flex text-white">{item?.holder?.slice(0,5)}...</div>
                         <div className="w-1/6 flex text-white">{item?.seller?.slice(0,5)}...</div>

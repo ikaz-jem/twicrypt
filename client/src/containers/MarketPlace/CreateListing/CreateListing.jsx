@@ -23,8 +23,6 @@ const CreateListing = () => {
     // hook to fetch collection from contract
     useGetNftByContract()
 
-
-
     return (
         <React.Fragment>
             {address ? <div className="container--xxlarge container--center  mb-20 ">

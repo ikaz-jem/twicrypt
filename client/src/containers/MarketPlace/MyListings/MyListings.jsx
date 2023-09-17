@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 //contracts
-import { useGetUserListing } from "../hooks/web3Hooks/useGetUserListings";
+import { useGetUserListing } from "../hooks/web3Hooks/Listing/useGetUserListings";
 import UserListings from "./UserListings";
 import ConnectWalletError from "../../../shared/ConnectWalletError/ConnectWalletError";
 import { useSelector } from "react-redux";

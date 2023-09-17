@@ -1,10 +1,10 @@
 import { useContractWrite, useWaitForTransaction } from 'wagmi'
 import { useEffect, useState } from 'react'
-import { toDecimals } from '../../../../utils/web3Functions'
-import Popup from '../../../../shared/popup/Popup'
+import { toDecimals } from '../../../../../utils/web3Functions'
+import Popup from '../../../../../shared/popup/Popup'
 import toast from 'react-hot-toast'
-import { marketplace_contract } from '../../data/Addresses'
-import marketAbi from '../../abi/marketPlace2.json'
+import { marketplace_contract } from '../../../data/Addresses'
+import marketAbi from '../../../abi/marketPlace2.json'
 
 export const useCancelListing = (props) => {
     const [approveHash, setApproveHash] = useState(null)

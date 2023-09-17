@@ -1,12 +1,12 @@
 import { useContractWrite, useWaitForTransaction } from 'wagmi'
 import { useState } from 'react'
-import { toDecimals } from '../../../../utils/web3Functions'
-import Popup from '../../../../shared/popup/Popup'
+import { toDecimals } from '../../../../../utils/web3Functions'
+import Popup from '../../../../../shared/popup/Popup'
 import toast from 'react-hot-toast'
-import { marketplace_contract } from '../../data/Addresses'
-import { nft_contract } from '../../data/Addresses'
-import abi from '../../abi/marketPlace2.json'
-import erc721 from '../../abi/ERC721.json'
+import { marketplace_contract } from '../../../data/Addresses'
+import { nft_contract } from '../../../data/Addresses'
+import abi from '../../../abi/marketPlace2.json'
+import erc721 from '../../../abi/ERC721.json'
 
 
 export const useCreateListing = (props) => {

@@ -1,9 +1,9 @@
 import { useContractRead} from "wagmi";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { marketplace_contract } from "../../data/Addresses";
-import { setMyListings } from "../../../../app/features/MarketPlace/MarketplaceSlice";
-import abi from '../../abi/marketPlace2.json'
+import { marketplace_contract } from "../../../data/Addresses";
+import { setMyListings } from "../../../../../app/features/MarketPlace/MarketplaceSlice";
+import abi from '../../../abi/marketPlace2.json'
 
 export const useGetUserListing = ()=> {
 const dispatch = useDispatch();

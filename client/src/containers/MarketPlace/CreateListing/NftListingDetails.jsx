@@ -13,9 +13,9 @@ const NftListingDetails = ({ myNfts }) => {
           {myNfts?.selectedNft ? <div className=" w-full h-full rounded-xl">
             <div className="mt-5 text-sm">
 
-              <p className="font-extrabold">name :<span className="font-light pl-2">{myNfts?.selectedNft?.name} </span> </p>
-              <p className="font-extrabold">date created : <span className="font-light pl-2">{myNfts?.selectedNft?.created_at}</span> </p>
-              <p className="font-extrabold">contract: <span className="font-light pl-2">{myNfts?.selectedNft?.contract} </span> </p>
+            {myNfts?.selectedNft?.name &&  <p className="font-extrabold">name :<span className="font-light pl-2">{myNfts?.selectedNft?.name} </span> </p>}
+            { myNfts?.selectedNft?.created_at && <p className="font-extrabold">date created : <span className="font-light pl-2">{myNfts?.selectedNft?.created_at}</span> </p>}
+            {myNfts?.selectedNft?.contract &&  <p className="font-extrabold">contract: <span className="font-light pl-2">{myNfts?.selectedNft?.contract} </span> </p>}
               <p className="py-5"> {myNfts?.selectedNft?.description}</p>
 
             </div>

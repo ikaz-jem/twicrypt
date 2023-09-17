@@ -4,16 +4,18 @@ import { useState } from "react"
 import {IoCreateOutline} from 'react-icons/io5'
 import {BsArrowsAngleExpand} from 'react-icons/bs'
 import { bigIntToFormated, toDecimals } from "../../../../utils/web3Functions"
-import { useCreateListing } from "../../hooks/web3Hooks/useCreateListing"
-import { useSelector } from "react-redux"
+import { useCreateListing } from "../../hooks/web3Hooks/Listing/useCreateListing"
+import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
+import { setListingDetails } from "../../../../app/features/MarketPlace/MarketplaceSlice"
 
 const QuickListing =({nft})=> {
     let [isOpen, setIsOpen] = useState(false)
     let [newPrice, setNewPrice] = useState(0)
     
 const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
-
+const dispatch=useDispatch()
+const setSelectedNft = (data)=>dispatch(setListingDetails(data))
     function closeModal() {
       setIsOpen(false)
     }
@@ -52,6 +54,12 @@ const approve = useCreateListing({
     const handleChangePrice =(e)=> {
         setNewPrice(Number(e.target.value))
         e.target.setCustomValidity('')
+    }
+
+
+    const handleClick =()=>{
+
+setSelectedNft({selectedNft:{...nftDetails?.metadata,image_url:nftDetails?.metadata?.image , identifier:nftDetails?.tokenId , contract:nftDetails?.contract  }})
     }
 
     return (
@@ -100,7 +108,7 @@ const approve = useCreateListing({
                       >
                       {`list ${nftDetails?.metadata?.name} for sale `}
                     </Dialog.Title>
-                    <Link to='/earn/marketplace/create-listing' className="items-center justify-center flex border-neutral-600 border p-2 rounded-lg  "> <BsArrowsAngleExpand className="text-xl"/> </Link>
+                    <Link to='/earn/marketplace/create-listing' onClick={handleClick} className="items-center justify-center flex border-neutral-600 border p-2 rounded-lg  "> <BsArrowsAngleExpand className="text-xl"/> </Link>
                         </div> 
 
                     <div className="mt-2">

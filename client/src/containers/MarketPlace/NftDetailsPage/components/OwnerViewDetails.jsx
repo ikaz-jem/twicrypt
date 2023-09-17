@@ -1,22 +1,25 @@
 
 import { useSelector } from "react-redux"
 import ConnectWalletError from "../../../../shared/ConnectWalletError/ConnectWalletError"
-import { useCheckIsListed } from "../../hooks/web3Hooks/useCheckIsListed"
 import { bigIntToFormated } from "../../../../utils/web3Functions"
-import { useCancelListing } from "../../hooks/web3Hooks/useCancelListing"
+import { useCancelListing } from "../../hooks/web3Hooks/Listing/useCancelListing"
 import QuickListing from "../QuickListing/QuickListing"
 
 
-const OwnerViewDetails = () => {
+const OwnerViewDetails = ({isListed, data,seller}) => {
 
 
     const metadata = useSelector(state=>state.marketPlace.nftDetailsPageState)
-    const { isListed, data } = useCheckIsListed()
+    // const { isListed, data } = useCheckIsListed()
+
 
     const isVisitorConnected = metadata?.isVisitorConnected
     const isOwner = metadata?.isOwner
     const nftOwner = metadata?.nftOwner
-   
+
+   const pageVisitor = metadata?.pageVisitor
+   const sellerArrdess =seller
+
     const RenderDetails = () => {
         const price = bigIntToFormated(Number(data?.[4]),18)
         
@@ -32,7 +35,7 @@ cancelListing.write()
 }
                 return (
                     <>
-        {isListed ?
+        {isListed && pageVisitor == sellerArrdess ? 
                         <><div className="px-5 py-5">
                                 <h1>owner listed</h1>
                                 <p className="text-left p-0 m-0 text-xs text-neutral-400"> current price :</p>
@@ -46,6 +49,8 @@ cancelListing.write()
                     :
                     
                     <><div className="px-5 py-5">
+                                         
+
                     <p className="text-left p-0 m-0 text-xs text-neutral-400"> not for sell !</p>
                     <h3 className="text-left p-0 m-0 font-extrabold">not Listed Yet </h3>
                 </div><div className="">
@@ -68,7 +73,7 @@ cancelListing.write()
             <div className="my-5 px-5 rounded-2xl ">
                 <div className="  rounded-xl w-full flex flex-col items-start justify-center">
                     <h2 className="m-0 p-0 font-extrabold">{metadata?.metadata?.name}</h2>
-                   <p className="text-left text-neutral-400 font-bold text-sm p-0 m-0">Owned by : {isOwner || nftOwner ? "you": nftOwner?.slice(0, 30)+" ..."}</p>
+                   <p className="text-left text-neutral-400 font-bold text-sm p-0 m-0">Owned by : { pageVisitor == sellerArrdess || isOwner   ? "you": nftOwner?.slice(0, 30)+" ..."}</p>
                 </div>
                 {isVisitorConnected ?
                     <div className="border border-neutral-700  mt-5  rounded-2xl bg-neutral-900 flex flex-col">

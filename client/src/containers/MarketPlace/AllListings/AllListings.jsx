@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { getCarouselData } from "../../../app/features/carousel/carouselThunks"; 
 import { fetchedCarouselData } from "../../../app/features/carousel/carouselSlice";
-import { useGetListing } from "../hooks/web3Hooks/useGetListings";
+import { useGetListing } from "../hooks/web3Hooks/Listing/useGetListings";
 
 const NftSliderCat2 = React.lazy(() => import("../../Earn/components/NftSlider/NftSliderCat2"));
 

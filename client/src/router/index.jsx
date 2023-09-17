@@ -163,6 +163,11 @@ const marketPlaceRoutes = [
         requiresAuth: false,
     },
     {
+        path: 'create-listing/:id',
+        component: CreateListing,
+        requiresAuth: false,
+    },
+    {
         path: ':page',
         component: MarketPlace,
         requiresAuth: false,
@@ -176,7 +181,6 @@ const marketPlaceRoutes = [
 ]
 
 const AppRoutes = () => {
-    const isLogedIn = useSelector(userSession)
 
     return (
 

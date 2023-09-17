@@ -11,7 +11,10 @@ export const useNftOwner = () => {
     const dispatch = useDispatch()
     const { address } = useSelector((state => state.session))
     const setNftDetailsData = (data) => dispatch(setNftDetailsPageState(data))
-const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
+const nftDetails = useSelector(state=>state?.marketPlace?.nftDetailsPageState)
+
+
+
 
 
     let isOwner = false
@@ -19,7 +22,7 @@ const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
         address: nftDetails?.contractAddress && nftDetails?.contractAddress,
         abi: abi && abi,
         functionName: 'ownerOf',
-        args: [nftDetails?.tokenId && nftDetails?.tokenId],
+        args: [nftDetails?.tokenId && Number(nftDetails?.tokenId)],
         enabled: nftDetails?.tokenId && nftDetails?.contractAddress && nftDetails?.chainId && true,
         chainId: nftDetails?.chainId && nftDetails?.chainId,
         onError(){
@@ -33,7 +36,6 @@ const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
     let loading = isLoading
     let isVisitorConnected = address ? true : false
     address === nftOwner ? isOwner = true : isOwner = false
-
 
     //setting store with comming data
     useEffect(()=>{

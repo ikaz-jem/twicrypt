@@ -1,7 +1,7 @@
 import { Transition,Dialog } from "@headlessui/react"
 import { Fragment } from "react"
 import { useState } from "react"
-import { useEditListing } from "../hooks/web3Hooks/useEditListing";
+import { useEditListing } from "../hooks/web3Hooks/Listing/useEditListing";
 import {BiEdit} from 'react-icons/bi'
 import { bigIntToFormated } from "../../../utils/web3Functions";
 

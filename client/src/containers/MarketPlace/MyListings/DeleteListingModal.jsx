@@ -1,7 +1,7 @@
 import { Transition,Dialog } from "@headlessui/react"
 import { Fragment, useEffect } from "react"
 import { useState } from "react"
-import { useCancelListing } from "../hooks/web3Hooks/useCancelListing";
+import { useCancelListing } from "../hooks/web3Hooks/Listing/useCancelListing";
 import {AiOutlineDelete} from 'react-icons/ai'
 import { unixToDate } from "../../../utils/unixToDate";
 import { bigIntToFormated, toFormated } from "../../../utils/web3Functions";

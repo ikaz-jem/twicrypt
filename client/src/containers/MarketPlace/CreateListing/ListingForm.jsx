@@ -2,7 +2,7 @@ import { setListingDetails } from "../../../app/features/MarketPlace/Marketplace
 import { useDispatch, useSelector } from "react-redux";
 import Popup from "../../../shared/popup/Popup";
 import toast from "react-hot-toast";
-import { useCreateListing } from "../hooks/web3Hooks/useCreateListing";
+import { useCreateListing } from "../hooks/web3Hooks/Listing/useCreateListing";
 import { toDecimals } from "../../../utils/web3Functions";
 
 
@@ -29,7 +29,7 @@ const ListingForm = () => {
     const testValidity = (e) => {
         const regex = /^(0(\.\d{1,3})?|100000(\.0{1,3})?|\d{1,5}(\.\d{1,3})?)$/;
         e.preventDefault();
-        if (regex.test(Number(listingDetails?.price))) {
+        if (regex.test(Number(listingDetails?.price)) && listingDetails?.price >0 ) {
             e.target[0].setCustomValidity('')
             return true
 
