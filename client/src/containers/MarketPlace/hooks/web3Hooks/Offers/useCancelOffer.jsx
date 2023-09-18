@@ -7,23 +7,22 @@ import { useSelector } from "react-redux"
 import marketPlaceAbi from '../../../abi/marketPlace2.json'
 import { toDecimals } from "../../../../../utils/web3Functions"
 
-export const useMakeOffer = ({price})=> {
+export const useCancelOffer = ()=> {
     const [approveHash, setApproveHash] = useState(null)
 
 const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
 
 let tokenId = nftDetails?.tokenId && Number(nftDetails?.tokenId)
-const createOffer = useContractWrite({
+const cancelOffer = useContractWrite({
     address:  marketplace_contract && marketplace_contract,
     abi : marketPlaceAbi && marketPlaceAbi ,
-    functionName:'makeOffer',
-    args:[tokenId&&tokenId,price&&toDecimals(price,18)],
-    enabled: price && tokenId ? true : false,
-    value:`${toDecimals(price,18)}`,
+    functionName:'deletOffer',
+    args:[tokenId&&tokenId],
+    enabled: tokenId ? true : false,
     onMutate({ args, overrides }) {
         return toast.custom(
          (t) => (
-           <Popup productImage={nftDetails?.imageLink || null} show={true} t={t} title={`Making offer .. `} desc={`sending offer  in progress please complete the transaction, offered ${price} BNB`}/>
+           <Popup productImage={nftDetails?.imageLink || null} show={true} t={t} title={`canceling your offer .. `} desc={`please complete the transaction,your offered amount will be transfered to your account`}/>
          ),
          { position: "bottom-center", duration: 3000 }
        );
@@ -35,7 +34,7 @@ const createOffer = useContractWrite({
         console.log(error)
          toast.custom(
          (t) => (
-           <Popup productImage={nftDetails?.imageLink || null} show={true} t={t} title={'Error ! 🚧'} desc={`${error?.details || 'you may have Already made an offer , only one offer is allowed , to make new one cancel the current offer !'} `}/>
+           <Popup productImage={nftDetails?.imageLink || null} show={true} t={t} title={'Error ! 🚧'} desc={`${error?.details || 'something went wrong!'} `}/>
          ),
          { position: "bottom-center", duration: 3000 }
        );
@@ -51,7 +50,7 @@ const waitTransaction = useWaitForTransaction({
         
         return toast.custom(
             (t) => (
-              <Popup productImage={nftDetails?.imageLink || null} show={true} t={t} title={`you have made an offer to ${nftDetails?.metadata?.name || 'nft'}  🥳`} desc={` transaction succes ! you offered ${price || '0x0'} BNB to ${nftDetails?.metadata?.name  || 'nft'} you can cancel offer anytime and funds will be transfered to your account again`}/>
+              <Popup productImage={nftDetails?.imageLink || null} show={true} t={t} title={`offer canceled  🥳`} desc={` transaction succes ! offer amount is being transfered to your account`}/>
             ),
             { position: "bottom-center", duration: 3000 }
           );
@@ -60,7 +59,7 @@ const waitTransaction = useWaitForTransaction({
  
 })
 
-return createOffer
+return cancelOffer
 
 
 }

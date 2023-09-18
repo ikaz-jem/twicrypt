@@ -1,29 +1,70 @@
 import { useState } from "react"
 import { useContractWrite,useWaitForTransaction } from "wagmi"
-import { marketplace_contract } from "../../../data/Addresses"
+import { marketplace_contract, nft_contract } from "../../../data/Addresses"
+import Popup from "../../../../../shared/popup/Popup"
+import toast from "react-hot-toast"
+import { useSelector } from "react-redux"
+import marketPlaceAbi from '../../../abi/marketPlace2.json'
+import ERC271 from '../../../abi/ERC721.json'
+
+
+
 
 export const useAcceptOffer = ({index})=> {
     const [approveHash, setApproveHash] = useState(null)
+    const [transferHash, setTransferHash] = useState(null)
 
 const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
 
 let tokenId = nftDetails?.tokenId && Number(nftDetails?.tokenId)
-const buy = useContractWrite({
+
+const approve = useContractWrite({
+  address: nft_contract && nft_contract,
+  abi: ERC271,
+  functionName:'approve',
+  chainId: 97,
+  args: [marketplace_contract && marketplace_contract, tokenId && tokenId],
+  onMutate({ args, overrides }) {
+     return toast.custom(
+      (t) => (
+        <Popup productImage={nftDetails?.imageLink} show={true} t={t} title={`approving ${nftDetails?.metadata?.name || 'Nft'}`}    desc={`please approve ${nftDetails?.metadata?.name || 'Nft'} in Order to complete the exchange ...`}/>
+      ),
+      { position: "bottom-center", duration: 2000 }
+    );
+  },
+  
+  onSuccess(data, error) {
+      setApproveHash(data.hash)
+    
+
+  },
+  onError(error) {
+      return toast.custom(
+       (t) => (
+         <Popup productImage={ null} show={true} t={t} title={`something went wrong 😭 `}    desc={`${error?.details} `}/>
+       ),
+       { position: "bottom-center", duration: 2000 }
+     );
+     },
+})
+
+const AcceptOffer = useContractWrite({
     address:  marketplace_contract && marketplace_contract,
     abi : marketPlaceAbi && marketPlaceAbi ,
     functionName:'acceptOffer',
     args:[tokenId&&tokenId,index&&index],
     enabled: index && tokenId ? true : false,
     onMutate({ args, overrides }) {
-        return toast.custom(
+         toast.custom(
          (t) => (
-           <Popup productImage={nftDetails?.imageLink || null} show={true} t={t} title={`Checking  ${nftDetails?.metadata?.name || 'nft'} ...`} desc={`sending transaction , buy ${nftDetails?.metadata?.name  || 'nft'} in progress please complete the transaction`}/>
+           <Popup productImage={nftDetails?.imageLink || null} show={true} t={t} title={`Approved  🥳 !! Transfering  ${nftDetails?.metadata?.name || 'nft'} ...`} desc={`Transfering  ${nftDetails?.metadata?.name  || 'nft'} to new owner ... `}/>
          ),
          { position: "bottom-center", duration: 3000 }
        );
+       
        },
        onSuccess(data, error) {
-        setApproveHash(data.hash)
+      setTransferHash(data.hash)
        },
        onError(error) {
         return toast.custom(
@@ -40,11 +81,17 @@ const buy = useContractWrite({
 
 const waitTransaction = useWaitForTransaction({
     hash: approveHash && approveHash,
+    onSuccess(data) { 
+          AcceptOffer.write()
+    },
+ 
+})
+const waitTransferTransaction = useWaitForTransaction({
+    hash: transferHash && transferHash,
     onSuccess(data) {
-        
         return toast.custom(
             (t) => (
-              <Popup productImage={nftDetails?.imageLink || null} show={true} t={t} title={` ${nftDetails?.metadata?.name || 'nft'} is yours 🥳`} desc={` transaction succes ! you own ${nftDetails?.metadata?.name  || 'nft'} asset is being transfered to your account`}/>
+              <Popup productImage={nftDetails?.imageLink || null} show={true} t={t} title={` ${nftDetails?.metadata?.name || 'nft'} exchange success 🥳`} desc={` ownership of ${nftDetails?.metadata?.name  || 'nft'} has been transfered and funds has been sent to your account !  `}/>
             ),
             { position: "bottom-center", duration: 3000 }
           );
@@ -53,7 +100,7 @@ const waitTransaction = useWaitForTransaction({
  
 })
 
-return buy
+return {approve , AcceptOffer}
 
 
 }

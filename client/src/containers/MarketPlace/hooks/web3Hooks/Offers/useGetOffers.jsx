@@ -12,8 +12,8 @@ import { mainChainId } from "../../../data/chains";
 export const useGetOffers = (props)=> {
     const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState);
     const id = nftDetails?.tokenId
-    console.log(nftDetails)
-const dispatch = useDispatch()
+
+    const dispatch = useDispatch()
 const setOffers =(data)=> dispatch(setNftOffers(data))
 
 const nftOffers = useContractRead({

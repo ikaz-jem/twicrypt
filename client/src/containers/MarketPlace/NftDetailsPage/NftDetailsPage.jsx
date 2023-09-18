@@ -9,6 +9,9 @@ import { setNftDetailsPageState } from "../../../app/features/MarketPlace/Market
 import Spinner from "../../../shared/Spinner/Spinner";
 import { clearNftDetailsState } from "../../../app/features/MarketPlace/MarketplaceSlice";
 import { useGetOffers } from "../hooks/web3Hooks/Offers/useGetOffers";
+import { useCheckIsListed } from "../hooks/web3Hooks/Listing/useCheckIsListed";
+
+
 const NftInfoTable = lazy(() => import('./components/NftInfoTable'))
 const NftDetailsImage = lazy(() => import('./components/NftDetailsImage'))
 const NftTraits = lazy(() => import('./components/NFtTraits'))
@@ -70,6 +73,11 @@ const NftDetailsPage = () => {
 
     //custom hook to compare nft owner and page visitor
     const { nftOwner, pageVisitor, isOwner, loading, error, isVisitorConnected } = useNftOwner()
+    // custom hook to check if nft is listed
+    const {isListed,data,seller} = useCheckIsListed()
+    const isSeller = pageVisitor?.toLowerCase() === seller?.toLowerCase() ? true :false
+
+
 
     const getNFtData = async () => {
         let isUrl = await metadata?.metadata_Url?.includes('https')
@@ -142,7 +150,7 @@ const NftDetailsPage = () => {
                                 <NftInfoTable />
                             </Suspense>
 
-                            <NftOffers />
+                            <NftOffers isOwner={isOwner} isSeller={isSeller} pageVisitor={pageVisitor} isListed={isListed} />
 
                         </div>
                     </div>

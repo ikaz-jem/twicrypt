@@ -37,7 +37,6 @@ cancelListing.write()
                     <>
         {isListed && pageVisitor == sellerArrdess ? 
                         <><div className="px-5 py-5">
-                                <h1>owner listed</h1>
                                 <p className="text-left p-0 m-0 text-xs text-neutral-400"> current price :</p>
                                 <h3 className="text-left p-0 m-0 font-extrabold">{price} BNB</h3>
                                 <p className="text-left p-0 m-0 text-xs text-neutral-400">{}</p>
