@@ -28,7 +28,7 @@ import EarnHome from "../containers/Earn/components/EarnHome";
 import MintPage from "../containers/Earn/components/Nfts/Mint/MintPage";
 import Docs from "../containers/Docs/Docs";
 import TokenSale from "../containers/TokenSale/TokenSale";
-import Blog from "../containers/Blog/Blog";
+import MiningHome from "../containers/Mining/MiningHome";
 import Withdraw from "../containers/Withdraw/Withdraw";
 import Faq from "../containers/Faq/Faq";
 import DailyRewards from "../containers/DailyRewards/DailyRewards";
@@ -129,8 +129,8 @@ const NestedRoutes = [
         requiresAuth: false,
     },
     {
-        path: 'last-news',
-        component: Blog,
+        path: 'auto-p2e',
+        component: MiningHome,
         requiresAuth: false,
     },
     {

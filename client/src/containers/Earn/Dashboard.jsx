@@ -55,8 +55,8 @@ const location = useLocation()
             link: 'stats'
         },
         {
-            title: "Last News",
-            link: 'last-news'
+            title: "auto P2E",
+            link: 'auto-p2e'
         },
         {
             title: "MarketPlace",

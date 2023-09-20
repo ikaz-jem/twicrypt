@@ -5,7 +5,6 @@ import CardCategory1 from "../../../shared/Cards/NftCards/NftsCard";
 import Spinner from "../../../shared/Spinner/Spinner";
 import { useNavigate } from "react-router-dom";
 import { userData } from "../../../app/features/session/sessionSlice";
-import NftErorCard from "../../../shared/Cards/NftErrorCard";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
 
@@ -13,7 +12,7 @@ const MyNfts = () => {
     const Navigate = useNavigate()
     const { address } = useSelector(userData)
     const { data, isLoading, hasError } = useGetNftByAccount()
-    const {chain} = useSelector(state=>state.marketPlace.nftFilter)
+    const { chain } = useSelector(state => state.marketPlace.nftFilter)
 
 
 
@@ -28,18 +27,18 @@ const MyNfts = () => {
         }
     }
 
-    const getChainId = ()=> {
-        if ( chain =="ethereum"){
-            return  1
-        }else if ( chain =="bsc"){
+    const getChainId = () => {
+        if (chain == "ethereum") {
+            return 1
+        } else if (chain == "bsc") {
             return 56
-        }else if ( chain =="goerli"){        
-            return 5 
-        } else if ( chain == 'bsctestnet'){        
+        } else if (chain == "goerli") {
+            return 5
+        } else if (chain == 'bsctestnet') {
             return 97
-        }else  return null
-        
-            }
+        } else return null
+
+    }
 
     //click to go to preview page
     const handleClick = (e, meta) => {
@@ -49,24 +48,24 @@ const MyNfts = () => {
 
 
     const RenderNotEligible = () => {
-   let show = false;
-const erroredNfts = !!data && !isLoading && !hasError && data.map((nft, i) => {
-    if (!nft?.name && !nft?.image ) {
-        show = true
-        return <CardCategory1 key={i} data={{ title: nft.name, thumbnailUrl: nft.image_url, id: nft.identifier, contract: nft.contract }} />
+        let show = false;
+        const erroredNfts = !!data && !isLoading && !hasError && data.map((nft, i) => {
+            if (!nft?.name && !nft?.image) {
+                show = true
+                return <CardCategory1 key={i} data={{ title: nft.name, thumbnailUrl: nft.image_url, id: nft.identifier, contract: nft.contract }} />
 
-    } else {
-        return null
-    }
-})
+            } else {
+                return null
+            }
+        })
 
         return (
             <>
                 <div className="flex flex-col w-[80vw]">
-                   {!!show && <h5 className="text-left font-bold py-4">Assets not eligble for listing</h5>}
+                    {!!show && <h5 className="text-left font-bold py-4">Assets not eligble for listing</h5>}
                     <div className="flex gap-5 flex-wrap">
                         {
-                          erroredNfts
+                            erroredNfts
                         }
                     </div>
                 </div>
@@ -86,11 +85,11 @@ const erroredNfts = !!data && !isLoading && !hasError && data.map((nft, i) => {
             <>
                 {
                     !!data && !isLoading && !hasError ? data.map((nft, i) => {
-                        if (!nft?.name && !nft?.image ||nft?.name == 'Ether' || nft?.name == 'BNB') {
+                        if (!nft?.name && !nft?.image || nft?.name == 'Ether' || nft?.name == 'BNB') {
                             return null
                         }
                         return (
-                        <CardCategory1 handleClick={ (e)=> handleClick(e,nft)} key={i} data={{ title: nft.name, thumbnailUrl: nft.image_url, id: nft.identifier, contract: nft.contract }} />
+                            <CardCategory1 handleClick={(e) => handleClick(e, nft)} key={i} data={{ title: nft.name, thumbnailUrl: nft.image_url, id: nft.identifier, contract: nft.contract }} />
                         )
 
                     }) :
@@ -122,7 +121,6 @@ const erroredNfts = !!data && !isLoading && !hasError && data.map((nft, i) => {
             <div className="container--xxxlarge flex justify-center items-center flex-col mb-20 ">
                 <div className="w-[70vw] flex justify-start items-center gap-5 ">
                     <h3 className="text-left my-2 p-0 border-b border-neutral-800 w-full rounded-2xl pl-5 pb-2 text-pink-600 font-bold text-sm ">total owned assets : <span className="m-0 pl-2 text-neutral-400 text-xs ">{data?.length || 0} Nft on this Chain </span>  </h3>
-
                 </div>
                 <main>
                     <div className="flex flex-col  gap-10  w-auto h-auto items-center justify-start   ">

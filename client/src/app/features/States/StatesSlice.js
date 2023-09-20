@@ -1,19 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-
-
-
-
-
-
-
 export const StatesSlice = createSlice({
     name:'states',
     initialState:{
         menuposition:false,
         showMintPanel:false,
-        mint:null
+        mint:null,
+        mining:{
+            counter:0,
+        }
     },
     reducers:{
         setMenuPosition:(state,action)=>{

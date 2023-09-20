@@ -32,7 +32,7 @@ const Home = () => {
 
   const dispatch = useDispatch()
     const [show, setShow] = useState(true)
-
+const Navigate = useNavigate()
 
   const showPopup = () => {
     const popToast = toast.custom(
@@ -112,7 +112,7 @@ const Home = () => {
 
           </div>
 
-          {/* <Nav className="flex items-center justify-center gap-5 flex-wrap">
+          <Nav className="flex items-center justify-center gap-5 flex-wrap">
             <NavItem onClick={()=> Navigate('/earn/mint')}>Mint</NavItem>
             <NavItem onClick={()=>Navigate('/earn/token-sale')} >Token Sale</NavItem>
             <NavItem onClick={() => Navigate('/preparations')}>RoadMap</NavItem>
@@ -120,8 +120,7 @@ const Home = () => {
             <NavItem onClick={() => toastP()}>show popup 2</NavItem>
             <NavItem onClick={()=> Navigate('/sponsor')}>Sponsor </NavItem>
             <NavItem onClick={()=> Navigate('/documentations')}>Docs </NavItem>
-          </Nav> */}
-<AccordionTabs/>
+          </Nav>
 
           <CallToAction />
         </div>

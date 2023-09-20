@@ -15,7 +15,8 @@ import { StatesSlice } from '../features/States/StatesSlice';
 
 //marketplace
 import { MarketPlaceSlice } from '../features/MarketPlace/MarketplaceSlice';
-
+// mining page
+import { MiningSlice } from '../features/mining/MiningSlice';
 
 
 
@@ -32,7 +33,8 @@ const rootReducer = combineReducers({
 [sessionSlice.name]:sessionSlice.reducer,
 [carouselSlice.name]: carouselSlice.reducer,
 [MarketPlaceSlice.name]:MarketPlaceSlice.reducer,
-[StatesSlice.name]:StatesSlice.reducer
+[StatesSlice.name]:StatesSlice.reducer,
+[MiningSlice.name]:MiningSlice.reducer
 })
 
 const middleware = [ thunk];

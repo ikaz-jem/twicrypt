@@ -1,11 +1,11 @@
 
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { headers,Testnetheaders } from "./Headers";
+import { Testnetheaders,headers } from "../../MarketPlace/hooks/Headers";
 import { userData } from "../../../app/features/session/sessionSlice";
 import { useSelector } from "react-redux";
 
-export const useGetNftByAccount = () => {
+export const useGetMintedNfts    = ({chain}) => {
     const [Nfts, setNfts] = useState({
         data: null,
         isLoading: false,
@@ -17,13 +17,13 @@ export const useGetNftByAccount = () => {
     const data = useSelector((state)=>state?.marketPlace?.nftFilter)
     
     const Base = 'https://testnets-api.opensea.io/v2/chain/'
-    const nftlimit = `?limit=${data?.limit || ""}`
-    const constructed = `${Base}${data?.chain}/account/${address}/nfts${nftlimit}`
+    const nftlimit = `?limit=${50}`
+    const constructed = `${Base}${chain&&chain}/account/${address}/nfts${nftlimit}`
 
 const mainnetData = async ()=> {
     const Base = 'https://api.opensea.io/v2/chain/'
-    const nftlimit = `?limit=${data?.limit || ""}`
-    const constructed = `${Base}${data?.chain}/account/${address}/nfts${nftlimit}`
+    const nftlimit = `?limit=${50}`
+    const constructed = `${Base}${chain&&chain}/account/${address}/nfts${nftlimit}`
     setNfts((prev) => ({
         ...prev,
         isLoading: true,
@@ -93,28 +93,3 @@ const testnetData = async ()=> {
 
 return Nfts
 }
-
-/*
-https://api.opensea.io/v2/chain/{chain}/account/{address}/nfts // Retrieve NFTs (by account)
-https://api.opensea.io/v2/chain/{chain}/contract/{address}/nfts ///Retrieve NFTs (by contract)
-https://api.opensea.io/v2/chain/{chain}/contract/{address}/nfts/{identifier} Get an NFT
-
-https://api.opensea.io/v2/orders/{chain}/seaport/listings  Retrieve listings
-https://api.opensea.io/v2/collection/{slug}/nfts  ///Retrieve NFTs (by collection)
-https://api.opensea.io/v2/offers/collection/{slug} Retrieve collection offers
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/

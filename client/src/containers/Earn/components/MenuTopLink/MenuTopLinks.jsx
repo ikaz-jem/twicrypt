@@ -15,14 +15,14 @@ const Navigate = useNavigate()
 
 
 
-let   className = "my-5";
+let   className = "my-1";
 
 
 
   return (
     <div className={`flex flex-col   ${className}`}>
 
-      <div className="flex  flex-wrap   items-center   justify-start  py-2  rounded-xl relative ">
+      <div className="flex  flex-wrap   items-center   justify-center  py-2  rounded-xl relative ">
         <Nav
           className="sm:space-x-2  flex flex-wrap gap-1"
           containerClassName="relative flex w-auto  text-sm md:text-base   "
@@ -34,7 +34,6 @@ let   className = "my-5";
                 isActive={tabActive === item.title}
                 onClick={(e)=>{
                   setTabActive(item.title)
-                //   item!=='clear filter' ? dispatch(setSearch({['filter']: item})): dispatch(clearFilter())
                 Navigate(`${item.link}`)
                  }
                 

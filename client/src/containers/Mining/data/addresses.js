@@ -1,0 +1,1 @@
+export const mining_contract = '0x779f6Fedd711bDb25752Cff6b005C28428079ff4'

@@ -4,12 +4,12 @@
 
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { bsc, polygon, mainnet ,bscTestnet , goerli } from 'wagmi/chains';
+import { bsc, polygon, mainnet ,bscTestnet , goerli,localhost } from 'wagmi/chains';
 import { Web3Modal } from '@web3modal/react';
 
 
 //wallet config 
-const chains = [bsc, polygon, mainnet ,bscTestnet,goerli]
+const chains = [bsc, polygon, mainnet ,bscTestnet,goerli,localhost]
 const projectId = 'de4ffe006432dcdd103fde1b34b54824';
 
 const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])
