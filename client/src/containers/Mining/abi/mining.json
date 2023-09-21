@@ -361,6 +361,91 @@
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "getAllData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "totalUsedNfts",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalSessions",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "miningPower",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "lastStakeTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "miningStartTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "miningEndTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "earnedRewards",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct TwicryptMiner.PlayerSession",
+						"name": "userData",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "bank",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "capacity",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "funds",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct TwicryptMiner.Bank",
+						"name": "bankData",
+						"type": "tuple"
+					}
+				],
+				"internalType": "struct TwicryptMiner.allData",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "MAX_MINING_TIME",
 		"outputs": [
@@ -456,6 +541,24 @@
 				"internalType": "uint256",
 				"name": "earnedRewards",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "tuple",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",

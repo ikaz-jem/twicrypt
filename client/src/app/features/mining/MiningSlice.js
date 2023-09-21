@@ -13,10 +13,17 @@ export const MiningSlice = createSlice({
         user:null,
         data:null,
         session:null,
+        page:'mining-session'
     },
     reducers:{
         setData:(state,action)=>{
             state.data = action.payload
+        },
+        setMiningPage:(state,action)=>{
+            state.page = action.payload
+        },
+        setMiningSession:(state,action)=> {
+            state.session = action.payload
         }
 
     }
@@ -27,4 +34,6 @@ export const MiningSlice = createSlice({
 
 export const {
     setData,
+    setMiningPage,
+    setMiningSession
 } = MiningSlice.actions

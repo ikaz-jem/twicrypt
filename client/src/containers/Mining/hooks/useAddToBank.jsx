@@ -6,17 +6,17 @@ import abi from '../abi/mining.json'
 
 
 
-export const useClaimBank = ()=>{
+export const useAddToBank = ()=>{
 
-    const claimBank=useContractWrite({
+    const addToBank=useContractWrite({
         address:mining_contract && mining_contract,
         abi: abi && abi,
-        functionName:'claimBank',
+        functionName:'addToBank',
         chainId:97
     })
 
 
-return claimBank
+return addToBank
 
 
 
