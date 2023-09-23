@@ -15,6 +15,7 @@ const userData = data?.userData || null
 const RenderGifts = ()=> {
 
 return(
+
     <div className="w-1/2 h-full text-xs ">
     <div className="h-full w-full bg-[#00000070] rounded-lg border border-neutral-900 py-5" >
         <div className="flex items-center justify-between px-2 py-1">
@@ -45,9 +46,7 @@ return(
             <p>mine 3000 tokens</p>
           { <button disabled={bankData && formatEther((bankData?.funds)) >= 3000 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">claim gift</button>}
         </div>
-        
     </div>
-
 </div>
 )
 

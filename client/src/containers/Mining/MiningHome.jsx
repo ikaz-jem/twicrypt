@@ -61,10 +61,10 @@ const MiningHome = () => {
 
             <div className="w-full border-b px-5 border-neutral-700 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl text-xs text-white font-bold shadow-xl" >
 
-                <div className="flex justify-between">
-                    <div>
+                <div className="flex justify-between items-center flex-wrap">
+                    <div className="flex ">
 
-                        <ul className="flex justify-start items-center gap-4 py-1 wrap my-2  w-full ">
+                        <ul className="flex justify-start items-center gap-4 py-1 wrap my-2  w-full flex-wrap ">
                             <img src={bank} alt="" className="w-9 h-9" />
                             <li className="text-white font-bold">  Bank capacity : {bankData && formatEther(bankData?.capacity)} </li>
                             <img src={coin} alt="" className="w-9 h-9 " /> <li className="text-white font-bold">Total Earnings: {bankData && formatEther(bankData?.funds)}</li>
@@ -73,9 +73,9 @@ const MiningHome = () => {
                         </ul>
                     </div>
                     <div className="flex items-center justify-center gap-5">
-                     {address &&   <p className="text-xs text-white opacity-40" > account :{address}</p>}
+                     {address &&   <p className="text-xs text-white opacity-80" > {address.slice(0,5)+'...'+address.slice(35,40)}</p>}
                         { address && chain?.id != 97 ?
-                         <button onClick={changeNetwork} className="flex px-2 py-1 bg-blue-500 text-xs text-white items-center rounded-lg pag-2"> ⚠️ switch Network <img src={bsc} alt="bsc icon" className="pl-2 w-8" /></button> : null}
+                         <button onClick={changeNetwork} className="flex px-1 py-1 bg-blue-500 text-xs text-white items-center rounded-lg pag-2"> ⚠️ switch Network <img src={bsc} alt="bsc icon" className="pl-2 w-8" /></button> : null}
 
                     </div>
                 </div>

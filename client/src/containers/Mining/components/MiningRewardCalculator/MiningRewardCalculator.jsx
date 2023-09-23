@@ -40,7 +40,7 @@ const MiningRewardCalculator = () => {
         // <SidePanel togglePanel={handleClick} show={show}>
 <div className="flex flex-col lg:flex-row   w-full p-5 ">
         <div className="flex flex-col gap-1 items-start justify-center  w-full p-5 ">
-            <h2 className="p-0 m-0 font-bold">Profit calculator</h2>
+            <h3 className="p-0 m-0 font-bold text-left">Profit calculator</h3>
 
             <label for='nftCount' className="text-xs text-neutral-400"> number of assets you hold :</label>
             <input className="placeholder-black m-2 text-black px-4  rounded-lg" type="number" placeholder="number of nfts" onChange={handleChange} name="nftCount" />
