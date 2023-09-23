@@ -1,24 +1,25 @@
 import { useEffect, useState } from "react";
-import {useCalculateRewards} from '../hooks/useCalculateRewards'
+import { useCalculateRewards } from '../hooks/useCalculateRewards'
 import { useSessionData } from "../hooks/useSessionData";
 import { bigIntToFormated } from "../../../utils/web3Functions";
 import { unixToDate } from "../../../utils/unixToDate";
 import { useWatchMiningStart } from "../hooks/Listeners/useWatchMiningStart";
+import { useSelector } from "react-redux";
 
 
 
-const RewardCounter =()=>{
-    const [counter,setCounter]=useState(0)
-    const [reward,setReward]=useState(0)
-     
-    const  {data,startTime,endTime,rate,currentTime,totalSessionRewards,realtimeReward} = useCalculateRewards()
+const RewardCounter = () => {
+    const [counter, setCounter] = useState(0)
+    const [reward, setReward] = useState(0)
+
+    const { data, startTime, endTime, rate, currentTime, totalSessionRewards, realtimeReward } = useCalculateRewards()
 
     // const event = useWatchMiningStart()
+const {address}=useSelector(state=>state.session)
 
+    const calculate = () => {
 
-    const calculate = ()=> {
-
-        if(endTime <= currentTime){
+        if (endTime <= currentTime) {
             // console.log('mining time ended')
             return totalSessionRewards
         } else {
@@ -26,37 +27,45 @@ const RewardCounter =()=>{
             return reward.toFixed(4)
         }
 
-    }   
+    }
 
-useEffect(()=>{
+    useEffect(() => {
 
-    const interval = setInterval(()=>{
-     
-        setReward(Number(realtimeReward))
-    },1000)
-return()=> clearInterval(interval)
+        const interval = setInterval(() => {
 
-},[counter,realtimeReward  ])
+            setReward(Number(realtimeReward))
+        }, 1000)
+        return () => clearInterval(interval)
 
-return (
-<div>
-    {/* <p>reward</p>
-<h6>{calculateRewards?.data && bigIntToFormated(Number(calculateRewards?.data),18)}</h6>
-<p>session start</p>
-<h6>{start}</h6>
-<p>realtime rewards</p>
-<h5>{counter}</h5>
-<h3>session TotalRewards</h3>
-<h5>{totalSessionRewards.toFixed(2)}</h5> */}
+    }, [counter, realtimeReward])
 
-<h1>mining :</h1>
-<h1>{calculate()}</h1>
-<h1>total session rewards :</h1>
-<h1>{totalSessionRewards } Tw Tokens</h1>
+    return (
+        <div className="flex w-full h-full flex-col border border-[#610044] m-5 rounded-xl bg-[#00000070] text-xs p-5 shadow-lg">
+
+            <div className="flex gap-2 items-center">
+                <p className="font-bold text-md text-white">total mined :</p>
+                <p className="font-bold text-lg text-pink-600">{calculate()} tw</p>
+            </div>
+
+
+            <div className="flex gap-2 items-center">
+                <p className="font-bold text-md text-white">estimated session length rewards :</p>
+                <p className="font-bold text-lg text-pink-600">{totalSessionRewards} Tw Tokens</p>
+
+            </div>
+            <div className="flex gap-2 items-center">
+                <p className="font-bold text-md text-white">mining speed :</p>
+                <p className="font-bold text-lg text-pink-600" >0.02 tw/s</p>
+            </div>
+
+<div className="flex py-2">
+
+            <p className="text-xs text-pink-200">{address}</p>
 </div>
+        </div>
 
 
-)
+    )
 
 }
 

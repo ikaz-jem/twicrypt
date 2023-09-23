@@ -3,7 +3,7 @@ import { mining_contract } from "../data/addresses"
 import abi from '../abi/mining.json'
 import { useSelector } from "react-redux"
 import { useEffect, useState } from "react"
-
+import { app_chain_id } from "../../../shared/data/chains"
 
 export const useSessionData = ()=>{
 const {address}= useSelector(state=>state?.session)
@@ -14,7 +14,7 @@ const {address}= useSelector(state=>state?.session)
         abi: abi && abi,
         functionName:'sessionData',
         args:[address && address],
-        chainId:97,
+        chainId:app_chain_id,
         watch:true
     })
 

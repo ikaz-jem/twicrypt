@@ -26,8 +26,8 @@ const NftBalance = () => {
 
     return (
 
-        <div className=" gap-2 flex items-center justify-start bg-neutral-900 p-2 h-[50vh] flex-wrap w-full   mx-auto overflow-y-scroll ">
-            {Nfts.data ? Nfts && Nfts?.data?.map((nft, i) => {
+        <div className=" gap-2 flex items-center justify-start  p-2 h-[50vh] flex-wrap w-full   mx-auto overflow-y-scroll ">
+            {Nfts?.data ? Nfts && Nfts?.data?.map((nft, i) => {
                 if (nft.contract === nft_contract) {
 
                     return <Card handleClick={(e) => handleClick(e, nft)} key={i} data={nft} />

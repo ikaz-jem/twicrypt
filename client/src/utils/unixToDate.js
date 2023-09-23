@@ -9,7 +9,7 @@ export function unixToDate(unixTimestamp) {
   let minutes = date.getMinutes()
   let seconds = date.getSeconds()
 
-  const formattedDate = `${days}-${months}-${years} ${hours}:${minutes}:${seconds}`;
+  const formattedDate = `${days}/${months}/${years} ${hours}h:${minutes}m:${seconds}s`;
 
   return formattedDate
 }

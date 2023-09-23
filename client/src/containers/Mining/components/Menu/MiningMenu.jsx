@@ -1,9 +1,8 @@
 import { Tab } from '@headlessui/react'
 import { NavLink, useSearchParams } from 'react-router-dom'
-import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { useDispatch } from 'react-redux'
 import { setFilter } from '../../../../app/features/MarketPlace/MarketplaceSlice'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { setMiningPage } from '../../../../app/features/mining/MiningSlice'
 export const  FilterData = ([
 
@@ -79,11 +78,11 @@ setComponent(item)
               // onClick={()=>  handleClickTab(tab)}
               className={({ isActive }) =>
               classNames(
-                'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-neutral-200  h-full',
+                'w-full rounded-lg py-2.5 text-sm leading-5 text-neutral-200 font-bold h-full',
                 'ring-white ring-opacity-60 ',
                activeTab == tab.params 
-                ? 'bg-neutral-300 text-neutral-800 '
-                : 'text-black hover:bg-pink-600/[0.52] hover:text-white'
+                ? 'bg-purple-600 text-white text-xs '
+                : 'text-black hover:bg-blue-400/[0.52]  text-xs hover:text-white'
                 )
               }
               >

@@ -3,7 +3,7 @@ import { mining_contract } from "../data/addresses"
 import abi from '../abi/mining.json'
 import { useDispatch, useSelector } from "react-redux"
 import { setMiningSession } from "../../../app/features/mining/MiningSlice"
-
+import { app_chain_id } from "../../../shared/data/chains"
 export const useMiningData = ()=> {
 
 const dispatch=useDispatch()
@@ -16,7 +16,7 @@ const setMiningData = (data)=>dispatch(setMiningSession(data))
         abi: abi && abi,
         functionName:'getAllData',
         args:[address && address],
-        chainId:97,
+        chainId:app_chain_id&&app_chain_id,
         onSuccess(data) {
             setMiningData(data)
           },

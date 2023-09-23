@@ -1,6 +1,5 @@
 
 import { useState } from "react"
-import SidePanel from "../../../Earn/components/SidePanel/SidePanel"
 
 
 const MiningRewardCalculator = () => {
@@ -17,10 +16,14 @@ const MiningRewardCalculator = () => {
     }
 
     const calculateTotal = () => {
-        const percent = (calculate?.nftCount * 40) / 100
-        const rate = (calculate?.rate * calculate?.hours) * 3600
-        const rate2 = (calculate?.banklevel * 10) / 100
-        const total = (rate * percent) * rate2
+
+        const nftPercent = (calculate?.nftCount *1.2) 
+        const bankPercent = (calculate?.banklevel*0.8) 
+
+        const duration =  calculate?.hours
+        const rate = calculate?.rate *2
+        const sub = (bankPercent+nftPercent+rate)/3
+        const total = duration * sub
         return total.toFixed(3)
     }
 
@@ -35,7 +38,7 @@ const MiningRewardCalculator = () => {
 
     return (
         // <SidePanel togglePanel={handleClick} show={show}>
-<div className="flex flex-col lg:flex-row  bg-neutral-900 w-full p-5 ">
+<div className="flex flex-col lg:flex-row   w-full p-5 ">
         <div className="flex flex-col gap-1 items-start justify-center  w-full p-5 ">
             <h2 className="p-0 m-0 font-bold">Profit calculator</h2>
 
