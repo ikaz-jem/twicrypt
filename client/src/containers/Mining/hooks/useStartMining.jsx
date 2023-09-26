@@ -4,10 +4,14 @@ import mining_abi from '../abi/mining.json'
 import { app_chain_id } from "../../../shared/data/chains"
 import Popup from "../../../shared/popup/Popup"
 import toast from "react-hot-toast"
+import { useDispatch } from "react-redux"
+import { setTransaction } from "../../../app/features/mining/MiningSlice"
 
 
 export const useStartMining = ()=>{
 
+  const dispatch = useDispatch()
+  const setHash = (data)=>dispatch(setTransaction(data))
 
 const startMining = useContractWrite({
     address:mining_contract && mining_contract,
@@ -29,6 +33,9 @@ const startMining = useContractWrite({
         { position: "bottom-center", duration: 2000 }
       ); 
       },
+      onSuccess(data){
+        setHash(data?.hash)
+      }
 
 })
 return startMining

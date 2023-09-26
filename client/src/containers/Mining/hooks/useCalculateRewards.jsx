@@ -5,35 +5,34 @@ import abi from '../abi/mining.json'
 import { useSelector } from "react-redux"
 import { useSessionData } from "./useSessionData"
 import { app_chain_id } from "../../../shared/data/chains"
+import { useEffect } from "react"
 
 export const useCalculateRewards = ()=>{
     const {address}= useSelector(state=>state?.session)
     const miningData = useSelector(state=>state.mining.session)
 
-
-
+    
     const rewards = useSessionData()
-
-    const data=useContractRead({
-        address:mining_contract && mining_contract,
-        abi: abi && abi,
-        functionName:'calculateSessioRewards',
-        args:[address && address],
-        chainId:app_chain_id && app_chain_id
-    })
-
-
-
-    const startTime = rewards?.data ? Number(rewards?.data[4]) : null
-    const endTime = rewards?.data ? Number(rewards?.data[5]) : null
-    const rate = 0.5
+    
+ 
+    
+    const userPower = Number(miningData?.userData?.miningPower) ;
+    const startTime = Number(miningData?.userData?.lastMiningSession) ;
+    const endTime = Number(miningData?.userData?.miningEndTime) ;
+    
+    
+    
     const currentTime = Math.floor(new Date().getTime() / 1000);
-
     const sessionDuration = endTime - startTime;
-    const totalSessionRewards = sessionDuration * rate;
-    const realtimeReward = (currentTime - startTime) * rate
+    const totalSessionRewards = sessionDuration * userPower ;
+    const realtimeReward = (currentTime - startTime) * userPower
+    const miningSpeed = (totalSessionRewards / (sessionDuration))
+    
+    
 
     
-return {data,startTime,endTime,rate,currentTime,totalSessionRewards,realtimeReward}
+    return {startTime,endTime,currentTime,totalSessionRewards,realtimeReward,miningSpeed}
     
 }
+
+

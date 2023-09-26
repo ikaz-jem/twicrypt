@@ -14,3 +14,17 @@ export function unixToDate(unixTimestamp) {
   return formattedDate
 }
 
+
+export function unixCountDown(unixTimestamp) {
+
+  const date = new Date(unixTimestamp * 1000);
+
+  let hours = date.getHours()
+  let minutes = date.getMinutes()
+  let seconds = date.getSeconds()
+
+  const formattedDate = `${hours}h:${minutes}m:${seconds}s`;
+
+  return formattedDate
+}
+

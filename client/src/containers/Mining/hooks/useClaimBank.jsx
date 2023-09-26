@@ -13,6 +13,7 @@ export const useClaimBank = ()=>{
         abi: abi && abi,
         functionName:'claimBank',
         chainId:app_chain_id &&app_chain_id,
+        
         onMutate({ args, overrides }) {
             toast.custom(
             (t) => (
@@ -23,7 +24,7 @@ export const useClaimBank = ()=>{
           },  onError(error) {
             toast.custom(
             (t) => (
-              <Popup productImage={ null} show={true} t={t} title={`error ⚠️`} desc={`${error?.details || "something went wrong ..."}`}/>
+              <Popup productImage={ null} show={true} t={t} title={`error ⚠️`} desc={`${error?.message || "something went wrong ..."}`}/>
             ),
             { position: "bottom-center", duration: 2000 }
           ); 

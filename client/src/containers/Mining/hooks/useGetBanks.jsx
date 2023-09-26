@@ -13,7 +13,7 @@ const data = useContractRead({
 address : mining_contract && mining_contract,
 abi : abi && abi,
 functionName:'getAllBanks',
-chainId:app_chain_id&& app_chain_id,
+chainId:app_chain_id&& app_chain_id || null,
 
 })
 

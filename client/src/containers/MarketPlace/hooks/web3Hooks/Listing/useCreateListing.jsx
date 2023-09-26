@@ -13,16 +13,7 @@ export const useCreateListing = (props) => {
     const [approveHash, setApproveHash] = useState(null)
     const [listingHash,setListingHash]=useState(null)
  
-
-   
-
     const { tokenId, price, value ,image ,name} = props
-
-
-
-   
-
-
 
     const toNumber = (num)=> {
         return Number(num)

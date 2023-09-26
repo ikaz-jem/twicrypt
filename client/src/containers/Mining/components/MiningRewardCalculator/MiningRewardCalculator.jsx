@@ -1,5 +1,7 @@
 
 import { useState } from "react"
+import { toDecimals } from "../../../../utils/web3Functions"
+import { formatEther, parseEther } from "viem"
 
 
 const MiningRewardCalculator = () => {
@@ -8,24 +10,41 @@ const MiningRewardCalculator = () => {
         nftCount: 0,
         hours: 0,
         banklevel: 0,
-        rate: 0,
 
     })
     const handleClick = () => {
         setShow(!show)
     }
 
-    const calculateTotal = () => {
 
-        const nftPercent = (calculate?.nftCount *1.2) 
-        const bankPercent = (calculate?.banklevel*0.8) 
+
+
+
+    const calculateTotal = () => {
+        let power = ((calculate?.nftCount*80)+(calculate?.banklevel*8)/2)
+
+
+        const nftPercent = (calculate?.nftCount *80)// 0.009
+        const bankPercent = (calculate?.banklevel*8)// 0.001
 
         const duration =  calculate?.hours
-        const rate = calculate?.rate *2
-        const sub = (bankPercent+nftPercent+rate)/3
-        const total = duration * sub
-        return total.toFixed(3)
+        const sub = (bankPercent+nftPercent)/2
+
+        const total = (power*10**14)
+        const result = formatEther(total*3600)
+        return result
+        // .toFixed(3)
+        
     }
+
+    const calculateInvestment = ()=>{
+        let nftPrice = 0.1
+        let bank = 0.22
+        let Total = (calculate?.nftCount * nftPrice)+ (calculate?.banklevel * bank)
+        return Total
+
+    }
+
 
     const handleChange = ({ target }) => {
         const { name, value } = target;
@@ -44,8 +63,6 @@ const MiningRewardCalculator = () => {
 
             <label for='nftCount' className="text-xs text-neutral-400"> number of assets you hold :</label>
             <input className="placeholder-black m-2 text-black px-4  rounded-lg" type="number" placeholder="number of nfts" onChange={handleChange} name="nftCount" />
-            <label for='rate' className="text-xs text-neutral-400"> your mining rate :</label>
-            <input className="placeholder-black m-2 text-black px-4 rounded-lg" type="number" placeholder="rate" onChange={handleChange} name="rate" />
             <label for='hours' className="text-xs text-neutral-400">total mining hours :</label>
             <input className="placeholder-black m-2 text-black px-4 rounded-lg" type="number" placeholder="mining hours" onChange={handleChange} name="hours" />
             <label for='banklevel' className="text-xs text-neutral-400"> bank upgrade level :</label>
@@ -57,6 +74,7 @@ const MiningRewardCalculator = () => {
 
                 <h5 className="p-0 m-0 font-bold text-sm">total in token : {calculateTotal()} tw tokens </h5>
                 <h5 className="p-0 m-0 font-bold text-sm">total in dollar :{(calculateTotal() * 0.1).toFixed(2)} $  </h5>
+                <h5 className="p-0 m-0 font-bold text-sm">investment in BNB :{calculateInvestment() } BNB </h5>
 </div>
 
             </div>

@@ -1,14 +1,14 @@
 import { useNetwork, useSwitchNetwork } from "wagmi"
 import Popup from "../shared/popup/Popup";
 import toast from "react-hot-toast";
-
+import { app_chain_id } from "../shared/data/chains";
 export const useCorrectNetwork =  ({fallback})=> {
 
 
 const {chain={}} = useNetwork()
 
 const switchNetwork = useSwitchNetwork({
-    chainId:97 ,
+    chainId:app_chain_id && app_chain_id ,
     onMutate({args}){
         toast.custom(
             (t) => (

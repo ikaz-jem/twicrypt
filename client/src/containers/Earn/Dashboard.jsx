@@ -56,7 +56,7 @@ const location = useLocation()
         },
         {
             title: "auto P2E",
-            link: 'auto-p2e'
+            link: 'auto-p2e?id=mining-session'
         },
         {
             title: "MarketPlace",

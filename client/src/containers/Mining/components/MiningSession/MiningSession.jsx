@@ -8,16 +8,20 @@ import { useSelector } from "react-redux"
 import { formatEther} from "viem"
 import { useCorrectNetwork } from "../../../../hooks/useCorrectNetwork"
 import { app_chain_id } from "../../../../shared/data/chains"
+import { useNftBalanceOf } from "../../../../hooks/web3/useNftBalanceOf"
 
-const MiningSession = () => {
+const MiningSession = ({nftWarning}) => {
 
   // const miningSessionData = useSessionData()
 
 const startMining = useStartMining()
 const claimBank = useClaimBank();
-
+const nftBalance = useNftBalanceOf()
+const minbBalance = Number(nftBalance?.data)
 const miningSessionData = useSelector(state=> state.mining.session)
 const bankData = miningSessionData?.bankData
+
+
 
 const {chain , switchNetwork} = useCorrectNetwork({
   fallback:()=>startMining.write()
@@ -29,14 +33,54 @@ const claim= useCorrectNetwork({
 
 const isFull = bankData?.funds === bankData?.capacity && bankData?.capacity > 0 ? true : false
 
-const handleClick = (e)=>{if(chain?.id ==app_chain_id){e.preventDefault(); startMining.write()}else {e.preventDefault(); switchNetwork?.switchNetwork()}}
-const handleClaimBank =(e)=>{if(chain?.id ==app_chain_id){e.preventDefault(); claimBank.write()}else{e.preventDefault(); claim?.switchNetwork?.switchNetwork()}}
+const handleClick = (e)=>{
+  if(chain?.id ==app_chain_id && minbBalance !=0){
+    e.preventDefault(); startMining.write()
+  }else if (chain?.id ==app_chain_id && minbBalance !=0) {
+    e.preventDefault();
+     switchNetwork?.switchNetwork()
+  }else {
+    nftWarning();
+  }
+}
+const handleClaimBank =(e)=>{
+  if(chain?.id ==app_chain_id && minbBalance !=0){
+    e.preventDefault();
+     claimBank.write()
+  }else if(chain?.id !==app_chain_id && minbBalance !=0){e.preventDefault();
+     claim?.switchNetwork?.switchNetwork()
+    } else{
+      nftWarning()
+    }
+  }
+
+
+const onWork = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+
+  const Card = ({ data }) => {
+    return (
+        <><div className=" border my-1 h-10 w-10 rounded-lg overflow-hidden cursor-pointer hover:border-pink-500">
+                <img alt="art nft" src='https://cdn-icons-png.flaticon.com/512/2910/2910254.png
+' />
+            </div></>
+    )
+}
+
 
 
     return (
         <div className="w-full h-[50vh]  p-10">
-            <div className="px-10 opacity-50">
+            {/* <div className="px-10 opacity-50">
                 <Disclamer message={'before starting a new session send tokens to bank otherwise they will be lost ! '}></Disclamer>
+            </div> */}
+
+      <p>Nft Miners on work:</p>
+              <h5>you have no active workers ! you need to send your nfts to work !</h5>
+            <div className="w-full flex gap-1 flex-wrap border p-2 border-pink-500 rounded-lg bg-[#00000062]">
+              {
+                onWork.map((item,i)=> <Card/> )
+              }
+
             </div>
          
 <div className="flex flex-wrap gap-2 px-5 justify-center my-2">

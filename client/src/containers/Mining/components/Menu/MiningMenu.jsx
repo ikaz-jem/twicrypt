@@ -2,7 +2,6 @@ import { Tab } from '@headlessui/react'
 import { NavLink, useSearchParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setFilter } from '../../../../app/features/MarketPlace/MarketplaceSlice'
-import { useEffect } from 'react'
 import { setMiningPage } from '../../../../app/features/mining/MiningSlice'
 export const  FilterData = ([
 
@@ -15,17 +14,17 @@ export const  FilterData = ([
     
   },
   {
-    tab:'My Bank',
+    tab:'nft miners',
     url:'',
-        params:'my-bank'
+        params:'miners'
 
-    
   },
   {
-    tab:'My-Nfts',
+    tab:'Banks',
     url:'',
-        params:'my-nft'
+        params:'banks'
 
+    
   },
   {
     tab:'profit calculator',
@@ -43,9 +42,7 @@ function classNames(...classes) {
 const MiningMenu=({page})=> {
   
   let [searchParams, setSearchParams] = useSearchParams();
-useEffect(()=>{
-setSearchParams({id:'mining-session'})
-},[])
+
 
 
 

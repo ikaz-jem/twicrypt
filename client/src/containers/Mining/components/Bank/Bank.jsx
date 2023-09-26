@@ -4,23 +4,36 @@ import Spinner from "../../../../shared/Spinner/Spinner"
 import { useUpgradeBank } from "../../hooks/useUpgradeBank"
 import { app_chain_id } from "../../../../shared/data/chains"
 import { useCorrectNetwork } from "../../../../hooks/useCorrectNetwork"
+import { useNftBalanceOf } from "../../../../hooks/web3/useNftBalanceOf"
 
 
+const Bank = ({ data,nftWarning }) => {
+    
+    const nftBalance = useNftBalanceOf()
+    const minBalance = Number(nftBalance?.data)
 
 
-const Bank = ({ data }) => {
     
     const banks = useGetBanks()
     const bankData = data?.data?.bankData || null
     const userData = data?.data?.userData || null
-    console.log(banks && banks?.data[Number(bankData?.level)]?.imgUrl)
 
-    
-    const index =data && Number(bankData?.level)+1 
-    const extractPrice = data && banks?.data[index&&index].price
+const extractIndex = ()=> { 
+   if( bankData?.level){
+    return (Number(bankData?.level))+1
+   } else return 0;
+  }
+  const extractPrice = ()=> {
+      const index = extractIndex()
+    if (banks?.data && index  ){
+      return  banks?.data[index&&index].price
+    }
+  }
+
+    const price = extractPrice();
 
     const upgrade = useUpgradeBank({
-        price:extractPrice  && extractPrice 
+        price:data ? price : 0
     })
     
 const {chain,switchNetwork} = useCorrectNetwork({
@@ -28,15 +41,24 @@ const {chain,switchNetwork} = useCorrectNetwork({
 })
 
 
-const handleUpgrade = (e)=> {if (chain?.id == app_chain_id){e.preventDefault(); upgrade.writeAsync()}else {e.preventDefault(); switchNetwork?.switchNetwork()}}
+    const handleUpgrade = (e) => {
+         if (chain?.id == app_chain_id && minBalance !=0) {
+             e.preventDefault();
+              upgrade.writeAsync()
+             } else if (chain?.id !== app_chain_id && minBalance !=0) { 
+                e.preventDefault(); switchNetwork?.switchNetwork() 
+            }else{
+                nftWarning() 
+            } }
 
     const BankCard = ({ bank }) => {
+        let capacity = bank?.capacity;
         return (
             <div className={`w-full border-b border-blue-900 ${bank?.level == bankData?.level &&  'bg-blue-900 bg-opacity-60'} py-1 flex gap-5 items-center my-1 rounded `} >
-                <img src={bank?.imgUrl} alt="" className="w-12 h-12" />
+                <img src={bank?.imageUrl} alt="" className="w-12 h-12" />
                 <div className="flex items-center w-full text-xs  ">
-                    <p className="w-1/4 ">  {formatEther(bank?.capacity)} tw</p>
-                    <p className="w-1/4"> {formatEther((bank?.price))} BNB </p>
+                    <p className="w-1/4 ">  {formatEther(capacity)} tw</p>
+                    <p className="w-1/4"> {formatEther(Number(bank?.price))} BNB </p>
                     <p className="w-1/4"> {Number(bank?.level)} </p>
                     <p className="border border-blue-900 px-5 py-2 text-xs rounded-lg w-1/4"> +1%</p>
                 </div>
@@ -44,6 +66,32 @@ const handleUpgrade = (e)=> {if (chain?.id == app_chain_id){e.preventDefault(); 
         )
     }
 
+
+
+const RenderCurrentBank = ()=>{
+
+const imgUrl = banks?.data[Number(bankData?.level)]?.imageUrl || null
+const myBankCapacity = formatEther(bankData?.capacity) || null
+const myBankLevel = Number(bankData?.level) || null
+const nextLevel = myBankLevel && myBankLevel+1 || null
+    return (
+
+        <div className="flex justify-between items-center border border-blue-900 px-5 py-2 rounded-xl">
+
+                            
+        <div className="flex gap-2 items-center justify-center flex-col text-xs">
+       { imgUrl !="" &&  <img src={ imgUrl } alt="" className="w-10 h-10" /> }
+            <p className="text-neutral-300">capacity : { myBankCapacity + ' tw' || '...'}</p>
+            <p className="text-neutral-300">level : {myBankLevel || '...'}</p>
+        </div>
+        
+        <div className="flex flex-col items-start gap-1 justify-center ">
+            <p className="text-xs text-neutral-300">next level : {nextLevel || '...'}</p>
+            <button  onClick={handleUpgrade} className="bg-orange-500 px-5 py-2 text-xs rounded"> upgrade</button>
+        </div>
+    </div>
+    )
+}
 
 
     return (
@@ -55,20 +103,8 @@ const handleUpgrade = (e)=> {if (chain?.id == app_chain_id){e.preventDefault(); 
 
                     <div className="text-left w-full px-5">
 
-                        <div className="flex justify-between items-center border border-blue-900 px-5 py-2 rounded-xl">
-
-                            
-                            <div className="flex gap-2 items-center justify-center flex-col text-xs">
-                                <img src={banks && banks?.data[Number(bankData?.level)]?.imgUrl  || null} alt="" className="w-10 h-10" />
-                                <p className="text-neutral-300">capacity : {formatEther(bankData?.capacity)}</p>
-                                <p className="text-neutral-300">level : {Number(bankData?.level)}</p>
-                            </div>
-                            
-                            <div className="flex flex-col items-start gap-1 justify-center ">
-                                <p className="text-xs text-neutral-300">next level : {Number(bankData?.level)+1}</p>
-                                <button  onClick={handleUpgrade} className="bg-orange-500 px-5 py-2 text-xs rounded"> upgrade</button>
-                            </div>
-                        </div>
+                     {   bankData?.level ==0 ? <h5>you need to claim your free bank first in order to upgrade  </h5>: <RenderCurrentBank/>}
+                       
                     </div>
 
                     <div className="flex flex-col px-5 gap-2 m-0 w-full">
@@ -86,7 +122,7 @@ const handleUpgrade = (e)=> {if (chain?.id == app_chain_id){e.preventDefault(); 
                         {
                            banks?.data &&  data && banks?.data?.map((bank, i) => {
                                 
-                                if (bank?.price == 0) {
+                                if (bank?.imageUrl == '') {
                                     return null
                                 } else {
                                     return <BankCard bank={bank} key={i} />

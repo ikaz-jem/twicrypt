@@ -35,8 +35,14 @@
 		"type": "event"
 	},
 	{
-		"inputs": [],
-		"name": "addToBank",
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "addNftPower",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -67,8 +73,14 @@
 		"type": "event"
 	},
 	{
-		"inputs": [],
-		"name": "claim",
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_rewards",
+				"type": "uint256"
+			}
+		],
+		"name": "calculatenftPower",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -76,6 +88,13 @@
 	{
 		"inputs": [],
 		"name": "claimBank",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "claimGift",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -122,6 +141,70 @@
 	{
 		"inputs": [
 			{
+				"internalType": "uint256",
+				"name": "_maxClaimAmount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_minClaimAmount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint8",
+				"name": "_claimFees",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_minClaimTokenHoldings",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint8",
+				"name": "_minClaimNftHoldings",
+				"type": "uint8"
+			}
+		],
+		"name": "set_claim_conditions",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "_minNftForMining",
+				"type": "uint8"
+			}
+		],
+		"name": "set_Mining_holdings_conditions",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_cooldownTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_miningDuration",
+				"type": "uint256"
+			}
+		],
+		"name": "set_mining_settings",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "contract IERC721",
 				"name": "_nft",
 				"type": "address"
@@ -135,74 +218,9 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "_cooldown",
-				"type": "uint256"
-			}
-		],
-		"name": "setCooldown",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_fees",
-				"type": "uint256"
-			}
-		],
-		"name": "setFees",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_Amount",
-				"type": "uint256"
-			}
-		],
-		"name": "setMinClaimAmount",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_duration",
-				"type": "uint256"
-			}
-		],
-		"name": "setMiningDuration",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_rate",
-				"type": "uint256"
-			}
-		],
-		"name": "setMiningRate",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
+				"internalType": "uint8",
 				"name": "_level",
-				"type": "uint256"
+				"type": "uint8"
 			},
 			{
 				"internalType": "uint256",
@@ -211,7 +229,7 @@
 			},
 			{
 				"internalType": "string",
-				"name": "_imgurl",
+				"name": "_imageUrl",
 				"type": "string"
 			},
 			{
@@ -233,6 +251,24 @@
 	{
 		"inputs": [
 			{
+				"internalType": "uint256",
+				"name": "_tokenId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_power",
+				"type": "uint256"
+			}
+		],
+		"name": "setNftPower",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "contract IERC20",
 				"name": "_token",
 				"type": "address"
@@ -246,12 +282,17 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "_fees",
-				"type": "uint256"
+				"internalType": "uint8",
+				"name": "_tokenId",
+				"type": "uint8"
+			},
+			{
+				"internalType": "string",
+				"name": "_imageUrl",
+				"type": "string"
 			}
 		],
-		"name": "setUpgradeBankFees",
+		"name": "stake",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -259,12 +300,17 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "uint8[]",
 				"name": "_tokenId",
-				"type": "uint256"
+				"type": "uint8[]"
+			},
+			{
+				"internalType": "string[]",
+				"name": "_imageUrl",
+				"type": "string[]"
 			}
 		],
-		"name": "stake",
+		"name": "stakeMultiple",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -277,13 +323,6 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "upgrade",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -291,9 +330,16 @@
 				"type": "uint256"
 			}
 		],
-		"name": "upgradeRate",
+		"name": "unstake",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "upgrade",
+		"outputs": [],
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -316,6 +362,26 @@
 		"type": "event"
 	},
 	{
+		"inputs": [],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_token",
+				"type": "address"
+			}
+		],
+		"name": "withdraw_token",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"stateMutability": "payable",
 		"type": "receive"
 	},
@@ -330,14 +396,19 @@
 		"name": "Banks",
 		"outputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "uint8",
 				"name": "level",
-				"type": "uint256"
+				"type": "uint8"
 			},
 			{
 				"internalType": "uint256",
 				"name": "capacity",
 				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "imageUrl",
+				"type": "string"
 			},
 			{
 				"internalType": "uint256",
@@ -349,14 +420,8 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_user",
-				"type": "address"
-			}
-		],
-		"name": "calculateRewards",
+		"inputs": [],
+		"name": "calculatePower",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -393,9 +458,9 @@
 			{
 				"components": [
 					{
-						"internalType": "uint256",
+						"internalType": "uint8",
 						"name": "level",
-						"type": "uint256"
+						"type": "uint8"
 					},
 					{
 						"internalType": "uint256",
@@ -409,7 +474,7 @@
 					},
 					{
 						"internalType": "string",
-						"name": "imgUrl",
+						"name": "imageUrl",
 						"type": "string"
 					}
 				],
@@ -441,9 +506,9 @@
 								"type": "uint256"
 							},
 							{
-								"internalType": "uint256",
+								"internalType": "uint16",
 								"name": "totalSessions",
-								"type": "uint256"
+								"type": "uint16"
 							},
 							{
 								"internalType": "uint256",
@@ -452,7 +517,7 @@
 							},
 							{
 								"internalType": "uint256",
-								"name": "lastStakeTime",
+								"name": "lastMiningSession",
 								"type": "uint256"
 							},
 							{
@@ -469,6 +534,16 @@
 								"internalType": "uint256",
 								"name": "earnedRewards",
 								"type": "uint256"
+							},
+							{
+								"internalType": "uint8",
+								"name": "giftCount",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint256",
+								"name": "lastClaim",
+								"type": "uint256"
 							}
 						],
 						"internalType": "struct TwicryptMiner.PlayerSession",
@@ -478,14 +553,19 @@
 					{
 						"components": [
 							{
-								"internalType": "uint256",
+								"internalType": "uint8",
 								"name": "level",
-								"type": "uint256"
+								"type": "uint8"
 							},
 							{
 								"internalType": "uint256",
 								"name": "capacity",
 								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "imageUrl",
+								"type": "string"
 							},
 							{
 								"internalType": "uint256",
@@ -496,6 +576,28 @@
 						"internalType": "struct TwicryptMiner.Bank",
 						"name": "bankData",
 						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "tokenId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "imageUrl",
+								"type": "string"
+							}
+						],
+						"internalType": "struct TwicryptMiner.stakedNft[]",
+						"name": "staked",
+						"type": "tuple[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nftBalance",
+						"type": "uint256"
 					}
 				],
 				"internalType": "struct TwicryptMiner.allData",
@@ -510,35 +612,83 @@
 		"inputs": [
 			{
 				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "getStacked",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "imageUrl",
+						"type": "string"
+					}
+				],
+				"internalType": "struct TwicryptMiner.stakedNft[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getStats",
+		"outputs": [
+			{
+				"internalType": "uint32",
+				"name": "",
+				"type": "uint32"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "isOld",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
 				"name": "",
 				"type": "address"
 			}
 		],
-		"name": "playerData",
+		"name": "nftBalances",
 		"outputs": [
 			{
 				"internalType": "uint256",
-				"name": "TwicryptTokenId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "lastStakeTime",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "miningStartTime",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "miningEndTime",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "earnedRewards",
+				"name": "",
 				"type": "uint256"
 			}
 		],
@@ -561,9 +711,9 @@
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "uint16",
 				"name": "totalSessions",
-				"type": "uint256"
+				"type": "uint16"
 			},
 			{
 				"internalType": "uint256",
@@ -572,7 +722,7 @@
 			},
 			{
 				"internalType": "uint256",
-				"name": "lastStakeTime",
+				"name": "lastMiningSession",
 				"type": "uint256"
 			},
 			{
@@ -589,24 +739,16 @@
 				"internalType": "uint256",
 				"name": "earnedRewards",
 				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "tuple",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
 			},
 			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
+				"internalType": "uint8",
+				"name": "giftCount",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lastClaim",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -649,9 +791,9 @@
 		"name": "upgrades",
 		"outputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "uint8",
 				"name": "level",
-				"type": "uint256"
+				"type": "uint8"
 			},
 			{
 				"internalType": "uint256",
@@ -665,7 +807,7 @@
 			},
 			{
 				"internalType": "string",
-				"name": "imgUrl",
+				"name": "imageUrl",
 				"type": "string"
 			}
 		],

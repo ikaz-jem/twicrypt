@@ -7,8 +7,8 @@ import bsc from '../../media/icons/bsc.svg'
 import anime from '../../media/3d2.png'
 import animation from '../../media/animation.GIF'
 
-import { lazy } from "react";
-import { useSelector } from "react-redux";
+import { lazy, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useMiningData } from "./hooks/useMiningData";
 import { formatEther } from "viem";
 
@@ -21,33 +21,59 @@ import clock from '../../media/icons/clock.png'
 import MiningStats from "./components/MiningStats/MiningStats";
 import ConnectWalletError from "../../shared/ConnectWalletError/ConnectWalletError";
 import { useCorrectNetwork } from "../../hooks/useCorrectNetwork";
+import { useNftBalanceOf } from "../../hooks/web3/useNftBalanceOf";
 
+import Popup from "../../shared/popup/Popup";
+import toast from "react-hot-toast";
+import { useParams, useSearchParams } from "react-router-dom";
+import { setMiningPage } from "../../app/features/mining/MiningSlice";
 
 const NftBalance = lazy(() => import('./components/Nfts/NftBalance'))
 const Bank = lazy(() => import('./components/Bank/Bank'))
 const MiningSession = lazy(() => import('./components/MiningSession/MiningSession'))
 
 const MiningHome = () => {
+const [searchParams]=useSearchParams()
+
+
+
+const dispatch = useDispatch()
+const setPage =(data)=> dispatch(setMiningPage(data))
+
+useEffect(()=>{
+    const id = searchParams.get('id')
+id && setPage(id)
+
+},[])
+
 
     const data = useMiningData()
 
-    const { address } = useSelector(state => state.session)
 
+    const { address } = useSelector(state => state.session)
     const { chain, switchNetwork } = useCorrectNetwork({
         fallback: ''
     })
+
+    const nftWarning = ()=> {
+        toast.custom(
+            (t) => (
+              <Popup  show={true} t={t} title={`you are not a holder 😿.`} desc={"you need to hold at least 1 twicrypt Nft in order to upgrade 😿"}/>
+            ),
+            { position: "bottom-center", duration: 2000 }
+          );
+    }
 
     const bankData = data?.data?.bankData || null
     const userData = data?.data?.userData || null
     const { page } = useSelector(state => state.mining)
 
     let components = {
-        'mining-session': <MiningSession />,
-        'my-bank': <Bank data={data} />,
-        'my-nft': <NftBalance />,
-        'profit-calculator': <MiningRewardCalculator />,
+        'mining-session': <MiningSession nftWarning={nftWarning} />,
+        'banks': <Bank data={data}  nftWarning={nftWarning}/>,
+        'miners': <NftBalance nftWarning={nftWarning} />,
+        'profit-calculator': <MiningRewardCalculator  />,
     }
-
 
 
 
@@ -124,7 +150,7 @@ const MiningHome = () => {
                         {/* <h1 className="m-0 p-0">bobobob</h1> */}
                     </div>
                 </div>
-                {address && <MiningStats bankData={bankData} userData={userData} />}
+                {address && <MiningStats  data={data} />}
 
             </div>
         </div>
