@@ -10,12 +10,12 @@ const StakedNfts = () => {
 
     const staked = useSelector(state => state.mining.session)
     const onWorkNfts = staked?.staked
-
+console.log(onWorkNfts)
 
     const Card = ({ data }) => {
         return (
             <><div className=" border my-1 h-10 w-10 rounded-lg overflow-hidden cursor-pointer hover:border-pink-500">
-                <img alt="art nft" src='https://cdn-icons-png.flaticon.com/512/2910/2910254.png' />
+                <img alt="art nft" src={data?.imageUrl  }/>
             </div></>
         )
     }
@@ -29,7 +29,7 @@ const StakedNfts = () => {
                     <div className="w-full flex gap-1 flex-wrap border p-2 border-pink-500 rounded-lg bg-[#00000062]">
                         <p>Nft Miners on work:</p>
                         {
-                        onWorkNfts &&   onWorkNfts?.map((item, i) => <Card />)
+                        onWorkNfts &&   onWorkNfts?.map((item, i) => <Card data={item} />)
                         }
                     </div>
                     : 

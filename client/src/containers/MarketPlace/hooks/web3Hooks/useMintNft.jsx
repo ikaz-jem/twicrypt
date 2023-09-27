@@ -11,6 +11,7 @@ import { setMintNft } from "../../../../app/features/States/StatesSlice";
 import { useContractWrite } from "wagmi";
 import { useWaitForTransaction } from "wagmi";
 import { toDecimals } from "../../../../utils/web3Functions";
+import { app_chain_id } from "../../../../shared/data/chains";
 
 export const useMintNft = ()=> {
     const dispatch = useDispatch()
@@ -34,7 +35,7 @@ let totalPrice = toDecimals(price,18)
         address: nft_contract  && nft_contract ,
         abi: abi&&abi,
         functionName: 'mint',
-        chainId: 97,
+        chainId: app_chain_id && app_chain_id,
         args: [nftMintDetails?.nftCount && toNumber(nftMintDetails?.nftCount) ],
         value: totalPrice&& totalPrice.toString(),
         onMutate(){

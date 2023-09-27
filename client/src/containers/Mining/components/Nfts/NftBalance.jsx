@@ -80,7 +80,8 @@ if (chain?.id == app_chain_id) {
 }}
 
 
-console.log(selectedNft.length)
+
+
     const Card = ({ data }) => {
         return (
             <>

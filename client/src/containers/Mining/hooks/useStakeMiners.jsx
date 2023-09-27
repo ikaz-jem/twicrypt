@@ -64,9 +64,8 @@ const stakeMiners = useContractWrite({
           onSuccess(data){
               setHash(data?.hash)
           }
-
-
     })
+    
 
     const approveSingle = useContractWrite({
         address:nft_contract && nft_contract,

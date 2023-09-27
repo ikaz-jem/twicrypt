@@ -19,7 +19,7 @@ export const useGetMintedNfts    = ({chain}) => {
     const Base = 'https://testnets-api.opensea.io/v2/chain/'
     const nftlimit = `?limit=${50}`
     const constructed = `${Base}${chain&&chain}/account/${address}/nfts${nftlimit}`
-
+console.log(Nfts)
 const mainnetData = async ()=> {
     const Base = 'https://api.opensea.io/v2/chain/'
     const nftlimit = `?limit=${50}`
