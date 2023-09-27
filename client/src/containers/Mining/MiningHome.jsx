@@ -39,12 +39,12 @@ const [searchParams]=useSearchParams()
 
 const dispatch = useDispatch()
 const setPage =(data)=> dispatch(setMiningPage(data))
+const id = searchParams.get('id')
 
 useEffect(()=>{
-    const id = searchParams.get('id')
 id && setPage(id)
 
-},[])
+},[id])
 
 
     const data = useMiningData()

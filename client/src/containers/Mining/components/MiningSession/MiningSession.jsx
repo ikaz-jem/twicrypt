@@ -9,6 +9,8 @@ import { formatEther} from "viem"
 import { useCorrectNetwork } from "../../../../hooks/useCorrectNetwork"
 import { app_chain_id } from "../../../../shared/data/chains"
 import { useNftBalanceOf } from "../../../../hooks/web3/useNftBalanceOf"
+import StakedNfts from "./StakedNfts"
+
 
 const MiningSession = ({nftWarning}) => {
 
@@ -55,35 +57,17 @@ const handleClaimBank =(e)=>{
   }
 
 
-const onWork = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
 
-  const Card = ({ data }) => {
-    return (
-        <><div className=" border my-1 h-10 w-10 rounded-lg overflow-hidden cursor-pointer hover:border-pink-500">
-                <img alt="art nft" src='https://cdn-icons-png.flaticon.com/512/2910/2910254.png
-' />
-            </div></>
-    )
-}
-
+  
 
 
     return (
-        <div className="w-full h-[50vh]  p-10">
-            {/* <div className="px-10 opacity-50">
-                <Disclamer message={'before starting a new session send tokens to bank otherwise they will be lost ! '}></Disclamer>
-            </div> */}
+     
+      <div >
+      <div className="flex flex-wrap gap-2 px-5 justify-center my-2">
+            
+  <StakedNfts/>
 
-      <p>Nft Miners on work:</p>
-              <h5>you have no active workers ! you need to send your nfts to work !</h5>
-            <div className="w-full flex gap-1 flex-wrap border p-2 border-pink-500 rounded-lg bg-[#00000062]">
-              {
-                onWork.map((item,i)=> <Card/> )
-              }
-
-            </div>
-         
-<div className="flex flex-wrap gap-2 px-5 justify-center my-2">
     <div className="w-24 h-24  border border-purple-400 flex flex-col rounded-xl items-center justify-center">
     <AiOutlineBank className="text-white text-2xl" />
       <p className="text-xs text-neutral-500">bank</p>

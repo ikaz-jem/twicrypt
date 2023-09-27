@@ -3,7 +3,9 @@ import Spinner from "../../../../shared/Spinner/Spinner"
 
 import { useGetMintedNfts } from "../../hooks/useGetMintedNfts"
 import { useState } from "react"
-
+import { useStakeMiners } from "../../hooks/useStakeMiners"
+import { useCorrectNetwork } from "../../../../hooks/useCorrectNetwork"
+import { app_chain_id } from "../../../../shared/data/chains"
 
 
 const NftBalance = () => {
@@ -51,8 +53,34 @@ const prepareData = ()=> {
 
 }
 
-const [Ids] = prepareData()
+const [Ids,images] = prepareData()
 
+const { approve , approveSingle} = useStakeMiners({
+    ids: Ids && Ids,
+    images:images&& images
+})
+
+const {switchNetwork,chain} = useCorrectNetwork({
+    fallback: selectedNft.length == 1 ? ()=>  approveSingle.write() :  ()=>  approve.write()
+})
+
+
+const putMinersOnWork = (e)=> {
+if (chain?.id == app_chain_id) {
+    e.preventDefault()
+    if (selectedNft.length ==1){
+        approveSingle.write()
+    }else {
+        approve.write();
+    }
+  
+}else {
+    e.preventDefault()
+    switchNetwork?.switchNetwork();
+}}
+
+
+console.log(selectedNft.length)
     const Card = ({ data }) => {
         return (
             <>
@@ -97,7 +125,7 @@ const [Ids] = prepareData()
                             <div className="flex flex-col items-start justify-center">
                         {selectedNft?.length>0 && <div className="flex gap-2 items-center justify-center py-2">
 
-                            <button className="px-4 bg-green-500 rounded hover:bg-orange-500 text-sm py-1">put to work</button>
+                            <button className="px-4 bg-green-500 rounded hover:bg-orange-500 text-sm py-1" onClick={(e)=>putMinersOnWork(e)}>put to work</button>
                             <button onClick={()=> selectAll()} className="px-4 bg-blue-500 rounded hover:bg-pink-500 text-sm py-1">select all</button>
                             <button onClick={()=> setSelectedNft([])} className="px-4 bg-blue-500 rounded hover:bg-pink-500 text-sm py-1">unselect all</button>
                         </div>

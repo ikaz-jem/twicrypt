@@ -34,8 +34,8 @@ const RewardCounter = () => {
     const miningSpeed = (totalSessionRewards / (sessionDuration))
 
     let sessionStartIn = NextSession - currentTime
-    console.log(sessionStartIn)
-const [countdown,setCountdown]=useState(sessionStartIn);
+
+    const [countdown,setCountdown]=useState(sessionStartIn);
 
 
     const calculate = () => {
@@ -43,7 +43,7 @@ const [countdown,setCountdown]=useState(sessionStartIn);
             // console.log('mining time ended')
             return formatEther(totalSessionRewards)
         } else {
-            // console.log('mining ...')
+            
             return (reward).toFixed(4)
         }
     }
@@ -70,7 +70,7 @@ const [countdown,setCountdown]=useState(sessionStartIn);
 
 
         <p className="font-bold text-md text-white">mining :</p>
-       { currentTime >= startTime ? <p className="font-bold text-lg text-pink-600">{formatEther(reward)} tw</p> : <p className="text-orange-500">session Ended come back when new session is available!</p> }
+       { sessionStartIn <= 0  || endTime > currentTime ? <p className="font-bold text-lg text-pink-600">{formatEther(reward)} tw</p> : <p className="text-orange-500">session Ended come back when new session is available!</p> }
     </div>
     <div className="flex gap-2 items-center">
         <p className="font-bold text-md text-white">total mined :</p>
