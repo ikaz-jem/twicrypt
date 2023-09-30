@@ -25,9 +25,13 @@ import { useNftBalanceOf } from "../../hooks/web3/useNftBalanceOf";
 
 import Popup from "../../shared/popup/Popup";
 import toast from "react-hot-toast";
-import { useParams, useSearchParams } from "react-router-dom";
+import {  useSearchParams } from "react-router-dom";
 import { setMiningPage } from "../../app/features/mining/MiningSlice";
 import { unixCountDown } from "../../utils/unixToDate";
+import { useGetAllMiningData } from "./hooks/useGetAllMiningData";
+import Spinner from "../../shared/Spinner/Spinner";
+
+
 
 const NftBalance = lazy(() => import('./components/Nfts/NftBalance'))
 const Bank = lazy(() => import('./components/Bank/Bank'))
@@ -42,40 +46,46 @@ const dispatch = useDispatch()
 const setPage =(data)=> dispatch(setMiningPage(data))
 const id = searchParams.get('id')
 
-useEffect(()=>{
-id && setPage(id)
 
+
+
+
+useEffect(()=>{
+const controller = new AbortController();
+id && setPage(id)
+return ()=> controller.abort()
 },[id])
 
+// const data = useMiningData()
+const platformData = useGetAllMiningData()
+const data = platformData &&  platformData[0]?.result
 
-    const data = useMiningData()
-
-
-    const { address } = useSelector(state => state.session)
-    const { chain, switchNetwork } = useCorrectNetwork({
-        fallback: ''
-    })
+const { address } = useSelector(state => state.session)
+const { chain, switchNetwork } = useCorrectNetwork({
+    fallback: ()=> null
+})
 
     const nftWarning = (message)=> {
         toast.custom(
             (t) => (
-              <Popup  show={true} t={t} title={`you are not a holder 😿.`} desc={"you need to hold at least 1 twicrypt Nft in order to upgrade 😿"}/>
-            ),
-            { position: "bottom-center", duration: 2000 }
-          );
-    }
-
-    const bankData = data?.data?.bankData || null
-    const userData = data?.data?.userData || null
-    const { page } = useSelector(state => state.mining)
-
-    let components = {
+                <Popup  show={true} t={t} title={`you are not a holder 😿.`} desc={"you need to hold at least 1 twicrypt Nft in order to upgrade 😿"}/>
+                ),
+                { position: "bottom-center", duration: 2000 }
+                );
+            }
+            
+            const bankData = data?.data?.bankData || null
+            const userData = data?.data?.userData || null
+            const { page } = useSelector(state => state.mining)
+            
+            let components = {
         'mining-session': <MiningSession nftWarning={nftWarning} />,
         'banks': <Bank data={data}  nftWarning={nftWarning}/>,
         'miners': <NftBalance nftWarning={nftWarning} />,
         'profit-calculator': <MiningRewardCalculator  />,
     }
-
+    
+    
 
 
     const MenuNavbar = () => {
@@ -128,7 +138,7 @@ id && setPage(id)
 </div> */}
             <div className="flex rounded-xl my-5">
 
-                <MenuNavbar />
+                {/* <MenuNavbar /> */}
 
             </div>
             <div className="grid grid-cols-2 gap-2 h-auto w-auto container--xxxlarge p-2 container--center  place-items-start place-content-start relative ">
@@ -153,7 +163,13 @@ id && setPage(id)
                         {/* <h1 className="m-0 p-0">bobobob</h1> */}
                     </div>
                 </div>
-                {address && <MiningStats  data={data} />}
+                { data ? 
+                 <MiningStats /> 
+                 : 
+                 <div className="w-[48%] flex items-center justify-center">
+                 <Spinner message={'loading stats ...'}/> 
+                 </div>
+                 }
 
             </div>
         </div>

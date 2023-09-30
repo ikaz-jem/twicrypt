@@ -61,11 +61,11 @@ const MiningRewardCalculator = () => {
         <div className="flex flex-col gap-1 items-start justify-center  w-full p-5 ">
             <h3 className="p-0 m-0 font-bold text-left">Profit calculator</h3>
 
-            <label for='nftCount' className="text-xs text-neutral-400"> number of assets you hold :</label>
+            <label htmlFor='nftCount' className="text-xs text-neutral-400"> number of assets you hold :</label>
             <input className="placeholder-black m-2 text-black px-4  rounded-lg" type="number" placeholder="number of nfts" onChange={handleChange} name="nftCount" />
-            <label for='hours' className="text-xs text-neutral-400">total mining hours :</label>
+            <label htmlFor='hours' className="text-xs text-neutral-400">total mining hours :</label>
             <input className="placeholder-black m-2 text-black px-4 rounded-lg" type="number" placeholder="mining hours" onChange={handleChange} name="hours" />
-            <label for='banklevel' className="text-xs text-neutral-400"> bank upgrade level :</label>
+            <label htmlFor='banklevel' className="text-xs text-neutral-400"> bank upgrade level :</label>
             <input className="placeholder-black m-2 text-black px-4 rounded-lg" type="number" placeholder="bankLevel" onChange={handleChange} name="banklevel" />
 
             <div className=" my-2 flex justify-start items-center">

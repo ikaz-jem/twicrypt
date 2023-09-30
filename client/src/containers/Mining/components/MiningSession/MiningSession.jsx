@@ -10,6 +10,8 @@ import { useCorrectNetwork } from "../../../../hooks/useCorrectNetwork"
 import { app_chain_id } from "../../../../shared/data/chains"
 import { useNftBalanceOf } from "../../../../hooks/web3/useNftBalanceOf"
 import StakedNfts from "./StakedNfts"
+import { useGetStats } from "../../hooks/useGetStats"
+import ProgressBar from "../../../../shared/ProgressBar/ProgressBar"
 
 
 const MiningSession = ({nftWarning}) => {
@@ -19,10 +21,13 @@ const MiningSession = ({nftWarning}) => {
 const startMining = useStartMining()
 const claimBank = useClaimBank();
 // balance check from nft contract
-const nftBalance = useNftBalanceOf()
+// const nftBalance = useNftBalanceOf()
 
+// const miningplatform = useGetStats()
 
-const miningSessionData = useSelector(state=> state.mining.session)
+const sessionData = useSelector(state=> state.mining.session)
+const miningSessionData =sessionData?.result
+
 const minbBalance = Number(miningSessionData?.nftBalance)
 const bankData = miningSessionData?.bankData
 
@@ -59,16 +64,13 @@ const handleClaimBank =(e)=>{
   }
 
 
-
-  
-
-
-    return (
-     
+    return (     
       <div >
-      <div className="flex flex-wrap gap-2 px-5 justify-center my-2">
-            
+      <div className="flex flex-wrap gap-2 px-5 justify-center my-2">     
   <StakedNfts/>
+
+
+
 
     <div className="w-24 h-24  border border-purple-400 flex flex-col rounded-xl items-center justify-center">
     <AiOutlineBank className="text-white text-2xl" />
@@ -95,18 +97,14 @@ const handleClaimBank =(e)=>{
       <p className="text-xs text-neutral-500">speed</p>
       <p className="text-xs text-neutral-500">{ bankData?.capacity && formatEther(bankData?.capacity)}</p>
     </div>
-
-
-
 </div>
 
+              <ProgressBar percentage={30} min={0} max={100}/>
             <div className="flex justify-between px-5 py-5">
-
             {/* <div className="flex flex-col gap-1 ">
                 <p className="font-bold" >Mining Session Available</p>
                 <p className="font-bold" >Mining Session Available</p>
-            </div> */}
-
+              </div> */}
                 <div className="flex  gap-1 items-center justify-center w-full">
                 <button onClick={handleClick} disabled={isFull} className={`rounded-lg px-5  py-2 bg-blue-500 hover:bg-neutral-200 hover:text-black transition-all duration-300 text-xs disabled:cursor-not-allowed`}>Start mining</button>
                 {miningSessionData?.bankData?.capacity>0  ? null : <button onClick={handleClaimBank} className=" rounded-lg px-5 py-2 bg-orange-500 hover:bg-neutral-200 hover:text-black transition-all duration-300 text-xs">Claim free Bank</button>}

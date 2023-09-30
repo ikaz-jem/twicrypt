@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 
 const StakedNfts = () => {
 
-    const staked = useSelector(state => state.mining.session)
+    const staked = useSelector(state => state.mining.session.result)
     const onWorkNfts = staked?.staked
 
     const Card = ({ data }) => {
@@ -28,7 +28,7 @@ const StakedNfts = () => {
                     <div className="w-full flex gap-1 flex-wrap border p-2 border-pink-500 rounded-lg bg-[#00000062]">
                         <p>Nft Miners on work:</p>
                         {
-                        onWorkNfts &&   onWorkNfts?.map((item, i) => <Card data={item} />)
+                        onWorkNfts &&   onWorkNfts?.map((item, i) => <Card data={item} key={i}/>)
                         }
                     </div>
                     : 

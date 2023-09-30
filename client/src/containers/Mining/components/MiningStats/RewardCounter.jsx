@@ -13,7 +13,7 @@ const RewardCounter = () => {
     const [counter, setCounter] = useState(0)
     const [reward, setReward] = useState(0)
 
-    const ddd = useCalculateRewards()
+
     // const event = useWatchMiningStart()
     const { address } = useSelector(state => state.session)
 

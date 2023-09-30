@@ -4,6 +4,7 @@ import abi from '../abi/mining.json'
 import { useDispatch, useSelector } from "react-redux"
 import { setMiningSession } from "../../../app/features/mining/MiningSlice"
 import { app_chain_id } from "../../../shared/data/chains"
+import { useEffect } from "react"
 
 
 
@@ -21,7 +22,7 @@ const {address}=useSelector(state=>state?.session)
         functionName:'getAllData',
         args:[address],
         chainId:app_chain_id&&app_chain_id  ,
-        watch:true,
+        watch:false,
         onSuccess(data) {
             setMiningData(data)
         },
