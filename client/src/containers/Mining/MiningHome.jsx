@@ -27,6 +27,7 @@ import Popup from "../../shared/popup/Popup";
 import toast from "react-hot-toast";
 import { useParams, useSearchParams } from "react-router-dom";
 import { setMiningPage } from "../../app/features/mining/MiningSlice";
+import { unixCountDown } from "../../utils/unixToDate";
 
 const NftBalance = lazy(() => import('./components/Nfts/NftBalance'))
 const Bank = lazy(() => import('./components/Bank/Bank'))
@@ -55,7 +56,7 @@ id && setPage(id)
         fallback: ''
     })
 
-    const nftWarning = ()=> {
+    const nftWarning = (message)=> {
         toast.custom(
             (t) => (
               <Popup  show={true} t={t} title={`you are not a holder 😿.`} desc={"you need to hold at least 1 twicrypt Nft in order to upgrade 😿"}/>
@@ -83,6 +84,8 @@ id && setPage(id)
             switchNetwork?.switchNetwork()
         }
 
+        const NextSession = Number(userData?.miningStartTime);
+        const currentTime = Math.floor(new Date().getTime() / 1000);
         return (
 
             <div className="w-full border-b px-5 border-neutral-700 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl text-xs text-white font-bold shadow-xl" >
@@ -92,10 +95,10 @@ id && setPage(id)
 
                         <ul className="flex justify-start items-center gap-4 py-1 wrap my-2  w-full flex-wrap ">
                             <img src={bank} alt="" className="w-9 h-9" />
-                            <li className="text-white font-bold">  Bank capacity : {bankData && formatEther(bankData?.capacity)} </li>
-                            <img src={coin} alt="" className="w-9 h-9 " /> <li className="text-white font-bold">Total Earnings: {bankData && formatEther(bankData?.funds)}</li>
-                            <img src={time} alt="" className="w-9 h-9" /> <li className="text-white font-bold">next Session: 10</li>
-                            <img src={clock} alt="" className="w-9 h-9" /><li className="text-white font-bold">mining speed: {userData && formatEther(userData?.miningPower)}</li>
+                            <li className="text-white font-bold">  Bank capacity : {bankData && formatEther(bankData?.capacity) + ' tw'} </li>
+                            <img src={coin} alt="" className="w-9 h-9 " /> <li className="text-white font-bold">Total Earnings : {bankData && formatEther(bankData?.funds)+ ' tw'}</li>
+                            <img src={time} alt="" className="w-9 h-9" /> <li className="text-white font-bold">next Session : {currentTime >= NextSession ? <span className="p-0 m-0 text-green-500 font-bold">available now</span> : unixCountDown(NextSession) }</li>
+                            <img src={clock} alt="" className="w-9 h-9" /><li className="text-white font-bold">mining speed : {userData && formatEther(userData?.miningPower) + ' tw/s'}</li>
                         </ul>
                     </div>
                     <div className="flex items-center justify-center gap-5">

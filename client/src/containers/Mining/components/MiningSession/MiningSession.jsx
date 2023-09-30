@@ -18,11 +18,13 @@ const MiningSession = ({nftWarning}) => {
 
 const startMining = useStartMining()
 const claimBank = useClaimBank();
+// balance check from nft contract
 const nftBalance = useNftBalanceOf()
-const minbBalance = Number(nftBalance?.data)
-const miningSessionData = useSelector(state=> state.mining.session)
-const bankData = miningSessionData?.bankData
 
+
+const miningSessionData = useSelector(state=> state.mining.session)
+const minbBalance = Number(miningSessionData?.nftBalance)
+const bankData = miningSessionData?.bankData
 
 
 const {chain , switchNetwork} = useCorrectNetwork({

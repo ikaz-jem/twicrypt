@@ -12,7 +12,7 @@ const MiningStats = () => {
     const data = useSelector(state => state.mining.session)
     const bankData = data?.bankData || null
     const userData = data?.userData || null
- 
+    const currentTime = Math.floor(new Date().getTime() / 1000);
 
 
     return (
@@ -25,7 +25,7 @@ const MiningStats = () => {
 
                 <div className="flex w-full ">
                     <div className="w-1/2 h-full text-xs ">
-                        <MiningGifts bankData={bankData} />
+                        <MiningGifts bankData={data} />
                     </div>
                     <div className='w-1/2' >
                         <img src={animation} alt="" className="w-[83%]" />
@@ -40,14 +40,14 @@ const MiningStats = () => {
                                 <>
                                     <div className="flex flex-col items-start" >
                                         <p>last Mining Session : </p>
-                                        <p>ended :  </p>
-                                        <p>Next Start : </p>
+                                        <p>ends at :  </p>
+                                        <p>Next session at : </p>
                                     </div>
 
                                     <div className="flex flex-col items-start" >
                                         <p> {unixToDate(Number(userData?.lastMiningSession))} </p>
                                         <p>{unixToDate(Number(userData?.miningEndTime))} </p>
-                                        <p>{unixToDate(Number(userData?.miningStartTime))} </p>
+                                        <p>{currentTime >= userData?.miningStartTime ? ' you can start mining !' : unixToDate(Number(userData?.miningStartTime))} </p>
                                     </div>
                                 </>
 

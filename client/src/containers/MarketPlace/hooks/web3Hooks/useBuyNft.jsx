@@ -14,7 +14,6 @@ const [approveHash, setApproveHash] = useState(null)
 
 
 
-
 let tokenId = nftDetails?.tokenId && Number(nftDetails?.tokenId)
 const buy = useContractWrite({
     address:  marketplace_contract && marketplace_contract,

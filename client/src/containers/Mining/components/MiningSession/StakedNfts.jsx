@@ -10,7 +10,6 @@ const StakedNfts = () => {
 
     const staked = useSelector(state => state.mining.session)
     const onWorkNfts = staked?.staked
-console.log(onWorkNfts)
 
     const Card = ({ data }) => {
         return (

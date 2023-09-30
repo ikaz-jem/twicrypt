@@ -6,6 +6,9 @@ import { userData } from "../../../app/features/session/sessionSlice";
 import { useSelector } from "react-redux";
 
 export const useGetMintedNfts    = ({chain}) => {
+
+const changes = useSelector(state=>state.mining.session)
+const depend = changes?.staked?.length
     const [Nfts, setNfts] = useState({
         data: null,
         isLoading: false,
@@ -19,8 +22,8 @@ export const useGetMintedNfts    = ({chain}) => {
     const Base = 'https://testnets-api.opensea.io/v2/chain/'
     const nftlimit = `?limit=${50}`
     const constructed = `${Base}${chain&&chain}/account/${address}/nfts${nftlimit}`
-console.log(Nfts)
-const mainnetData = async ()=> {
+
+    const mainnetData = async ()=> {
     const Base = 'https://api.opensea.io/v2/chain/'
     const nftlimit = `?limit=${50}`
     const constructed = `${Base}${chain&&chain}/account/${address}/nfts${nftlimit}`
@@ -89,7 +92,7 @@ const testnetData = async ()=> {
        
         !!data?.execute && address && fetchData()
     
-    }, [address,data?.chain])
+    }, [address,data?.chain ])
 
 return Nfts
 }
