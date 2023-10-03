@@ -8,9 +8,8 @@ const MiningGifts = ()=> {
   const data = useSelector(state => state.mining.session)
 
 
-const bankData = data?.bankData || null
-const userData = data?.userData || null
-
+const bankData = data?.result?.bankData || null
+const userData = data?.result?.userData || null
 
 
     return(
@@ -21,21 +20,22 @@ const userData = data?.userData || null
 
 
 
+                <p className=" text-xs text-yellow-500">you can only claim gifts one by one</p>
             <div className="flex items-center justify-between px-2 py-1">
-                <p>mine 100 tokens</p>
-              { <button disabled={ bankData &&  userData?.giftCount =='1' && formatEther((bankData?.funds))  >= 100 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">claim gift</button>}
+                <p className="text-white">mine 100 tokens</p>
+              { <button disabled={ bankData &&  userData?.giftCount =='1' && formatEther((bankData?.funds))  >= 100 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">{ bankData &&  userData?.giftCount =='1' && formatEther((bankData?.funds))  >= 100 ? 'claim gift': 'gift claimed'}</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1">
                 <p>mine 500 tokens</p>
-              { <button disabled={bankData &&  userData?.giftCount =='2' && formatEther((bankData?.funds)) >= 500 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">claim gift</button>}
+              { <button disabled={bankData &&  userData?.giftCount =='2' && formatEther((bankData?.funds)) >= 120 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">claim gift</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1">
                 <p>mine 1000 tokens</p>
-              { <button disabled={bankData &&  userData?.giftCount =='3' && formatEther((bankData?.funds)) >= 1000 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">claim gift</button>}
+              { <button disabled={bankData &&  userData?.giftCount =='3' && formatEther((bankData?.funds)) >= 140 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">claim gift</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1">
                 <p>mine 1500 tokens</p>
-              { <button disabled={bankData &&  userData?.giftCount =='4' && formatEther((bankData?.funds)) >= 1500 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">claim gift</button>}
+              { <button disabled={bankData &&  userData?.giftCount =='4' && formatEther((bankData?.funds)) >= 150 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">claim gift</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1">
                 <p>mine 2000 tokens</p>

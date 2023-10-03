@@ -25,11 +25,16 @@ const StakedNfts = () => {
         return (
             <>
                 {staked?.staked && staked?.staked?.length >0 ?
-                    <div className="w-full flex gap-1 flex-wrap border p-2 border-pink-500 rounded-lg bg-[#00000062]">
-                        <p>Nft Miners on work:</p>
+                    <div className="w-full flex gap-1 flex-col flex-wrap border p-2 border-pink-500 rounded-lg bg-[#00000062]">
+
+                        <p className="text-xs text-white"> Nft Miners on work:</p>
+                    <div className="flex gap-2 items-center justify-center flex-wrap">
                         {
-                        onWorkNfts &&   onWorkNfts?.map((item, i) => <Card data={item} key={i}/>)
+                            onWorkNfts &&   onWorkNfts?.map((item, i) => <Card data={item} key={i}/>)
                         }
+                        </div>    
+                    
+                    
                     </div>
                     : 
                     <div className="flex gap-2 items-center justify-center border rounded-xl bg-[#00000081] h-auto border-purple-500">

@@ -53,18 +53,32 @@ const depend = changes?.staked?.length
 
 const testnetData = async ()=> {
 
+    
+
     setNfts((prev) => ({
         ...prev,
         isLoading: true,
     }))
     
     try {
-         await axios.get(constructed, { Testnetheaders }).then((res) => setNfts((prev) => ({
+        const res =  await axios.get(constructed, { Testnetheaders }).then((res) => res.data)
+
+        setNfts((prev) => ({
             ...prev,
-            data: res.data.nfts,
+            data: res.nfts,
             isLoading: false,
             hasError:false
-        })))
+        }))
+        if (res.next){
+            let link =`${constructed}&next=${res.next}`
+            const resp = await axios.get(link, { Testnetheaders }).then((res) => res.data)
+            setNfts((prev) => ({
+                ...prev,
+                data:[...prev.data, ...resp.nfts],
+                isLoading: false,
+                hasError:false
+            }))
+        }
     } catch (err) {
         err && setNfts((prev) => ({
             ...prev,

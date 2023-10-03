@@ -4,7 +4,8 @@ import { formatEther } from "viem"
 
 const UserBank = ({bankData,handleUpgrade,banks})=>{
     const imgUrl = banks[Number(bankData?.level)]?.imageUrl || null
-    const myBankCapacity = formatEther(Number(bankData?.capacity)) || null
+    let capacity = bankData?.capacity?.toString()
+    const myBankCapacity = capacity && formatEther(capacity) || null
     const myBankLevel = Number(bankData?.level) || null
     const nextLevel = myBankLevel && myBankLevel+1 || null
         return (

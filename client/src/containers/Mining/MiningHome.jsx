@@ -29,7 +29,7 @@ import {  useSearchParams } from "react-router-dom";
 import { setMiningPage } from "../../app/features/mining/MiningSlice";
 import { unixCountDown } from "../../utils/unixToDate";
 import { useGetAllMiningData } from "./hooks/useGetAllMiningData";
-import Spinner from "../../shared/Spinner/Spinner";
+
 
 
 
@@ -58,24 +58,26 @@ return ()=> controller.abort()
 
 // const data = useMiningData()
 const platformData = useGetAllMiningData()
-const data = platformData &&  platformData[0]?.result
+
+
+const data = platformData &&  platformData[0]?.result 
 
 const { address } = useSelector(state => state.session)
 const { chain, switchNetwork } = useCorrectNetwork({
     fallback: ()=> null
 })
 
-    const nftWarning = (message)=> {
+const nftWarning = ({title ,message})=> {
         toast.custom(
             (t) => (
-                <Popup  show={true} t={t} title={`you are not a holder 😿.`} desc={"you need to hold at least 1 twicrypt Nft in order to upgrade 😿"}/>
+                <Popup  show={true} t={t} title={title&&title} desc={message && message}/>
                 ),
                 { position: "bottom-center", duration: 2000 }
                 );
             }
             
-            const bankData = data?.data?.bankData || null
-            const userData = data?.data?.userData || null
+            const bankData = data?.bankData || null
+            const userData = data?.userData || null
             const { page } = useSelector(state => state.mining)
             
             let components = {
@@ -90,6 +92,7 @@ const { chain, switchNetwork } = useCorrectNetwork({
 
     const MenuNavbar = () => {
 
+          
         const changeNetwork = ()=> {
             switchNetwork?.switchNetwork()
         }
@@ -111,6 +114,8 @@ const { chain, switchNetwork } = useCorrectNetwork({
                             <img src={clock} alt="" className="w-9 h-9" /><li className="text-white font-bold">mining speed : {userData && formatEther(userData?.miningPower) + ' tw/s'}</li>
                         </ul>
                     </div>
+
+
                     <div className="flex items-center justify-center gap-5">
                      {address &&   <p className="text-xs text-white opacity-80" > {address.slice(0,5)+'...'+address.slice(35,40)}</p>}
                         { address && chain?.id != 97 ?
@@ -138,7 +143,7 @@ const { chain, switchNetwork } = useCorrectNetwork({
 </div> */}
             <div className="flex rounded-xl my-5">
 
-                {/* <MenuNavbar /> */}
+                <MenuNavbar />
 
             </div>
             <div className="grid grid-cols-2 gap-2 h-auto w-auto container--xxxlarge p-2 container--center  place-items-start place-content-start relative ">
@@ -163,12 +168,10 @@ const { chain, switchNetwork } = useCorrectNetwork({
                         {/* <h1 className="m-0 p-0">bobobob</h1> */}
                     </div>
                 </div>
-                { data ? 
+                { data && platformData[0] ? 
                  <MiningStats /> 
                  : 
-                 <div className="w-[48%] flex items-center justify-center">
-                 <Spinner message={'loading stats ...'}/> 
-                 </div>
+                 null
                  }
 
             </div>

@@ -27,7 +27,6 @@ contracts :[
     functionName:'getAllData',
     args:[address],
     chainId:app_chain_id&&app_chain_id ,
-    watch:false,
   
 },
 {
@@ -35,7 +34,7 @@ contracts :[
     abi: mining_abi && mining_abi,
     functionName:'getAllBanks',
     chainId:app_chain_id&&app_chain_id ,
-    watch:false,
+ 
   
 },
 {
@@ -51,18 +50,16 @@ contracts :[
     functionName:'sessionData',
     args:[address && address],
     chainId:app_chain_id,
-    watch:false
 }
-]
 
+],watch:true
 
 })
 
 
-let sessionData = data[0]
-let bankData = data[1]
-let platformStats= data[2]
-
+let sessionData = data && data[0]
+let bankData = data&& data[1]
+let platformStats=data&& data[2]
 
 
 useEffect(()=>{
@@ -71,10 +68,10 @@ useEffect(()=>{
 !isLoading && setMiningData(sessionData)
 !isLoading && setPlatformInfos(platformStats)
 !isLoading && setBankData(bankData)
-console.log(data)
-    return()=>controller.abort()
+
+return()=>controller.abort()
     
-},[data])
+},[sessionData,bankData,platformStats])
 return data
 
 }
