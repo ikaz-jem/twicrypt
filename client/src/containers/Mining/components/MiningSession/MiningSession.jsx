@@ -26,7 +26,7 @@ const cssOverride = {
     capToBodyRatio: 0.4
   }, batteryMeter: {
     fill: 'green',
-    lowBatteryValue: 30,
+    lowBatteryValue:30,
     lowBatteryFill: 'red',
     outerGap: 0,
     noOfCells: 1, // more than 1, will create cell battery
@@ -186,8 +186,13 @@ const MiningSession = ({ nftWarning }) => {
 
         <div className="flex  gap-1 items-center justify-center w-full">
           {miningSessionData?.staked?.length > 0 && currentTime >= miningSessionData?.userData?.miningStartTime ? <button onClick={handleClick} disabled={isFull} className={`rounded-lg px-5  py-2 bg-blue-500 hover:bg-neutral-200 hover:text-black transition-all duration-300 text-xs disabled:cursor-not-allowed`}>Start mining</button> :
-                    <p className="text-xs text-green-500">session started !! you can come back later when the next session is available if you want , note that your earnings will be transfered to bank after a new session is started ! happy earnings 🥳🥳</p>
+                  null
+          }
 
+          {
+
+miningSessionData?.staked?.length > 0  && miningSessionData?.userData?.miningStartTime != "0" && currentTime <= miningSessionData?.userData?.miningStartTime  ? <p className="text-xs text-green-500">session started !! you can come back later when the next session is available if you want , note that your earnings will be transfered to bank after a new session is started ! happy earnings 🥳🥳</p>
+: null
           }
           {miningSessionData?.bankData?.capacity > 0 ? null : <button onClick={handleClaimBank} className=" rounded-lg px-5 py-2 bg-orange-500 hover:bg-neutral-200 hover:text-black transition-all duration-300 text-xs">Claim free Bank</button>}
         </div>

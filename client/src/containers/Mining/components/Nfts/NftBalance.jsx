@@ -12,54 +12,57 @@ import { Link } from "react-router-dom"
 const NftBalance = () => {
 
     const [selectedNft, setSelectedNft] = useState([])
-
     const Nfts = useGetMintedNfts({
         chain: 'bsctestnet'
     })
-
-const hasTwicryptNft = Nfts?.data?.map((nft)=>nft?.contract?.toLocaleLowerCase()).includes(nft_contract?.toLocaleLowerCase())
-
-
+    
+    const hasTwicryptNft = Nfts?.data?.map((nft)=>nft?.contract?.toLocaleLowerCase()).includes(nft_contract?.toLocaleLowerCase())
+    
+    
     const handleClick = (nft) => {
         if (!selectedNft.some((item) => item.identifier === nft.identifier)) {
             setSelectedNft((prev) => [...prev, nft]);
         }
     }
-
+    
     const handleDeselect = (nft) => {
         setSelectedNft((prev) => (
             prev.filter((item) => item?.identifier != nft?.identifier)
-        ))
-    }
-
-    const selectAll = () => {
-        Nfts?.data?.map((nft) => {
-            if (nft?.contract == nft_contract) {
-                if (!selectedNft.some((item) => item.identifier === nft.identifier)) {
-                    return setSelectedNft((prev) => [...prev, nft]);
-                }
-            } else return null
-
+            ))
+        }
+        
+        const selectAll = () => {
+            Nfts?.data?.map((nft) => {
+                if (nft?.contract?.toLocaleLowerCase() == nft_contract?.toLocaleLowerCase()) {
+                    if (!selectedNft.some((item) => item.identifier === nft.identifier)) {
+                        return setSelectedNft((prev) => [...prev, nft]);
+                    }
+                } else return null
+                
+            })
+        }
+        
+        
+        const prepareData = () => {
+            const Ids = [];
+            const images = [];
+            selectedNft.map((item) => {
+                Ids.push(Number(item?.identifier))
+                images.push(item?.image_url)
+            })
+            return [Ids, images]
+        }
+        
+        const [Ids, images] = prepareData()
+        
+        console.log(Ids.length)
+    
+        
+        
+        const { approve, approveSingle } = useStakeMiners({
+            ids: Ids && Ids,
+            images: images && images
         })
-    }
-
-
-    const prepareData = () => {
-        const Ids = [];
-        const images = [];
-        selectedNft.map((item) => {
-            Ids.push(Number(item.identifier))
-            images.push(item.image_url)
-        })
-        return [Ids, images]
-    }
-
-    const [Ids, images] = prepareData()
-
-    const { approve, approveSingle } = useStakeMiners({
-        ids: Ids && Ids,
-        images: images && images
-    })
 
     const { switchNetwork, chain } = useCorrectNetwork({
         fallback: selectedNft.length == 1 ? () => approveSingle.write() : () => approve.write()

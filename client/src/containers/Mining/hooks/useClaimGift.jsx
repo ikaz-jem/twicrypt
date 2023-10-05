@@ -8,7 +8,7 @@ import { app_chain_id } from "../../../shared/data/chains"
 
 export const useClaimGift= ()=>{
 
-    const claimBank=useContractWrite({
+    const claimGift=useContractWrite({
         address:mining_contract && mining_contract,
         abi: abi && abi,
         functionName:'claimGift',
@@ -32,7 +32,7 @@ export const useClaimGift= ()=>{
     })
 
 
-return claimBank
+return claimGift
 
 
 

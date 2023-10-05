@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { toDecimals } from "../../../../utils/web3Functions"
 import { formatEther, parseEther } from "viem"
+import { useSelector } from "react-redux"
 
 
 const MiningRewardCalculator = () => {
@@ -17,31 +18,53 @@ const MiningRewardCalculator = () => {
     }
 
 
+const bankData = useSelector(state=>state.mining.banks)
+const banks = bankData?.result
+
+
+const extractData = ()=> {
+    let price = 0
+    let level = 0
+    let capacity = 0
+
+
+    if (calculate.banklevel > 0) {
+     const data = banks[Number(calculate?.banklevel)]
+     price = formatEther(Number(data?.price))
+     level = Number(data?.level)
+     capacity = Number(data?.capacity)/(10**18)
+
+    }
+
+
+return {price,level,capacity}
+}
+
 
 
 
     const calculateTotal = () => {
         let power = ((calculate?.nftCount*80)+(calculate?.banklevel*8)/2)
-
-
-        const nftPercent = (calculate?.nftCount *80)// 0.009
-        const bankPercent = (calculate?.banklevel*8)// 0.001
-
-        const duration =  calculate?.hours
-        const sub = (bankPercent+nftPercent)/2
-
-        const total = (power*10**14)
-        const result = formatEther(total*3600)
-        return result
+        const hours = calculate?.hours *3600
+        const result = Number(power)*Number(hours)
+        const total = (result/10000)
+   
+        return Number(total).toFixed(2)
         // .toFixed(3)
         
     }
+    const totalTokens = calculateTotal()
 
     const calculateInvestment = ()=>{
+
+        const {price,level,capacity}=extractData();
+        let unit =  (Number(capacity)/1000)
+        let ggg = unit * 0.22
+
         let nftPrice = 0.1
-        let bank = 0.22
-        let Total = (calculate?.nftCount * nftPrice)+ (calculate?.banklevel * bank)
-        return Total
+        let bank = calculate?.banklevel ==1 ? 0 : ggg
+        let Total = (calculate?.nftCount * nftPrice)+ bank
+        return Total?.toFixed(2)
 
     }
 
@@ -72,9 +95,9 @@ const MiningRewardCalculator = () => {
 <div className="flex flex-col items-start">
                 <h5 className="p-0 m-0 font-bold text-blue-500"> estimated earnings : </h5>
 
-                <h5 className="p-0 m-0 font-bold text-sm">total in token : {calculateTotal()} tw tokens </h5>
+                <h5 className="p-0 m-0 font-bold text-sm">total in token : {totalTokens || 0 } tw tokens </h5>
                 <h5 className="p-0 m-0 font-bold text-sm">total in dollar :{(calculateTotal() * 0.1).toFixed(2)} $  </h5>
-                <h5 className="p-0 m-0 font-bold text-sm">investment in BNB :{calculateInvestment() } BNB </h5>
+                <h5 className="p-0 m-0 font-bold text-sm">investment in BNB :{ calculate?.banklevel <= 5 ? calculateInvestment() + " BNB" :  " max Bank level is 5" }  </h5>
 </div>
 
             </div>

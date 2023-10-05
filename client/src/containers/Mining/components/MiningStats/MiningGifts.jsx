@@ -1,6 +1,6 @@
 import { formatEther } from "viem"
 import { useSelector } from "react-redux"
-
+import { useClaimGift } from "../../hooks/useClaimGift"
 
 
 const MiningGifts = ()=> {
@@ -12,7 +12,16 @@ const bankData = data?.result?.bankData || null
 const userData = data?.result?.userData || null
 
 
-    return(
+const claimGift = useClaimGift()
+const handleClick = ()=> {
+    claimGift.write()
+}
+
+const isDisabled = (count,capacity)=> bankData &&  userData?.giftCount ==count && formatEther((bankData?.funds))  >= capacity ? false:true
+const claimed = "bg-yellow-300"
+
+
+return(
     // giftcount
     
         <div className="h-full w-full bg-[#00000070] rounded-lg border border-neutral-900 py-5" >
@@ -23,31 +32,31 @@ const userData = data?.result?.userData || null
                 <p className=" text-xs text-yellow-500">you can only claim gifts one by one</p>
             <div className="flex items-center justify-between px-2 py-1">
                 <p className="text-white">mine 100 tokens</p>
-              { <button disabled={ bankData &&  userData?.giftCount =='1' && formatEther((bankData?.funds))  >= 100 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">{ bankData &&  userData?.giftCount =='1' && formatEther((bankData?.funds))  >= 100 ? 'claim gift': 'gift claimed'}</button>}
+              { <button onClick={handleClick} disabled={isDisabled('1',100)} className={`px-3 py-1  rounded ${bankData &&  userData?.giftCount >'1' ? ' disabled:bg-black' :'bg-orange-500 disabled:bg-gray-400' } disabled:bg-gray-400 text-white` }>{ bankData &&  userData?.giftCount >'1' ?  'gift claimed' : 'claim gift'}</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1">
                 <p>mine 500 tokens</p>
-              { <button disabled={bankData &&  userData?.giftCount =='2' && formatEther((bankData?.funds)) >= 120 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">claim gift</button>}
+              { <button onClick={handleClick} disabled={isDisabled('2',120)} className="px-3 py-1  rounded bg-orange-500 hover:bg-green-500 transition-all disabled:bg-gray-400 text-white ">{ bankData &&  userData?.giftCount >'2' ?  'gift claimed' : 'claim gift'}</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1">
                 <p>mine 1000 tokens</p>
-              { <button disabled={bankData &&  userData?.giftCount =='3' && formatEther((bankData?.funds)) >= 140 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">claim gift</button>}
+              { <button onClick={handleClick} disabled={bankData &&  userData?.giftCount =='3' && formatEther((bankData?.funds)) >= 140 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">{ bankData &&  userData?.giftCount >'3' ?  'gift claimed' : 'claim gift'}</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1">
                 <p>mine 1500 tokens</p>
-              { <button disabled={bankData &&  userData?.giftCount =='4' && formatEther((bankData?.funds)) >= 150 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">claim gift</button>}
+              { <button onClick={handleClick} disabled={bankData &&  userData?.giftCount =='4' && formatEther((bankData?.funds)) >= 150 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">{ bankData &&  userData?.giftCount >'4' ?  'gift claimed' : 'claim gift'}</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1">
                 <p>mine 2000 tokens</p>
-              { <button disabled={bankData &&  userData?.giftCount =='5' && formatEther((bankData?.funds)) >= 2000 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">claim gift</button>}
+              { <button onClick={handleClick} disabled={bankData &&  userData?.giftCount =='5' && formatEther((bankData?.funds)) >= 2000 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">{ bankData &&  userData?.giftCount >'5' ?  'gift claimed' : 'claim gift'}</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1">
                 <p>mine 2500 tokens</p>
-              { <button disabled={bankData &&  userData?.giftCount =='6' && formatEther((bankData?.funds)) >= 2500 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">claim gift</button>}
+              { <button onClick={handleClick} disabled={bankData &&  userData?.giftCount =='6' && formatEther((bankData?.funds)) >= 2500 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">{ bankData &&  userData?.giftCount >'6' ?  'gift claimed' : 'claim gift'}</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1">
                 <p>mine 3000 tokens</p>
-              { <button disabled={bankData &&  userData?.giftCount =='7' && formatEther((bankData?.funds)) >= 3000 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">claim gift</button>}
+              { <button onClick={handleClick} disabled={bankData &&  userData?.giftCount =='7' && formatEther((bankData?.funds)) >= 3000 ? false:true} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">{ bankData &&  userData?.giftCount >'7' ?  'gift claimed' : 'claim gift'}</button>}
             </div>
         </div>
     )
