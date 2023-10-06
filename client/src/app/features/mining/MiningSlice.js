@@ -17,7 +17,6 @@ export const MiningSlice = createSlice({
         transaction:null,
         platformInfos:null,
         banks:null,
-
     },
     reducers:{
         setData:(state,action)=>{

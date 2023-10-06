@@ -5,6 +5,8 @@ import { useContractRead } from 'wagmi'
 import { marketplace_contract } from '../../../data/Addresses'
 import { setNftDetailsPageState } from '../../../../../app/features/MarketPlace/MarketplaceSlice'
 import { useEffect } from 'react'
+import { app_chain_id } from '../../../../../shared/data/chains'
+
 export const useCheckIsListed = (props)=> {
 
 const nftDetails = useSelector(state=>state?.marketPlace?.nftDetailsPageState)
@@ -13,9 +15,9 @@ const nftDetails = useSelector(state=>state?.marketPlace?.nftDetailsPageState)
 const {data,isLoading,hasError} =useContractRead({
 address:marketplace_contract && marketplace_contract ,
 abi:abi &&abi,
-functionName:'vaultItems',
+functionName:'listedNfts',
 args:[nftDetails?.tokenId && nftDetails?.tokenId],
-chainId:97,
+chainId:app_chain_id && app_chain_id,
 
 })
 

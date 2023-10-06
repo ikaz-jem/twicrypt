@@ -52,7 +52,7 @@ const tokenId = Number(item?.tokenId)
                       
 
                        <div className="w-20 flex text-white">{tokenId}</div>
-                        <Link to={`/earn/marketplace/my-nfts/nft/?address=${nft_contract}&id=${(item.tokenId)}&cid=${item.metadata_url}&chain=97`}  className="w-1/6 flex font-bold text-white">{item?.name}</Link >
+                        <Link to={`./my-nfts/nft/?address=${nft_contract}&id=${(item.tokenId)}&cid=${item.metadata_url}&chain=97`}  className="w-1/6 flex font-bold text-white">{item?.name}</Link >
                         <div className="w-1/6 flex  text-white ">{unixToDate(Number((item?.listedAt).toString()))}</div>
                         <div className="w-1/6 flex text-white">{item?.holder?.slice(0,5)}...</div>
                         <div className="w-1/6 flex text-white">{item?.seller?.slice(0,5)}...</div>

@@ -16,11 +16,10 @@ const {chain} = useSelector(state=>state.marketPlace.nftFilter)
 const dispatch = useDispatch()
 
 const setNftFilter = (item)=> dispatch(setFilter(item))
- 
+
     const handleChangeNftChain = (val,e) => {
       if (val.url ==1){
   e.preventDefault()
-        console.log('clicked tab 1')
       }else {
         e.preventDefault()
       setSearchParams((prev) => ({
@@ -31,15 +30,13 @@ const setNftFilter = (item)=> dispatch(setFilter(item))
     setNftFilter({chain:val})  }
       }
  
-
-
   return (
     <div className=" p-3 container--xxlarge container--center  mx-auto ">
       <Tab.Group>
         <Tab.List className="flex space-x-1 rounded-xl bg-white/5 p-1 flex-wrap lg:flex-nowrap md:flex-nowrap w-auto  ">
           {FilterData.map((tab,i) => (
             <NavLink
-              to={`/earn/marketplace/${tab.url}`}
+              to={`${tab.url}`}
               key={i+'nav'}
               // onClick={()=>  handleClickTab(tab)}
               className={({ isActive }) =>
@@ -57,9 +54,6 @@ const setNftFilter = (item)=> dispatch(setFilter(item))
               </span>
             </NavLink>
 
-
-
-              
           ))}
         </Tab.List>
         <Tab.Panels className="mt-2">
@@ -72,11 +66,9 @@ const setNftFilter = (item)=> dispatch(setFilter(item))
               )}
             >
               <ul>
-             
                   <li
                     key={'p'+i}
                     className="relative rounded-md py-2 ">
-
                     <ul className="mt-1 flex gap-5 space-x-1 text-xs flex-wrap font-semibold leading-2 text-gray-500 justify-center items-center border-b border-neutral-800 rounded-xl pb-2">
                   {  tab?.links.map((list,i)=> list!== "" &&<NavLink  
                     
@@ -87,20 +79,15 @@ const setNftFilter = (item)=> dispatch(setFilter(item))
                           chain === list.val
                        ? 'bg-pink-600 text-white '
                        : 'text-black hover:bg-neutral-200/[0.52] hover:text-white'
-                       )
-                                     
+                       )                
                      }
                     key={'tab-'+i} 
                    onClick={(e)=>handleChangeNftChain(list.val ,e)} >{list?.icon && <img src={list.icon} className='rounded-md mr-2 h-6' />} {list.title}</NavLink>
  )}                 
                     </ul>                
                   </li>
-                 
-
-          
               </ul>
             </Tab.Panel> )
-       
           }  </Tab.Panels>
       </Tab.Group>
     </div>

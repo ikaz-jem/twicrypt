@@ -198,7 +198,7 @@ const AppRoutes = () => {
                                 <Route key={index} path={path} element={<Component />} />
                         })}
 
-                        <Route path="/earn" element={<Dashboard />}>
+                        <Route path="/dashboard" element={<Dashboard />}>
                             <Route index element={<EarnHome />} />
                             {NestedRoutes.map(({ component: Component, path, requiresAuth }, index) => {
                                 return requiresAuth  ? null

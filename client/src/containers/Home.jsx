@@ -114,12 +114,12 @@ const Navigate = useNavigate()
 
           <Nav className="flex items-center justify-center gap-5 flex-wrap">
             <NavItem onClick={()=> Navigate('/earn/mint')}>Mint</NavItem>
-            <NavItem onClick={()=>Navigate('/earn/token-sale')} >Token Sale</NavItem>
+            {/* <NavItem onClick={()=>Navigate('/earn/token-sale')} >Token Sale</NavItem> */}
             <NavItem onClick={() => Navigate('/preparations')}>RoadMap</NavItem>
-            <NavItem onClick={() => showPopup()}>show popup</NavItem>
-            <NavItem onClick={() => toastP()}>show popup 2</NavItem>
+            {/* <NavItem onClick={() => showPopup()}>show popup</NavItem>
+            <NavItem onClick={() => toastP()}>show popup 2</NavItem> */}
             <NavItem onClick={()=> Navigate('/sponsor')}>Sponsor </NavItem>
-            <NavItem onClick={()=> Navigate('/documentations')}>Docs </NavItem>
+            {/* <NavItem onClick={()=> Navigate('/documentations')}>Docs </NavItem> */}
           </Nav>
 
           <CallToAction />

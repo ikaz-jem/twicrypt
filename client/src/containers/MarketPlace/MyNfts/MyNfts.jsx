@@ -6,6 +6,7 @@ import Spinner from "../../../shared/Spinner/Spinner";
 import { useNavigate } from "react-router-dom";
 import { userData } from "../../../app/features/session/sessionSlice";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import ConnectWalletError from "../../../shared/ConnectWalletError/ConnectWalletError";
 
 
 const MyNfts = () => {
@@ -76,7 +77,7 @@ const MyNfts = () => {
     const RenderAllMyNfts = () => {
 
         if (address == undefined) {
-            return (<> <p className="text-bas text-white font-semibold h-[60vh]">Please connect wallet to view your assets !!</p> </>)
+            return ( <ConnectWalletError message={'Please connect wallet to view your assets'}/>)
         }
         else if (data == '') { return (<> <p className="text-bas text-white font-semibold h-[60vh]"> You have No assets on this Network !!</p></>) }
         else if (hasError) { return (<> <p className="text-bas text-white font-semibold h-[60vh]">   something went Wrong ! </p></>) }

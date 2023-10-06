@@ -7,8 +7,9 @@ import { NavLink,Link } from "react-router-dom";
 import logo from '../../media/logo.png'
 import { userSession } from "../../app/features/session/sessionSlice";
 import UserModal from "../../shared/userModal/UserModal";
-import PopoverMenu from "../../containers/Earn/components/MenuTopLink/Popover";
 import { useEffect } from "react";
+import DropDown from "./dropdown/DropDown";
+import AppMenu from "./dropdown/AppMenu";
 
 const Navbar = () => {
 
@@ -52,7 +53,7 @@ return (
                                 }
                                 <div className="inline-block my-2 items-center justify-center h-100 ">
 
-                                <PopoverMenu/>
+                                <AppMenu/>
                                 </div>
                             </ul>
                         </nav>

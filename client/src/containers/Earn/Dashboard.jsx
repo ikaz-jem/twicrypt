@@ -107,7 +107,7 @@ const location = useLocation()
         <>
             <div className="lg:flex bg-gradient-to-b from-[#111111] to-black bg-opacity-70 relative h-auto w-full   ">
 
-                <div className="h-full lg:z-10 lg:sticky xl:sticky xl:top-22 lg-top-20 overflow-x-none fixed top-0  z-10  ">
+                <div className="h-full lg:z-10 lg:sticky xl:sticky xl:top-10 lg-top-10 md:top-10 overflow-x-none fixed top-20  z-10  ">
                     <Menu />
                 </div>
                 {/*                         

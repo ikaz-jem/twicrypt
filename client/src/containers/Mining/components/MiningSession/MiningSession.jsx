@@ -59,8 +59,10 @@ const MiningSession = ({ nftWarning }) => {
 
   const sessionData = useSelector(state => state.mining.session)
   const stats = useSelector(state => state.mining.stats)
-  const allData = useSelector(state => state.mining)
-  const miningSessionData = sessionData?.result
+
+
+
+  const miningSessionData = sessionData?.result || null
 
   const currentTime = Math.floor(new Date().getTime() / 1000);
 
@@ -69,11 +71,11 @@ const MiningSession = ({ nftWarning }) => {
   const boostEndTime = Number(miningSessionData?.boostStartTime)
 
   let remainingTime = boostEndTime - currentTime;
-  let boostDuration = Number(stats?.result?.boost_duration)
+  let boostDuration = Number(stats?.result?.boost_duration) || null
   //2h
   //1 
 
-  let rechargeFees = stats?.result && formatEther(stats?.result?.boost_fees)
+  let rechargeFees = stats?.result && formatEther(stats?.result?.boost_fees) || null
 
   {/* <BatteryGauge value={10} animated={true} aspectRatio={0.23} size={150} maxValue={boostEndTime} customization={cssOverride} /> */ }
 

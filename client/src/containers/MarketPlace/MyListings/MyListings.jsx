@@ -29,7 +29,7 @@ const {address} = useSelector(state=>state.session)
                 <div className="flex gap-5 justify-start py-4 relative">
                     <Link to='my-nfts' className="py-2 text-xs px-3 bg-blue-500 rounded-lg text-white hover:bg-pink-600 transition-all duration-300 ">my nfts</Link >
                     <Link to='create-listing' className="py-2 text-xs px-3 bg-blue-500 rounded-lg text-white hover:bg-pink-600 transition-all duration-300 ">create new listing</Link >
-                    <Link to='/earn/mint' className="py-2 text-xs px-3 bg-blue-500 rounded-lg text-white hover:bg-pink-600 transition-all duration-300 ">mint nfts</Link>
+                    <Link to='/dashboard/mint' className="py-2 text-xs px-3 bg-blue-500 rounded-lg text-white hover:bg-pink-600 transition-all duration-300 ">mint nfts</Link>
                 </div>
 
                 <Listings />

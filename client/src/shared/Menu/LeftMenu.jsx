@@ -16,7 +16,7 @@ const  NAVIGATION_DEMO_2 = [
     name: "Stats",
     tooltip: "Inbox",
     icon:FcDoughnutChart,
-    component:'/earn/stats',
+    component:'./stats',
     page:'home',
    
   },
@@ -33,9 +33,9 @@ const  NAVIGATION_DEMO_2 = [
     
     href: "/page-collection-2",
     name: "Nfts",
-    tooltip: "/earn/nfts",
+    tooltip: "./nfts",
     icon:FcEmptyTrash,
-    component:"/earn/nfts"
+    component:"./marketplace"
   },
   
   {
@@ -226,8 +226,7 @@ return  <button
 
  
   return (
-    <div className={` overflow-x-none ${width.class} ${!width.isOpen ?"no-scrollbar " : " overflow-x-hidden " } h-[99vh] py-2 border-r border-neutral-700 border-opacity-40 backdrop-blur-md   transform shadow-r-xl  divide-y-2 divide-neutral-800  transition-all ease-in-out duration-400 delay-100 `}>
-   <button onClick={ChangePosition}>change</button>
+    <div className={` overflow-x-none ${width.class} ${!width.isOpen ?"no-scrollbar " : " overflow-x-hidden " } h-[99vh] py-2 border-r border-neutral-700 border-opacity-40 backdrop-blur-md   transform shadow-r-xl  divide-y-2 divide-neutral-800  transition-all ease-in-out duration-400 delay-100  `}>
       <div className="py-2 px-5 mt-5 ">
        {/* { width.isOpen && <Logo className="w-20 h-20"/>} */}
           <div className= { ` ${!width.isOpen ? " flex justify-between items-center  transition-all" : "flex justify-end items-center  transition-all"} `}>

@@ -83,7 +83,7 @@ export const useCreateListing = (props) => {
         onSuccess(data) {
             toast.custom(
                 (t) => (
-                  <Popup productImage={image && image || null} show={true} t={t} button={{title:'view your listings',link:'earn/marketplace/my-listings'}} title={`${name&&name} Listed successfully !`} desc={`${name&&name} Has been listed for sale : ${price} BNB`}/>
+                  <Popup productImage={image && image || null} show={true} t={t} button={{title:'view your listings',link:'/dashboard/marketplace/my-listings'}} title={`${name&&name} Listed successfully !`} desc={`${name&&name} Has been listed for sale : ${price} BNB`}/>
                 ),
                 { position: "bottom-center", duration: 5000 }
               )

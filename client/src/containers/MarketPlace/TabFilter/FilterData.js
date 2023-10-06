@@ -7,7 +7,7 @@ export const  FilterData = ([
 
   {
   tab:'All Nfts',
-  url:"all-nfts",
+  url:"./all-nfts",
   links:[
     {
       title:'Create Listing',
@@ -24,7 +24,7 @@ export const  FilterData = ([
 
   {
   tab:'Listings on sale',
-  url:'all-listings',
+  url:'./all-listings',
   links:['']
   },
 

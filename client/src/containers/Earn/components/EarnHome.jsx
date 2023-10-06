@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -8,20 +9,20 @@ const Data = [
         title: 'Staking',
         desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
         page: 'home',
-        component:'/earn/home'
+        component:'/dashboard/home'
     },
     {
         title: 'AP2E',
         desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
         page: 'stats',
-        component:'/earn/stats'
+        component:'/dashboard/auto-p2e?id=mining-session'
 
     },
     {
         title: 'Daily Free Rewards',
         desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
         page:'sectionWhy',
-        component:'/earn/section-why'
+        component:'/dashboard/section-why'
     },
     {
         title: 'Gift Cards and Coupons',
@@ -37,7 +38,16 @@ const Data = [
 
 
 
-const EarnHome = ({ handleChangePage }) => {
+const EarnHome = () => {
+
+    const navigate = useNavigate();
+
+    const handleChangePage = (item,e)=>{
+e.preventDefault();
+navigate(item)
+    }
+
+
     return (
 
         <div className=" w-full relative p-10 bg rounded-xl   color-ball ">
@@ -53,8 +63,8 @@ const EarnHome = ({ handleChangePage }) => {
 
             <div className="flex flex-wrap justify-center w-auto h">
                 {
-                    Data.map((item, i) => {
-                        return <div className="border border-neutral-500 hover:border-neutral-200 bg-neutral-200 bg-opacity-10  m-5 w-60 flex rounded-xl relative text-white overflow-hidden flex-wrap hover:bg-blue-500 - hover:scale-[102%]  transition-all duration-150 ease-in cursor-pointer shadow-2xl shadow-[#721533] hover:shadow-blue-600 " key={i} onClick={(e) => handleChangePage(item,e)}>
+                    Data?.map((item, i) => {
+                        return <div className="border border-neutral-500 hover:border-neutral-200 bg-neutral-200 bg-opacity-10  m-5 w-60 flex rounded-xl relative text-white overflow-hidden flex-wrap hover:bg-blue-500 - hover:scale-[102%]  transition-all duration-150 ease-in cursor-pointer shadow-2xl shadow-[#721533] hover:shadow-blue-600 " key={i} onClick={(e) => handleChangePage(item.component,e)}>
 
                             <div className=" flex flex-col   w-full h-auto gap-0  lg:items-center relative">
                                 <img src="https://thirdweb.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Frevenue-streams.10c7bba1.png&w=750&q=75" alt="" className=" object-contain p-0 m-0  w-full  " />

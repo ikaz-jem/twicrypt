@@ -2,8 +2,6 @@ import { useContractReads } from "wagmi"
 import { app_chain_id } from "../../../shared/data/chains"
 import { mining_contract } from "../data/addresses"
 import { nft_contract } from "../../MarketPlace/data/Addresses"
-import IERC721 from '../../../hooks/web3/interfaces/IERC721.json'
-import IERC20 from '../../../hooks/web3/interfaces/IERC20.json'
 import mining_abi from '../abi/mining.json'
 import { useDispatch, useSelector } from "react-redux"
 import { setBanks, setMiningSession } from "../../../app/features/mining/MiningSlice"
@@ -56,10 +54,11 @@ contracts :[
 
 })
 
+let sessionData = data?.length>0 && data[0]
+let bankData = data?.length>0 && data[1]
+let platformStats= data?.length>0 && data[2]
 
-let sessionData = data && data[0]
-let bankData = data&& data[1]
-let platformStats=data&& data[2]
+const isDataReady = data?.length>0  ? true : false;
 
 
 useEffect(()=>{
@@ -71,7 +70,8 @@ useEffect(()=>{
 
 return()=>controller.abort()
     
-},[sessionData,bankData,platformStats])
+},[sessionData,bankData,platformStats,isDataReady ])
+console.log(data)
 return data
 
 }

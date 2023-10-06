@@ -40,15 +40,11 @@ const MiningSession = lazy(() => import('./components/MiningSession/MiningSessio
 const MiningHome = () => {
 const [searchParams]=useSearchParams()
 
-
-
 const dispatch = useDispatch()
 const setPage =(data)=> dispatch(setMiningPage(data))
 const id = searchParams.get('id')
 
-
-
-
+const { address } = useSelector(state => state.session)
 
 useEffect(()=>{
 const controller = new AbortController();
@@ -60,9 +56,9 @@ return ()=> controller.abort()
 const platformData = useGetAllMiningData()
 
 
-const data = platformData &&  platformData[0]?.result 
+const data = platformData?.length> 0 &&  platformData[0]?.result 
 
-const { address } = useSelector(state => state.session)
+
 const { chain, switchNetwork } = useCorrectNetwork({
     fallback: ()=> null
 })
@@ -160,7 +156,7 @@ const nftWarning = ({title ,message})=> {
                         {address ?
                             <div className="z-10 w-full g-full p-2">
 
-                                {components[page] ? components[page] : <h5>somethings went wrong ... please refresh</h5>}
+                                {components[page] && platformData?.length>0 ? components[page] : <h5>somethings went wrong ... please refresh</h5>}
                             </div> : <ConnectWalletError />
                         }
                     </div>

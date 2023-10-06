@@ -1,5 +1,4 @@
 import { Popover, Transition } from '@headlessui/react'
-import { AiFillCaretDown } from 'react-icons/ai'
 import { Fragment } from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -15,19 +14,19 @@ const solutions = [
   {
     name: 'Mint',
     description: 'Keep track of your growth',
-    href: '/earn/mint',
+    href: '/dashboard/mint',
     icon: RiNftFill,
   },
   {
     name: 'Token Sale',
     description: 'Participate in Twicypt IDO',
-    href: '/earn/token-sale',
+    href: '/dashboard/token-sale',
     icon: BiCoinStack,
   },
   {
     name: 'Dashboard',
     description: 'manage yor account',
-    href: '/earn',
+    href: '/dashboard',
     icon: RxDashboard,
   },
 
@@ -35,19 +34,19 @@ const solutions = [
   {
     name: 'Wallet',
     description: 'your assets on Twicrypt',
-    href: '/earn/stats',
+    href: '/dashboard/stats',
     icon: BsWallet,
   },
   {
     name: 'MarketPlace',
     description: 'Buy / sell List your NFTs',
-    href: '/earn/marketplace',
+    href: '/dashboard/marketplace',
     icon: CiShop,
   },
   {
     name: 'Art Collections',
     description: 'NFT Art Gallery',
-    href: '/earn/nfts',
+    href: '/dashboard/nfts',
     icon: BiCollection,
   },
   {
@@ -65,15 +64,16 @@ const solutions = [
   {
     name: 'Support',
     description: 'Contact us',
-    href: '/earn/support',
+    href: '/dashboard/support',
     icon: BiSupport,
   },
 ]
 
-const PopoverMenu =()=> {
+const AppMenu =()=> {
 
 
   const [show, setShow] = useState(false);
+  
   const onMouseEnterMenu = (id) => {
     setShow(true);
   };
@@ -255,4 +255,4 @@ function IconThree() {
 }
 
 
-export default PopoverMenu
+export default AppMenu

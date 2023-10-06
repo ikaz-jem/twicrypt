@@ -10,8 +10,10 @@ import MiningGifts from "./MiningGifts"
 const MiningStats = () => {
 
     const data = useSelector(state => state.mining.session)
-    const bankData = data?.result?.bankData || null
-    const userData = data?.result?.userData || null
+
+    
+    const bankData = data?.result?.bankData 
+    const userData = data?.result?.userData 
     const currentTime = Math.floor(new Date().getTime() / 1000);
 
 
