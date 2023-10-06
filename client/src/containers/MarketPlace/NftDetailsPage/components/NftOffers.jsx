@@ -51,7 +51,6 @@ let [isOpen, setIsOpen] = useState(false)
             switchNetwork.switchNetwork()
         }
     }
-console.log(offerToAcceptIndex)
 
     const handleClick = (offer)=>{
         setOfferToAccept(offer)

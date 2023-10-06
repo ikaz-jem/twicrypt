@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 import CreateListing from "./CreateListing/CreateListing";
 import AllListings from "./AllListings/AllListings";
 //all-nfts
-
+import {useGetBouras} from './hooks/web3Hooks/data/useGetBouras'
 
 
 const MarketPlace = () => {
@@ -53,6 +53,9 @@ return ()=> controller.abort()
     'my-nfts': <MyNfts />,
     'create-listing': <CreateListing />
 }
+
+const bouras = useGetBouras()
+
 
     return (
         <React.Fragment>

@@ -71,7 +71,7 @@ useEffect(()=>{
 return()=>controller.abort()
     
 },[sessionData,bankData,platformStats,isDataReady ])
-console.log(data)
+
 return data
 
 }
