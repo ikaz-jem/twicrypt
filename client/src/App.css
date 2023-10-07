@@ -2006,18 +2006,17 @@ ul {
   top: 50%;
   z-index: 1;
   width: 24px;
+
   height: 24px;
   margin-top: -9px;
-  border-radius: 50%;
-  background-color: #8b3800af;
+
+
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   -webkit-box-shadow: 0 0.5rem 4rem 0 rgba(0, 0, 0, 0.5);
   box-shadow: 0 0.5rem 4rem 0 rgba(0, 0, 0, 0.5);
 }
-.slider__arrow:hover {
-  background-color: #1d67c9a9;
-}
+
 .slider__arrow--next {
   right: 1.5rem;
 }

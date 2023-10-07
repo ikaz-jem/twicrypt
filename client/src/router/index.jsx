@@ -38,6 +38,7 @@ import NftDetailsPage from "../containers/MarketPlace/NftDetailsPage/NftDetailsP
 import UserProfile from "../containers/Account/UserProfile/UserProfile";
 import CreateListing from "../containers/MarketPlace/CreateListing/CreateListing";
 import AccountPage from '../containers/Account/AccountPage'
+import CreateAuction from "../containers/MarketPlace/CreateAuction/CreateAuction";
 
 const Pages = [
     {
@@ -168,7 +169,12 @@ const marketPlaceRoutes = [
         requiresAuth: false,
     },
     {
-        path: ':page',
+        path: 'create-auction/:id',
+        component: CreateAuction,
+        requiresAuth: false,
+    },
+    {
+        path:':page',
         component: MarketPlace,
         requiresAuth: false,
     },

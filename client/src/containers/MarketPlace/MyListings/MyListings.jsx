@@ -4,6 +4,7 @@ import { useGetUserListing } from "../hooks/web3Hooks/Listing/useGetUserListings
 import UserListings from "./UserListings";
 import ConnectWalletError from "../../../shared/ConnectWalletError/ConnectWalletError";
 import { useSelector } from "react-redux";
+import UserAuctions from "./Auction/UserAuctions";
 const MyListings = () => {
 const {address} = useSelector(state=>state.session)
 
@@ -12,9 +13,22 @@ const {address} = useSelector(state=>state.session)
         useGetUserListing()
         return (
             <>
-                <div className="flex flex-col justify-start items-start gap-1 w-auto  ">
+                <div className="flex flex-col justify-start items-start gap-1 w-auto mb-5  ">
                     <div className=" w-full ">
                           <UserListings /> 
+                    </div>
+                </div>
+            </>
+        )
+    }
+    const Auctions = () => {
+        useGetUserListing()
+        return (
+            <>
+                <div className="flex flex-col justify-start items-start gap-1 w-auto my-2  ">
+                    <div className=" w-full ">
+                         
+                <UserAuctions />
                     </div>
                 </div>
             </>
@@ -29,10 +43,14 @@ const {address} = useSelector(state=>state.session)
                 <div className="flex gap-5 justify-start py-4 relative">
                     <Link to='my-nfts' className="py-2 text-xs px-3 bg-blue-500 rounded-lg text-white hover:bg-pink-600 transition-all duration-300 ">my nfts</Link >
                     <Link to='create-listing' className="py-2 text-xs px-3 bg-blue-500 rounded-lg text-white hover:bg-pink-600 transition-all duration-300 ">create new listing</Link >
+                    <Link to='create-auction' className="py-2 text-xs px-3 bg-blue-500 rounded-lg text-white hover:bg-pink-600 transition-all duration-300 ">create new auction</Link >
                     <Link to='/dashboard/mint' className="py-2 text-xs px-3 bg-blue-500 rounded-lg text-white hover:bg-pink-600 transition-all duration-300 ">mint nfts</Link>
                 </div>
 
                 <Listings />
+               
+              
+                <Auctions />
                 
                 <div className="flex flex-col mt-12 lg:mt-16 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
                 </div>

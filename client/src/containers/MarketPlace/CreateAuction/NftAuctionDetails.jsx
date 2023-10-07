@@ -3,10 +3,9 @@ import { Link } from "react-router-dom"
 
 
 
-const NftListingDetails = ({ myNfts }) => {
+const NftAuctionDetails = ({ myNfts }) => {
 
 
-let url = `/dashboard/marketplace/my-nfts/nft/?address=${myNfts?.selectedNft?.contract}&id=${myNfts?.selectedNft?.identifier}&cid=${myNfts?.selectedNft?.metadata_url}&chain=97`;
   return (
     <>
       <div className="h-full border-l border-neutral-900 rounded-2xl  " >
@@ -21,7 +20,7 @@ let url = `/dashboard/marketplace/my-nfts/nft/?address=${myNfts?.selectedNft?.co
 
             </div>
 
-            <Link className="border border-neutral-800 px-5 py-2 rounded-lg hover:bg-neutral-800 text-white transition-all duration-300" to={url} >view full details</Link >
+            <Link className="border border-neutral-800 px-5 py-2 rounded-lg hover:bg-neutral-800 text-white transition-all duration-300" to={`/dashboard/marketplace/my-nfts/nft/?address=${myNfts?.selectedNft?.contract}&id=${myNfts?.selectedNft?.identifier}&cid=${myNfts?.selectedNft?.metadata_url}&chain=97`} >view full details</Link >
           </div>
             : <Disclaimer message={'select Nft to list'} className={"w-full opacity-70"} />
           }
@@ -31,4 +30,4 @@ let url = `/dashboard/marketplace/my-nfts/nft/?address=${myNfts?.selectedNft?.co
   )
 }
 
-export default NftListingDetails
+export default NftAuctionDetails

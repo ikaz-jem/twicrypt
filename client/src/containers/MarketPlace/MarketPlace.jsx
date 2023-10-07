@@ -15,6 +15,7 @@ import CreateListing from "./CreateListing/CreateListing";
 import AllListings from "./AllListings/AllListings";
 //all-nfts
 import {useGetBouras} from './hooks/web3Hooks/data/useGetBouras'
+import CreateAuction from "./CreateAuction/CreateAuction";
 
 
 const MarketPlace = () => {
@@ -51,7 +52,8 @@ return ()=> controller.abort()
     'all-listings': <AllListings />,
     'my-listings': <MyListings />,
     'my-nfts': <MyNfts />,
-    'create-listing': <CreateListing />
+    'create-listing': <CreateListing />,
+    'create-auction': <CreateAuction />
 }
 
 const bouras = useGetBouras()

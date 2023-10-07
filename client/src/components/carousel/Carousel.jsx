@@ -10,7 +10,7 @@ import CarouselTransition from '../../shared/transitions/CarouselTransition';
 import { useEffect, useState } from 'react';
 import logo3d from '../../media/3d2.png'
 import logo from '../../media/logo.png'
-
+import {AiFillLeftCircle,AiFillRightCircle} from 'react-icons/ai'
 
 const SvgTitle = () => {
 
@@ -18,8 +18,7 @@ const SvgTitle = () => {
     return (
         <>
             <div className="container-xxxxlg flex container--center items-center justify-center ">
-            <img src={logo} className="opacity-10" />
-                <h1 className="hero_title animate-bounce "> TwiCrypt</h1>
+                <h1 className="hero_title animate-bounce text-white"> TwiCrypt</h1>
                 {/* <h4 className=" heading bg-dark">1# All in one Decentralized Application ... </h4> */}
             </div>
         </>
@@ -133,18 +132,14 @@ const Carousel = () => {
 
                 <div className="slider slider--big glide " data-component="hero">
                     <CarouselTransition show={show}>
-                        <div className="slider__arrows" data-glide-el="controls">
-                            <button className="slider__arrow slider__arrow--prev glide__arrow glide__arrow--prev" dataref="fadereveal[el]" data-glide-dir="<">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path d="M0 12l10.975 11 2.848-2.828-6.176-6.176H24v-3.992H7.646l6.176-6.176L10.975 1 0 12z" />
-                                </svg>
-                            </button>
+                        <div className="slider__arrows flex justify-between lg:pl-10 md:pl-5 sm:pl-5 pl-0 " data-glide-el="controls">
+                        <button className="glide__arrow slider__arrow  glide__arrow--left  " data-glide-dir="<">
+                 <AiFillLeftCircle className="text-5xl hover:text-pink-600 transition-all"/>
+            </button>
 
-                            <button className="slider__arrow slider__arrow--next glide__arrow glide__arrow--next " dataref="fadereveal[el]" data-glide-dir=">">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className='flex items-center justify-center'>
-                                    <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
-                                </svg>
-                            </button>
+            <button className="glide__arrow glide__arrow--right slider__arrow slider__arrow--next  " data-glide-dir=">">
+            <AiFillRightCircle className="text-5xl hover:text-pink-600 transition-all"/>
+            </button>
                         </div>
                         <div className="frames glide__track my-14 " data-component="slidereveal" data-glide-el="track">
 

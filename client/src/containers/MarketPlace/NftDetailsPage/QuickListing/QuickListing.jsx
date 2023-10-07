@@ -73,6 +73,13 @@ setSelectedNft({selectedNft:{...nftDetails?.metadata,image_url:nftDetails?.metad
           >
            <p className="text-sm text-neutral-200">list for sale</p>  <IoCreateOutline className="text-blue-500 group-hover:text-white transition-all duration-300"/>
           </button>
+          <Link
+            type="button"
+            to={'/dashboard/marketplace/create-auction'}
+            className="p-2 m-2 px-3 h-12 w-1/2 bg-neutral-800 group rounded-lg flex items-center justify-center gap-2 text-white hover:bg-pink-600 hover:shadow-lg transition-all duration-300 "
+          >
+           <p className="text-sm text-neutral-200">Create auction</p>  <IoCreateOutline className="text-blue-500 group-hover:text-white transition-all duration-300"/>
+          </Link>
         </div>
   
         <Transition appear show={isOpen} as={Fragment}>
@@ -108,7 +115,7 @@ setSelectedNft({selectedNft:{...nftDetails?.metadata,image_url:nftDetails?.metad
                       >
                       {`list ${nftDetails?.metadata?.name} for sale `}
                     </Dialog.Title>
-                    <Link to='/earn/marketplace/create-listing' onClick={handleClick} className="items-center justify-center flex border-neutral-600 border p-2 rounded-lg  "> <BsArrowsAngleExpand className="text-xl"/> </Link>
+                    <Link to='/dashboard/marketplace/create-listing' onClick={handleClick} className="items-center justify-center flex border-neutral-600 border p-2 rounded-lg  "> <BsArrowsAngleExpand className="text-xl"/> </Link>
                         </div> 
 
                     <div className="mt-2">

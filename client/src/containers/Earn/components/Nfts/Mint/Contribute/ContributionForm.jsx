@@ -3,8 +3,9 @@ import Nav from "../../../../../../shared/Nav/Nav"
 import NavItem from "../../../../../../shared/NavItem/NavItem"
 import logo from '../../../../../../media/logo.png'
 import { useMintNft } from "../../../../../MarketPlace/hooks/web3Hooks/useMintNft"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { setMintNft } from "../../../../../../app/features/States/StatesSlice"
+import { Link } from "react-router-dom"
 
 
 
@@ -13,7 +14,7 @@ import { setMintNft } from "../../../../../../app/features/States/StatesSlice"
 const ContributionForm = () => {
 
     
-    
+    const nftCount = useSelector(state=>state?.states?.mint?.nftCount)
     
 const mintNft= useMintNft()
 const dispatch = useDispatch()
@@ -28,7 +29,7 @@ mintNft.write()
 }
 
     return (
-        <div className="w-auto m-0  flex flex-col  grow gap-0 border border-neutral-800 p-5 rounded-lg ">
+        <div className="w-auto m-0  flex flex-col  grow gap-0 border border-purple-900 p-5 rounded-lg ">
             <h3 className="text-left p-0 m-0 py-2 font-bold">Mint Nft</h3>
         <ProgressBar percentage={70} min={0 + ' BNB'} max={150 + ' BNB'} />
         <div className=" flex p-0 gap-1 m-0">
@@ -42,9 +43,12 @@ mintNft.write()
                     onChange={(e)=>setMint({nftCount:e.target.value})}
                 />
             </div>
-            <Nav>
-                <NavItem onClick={handleClick}> mint Nft </NavItem>
-            </Nav>
+           { nftCount >0 ?
+                <Link    className="w-40 bg-yellow-500 text-black font-bold hover:text-white hover:bg-pink-500 flex items-center justify-center  rounded py-2 px-4" onClick={handleClick}> mint Nft </Link>
+          
+                    : 
+                    <Link    className="w-40 bg-gray-500 text-black font-bold hover:text-white flex items-center justify-center  rounded py-2 px-4" > mint Nft </Link>
+            }
         </div>
     </div>
 
@@ -57,7 +61,7 @@ const RenderImage = ()=> {
 return (
 <><div className="flex grow items-center justify-center">
 
-<img src={logo} className=" border animate-spin opacity-20 absolute"></img>
+<img src={logo} className=" border  opacity-20 absolute blur-lg"></img>
 </div>
 
 
@@ -71,7 +75,7 @@ return (
 const RenderSaleInfos = ()=> {
     return (
      <>   
-        <div className="flex justify-between border border-neutral-800 items-start grow px-5 rounded-lg py-5">
+        <div className="flex justify-between border border-purple-900  items-start grow px-2 rounded-lg py-5">
         <ul className="flex items-start flex-col text-neutral-500 text-base">
             <li>your Contributions :</li>
             <li>your Purshased Tokens: </li>
@@ -87,7 +91,7 @@ const RenderSaleInfos = ()=> {
             <li>item</li>
         </ul>
     </div>
-    <div className="flex justify-between  items-start grow px-5 border border-neutral-800 rounded-lg py-5">
+    <div className="flex justify-between  items-start grow px-2 border border-purple-900  rounded-lg py-5">
         <ul className="flex items-start flex-col  text-neutral-500 text-base">
             <li>Tokens For Sale :</li>
             <li>Current Rate : </li>
@@ -110,7 +114,7 @@ const RenderSaleInfos = ()=> {
 
     return (
         <div className=" w-full flex  gap-5 justify-start items-start h-full p-5 flex-wrap">
-                        <h3 className="text-left my-2 p-0 border-b border-neutral-800 w-full rounded-2xl px-5 pb-2 text-pink-600 font-bold text-xl ">Minting Phase - Stage 1 <span className="m-0 pl-5 text-neutral-400 text-base ">1M tokens Offering  </span>  </h3>
+                        <h3 className="text-left my-2 p-0 border-b border-neutral-800 w-full rounded-2xl px-5 pb-2 text-pink-600 font-bold text-xl ">Minting and Win ! <span className="m-0 pl-5 text-yellow-400 text-base ">win up to 1BTC in a single mint !  </span>  </h3>
        <div className="w-full flex flex-wrap gap-5 p-0 m-0 justify-between ">
        {RenderInput() }
        <RenderImage/>

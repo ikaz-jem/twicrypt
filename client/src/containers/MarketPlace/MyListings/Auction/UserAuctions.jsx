@@ -1,16 +1,18 @@
 import { useSelector } from "react-redux";
-import SingleAccordion from "../../../shared/Accordion/SingleAccordion";
-import { bigIntToFormated } from "../../../utils/web3Functions";
-import DeleteListingModal from "./DeleteListingModal";
-import EditListingModal from "./EditListingModal";
-import NoListings from "./NoListings";
+
+import SingleAccordion from "../../../../shared/Accordion/SingleAccordion";
+import { bigIntToFormated } from "../../../../utils/web3Functions";
+import DeleteListingModal from "../DeleteListingModal";
+import EditListingModal from "../EditListingModal";
+import NoListings from "../NoListings";
 import { MdOutlineLocalOffer } from 'react-icons/md'
-import { unixToDate } from "../../../utils/unixToDate";
+import { unixToDate } from "../../../../utils/unixToDate";
 import { useEffect } from "react";
-import Spinner from "../../../shared/Spinner/Spinner";
 import { Link } from "react-router-dom";
-import { nft_contract } from "../data/Addresses";
-const UserListings = ()=> {
+import { nft_contract } from "../../data/Addresses";
+import NoAuctions from "./NoAuctions";
+
+const UserAuctions = ()=> {
 
 const myListings = useSelector(state=>state?.marketPlace?.mylistings)
 const {address} = useSelector(state=>state.session)
@@ -33,7 +35,7 @@ const userHasListings =  checkListing()
 
 
 
-const RenderMyListings = ()=> {
+const RenderMyAuctions = ()=> {
 return(
 <>
     {
@@ -67,7 +69,7 @@ return(
                     </div>
                 )
             }
-        })    : !userHasListings && address && <NoListings /> 
+        })    : !userHasListings && address && <NoAuctions /> 
     //     || <div className="flex justify-center items-center w-full h-full">
     //     <Spinner message={'loading list ...'}/>
     //    </div>
@@ -85,7 +87,7 @@ return(
 
 const RenderList = ({children})=> {
 return (
-<SingleAccordion title={"My active Listings"} Icon={MdOutlineLocalOffer} open={true} >
+<SingleAccordion title={"My active Auctions"} Icon={MdOutlineLocalOffer} open={true} >
 <div className="border border-neutral-700  rounded-b-2xl bg-neutral-900 flex flex-col overflow-hidden ">
 
     <div className="flex  justify-start text-white items-center  w-full pl-4 gap-5  py-2 border-b bg-[#0003] font-bold border-neutral-800" >
@@ -93,15 +95,14 @@ return (
         <p className="w-20 flex">id</p>
         <p className="w-1/6 flex">name</p>
         <p className="w-1/6 flex">Listed At</p>
-        <p className="w-1/6 flex">seller</p>
+        <p className="w-1/6 flex">auction end time</p>
         <p className="w-1/6 flex">holder</p>
-        <p className="w-1/6 flex">Price</p>
+        <p className="w-1/6 flex">highest bid</p>
         <p className="w-1/4 flex">action</p>
     </div>
     <div className="w-full overflow-y-scroll h-[40vh]" >
         <div className=" flex w-full h-full flex-col justify-start items-start m-0 p-0" >
-           
-
+        
             {children}
         </div>
     </div>
@@ -117,7 +118,7 @@ return (
 return (
 <>
 <RenderList>
- {address && myListings && <RenderMyListings/>}
+ {address && myListings && <RenderMyAuctions/>}
 </RenderList>
 
 </>
@@ -127,4 +128,4 @@ return (
 }
 
 
-export default UserListings
+export default UserAuctions
