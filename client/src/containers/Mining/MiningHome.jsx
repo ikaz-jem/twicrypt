@@ -54,7 +54,7 @@ const MiningHome = () => {
     const platformData = useGetAllMiningData()
 
     const extractData = () => {
-        if (platformData?.length > 0 && platformData[0]?.result) {
+        if (platformData?.length > 0 && platformData[0]?.result && id) {
             return platformData[0]?.result
         } else {
             return false
@@ -147,7 +147,7 @@ const MiningHome = () => {
                         {address ?
                             <div className="z-10 w-full g-full p-2">
 
-                                {components[page] && data ? components[page] : <h5>somethings went wrong ... please refresh</h5>}
+                                {!components[page] && !data ?   <h5>somethings went wrong ... please refresh</h5> : components[page] }
                             </div> : <ConnectWalletError />
                         }
                     </div>

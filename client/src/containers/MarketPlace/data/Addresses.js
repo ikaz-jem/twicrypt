@@ -18,4 +18,4 @@ const nft_contract = '0x019c8f52Bb07F0431C54A7C893b85f8D1A8e81bD' //9testnet
 
 
 
-export {nft_contract,marketplace_contract}
+export {nft_contract,marketplace_contract}  

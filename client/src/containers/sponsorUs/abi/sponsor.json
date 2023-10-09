@@ -1,0 +1,911 @@
+[
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "Eth_Balance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "balance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "carousel",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "payment",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "image",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "icon",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "brand",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "website",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "startAt",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "endsAt",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "duration",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_image",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_icon",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_brand",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_website",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_endsAt",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_duration",
+				"type": "uint256"
+			}
+		],
+		"name": "create_carousel_ad",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_image",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_icon",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_brand",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_website",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_endsAt",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_duration",
+				"type": "uint256"
+			}
+		],
+		"name": "create_slider_ad",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "delete_carousel_ad",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "delete_slider_ad",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_image",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_icon",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_brand",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_website",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_endsAt",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "edit_carousel_ads",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_image",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_icon",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_brand",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_website",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_endsAt",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "edit_slider_ads",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "get_all_ads",
+		"outputs": [
+			{
+				"components": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "user",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "payment",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "image",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "icon",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "brand",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "website",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "startAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "endsAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "duration",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct sponsorships.sponsor[]",
+						"name": "carousel",
+						"type": "tuple[]"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "user",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "payment",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "image",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "icon",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "brand",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "website",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "startAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "endsAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "duration",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct sponsorships.sponsor[]",
+						"name": "slider",
+						"type": "tuple[]"
+					}
+				],
+				"internalType": "struct sponsorships.allAds",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "get_carousel_data",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "payment",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "image",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "icon",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "brand",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "website",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "startAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "endsAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "duration",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct sponsorships.sponsor[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "get_slider_data",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "payment",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "image",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "icon",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "brand",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "website",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "startAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "endsAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "duration",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct sponsorships.sponsor[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "get_slider_sponsor",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "payment",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "image",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "icon",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "brand",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "website",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "startAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "endsAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "duration",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct sponsorships.sponsor[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "get_user_sponsorships",
+		"outputs": [
+			{
+				"components": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "user",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "payment",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "image",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "icon",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "brand",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "website",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "startAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "endsAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "duration",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct sponsorships.sponsor[]",
+						"name": "carousel",
+						"type": "tuple[]"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "user",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "payment",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "image",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "icon",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "brand",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "website",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "startAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "endsAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "duration",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct sponsorships.sponsor[]",
+						"name": "slider",
+						"type": "tuple[]"
+					}
+				],
+				"internalType": "struct sponsorships.allAds",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_fees",
+				"type": "uint256"
+			}
+		],
+		"name": "set_fees",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "slider",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "payment",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "image",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "icon",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "brand",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "website",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "startAt",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "endsAt",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "duration",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_to",
+				"type": "address"
+			}
+		],
+		"name": "withdraw_amount",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_token",
+				"type": "address"
+			}
+		],
+		"name": "withdraw_tokens",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	}
+]

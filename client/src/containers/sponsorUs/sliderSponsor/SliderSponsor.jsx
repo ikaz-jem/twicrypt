@@ -1,6 +1,5 @@
 
 import './style.css'
-import { useEffect, useState } from 'react'
 import { useAccount } from 'wagmi'
 import { addSlide } from '../../../app/features/carousel/carouselThunks'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,8 +8,9 @@ import { Transition } from '@headlessui/react'
 import FormTransition from '../../../shared/transitions/FormTransition'
 import CarouselTransition from '../../../shared/transitions/CarouselTransition'
 import SliderDemo from './SliderDemo'
-import SponsorForm from '../CarouselSponsor/SponsorForm'
+import SliderSponsorForm from '../CarouselSponsor/SliderSponsorForm'
 import CarouselDemo from '../CarouselSponsor/demo/Demo'
+import { useState } from 'react'
 
 const SliderSponsor = ({show,setShow}) => {
 
@@ -51,7 +51,7 @@ const SliderSponsor = ({show,setShow}) => {
     <>
 
 <FormTransition show={show}>
-      <SponsorForm show={show} ad={ad} setAd={setAd} />
+      <SliderSponsorForm show={show} ad={ad} setAd={setAd} />
 </FormTransition>
 
       <div className=" bg-light light-ball   ">

@@ -8,8 +8,9 @@ import { Link } from "react-router-dom"
 
 const StakedNfts = () => {
 
-    const staked = useSelector(state => state.mining.session.result)
-    const onWorkNfts = staked?.staked
+    const staked = useSelector(state => state.mining.session)
+    const onWorkNfts = staked ? staked?.result?.staked : []
+
 
     const Card = ({ data }) => {
         return (
@@ -24,7 +25,7 @@ const StakedNfts = () => {
 
         return (
             <>
-                {staked?.staked && staked?.staked?.length >0 ?
+                {onWorkNfts && onWorkNfts?.length >0 ?
                     <div className="w-full flex gap-1 flex-col flex-wrap border p-2 border-pink-500 rounded-lg bg-[#00000062]">
 
                         <p className="text-xs text-white"> Nft Miners on work:</p>
@@ -51,7 +52,7 @@ const StakedNfts = () => {
     return (
         <>
             <div className="w-full h-auto p-10">
-                {staked?.staked && onWorkNfts?.length > 0? <RenderStaked />
+                {staked?.result?.staked && onWorkNfts?.length > 0? <RenderStaked />
                      :
                         <div className="flex gap-2 items-center justify-center border rounded-xl bg-[#00000081] h-20 border-purple-500">
                       <p className="p-0 m-0 text-xl">⚠️</p>      <h5 className="text-white text-sm font-bold p-0 m-0">  you have no active workers online !</h5>

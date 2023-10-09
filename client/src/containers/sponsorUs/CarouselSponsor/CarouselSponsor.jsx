@@ -7,13 +7,13 @@ import { addSlide } from '../../../app/features/carousel/carouselThunks'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchedCarouselData } from '../../../app/features/carousel/carouselSlice'
 import { Transition } from '@headlessui/react'
-import SponsorForm from './SponsorForm'
+import CarouselSponsorForm from './CarouselSponsorForm'
 import FormTransition from '../../../shared/transitions/FormTransition'
 import CarouselTransition from '../../../shared/transitions/CarouselTransition'
 
 
 
-const CarouselSponsor = ({show,setShow}) => {
+const CarouselSponsor = ({ show, setShow }) => {
 
 
   const { address } = useAccount()
@@ -25,14 +25,13 @@ const CarouselSponsor = ({show,setShow}) => {
     icon: null,
     amount: 0
   })
-  
+
 
   // useEffect(() => {
   //   setShow(true)
   // }, [])
 
   const SvgTitle = () => {
-
 
     return (
       <>
@@ -45,46 +44,26 @@ const CarouselSponsor = ({show,setShow}) => {
 
 
 
-
-
-
   return (
 
     <>
-
-<FormTransition show={show}>
-      <SponsorForm show={show} ad={ad} setAd={setAd} />
-</FormTransition>
-
+      <FormTransition show={show}>
+        <CarouselSponsorForm show={show} ad={ad} setAd={setAd} />
+      </FormTransition>
       <div className=" bg-light light-ball hero">
-
-        {
-
-          
-          
-        }
-
 
         {/* 
       <div className='flex justify-center items-center border'>
-      
-      
+    
     </div> */}
-
         {/* <div className="grid__column grid__column--3 space space--xlarge  " dataref="fadereveal[el]"> */}
-
-
-<div className='  flex justify-center w-full relative  aa py-10 '>
-
-        <div className='w-[20%] '>
+        <div className='  flex justify-center w-full relative  aa py-10 '>
+          <div className='w-[20%] '>
           </div>
-
-            <div className=' w-[80%]   rounded-2xl  border-opacity-30 border border-white py-5 shadow-lg'>
-
-            
-    <button className='button' onClick={() => setShow(show)}> Show on slider</button>
-            <p className='text-gray-400'>
-              col carouzel description something explaine ras l9eli3a
+          <div className=' w-[80%]   rounded-2xl  border-opacity-30 border border-white py-5 shadow-lg'>
+            <button className='button' onClick={() => setShow(show)}> Show on slider</button>
+            <p className='text-neutral-200'>
+              live demo
             </p>
             <div className='w-full'>
 
