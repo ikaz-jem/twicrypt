@@ -18,7 +18,7 @@ const NftBalance = () => {
     
     const hasTwicryptNft = Nfts?.data?.map((nft)=>nft?.contract?.toLocaleLowerCase()).includes(nft_contract?.toLocaleLowerCase())
     
-    
+  
     const handleClick = (nft) => {
         if (!selectedNft.some((item) => item.identifier === nft.identifier)) {
             setSelectedNft((prev) => [...prev, nft]);
@@ -55,7 +55,6 @@ const NftBalance = () => {
         
         const [Ids, images] = prepareData()
         
-        console.log(Ids.length)
     
         
         
@@ -124,7 +123,7 @@ return (
               
                 {Nfts?.data ? Nfts && Nfts?.data?.map((nft, i) => {
                     if ((nft.contract).toLocaleLowerCase() == (nft_contract).toLocaleLowerCase()) {
-                        
+                        console.log(nft)
                         return <Card onClick={(e) => handleClick(nft)} key={i} data={nft} />
                         
                     } else {
@@ -185,7 +184,7 @@ return (
                 <p className="text-yellow-500 text-xs">you do not own any twicrypt nfts or/and they are on work ! if you think think this is an error please contact us !</p>
                 <p className="text-white text-xs">you can mint twicrypt nfts and win up to 1BTC, and also you can send them to work for you !! 💲🚀</p>
           
-                <Link to={'/earn/mint'} className=" bg-blue-500 hover:bg-pink-500 text-sm text-white w-20 rounded py-2 px-2"> mint nft</Link>
+                <Link to={'/dashboard/mint'} className=" bg-blue-500 hover:bg-pink-500 text-sm text-white w-20 rounded py-2 px-2"> mint nft</Link>
             </div>
             : <RenderNftBalance/>
                

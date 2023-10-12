@@ -15,19 +15,15 @@ const SponsorUs = () => {
     setShow(true)
   }, [])
 
-console.log(show)
   return (
     <div className="flex  flex-col ">
 
       <div className="h-full  ">
 
         <button className=" text-black text-bold animate-bg w-full">{show ? " Your sponsorship will Appear on the main slider you can switch to cazousel" : "Your sponsorship will Appear on main carousel switch to slider view"}</button>
-
         <CarouselTransition show={show} >
           <SliderSponsor show={show} setShow={setShow} />
         </CarouselTransition>
-
-
 
         <Transition
           appear
@@ -44,11 +40,7 @@ console.log(show)
 
         </Transition>
 
-
-
-
         {/* <SectionWhy/> */}
-
       </div>
     </div>
 

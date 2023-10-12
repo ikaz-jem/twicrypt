@@ -1,12 +1,8 @@
 
 import './style.css'
 import CarouselDemo from './demo/Demo'
-import { useEffect, useState } from 'react'
-import { useAccount } from 'wagmi'
-import { addSlide } from '../../../app/features/carousel/carouselThunks'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchedCarouselData } from '../../../app/features/carousel/carouselSlice'
-import { Transition } from '@headlessui/react'
+import { useState } from 'react'
+
 import CarouselSponsorForm from './CarouselSponsorForm'
 import FormTransition from '../../../shared/transitions/FormTransition'
 import CarouselTransition from '../../../shared/transitions/CarouselTransition'
@@ -16,16 +12,14 @@ import CarouselTransition from '../../../shared/transitions/CarouselTransition'
 const CarouselSponsor = ({ show, setShow }) => {
 
 
-  const { address } = useAccount()
   const [ad, setAd] = useState({
-    bodyAddress: address,
     name: null,
     image: null,
-    link: null,
+    website: null,
     icon: null,
-    amount: 0
+    startsAt:null,
+    duration:null,
   })
-
 
   // useEffect(() => {
   //   setShow(true)
@@ -47,17 +41,21 @@ const CarouselSponsor = ({ show, setShow }) => {
   return (
 
     <>
+    <div className='  w-full h-full border border-transparent'> 
+
       <FormTransition show={show}>
         <CarouselSponsorForm show={show} ad={ad} setAd={setAd} />
       </FormTransition>
-      <div className=" bg-light light-ball hero">
+      </div>
+
+      <div className="light-ball my-20 ">
 
         {/* 
       <div className='flex justify-center items-center border'>
     
     </div> */}
         {/* <div className="grid__column grid__column--3 space space--xlarge  " dataref="fadereveal[el]"> */}
-        <div className='  flex justify-center w-full relative  aa py-10 '>
+        <div className='  flex justify-center w-full relative  bg-gradient-to-r from-indigo-900 via-purple-900 to-[#3b002173]  py-10 '>
           <div className='w-[20%] '>
           </div>
           <div className=' w-[80%]   rounded-2xl  border-opacity-30 border border-white py-5 shadow-lg'>

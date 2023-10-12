@@ -12,6 +12,8 @@ export const sessionSlice = createSlice({
         accountType:'',
         isLoggedIn:false,
         hasAccount:false ,
+        referralStats:null
+
     },
     reducers:{
         logIn:(state,action)=>{
@@ -27,6 +29,8 @@ export const sessionSlice = createSlice({
         },
         continueAsGuest:(state)=>{
             state.accountType = 'guest'
+        },setReferralStats:(state,action)=>{
+            state.referralStats =action.payload
         }
 
     },extraReducers:(builder)=>{
@@ -51,7 +55,7 @@ export const sessionSlice = createSlice({
 
 
 
-export const {setUserData,logIn,logOut,continueAsGuest} = sessionSlice.actions
+export const {setUserData,logIn,logOut,continueAsGuest,setReferralStats} = sessionSlice.actions
 export const userData = state=>state.session
 export const userSession = state=>state.session.isLoggedIn
 

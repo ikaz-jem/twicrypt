@@ -6,50 +6,62 @@ import sponsorAbi from '../abi/sponsor.json'
 import { app_chain_id } from '../../../shared/data/chains'
 
 import { sponsor_contract } from '../data'
+import { carouselFees } from '../data'
+import { toUnix } from '../../../utils/unixTimestamp'
+import { parseEther } from 'viem'
 
-export const useCreateCarouselAd = (props) => {
-    const [createHash,setCreateHash]=useState(null)
+export const useCreateCarouselAd = (ad) => {
+  const [createHash,setCreateHash]=useState(null)
  
-
-
-    const toNumber = (num)=> {
-        return Number(num)
-    }
-
-    const createAd = useContractWrite({
-        address: sponsor_contract  && sponsor_contract ,
-        abi: sponsorAbi&&sponsorAbi,
-        functionName: 'create_carousel_ad',
-        chainId: app_chain_id && app_chain_id,
-        args: [''],
-        value: 0,
-          onSuccess(data, error) {
-             toast.custom(
-             (t) => (
-               <Popup productImage={null} show={true} t={t} title={`Listing...`} desc={`listing in progress please wait to complete`}/>
-             ),
-             { position: "bottom-center", duration: 2000 }
-             )
-             setCreateHash(data.hash)
-           },
-
-    })
+  const {name,image,website,icon,startsAt,duration} = ad;
    
-
-    const waitTransaction = useWaitForTransaction({
-        hash: createHash && createHash,
-        onSuccess(data) {
-            toast.custom(
-                (t) => (
-                  <Popup productImage={null} show={true} t={t} title={` Approved !`} desc={`please complete token transfer `}/>
-                ),
-                { position: "bottom-center", duration: 2000 }
-              )
-        },
-    })
+  const startTime = toUnix(startsAt)
   
-
-
+  
+  const args = [
+    image && image,
+    icon && icon ,
+    name && name ,
+    website && website,
+    startTime,
+    duration && Number(duration)
+  
+  ]
+  
+  const fees = carouselFees * Number(duration)
+  
+        const createAd = useContractWrite({
+          address: sponsor_contract  && sponsor_contract ,
+          abi: sponsorAbi&&sponsorAbi,
+          functionName: 'create_carousel_ad',
+          chainId: app_chain_id && app_chain_id,
+          args: args && args,
+          value: fees && parseEther((fees.toString())),
+          onSuccess(data, error) {
+               toast.custom(
+               (t) => (
+                 <Popup productImage={image && image} show={true} t={t} title={`creating ${name ? name : null} sponsorship ...`} desc={`Submitting sponsorship complete the transaction`}/>
+               ),
+               { position: "bottom-center", duration: 2000 }
+               )
+               setCreateHash(data.hash)
+             },
+  
+      })
+     
+  
+      const waitTransaction = useWaitForTransaction({
+          hash: createHash && createHash,
+          onSuccess(data) {
+              toast.custom(
+                  (t) => (
+                    <Popup productImage={null} show={true} t={t} title={`thank you !`} desc={`you sponsored us for ${duration && duration} days ! your brand and infos will appear on the main page 🥳🥳🥳🥳🥳 `}/>
+                  ),
+                  { position: "bottom-center", duration: 2000 }
+                )
+          },
+      })
+    
     return createAd
 
 

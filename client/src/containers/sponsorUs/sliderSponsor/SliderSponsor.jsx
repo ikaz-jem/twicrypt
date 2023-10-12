@@ -16,14 +16,13 @@ const SliderSponsor = ({show,setShow}) => {
 
   const { address } = useAccount()
   const [ad, setAd] = useState({
-    bodyAddress: address,
     name: null,
     image: null,
-    link: null,
+    website: null,
     icon: null,
-    amount: 0
+    startsAt:null,
+    duration:null,
   })
-  
 
 //   useEffect(() => {
 //     setShow(true)
@@ -49,12 +48,14 @@ const SliderSponsor = ({show,setShow}) => {
   return (
 
     <>
+<div className='  w-full h-full border border-transparent'> 
 
 <FormTransition show={show}>
       <SliderSponsorForm show={show} ad={ad} setAd={setAd} />
 </FormTransition>
+</div>
 
-      <div className=" bg-light light-ball   ">
+      <div className=" light-ball my-20  ">
 
         {
 //index__body bg-light light-ball 
@@ -75,7 +76,7 @@ const SliderSponsor = ({show,setShow}) => {
 
     
 
-          <div className='  flex justify-center w-full relative aa py-10  '>
+          <div className='  flex justify-center w-full relative bg-gradient-to-r from-indigo-900 via-purple-900 to-[#3b002173]  py-10  '>
 
             <div className='w-[30%] '>
                                                       

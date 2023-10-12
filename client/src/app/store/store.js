@@ -17,7 +17,8 @@ import { StatesSlice } from '../features/States/StatesSlice';
 import { MarketPlaceSlice } from '../features/MarketPlace/MarketplaceSlice';
 // mining page
 import { MiningSlice } from '../features/mining/MiningSlice';
-
+// sponsorships carousel and slider
+import { Sponsorships } from '../features/sponsorships/Sponsorships';
 
 
 
@@ -34,7 +35,8 @@ const rootReducer = combineReducers({
 [carouselSlice.name]: carouselSlice.reducer,
 [MarketPlaceSlice.name]:MarketPlaceSlice.reducer,
 [StatesSlice.name]:StatesSlice.reducer,
-[MiningSlice.name]:MiningSlice.reducer
+[MiningSlice.name]:MiningSlice.reducer,
+[Sponsorships.name]:Sponsorships.reducer
 })
 
 const middleware = [ thunk];

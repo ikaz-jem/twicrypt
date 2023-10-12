@@ -2,81 +2,11 @@ import React, { useEffect, useId } from "react";
 import Card from "./Card";
 
 import Glide from "@glidejs/glide";
+import { useSelector } from "react-redux";
+import logo from '../../media/logo.png'
+import logo2 from '../../media/3d2.png'
 
-export const CATS_DISCOVER = [
-  {
-    name: "Explore new arrivals",
-    desc: "Shop the latest <br /> from top brands",
-    featuredImage: 'https://picsum.photos/200',
-    color: "bg-yellow-50",
-  },
-  {
-    name: "Digital gift cards",
-    desc: "Give the gift <br /> of choice",
-    featuredImage: 'https://picsum.photos/200',
-    color: "bg-red-50",
-  },
-  {
-    name: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    featuredImage: 'https://picsum.photos/200',
-    color: "bg-blue-50",
-  },
-  {
-    name: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    featuredImage: 'https://picsum.photos/200',
-    color: "bg-green-50",
-  },
-  {
-    name: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    featuredImage: 'https://picsum.photos/200',
-    color: "bg-green-50",
-  },
-  {
-    name: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    featuredImage: 'https://picsum.photos/200',
-    color: "bg-green-50",
-  },
-  {
-    name: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    featuredImage: 'https://picsum.photos/200',
-    color: "bg-green-50",
-  },
-  {
-    name: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    featuredImage: 'https://picsum.photos/200',
-    color: "bg-green-50",
-  },
-  {
-    name: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    featuredImage: 'https://picsum.photos/200',
-    color: "bg-green-50",
-  },
-  {
-    name: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    featuredImage: 'https://picsum.photos/200',
-    color: "bg-green-50",
-  },
-  {
-    name: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    featuredImage: 'https://picsum.photos/200',
-    color: "bg-green-50",
-  },
-  {
-    name: "Sale collection",
-    desc: "Up to <br /> 80% off retail",
-    featuredImage: 'https://picsum.photos/200',
-    color: "bg-green-50",
-  },
-];
+const placeHolders = [1,1,1,1,1,1]
 
 const Sponsors = () => {
   const id = useId();
@@ -123,21 +53,41 @@ const Sponsors = () => {
     };
   }, [UNIQUE_CLASS]);
 
+const sponsorships = useSelector(state=>state?.sponsorships)
+const sliderData = sponsorships?.sponsorships?.slider
+
+
+
+
   return (
-    <div className={` container mx-auto  overflow-hidden   ${UNIQUE_CLASS} `}>
-      <h1>Sponsors </h1>
+    <div className={` container mx-auto  overflow-hidden  ${UNIQUE_CLASS} `}>
+      <h1 className="pl-10 m-0 text-left ">Sponsors </h1>
       <div className="  overflow-hidden " data-glide-el="track">
-        <ul className="glide__slides ">
-          {CATS_DISCOVER.map((item, index) => (
-            <li key={index} className={`glide__slide flex gap-5 m-0 p-0 items-center justify-center `} >
-              <Card
-                name={item.name}
-                desc={item.desc}
-                img={item.featuredImage}
-                color={item.color}
-              /> 
-            </li>
-          ))}
+        <ul className="glide__slides m-0 p-0 ">
+         {
+// sliderData ? sliderData?.map(({brand,image,icon,website}, index) => (
+//   <li key={index} className={`glide__slide flex gap-5 m-0 p-0 items-center justify-center `} >
+//     <Card
+//       name={brand}
+//       img={image}
+//       icon={icon}
+//           website={website}
+//       /> 
+//   </li>
+// ))
+// :
+placeHolders?.map((item, index) => (
+  <li key={index} className={`glide__slide flex gap-2 m-0 p-0 items-center justify-center `} >
+    <Card
+      name={'twicrypt'}
+      img={logo2}
+      icon={logo}
+      website={'/'}
+    /> 
+  </li>
+))  
+
+         }
         </ul>
       </div>
     </div>

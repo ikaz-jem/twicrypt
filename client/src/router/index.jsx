@@ -125,6 +125,11 @@ const NestedRoutes = [
         requiresAuth: false,
     },
     {
+        path:'mint/:address',
+        component: MintPage,
+        requiresAuth: false,
+    },
+    {
         path:'mint',
         component: MintPage,
         requiresAuth: false,

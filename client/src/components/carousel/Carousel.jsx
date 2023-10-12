@@ -11,6 +11,8 @@ import { useEffect, useState } from 'react';
 import logo3d from '../../media/3d2.png'
 import logo from '../../media/logo.png'
 import {AiFillLeftCircle,AiFillRightCircle} from 'react-icons/ai'
+import {useGetAllAds} from '../../containers/sponsorUs/hooks/useGetAllAds'
+
 
 const SvgTitle = () => {
 
@@ -57,7 +59,10 @@ const Carousel = () => {
     }, [])
     const PlaceHolder = [1, 2, 3, 4]
 
-    const storeData = useSelector(fetchedCarouselData)
+    
+  
+const storeData = useSelector(state=>state?.sponsorships)
+
 
 
     const RenderCarouselItems = () => {
@@ -65,8 +70,8 @@ const Carousel = () => {
 
         return (
             <>
-                {storeData?.data ?
-                    storeData.data.map(({ title: name, image }, i) => {
+                {storeData?.sponsorships?.carousel ?
+                    storeData?.sponsorships?.carousel?.map(({ brand: name, image , website , icon}, i) => {
                         return (<li className="frames__item glide__slide " key={i}>
                             <div dataref="slidereveal[el] ">
                                 <div className="frame " dataref="hero[el]">
@@ -76,9 +81,9 @@ const Carousel = () => {
 
                                         <div className="flex items-center justify-center  ">
 
-                                            <Link to={image} target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%]">
-                                                <img src={image || logo} alt="icon" className="w-5 h-5" />
-                                                <p className='text-gray-500'>{name?.slice(0, 4)|| 'Twicrypt' }</p>
+                                            <Link to={website} target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%]  rounded py-4 hover hover:bg-neutral-800 text-white">
+                                                <img src={icon || logo} alt="icon" className="w-5 h-5" />
+                                                <p className='text-neutral-400'>{name|| 'Twicrypt' }</p>
 
                                             </Link>
                                         </div>
@@ -128,7 +133,7 @@ const Carousel = () => {
     return (
         <>
             {/* {hero mapping carouzel items } */}
-            {storeData?.data && !storeData?.data.hasError || storeData?.data == null ?
+            {storeData?.sponsorships?.carousel && !storeData?.isError || storeData?.sponsorships?.carousel == null ?
 
                 <div className="slider slider--big glide " data-component="hero">
                     <CarouselTransition show={show}>

@@ -3,7 +3,7 @@ import ContributionForm from "./ContributionForm";
 import Disclamer from "../../../../../../shared/Disclamer/Disclaimer";
 
 
-const MintNft = () => {
+const MintNft = ({data}) => {
 
     return (<div className=" w-auto h-full flex flex-col justify-center items-start gap-5 relative    ">
 
@@ -14,7 +14,7 @@ const MintNft = () => {
             <div className=" h-full w-full flex justify-start items-start ">
              
                 <div className='w-full'>
-                <ContributionForm />
+                <ContributionForm data={data} />
                 </div>
 
 

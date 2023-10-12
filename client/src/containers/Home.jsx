@@ -24,6 +24,7 @@ import NavItem from "../shared/NavItem/NavItem";
 import { useNavigate } from "react-router-dom";
 import logo from '../media/3d.png'
 import AccordionTabs from "../shared/AccordionTabs/AccordionTabs";
+import { useGetAllAds } from "./sponsorUs/hooks/useGetAllAds";
 
 const Carousel = lazy(() => import('../components/carousel/Carousel'));
 
@@ -31,8 +32,8 @@ const Carousel = lazy(() => import('../components/carousel/Carousel'));
 const Home = () => {
 
   const dispatch = useDispatch()
-    const [show, setShow] = useState(true)
-const Navigate = useNavigate()
+  const [show, setShow] = useState(true)
+  const Navigate = useNavigate()
 
   const showPopup = () => {
     const popToast = toast.custom(
@@ -86,15 +87,7 @@ const Navigate = useNavigate()
 
 
 
-
-  useEffect(() => {
-    dispatch(getCarouselData())
-    // return()=> controller.abort()
-
-
-  }, [])
-
-
+const sponsorships = useGetAllAds()
 
 
   return (
@@ -103,7 +96,7 @@ const Navigate = useNavigate()
 
       <div className="index__header   ">
         <div className="space space--xlarge color-ball">
-         
+
           {/* <Navbar /> */}
           <div className="hero__wrapper   ">
             <Carousel />
@@ -113,12 +106,12 @@ const Navigate = useNavigate()
           </div>
 
           <Nav className="flex items-center justify-center gap-5 flex-wrap">
-            <NavItem onClick={()=> Navigate('/earn/mint')}>Mint</NavItem>
+            <NavItem onClick={() => Navigate('/earn/mint')}>Mint</NavItem>
             {/* <NavItem onClick={()=>Navigate('/earn/token-sale')} >Token Sale</NavItem> */}
             <NavItem onClick={() => Navigate('/preparations')}>RoadMap</NavItem>
             {/* <NavItem onClick={() => showPopup()}>show popup</NavItem>
             <NavItem onClick={() => toastP()}>show popup 2</NavItem> */}
-            <NavItem onClick={()=> Navigate('/sponsor')}>Sponsor </NavItem>
+            <NavItem onClick={() => Navigate('/sponsor')}>Sponsor </NavItem>
             {/* <NavItem onClick={()=> Navigate('/documentations')}>Docs </NavItem> */}
           </Nav>
 
