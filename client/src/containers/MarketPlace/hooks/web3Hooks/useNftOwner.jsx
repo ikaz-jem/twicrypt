@@ -11,7 +11,7 @@ export const useNftOwner = () => {
     const dispatch = useDispatch()
     const { address } = useSelector((state => state.session))
     const setNftDetailsData = (data) => dispatch(setNftDetailsPageState(data))
-const nftDetails = useSelector(state=>state?.marketPlace?.nftDetailsPageState)
+    const nftDetails = useSelector(state=>state?.marketPlace?.nftDetailsPageState)
 
 
 
@@ -28,8 +28,8 @@ const nftDetails = useSelector(state=>state?.marketPlace?.nftDetailsPageState)
         onError(){
             return null
         }
-
     })
+    
     let nftOwner = data
     let pageVisitor = address
     let error = hasError

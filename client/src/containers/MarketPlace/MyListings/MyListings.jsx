@@ -5,12 +5,14 @@ import UserListings from "./UserListings";
 import ConnectWalletError from "../../../shared/ConnectWalletError/ConnectWalletError";
 import { useSelector } from "react-redux";
 import UserAuctions from "./Auction/UserAuctions";
+
+
+
 const MyListings = () => {
 const {address} = useSelector(state=>state.session)
-
+useGetUserListing()
 
     const Listings = () => {
-        useGetUserListing()
         return (
             <>
                 <div className="flex flex-col justify-start items-start gap-1 w-auto mb-5  ">
@@ -22,7 +24,6 @@ const {address} = useSelector(state=>state.session)
         )
     }
     const Auctions = () => {
-        useGetUserListing()
         return (
             <>
                 <div className="flex flex-col justify-start items-start gap-1 w-auto my-2  ">
@@ -31,11 +32,8 @@ const {address} = useSelector(state=>state.session)
                 <UserAuctions />
                     </div>
                 </div>
-            </>
-        )
+            </>)
     }
-
-
 
     return (
         <div className="container  flex justify-center items-center  relative  w-full h-full mb-20">
@@ -48,8 +46,6 @@ const {address} = useSelector(state=>state.session)
                 </div>
 
                 <Listings />
-               
-              
                 <Auctions />
                 
                 <div className="flex flex-col mt-12 lg:mt-16 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">

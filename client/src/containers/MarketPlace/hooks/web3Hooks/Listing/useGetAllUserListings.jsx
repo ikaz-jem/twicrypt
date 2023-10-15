@@ -4,23 +4,29 @@ import { useEffect } from "react";
 import { marketplace_contract } from "../../../data/Addresses";
 import { setMyListings } from "../../../../../app/features/MarketPlace/MarketplaceSlice";
 import abi from '../../../abi/marketPlace2.json'
-import { app_chain_id } from "../../../../../shared/data/chains";
+
+
 
 export const useGetUserListing = ()=> {
 const dispatch = useDispatch();
 
+
 const {address}=useSelector(state=>state.session)
 const setData = (data)=> dispatch(setMyListings(data))
+
+
 
         const {data,isLoading,hasError}  = useContractRead({
             address: marketplace_contract && marketplace_contract,
             abi :abi && abi,
             functionName:'getAllUserListings',
-            chainId:app_chain_id&&app_chain_id,
+            chainId:97,
             args:[address && address],
             enabled: address ? true : false
             
         })
+
+
 
 useEffect(()=>{
 const controller = new AbortController();

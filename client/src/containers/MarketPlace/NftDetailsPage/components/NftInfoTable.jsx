@@ -5,29 +5,35 @@ import { useSelector } from "react-redux"
 import { marketplace_contract } from "../../data/Addresses"
 import Spinner from "../../../../shared/Spinner/Spinner"
 import { useCheckIsListed } from "../../hooks/web3Hooks/Listing/useCheckIsListed"
+import { useGetOffers } from "../../hooks/web3Hooks/Offers/useGetOffers"
+import { useSearchParams } from "react-router-dom";
 
-const NftInfoTable = () => {
+
+const NftInfoTable = ({isListed, data,seller,isSeller }) => {
+    const [searchParams] = useSearchParams()
 
 const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
 const{address}= useSelector(state=>state.session)
 
-const { isListed, data,seller } = useCheckIsListed()
+// const { isListed, data,seller } = useCheckIsListed()
+const tokenId = searchParams?.get('id')
+    
+useGetOffers({ id: tokenId && tokenId })
 
 const nftOwner = nftDetails?.nftOwner
 
 const pageVisitor = address
-const sellerAddress =seller
-const isSller = pageVisitor?.toLowerCase() === sellerAddress?.toLowerCase() ? true :false
+// const isSeller = pageVisitor?.toLowerCase() == sellerAddress?.toLowerCase() ? true :false
 
 
 const RenderSidBar = ()=> {
 
 //  nftOwner ||  pageVisitor ===sellerAddress
-if (nftOwner !==marketplace_contract && nftOwner===pageVisitor || isSller) {
+if (nftOwner !==marketplace_contract && nftOwner===pageVisitor || isSeller) {
     return  ( <OwnerViewDetails seller={seller}  data={data} isListed={isListed} />)
 } else if (nftOwner===undefined ){
     return  <NoNftOwner seller={seller}  data={data} isListed={isListed} metadata={nftDetails} />
-} else if (!isSller ){ return <BuyerViewDetails/> }
+} else if (!isSeller ){ return <BuyerViewDetails/> }
 
 }
 

@@ -10,9 +10,6 @@ import Spinner from "../../../shared/Spinner/Spinner";
 import { clearNftDetailsState } from "../../../app/features/MarketPlace/MarketplaceSlice";
 import { useGetOffers } from "../hooks/web3Hooks/Offers/useGetOffers";
 import { useCheckIsListed } from "../hooks/web3Hooks/Listing/useCheckIsListed";
-import AuctionInfoTable from "./Auction/AuctionInfoTable";
-import AuctionBids from "./Auction/AuctionBids";
-import { useGetAuctionData } from "../hooks/web3Hooks/Auction/useGetAuctionData";
 
 
 const NftInfoTable = lazy(() => import('./components/NftInfoTable'))
@@ -22,7 +19,8 @@ const NftOffers = lazy(() => import('./components/NftOffers'))
 
 
 
-const NftDetailsPage = () => {
+
+const AuctionDetailsPage = () => {
     const [searchParams] = useSearchParams()
     const [metadata, setMetadata] = useState({
         metadata: null,
@@ -32,12 +30,13 @@ const NftDetailsPage = () => {
         metadata_Url: null,
         chainId: null
     })
-    
-    // const auctionData = useGetAuctionData()
+
     // const {nftDetailsPageState} = useSelector(state=>state.marketPlace)
     // console.log(nftDetailsPageState)
 
-
+    const tokenId = searchParams?.get('id')
+    
+    useGetOffers({ id: tokenId && tokenId })
 
     const dispatch = useDispatch()
     const setNftStore = (data) => dispatch(setNftDetailsPageState(data))
@@ -75,7 +74,9 @@ const NftDetailsPage = () => {
     //custom hook to compare nft owner and page visitor
     const { nftOwner, pageVisitor, isOwner, loading, error, isVisitorConnected } = useNftOwner()
     // custom hook to check if nft is listed
-    const {isListed,data,seller,listingType,isSeller} = useCheckIsListed()
+    const {isListed,data,seller} = useCheckIsListed()
+    const isSeller = pageVisitor?.toLowerCase() === seller?.toLowerCase() ? true :false
+
 
 
     const getNFtData = async () => {
@@ -114,31 +115,15 @@ const NftDetailsPage = () => {
         return null
     }
 
-const RenderDetails = ()=> {
-
-if (listingType == 'auction') {
-return <>
-     <AuctionInfoTable isOwner={isOwner} isSeller={isSeller} data={data}  isListed={isListed} seller={seller}/>
-    <AuctionBids isOwner={isOwner} isSeller={isSeller}  isListed={isListed} />
-     </>
-} else {
-return  <>
-<Suspense fallback={
-    <Spinner message={'getting Nft Infos ...'} />
- }>
-     <NftInfoTable isOwner={isOwner} isSeller={isSeller} data={data} isListed={isListed} seller={seller}/>
-     <NftOffers isOwner={isOwner} isSeller={isSeller}  isListed={isListed} />
- </Suspense>
-
-     </> 
-}
-}
 
     return (
         <div className="m-0 mb-10  shadow-lg  border-t   border-[#353d284b] h-auto relative flex rounded-xl overflow-hidden  flex-wrap ">
             <div className="flex h-full w-full m-2 flex-wrap lg:flex-nowrap gap-0 lg:gap-0  ">
                 <div className=" flex flex-col gap-2 w-full  lg:w-1/2 ">
+
                     <div className="w-full">
+
+
                         <Suspense fallback={
                             <Spinner message={'getting Nft Infos ...'} />
                         }>
@@ -159,14 +144,16 @@ return  <>
                         <div className="">
                             {/* <Table/> */}
                             {/* <RenderInfoTable /> */}
-                           { 
-                          RenderDetails()
-                                // :
-                                // <>
-                                // <AuctionInfoTable />
-                                // <AuctionBids isOwner={isOwner} isSeller={isSeller} pageVisitor={pageVisitor} isListed={isListed} />
-                                // </>  
-                            }
+                            <Suspense fallback={
+                                <Spinner message={'getting Nft Infos ...'} />
+                            }>
+                                <NftInfoTable />
+
+                                
+                            </Suspense>
+
+                            <NftOffers isOwner={isOwner} isSeller={isSeller} pageVisitor={pageVisitor} isListed={isListed} />
+
                         </div>
                     </div>
                 </div>
@@ -176,4 +163,4 @@ return  <>
 }
 
 
-export default NftDetailsPage
+export default AuctionDetailsPage

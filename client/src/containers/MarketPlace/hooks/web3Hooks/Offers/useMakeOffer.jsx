@@ -6,6 +6,7 @@ import Popup from "../../../../../shared/popup/Popup"
 import { useSelector } from "react-redux"
 import marketPlaceAbi from '../../../abi/marketPlace2.json'
 import { toDecimals } from "../../../../../utils/web3Functions"
+import { app_chain_id } from "../../../../../shared/data/chains"
 
 export const useMakeOffer = ({price})=> {
     const [approveHash, setApproveHash] = useState(null)
@@ -13,12 +14,13 @@ export const useMakeOffer = ({price})=> {
 const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
 
 let tokenId = nftDetails?.tokenId && Number(nftDetails?.tokenId)
+
 const createOffer = useContractWrite({
     address:  marketplace_contract && marketplace_contract,
     abi : marketPlaceAbi && marketPlaceAbi ,
     functionName:'makeOffer',
+    chainId:app_chain_id&& app_chain_id,
     args:[tokenId&&tokenId,price&&toDecimals(price,18)],
-    enabled: price && tokenId ? true : false,
     value:`${toDecimals(price,18)}`,
     onMutate({ args, overrides }) {
         return toast.custom(
@@ -32,7 +34,6 @@ const createOffer = useContractWrite({
         setApproveHash(data.hash)
        },
        onError(error) {
-        console.log(error)
          toast.custom(
          (t) => (
            <Popup productImage={nftDetails?.imageLink || null} show={true} t={t} title={'Error ! 🚧'} desc={`${error?.details || 'you may have Already made an offer , only one offer is allowed , to make new one cancel the current offer !'} `}/>

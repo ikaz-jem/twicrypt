@@ -6,28 +6,24 @@ import { bigIntToFormated } from "../../../../utils/web3Functions"
 import { Link } from "react-router-dom"
 import { useBuyNft } from "../../hooks/web3Hooks/useBuyNft"
 import { useSwitchCorrectNetwork } from "../../hooks/web3Hooks/Network/useSwitchCorrectNetwork"
-import MakeOffer from "./makeOffer"
-import { app_chain_id } from "../../../../shared/data/chains"
-import { formatEther } from "viem"
+import MakeBid from "./MakeBid"
 
-const BuyerViewDetails = () => {
+const BuyerViewDetails = ({auctionData,isListed,data,seller}) => {
 
 
     const metadata = useSelector(state => state.marketPlace.nftDetailsPageState)
     const isVisitorConnected = metadata?.isVisitorConnected
-
+console.log(isListed)
 
     const nftOwner = metadata?.nftOwner
-    const { isListed, data, seller } = useCheckIsListed()
 
     const pageVisitor = metadata?.pageVisitor
     const sellerArrdess = seller
    
-    
     const RenderDetails = () => {
         
-        const price = data && formatEther(Number(data?.price))
-        const buy = useBuyNft({price:data?.price})
+        const price = data && bigIntToFormated(data?.[4],18)
+        const buy = useBuyNft({price:data?.[4]})
 
 // hoook to change network 
         const {chain,switchNetwork}=useSwitchCorrectNetwork({
@@ -35,7 +31,7 @@ const BuyerViewDetails = () => {
         })
         const handleBuyNft =  (e) => {
             e.preventDefault()
-            if (chain?.id == app_chain_id){
+            if (chain?.id == 97){
                 e.preventDefault()
                 buy.write();
             } else {
@@ -46,12 +42,7 @@ const BuyerViewDetails = () => {
         }
 
 
-const handleMakeOffer = ()=> {
 
-
-
-
-}
 
         return (
             <>
@@ -63,7 +54,7 @@ const handleMakeOffer = ()=> {
                             <div className="flex w-full gap-5 border-t border-neutral-800 p-5 ">
                                 <button onClick={(e)=>handleBuyNft(e)} className="w-1/2 text-white font-bold bg-blue-500 hover:bg-neutral-300 hover:text-black transition-all duration-300 rounded-lg h-14">Buy Now</button>
                                 <div className="w-1/2 h-14">
-                                    <MakeOffer/>
+                                    <MakeBid/>
                                     </div>
                             </div>
                         </div></>
@@ -73,11 +64,11 @@ const handleMakeOffer = ()=> {
                         <h3 className="text-left p-0 m-0 font-extrabold">not Listed Yet </h3>
                     </div><div className="">
                             <div className="flex w-full gap-5 border-t border-neutral-800 p-5 ">
-                                <button className="w-1/2 text-white font-bold bg-blue-500 hover:bg-neutral-300 hover:text-black transition-all duration-300 rounded-lg h-14">send decentralized email</button>
+                                <button className="w-1/2 text-white font-bold bg-blue-500 hover:bg-neutral-300 hover:text-black transition-all duration-300 rounded-lg h-14">cancel auction</button>
                                
                                 <div className="w-1/2 h-14">
 
-                                <MakeOffer/>
+                                <MakeBid/>
                                 </div>
 
                             </div>

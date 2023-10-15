@@ -4,6 +4,7 @@ import ConnectWalletError from "../../../../shared/ConnectWalletError/ConnectWal
 import { bigIntToFormated } from "../../../../utils/web3Functions"
 import { useCancelListing } from "../../hooks/web3Hooks/Listing/useCancelListing"
 import QuickListing from "../QuickListing/QuickListing"
+import { formatEther } from "viem"
 
 
 const OwnerViewDetails = ({isListed, data,seller}) => {
@@ -19,9 +20,8 @@ const OwnerViewDetails = ({isListed, data,seller}) => {
 
    const pageVisitor = metadata?.pageVisitor
    const sellerArrdess =seller
-
     const RenderDetails = () => {
-        const price = bigIntToFormated(Number(data?.[4]),18)
+        const price = formatEther(Number(data?.price))
         
       const {cancelListing} = useCancelListing({
         tokenId:metadata?.tokenId && metadata?.tokenId,

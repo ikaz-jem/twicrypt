@@ -14,7 +14,6 @@ import { useDispatch } from "react-redux";
 import CreateListing from "./CreateListing/CreateListing";
 import AllListings from "./AllListings/AllListings";
 //all-nfts
-import {useGetBouras} from './hooks/web3Hooks/data/useGetBouras'
 import CreateAuction from "./CreateAuction/CreateAuction";
 
 
@@ -56,7 +55,7 @@ return ()=> controller.abort()
     'create-auction': <CreateAuction />
 }
 
-const bouras = useGetBouras()
+
 
 
     return (

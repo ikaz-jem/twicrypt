@@ -15,9 +15,13 @@ export const MarketPlaceSlice = createSlice({
                     },
           allListings:null,
           mylistings:null,  
+          myAuctions:null,
           createListing:null ,
           mynfts:null,
           nftDetailsPageState:{
+            metadata:null
+          }, 
+          auctionDetailsPageState:{
             metadata:null
           }, 
           nftOffers:null        
@@ -56,7 +60,17 @@ export const MarketPlaceSlice = createSlice({
                     ...state.nftDetailsPageState,
                     ...action.payload,
                 }
-            },clearNftDetailsState:(state)=>{
+            },
+            setAuctionDetailsPageState:(state,action)=>{
+
+                state.auctionDetailsPageState = {
+                    ...state.auctionDetailsPageState,
+                    ...action.payload,
+                }
+            },
+            
+            
+            clearNftDetailsState:(state)=>{
                 state.nftDetailsPageState = {
                     metadata:null
                   }    
@@ -81,5 +95,6 @@ export const {
     setMyNfts,
     setNftDetailsPageState,
     clearNftDetailsState,
-    setNftOffers
+    setNftOffers,
+    setAuctionDetailsPageState
 } = MarketPlaceSlice.actions

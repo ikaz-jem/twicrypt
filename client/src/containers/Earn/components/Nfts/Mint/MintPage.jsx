@@ -32,9 +32,8 @@ const MintPage = () => {
 
 
     const referralStats = useGetMinterStats()
-  
 
-
+console.log(referralStats)
 
     const RenderLeftMenu = () => {
 

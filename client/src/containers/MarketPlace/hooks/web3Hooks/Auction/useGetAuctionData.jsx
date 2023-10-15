@@ -6,29 +6,32 @@ import { setMyListings } from "../../../../../app/features/MarketPlace/Marketpla
 import abi from '../../../abi/marketPlace2.json'
 import { app_chain_id } from "../../../../../shared/data/chains";
 
-export const useGetUserListing = ()=> {
+export const useGetAuctionData = ()=> {
 const dispatch = useDispatch();
+
 
 const {address}=useSelector(state=>state.session)
 const setData = (data)=> dispatch(setMyListings(data))
+const nftData = useSelector(state=>state.marketPlace.nftDetailsPageState)
+const tokenId = nftData?.tokenId
+
 
         const {data,isLoading,hasError}  = useContractRead({
             address: marketplace_contract && marketplace_contract,
             abi :abi && abi,
-            functionName:'getAllUserListings',
-            chainId:app_chain_id&&app_chain_id,
-            args:[address && address],
-            enabled: address ? true : false
+            functionName:'getAuctionData',
+            chainId:app_chain_id && app_chain_id,
+            args:[tokenId && tokenId],
+           
             
         })
+// useEffect(()=>{
+// const controller = new AbortController();
+// data && setData(data);
+// return ()=> controller.abort()
+// },[data,address ,abi])
 
-useEffect(()=>{
-const controller = new AbortController();
-data && setData(data);
-return ()=> controller.abort()
-},[data,address ,abi])
-
-
+return data
 
 
 }

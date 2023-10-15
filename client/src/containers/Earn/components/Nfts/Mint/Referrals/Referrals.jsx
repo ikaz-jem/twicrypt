@@ -83,25 +83,48 @@ return (
     const RenderStats = () => {
         const totalReferrals = Number(reffStats?.reffCount) || 0
         const totalRewards = formatEther(Number(reffStats?.totalReward)) || 0
-        const rewardpercent = Number(reffStats?.nftBalance)|| 0
+        const rewardpercent = Number(reffStats?.percentage)|| 0 //
+        const referralsContributions = Number(reffStats?.refContributions)|| 0 //
+        const totalWithdrawls = Number(reffStats?.totalWithdrawls)|| 0 //
+
+
         return (
 
             <div className="w-full h-full bg-[#00000083] rounded-xl border border-pink-800 flex flex-col p-5 gap-2 shadow-xl">
 
-                <div className="flex justify-between items-start ">
+<h5 className="text-left my-2 p-0 border-b border-purple-900 w-full rounded-2xl px-5 pb-2 text-pink-600 font-bold text-xl ">affiliate stats </h5>
 
+
+
+
+                <div className="flex justify-between items-start ">
                     <ul className="flex items-start justify-center flex-col text-xs text-white p-0">
-                        <li>referral count</li>
-                        <li>total rewards</li>
-                        <li>reward percent</li>
+                   
+                        <li className="text-neutral-300 font-bold ">referral count</li>
+                        <li className="text-yellow-500 font-bold">reward percent</li>
+                        <li className="text-neutral-300 font-bold">total withdrawals</li>
+                        <li className="text-neutral-300 font-bold">total referrals contributions</li>
 
                     </ul>
                     <ul className="flex items-start justify-center flex-col text-xs text-white">
                         <li>{totalReferrals}</li>
-                        <li>{totalRewards} BNB</li>
-                        <li>{rewardpercent}% </li>
+                        <li className="text-yellow-500 font-bold">{rewardpercent}% </li>
+                        <li>{totalWithdrawls} BNB</li>
+                        <li>{referralsContributions} BNB</li>
                     </ul>
                 </div>
+
+                <div className="w-full h-full">
+
+<div className="flex justify-between border-b border-purple-900 ">
+        <p className=" font-bold text-green-500 ">total rewards</p>
+        <p className=" font-bold text-green-500 ">{totalRewards} BNB</p>
+
+</div>
+
+
+</div>
+
                 <div className="flex items-center justify-start ">
 
                     <button  disabled={totalRewards<0.01 ? true : false} onClick={(e)=>handleClick(e)} className="py-2 bg-orange-500 w-auto px-4 rounded text-xs hover:bg-pink-500 transition-all disabled:cursor-not-allowed disabled:bg-neutral-400 "> withdraw earnings</button>
@@ -173,7 +196,7 @@ return (
 
         <div className="w-full h-full flex flex-col gap-2 ">
             
-            { !isPartner == "false" || !isReferrer?
+            { !isPartner && !isReferrer ?
                 <>
                 <RenderNotEligible/>
                 </>

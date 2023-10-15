@@ -16,7 +16,8 @@ import { formatEther } from "viem"
 const ContributionForm = ({data}) => {
 
     const  {address={}} = useParams()
-    
+
+    const user = useSelector(state=>state.session)
     const nftCount = useSelector(state=>state?.states?.mint?.nftCount)
     
 const mintNft= useMintNft()
@@ -30,23 +31,22 @@ const setMint = (data)=> dispatch(setMintNft(data))
     const RenderInput =()=> {
 
 const handleClick = ()=> {
-if (address?.length > 0) {
+if (address?.length > 0 && address?.toLowerCase()!=user?.address?.toLowerCase() ) {
     refMint.write();
 
 }else {
-
     mintNft.write()
 }
-
-
 }
 
-let percentage = (20000 / 4000000) * 1
+const minted = Number(data?.supply)
+
+let percentage = (20000 / 4000000) * minted
 
     return (
         <div className="w-auto m-0  flex flex-col  grow gap-0 border border-purple-900 p-5 rounded-lg ">
             <h3 className="text-left p-0 m-0 py-2 font-bold">Mint Nft</h3>
-        <ProgressBar percentage={percentage} min={0 + ' BNB'} max={20000 + ' Nft'} />
+        <ProgressBar percentage={percentage} min={minted + ' nft'} max={20000 + ' Nft'} />
         <div className=" flex p-0 gap-1 m-0">
             <div className="m-0 p-0 flex flex-col w-full justify-center gap-10">
                 <input

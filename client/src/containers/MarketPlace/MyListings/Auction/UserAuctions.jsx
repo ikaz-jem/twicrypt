@@ -6,22 +6,30 @@ import DeleteListingModal from "../DeleteListingModal";
 import EditListingModal from "../EditListingModal";
 import NoListings from "../NoListings";
 import { MdOutlineLocalOffer } from 'react-icons/md'
-import { unixToDate } from "../../../../utils/unixToDate";
+import { unixCountDown, unixToDate } from "../../../../utils/unixToDate";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { nft_contract } from "../../data/Addresses";
 import NoAuctions from "./NoAuctions";
+import { formatEther } from "viem";
 
 const UserAuctions = ()=> {
 
-const myListings = useSelector(state=>state?.marketPlace?.mylistings)
+const allListings = useSelector(state=>state?.marketPlace?.mylistings)
+const myListings = allListings?.userAuctions
 const {address} = useSelector(state=>state.session)
 
+console.log(allListings)
 
 
 useEffect(()=> {
 
 },[address])
+
+
+const currentTime = Math.floor(new Date().getTime() / 1000);
+
+
 
 
 const checkListing =()=> {
@@ -33,7 +41,26 @@ if (lengthArray?.length >0 && address ){
 }
 const userHasListings =  checkListing()
 
+const formatPrice= (num)=>{
 
+    const decimal = Number(num);
+    const price = formatEther(decimal)
+    const priceNum = Number(price)
+    return priceNum.toFixed(2)
+}
+
+const auctionStatus = (startTime,endTime)=> {
+    if ( currentTime >= Number(startTime)  && endTime>currentTime){
+        return <p className="text-green-500 p-0 m-0 font-bold">auction started</p>
+    } else if (  endTime<=currentTime) {
+        return <p className="text-red-500 p-0 m-0 font-bold">auction ended</p>
+    }else {
+
+        return <p className="text-red-500 p-0 m-0 font-bold">starting in : {unixCountDown(Number(startTime)) }</p> 
+    }
+    
+
+}
 
 const RenderMyAuctions = ()=> {
 return(
@@ -52,15 +79,13 @@ return(
                     <div  key={i} className=" flex justify-start items-center w-full border-b border-neutral-800 py-2 pl-4 gap-5 hover:bg-neutral-800 transition-all duration-300" >
                        <img className="w-14 h-14 object-fit rounded-full" src={item?.image} />
                       
-
                        <div className="w-20 flex text-white">{tokenId}</div>
-                        <Link to={`./my-nfts/nft/?address=${nft_contract}&id=${(item.tokenId)}&cid=${item.metadata_url}&chain=97`}  className="w-1/6 flex font-bold text-white">{item?.name}</Link >
-                        <div className="w-1/6 flex  text-white ">{unixToDate(Number((item?.listedAt).toString()))}</div>
-                        <div className="w-1/6 flex text-white">{item?.holder?.slice(0,5)}...</div>
-                        <div className="w-1/6 flex text-white">{item?.seller?.slice(0,5)}...</div>
-                        <div className="w-1/6 flex text-white">{bigIntToFormated(price, 18)} BNB</div>
+                        <Link to={`./my-nfts/nft/?address=${nft_contract}&id=${(item?.tokenId)}&cid=${item.metadata_url}&chain=97`}  className="w-1/6 flex font-bold text-white">{item?.name}</Link >
+                        {/* <div className="w-1/6 flex  text-white ">{unixToDate(Number((item?.listedAt).toString()))}</div> */}
+                        <div className="w-1/6 flex  text-white ">{auctionStatus(item?.startsAt , item?.endsAt)}</div>
+                        <div className="w-1/6 flex text-white">{formatPrice(item?.floorPrice)} BNB</div>
+                        <div className="w-1/6 flex text-white">{formatPrice(item?.highestBid)} BNB</div>
 
-                       
                         <div className="w-1/4 flex gap-2">
 
                         <DeleteListingModal nft={item} />
@@ -77,12 +102,7 @@ return(
     }
 </>
 )
-
-
-
-
 }
-
 
 
 const RenderList = ({children})=> {
@@ -94,15 +114,13 @@ return (
         <p className="w-20 pl-4 flex">Art</p>
         <p className="w-20 flex">id</p>
         <p className="w-1/6 flex">name</p>
-        <p className="w-1/6 flex">Listed At</p>
-        <p className="w-1/6 flex">auction end time</p>
-        <p className="w-1/6 flex">holder</p>
+        <p className="w-1/6 flex">status</p>
+        <p className="w-1/6 flex">floor</p>
         <p className="w-1/6 flex">highest bid</p>
         <p className="w-1/4 flex">action</p>
     </div>
     <div className="w-full overflow-y-scroll h-[40vh]" >
         <div className=" flex w-full h-full flex-col justify-start items-start m-0 p-0" >
-        
             {children}
         </div>
     </div>
@@ -111,9 +129,7 @@ return (
 </SingleAccordion >
 
 )
-
 }
-
 
 return (
 <>

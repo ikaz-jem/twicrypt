@@ -267,19 +267,6 @@
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "contract ERC721Enumerable",
 				"name": "_nft",
 				"type": "address"
@@ -401,6 +388,19 @@
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "withdraw_all",
 		"outputs": [],
@@ -489,7 +489,7 @@
 				"type": "uint256"
 			}
 		],
-		"name": "auctionItems",
+		"name": "auctionByTokenId",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -666,6 +666,87 @@
 					}
 				],
 				"internalType": "struct NFTMarketResell.List[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "getActiveUserAuctions",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "address payable",
+						"name": "seller",
+						"type": "address"
+					},
+					{
+						"internalType": "address payable",
+						"name": "holder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "floorPrice",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "metadata_url",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "image",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "listedAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "startsAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "endsAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "highestBid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "buyNow",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NFTMarketResell.auction[]",
 				"name": "",
 				"type": "tuple[]"
 			}
@@ -858,6 +939,146 @@
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "getAllUserListings",
+		"outputs": [
+			{
+				"components": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "tokenId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "address payable",
+								"name": "seller",
+								"type": "address"
+							},
+							{
+								"internalType": "address payable",
+								"name": "holder",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "floorPrice",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "metadata_url",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "image",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "listedAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "startsAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "endsAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "highestBid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "buyNow",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct NFTMarketResell.auction[]",
+						"name": "userAuctions",
+						"type": "tuple[]"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "tokenId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "address payable",
+								"name": "seller",
+								"type": "address"
+							},
+							{
+								"internalType": "address payable",
+								"name": "holder",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "metadata_url",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "image",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "listedAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "sold",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct NFTMarketResell.List[]",
+						"name": "userListings",
+						"type": "tuple[]"
+					}
+				],
+				"internalType": "struct NFTMarketResell.userListings",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "uint256",
 				"name": "_tokenId",
 				"type": "uint256"
@@ -962,9 +1183,60 @@
 						"type": "tuple"
 					}
 				],
-				"internalType": "struct NFTMarketResell.auctionData",
+				"internalType": "struct NFTMarketResell.tokenAuction",
 				"name": "",
 				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_tokenId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_perpage",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_current",
+				"type": "uint256"
+			}
+		],
+		"name": "getBidsforToken",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "bidder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bidsAt",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NFTMarketResell.bid[]",
+				"name": "",
+				"type": "tuple[]"
 			}
 		],
 		"stateMutability": "view",
@@ -1073,28 +1345,6 @@
 						"internalType": "struct NFTMarketResell.List",
 						"name": "nftData",
 						"type": "tuple"
-					},
-					{
-						"components": [
-							{
-								"internalType": "uint256",
-								"name": "lastPrice",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "lastSell",
-								"type": "uint256"
-							},
-							{
-								"internalType": "address",
-								"name": "previousOwner",
-								"type": "address"
-							}
-						],
-						"internalType": "struct NFTMarketResell.NftHistory",
-						"name": "history",
-						"type": "tuple"
 					}
 				],
 				"internalType": "struct NFTMarketResell.NftData",
@@ -1157,6 +1407,57 @@
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "is_listed",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "listed",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "listingsType",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "buyNow",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NFTMarketResell.checkListed",
+				"name": "",
+				"type": "tuple"
 			}
 		],
 		"stateMutability": "view",
