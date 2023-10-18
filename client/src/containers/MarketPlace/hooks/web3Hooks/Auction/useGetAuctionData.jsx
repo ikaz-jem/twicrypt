@@ -25,11 +25,11 @@ const tokenId = nftData?.tokenId
            
             
         })
-// useEffect(()=>{
-// const controller = new AbortController();
-// data && setData(data);
-// return ()=> controller.abort()
-// },[data,address ,abi])
+useEffect(()=>{
+const controller = new AbortController();
+data && setData(data);
+return ()=> controller.abort()
+},[data,address ,abi])
 
 return data
 

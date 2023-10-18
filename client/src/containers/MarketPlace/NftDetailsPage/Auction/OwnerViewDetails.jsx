@@ -6,15 +6,16 @@ import { useCancelListing } from "../../hooks/web3Hooks/Listing/useCancelListing
 import QuickListing from "../QuickListing/QuickListing"
 import { formatEther } from "viem"
 import { useCancelAuction } from "../../hooks/web3Hooks/Auction/useCancelAuction"
-import { unixCountDown, unixToDate } from "../../../../utils/unixToDate"
-
+import { unixCountDown, unixCountDownDays, unixToDate } from "../../../../utils/unixToDate"
+import { useEffect } from "react"
+import { useState } from "react"
 
 const OwnerViewDetails = ({isListed, data,seller,auctionData}) => {
 
 
+
     const metadata = useSelector(state=>state.marketPlace.nftDetailsPageState)
     // const { isListed, data } = useCheckIsListed()
-console.log(auctionData)
 
     const isVisitorConnected = metadata?.isVisitorConnected
     const isOwner = metadata?.isOwner
@@ -24,13 +25,22 @@ console.log(auctionData)
    const sellerArrdess =seller
 
     const RenderDetails = () => {
+        const [auctionEnd,setAuctionEnd]=useState(0)
+      
         const price =formatEther(Number(auctionData?.Auction?.floorPrice))
         const highestBid =formatEther(Number(auctionData?.Auction?.highestBid))
         const startTime = Number(auctionData?.Auction?.startsAt)
         const endTime =  Number(auctionData?.Auction?.endsAt)
         const currentTime = Math.floor(new Date().getTime() / 1000);
 
-
+        const timeLeft = endTime-currentTime
+        useEffect(()=>{
+           const interval =  setInterval(()=>{
+                setAuctionEnd(timeLeft)
+            },1000  )
+            return ()=> clearInterval(interval)
+        },[auctionEnd])
+        
    const cancelAuction = useCancelAuction()
 
 const handleClick = (e)=> {
@@ -43,15 +53,16 @@ const handleClick = (e)=> {
                         <>
                         <div className="px-5 py-5">
 
-<div className="border w-full h-full border-neutral-700 rounded-xl p-5 mx-auto">
+<div className="border w-full h-full border-neutral-700 rounded-xl p-5 my-5 mx-auto">
 
-    <div className="flex flex-col">
+    <div className="flex flex-col ">
        {currentTime > startTime ? null : <p className="text-left p-0 m-0 text-xs text-neutral-400"> start time : {unixToDate(startTime)} </p>}
         <p className="text-left p-0 m-0 text-xs text-neutral-400"></p>
     </div>
-    <div className="flex flex-col">
-        <p className="text-left p-0 m-0 text-xs text-neutral-400"> end time : {currentTime>endTime ? "auction ended" : unixCountDown(endTime)} </p>
-        <p className="text-left p-0 m-0 text-xs text-neutral-400"></p>
+
+    <div className="flex flex-col items-center">
+        <p className="text-left p-0 m-0 text-xs text-neutral-400">time until auction ends:</p>
+        <h2 className="text-left p-0 m-0  text-neutral-200  "> {currentTime>endTime ? "auction ended" : unixCountDownDays(auctionEnd)} </h2>
     </div>
 
 </div>

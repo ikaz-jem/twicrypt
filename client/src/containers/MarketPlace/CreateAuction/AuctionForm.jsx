@@ -24,46 +24,46 @@ const AuctionForm = () => {
 
     const listingDetails = useSelector(state => state?.marketPlace?.createListing)
 
-const auction = useCreateAuction();
-    const approve = useCreateListing({
-        tokenId: listingDetails?.selectedNft && listingDetails?.selectedNft?.identifier,
-        price: listingDetails?.price && listingDetails?.price || '0',
-        image: listingDetails?.selectedNft?.image_url || (''),
-        name: listingDetails?.selectedNft?.name || '',
-        startTime:'',
-        endTime:'',
-        buyPrice:'',
-        value: parseEther('0.025'),
+const approve = useCreateAuction();
+    // const approve = useCreateListing({
+    //     tokenId: listingDetails?.selectedNft && listingDetails?.selectedNft?.identifier,
+    //     price: listingDetails?.price && listingDetails?.price || '0',
+    //     image: listingDetails?.selectedNft?.image_url || (''),
+    //     name: listingDetails?.selectedNft?.name || '',
+    //     startTime:'',
+    //     endTime:'',
+    //     buyPrice:'',
+    //     value: parseEther('0.025'),
 
-    })
+    // })
 
-    const testValidity = (e) => {
-        const regex = /^(0(\.\d{1,3})?|100000(\.0{1,3})?|\d{1,5}(\.\d{1,3})?)$/;
-        e.preventDefault();
-        if (regex.test(Number(listingDetails?.price)) && listingDetails?.price >0 ) {
-            e.target[0].setCustomValidity('')
-            return true
+    // const testValidity = (e) => {
+    //     const regex = /^(0(\.\d{1,3})?|100000(\.0{1,3})?|\d{1,5}(\.\d{1,3})?)$/;
+    //     e.preventDefault();
+    //     if (regex.test(Number(listingDetails?.price)) && listingDetails?.price >0 ) {
+    //         e.target[0].setCustomValidity('')
+    //         return true
 
-        } else {
-            e.target[0].setCustomValidity('')
-            return false
-        }
-    }
+    //     } else {
+    //         e.target[0].setCustomValidity('')
+    //         return false
+    //     }
+    // }
 
     const handleSubmit = (e) => {
-        let isValid = testValidity(e)
-        if (isValid) {
-            approve.write()
-        } else {
-            toast.custom(
-                (t) => (
-                    <Popup productImage={null} show={true} t={t} title={`⚠️ price Error `} desc={`Nft price must be a valid number , minimum of 0.0001 BNB/ether`} />
-                ),
-                { position: "bottom-center", duration: 2000 }
-            )
-
-        }
         e.preventDefault();
+        // let isValid = testValidity(e)
+        // if (isValid) {
+            approve.write()
+        // } else {
+        //     toast.custom(
+        //         (t) => (
+        //             <Popup productImage={null} show={true} t={t} title={`⚠️ price Error `} desc={`Nft price must be a valid number , minimum of 0.0001 BNB/ether`} />
+        //         ),
+        //         { position: "bottom-center", duration: 2000 }
+        //     )
+
+        // }
     }
 
 

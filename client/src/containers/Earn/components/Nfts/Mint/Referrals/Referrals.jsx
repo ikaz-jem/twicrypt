@@ -84,7 +84,7 @@ return (
         const totalReferrals = Number(reffStats?.reffCount) || 0
         const totalRewards = formatEther(Number(reffStats?.totalReward)) || 0
         const rewardpercent = Number(reffStats?.percentage)|| 0 //
-        const referralsContributions = Number(reffStats?.refContributions)|| 0 //
+        const referralsContributions = formatEther(Number(reffStats?.refContributions))|| 0 //
         const totalWithdrawls = Number(reffStats?.totalWithdrawls)|| 0 //
 
 

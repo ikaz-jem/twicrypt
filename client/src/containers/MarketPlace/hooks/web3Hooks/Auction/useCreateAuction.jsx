@@ -8,6 +8,9 @@ import { nft_contract } from '../../../data/Addresses'
 import abi from '../../../abi/marketPlace2.json'
 import erc721 from '../../../abi/ERC721.json'
 import { useSelector } from 'react-redux'
+import { toUnix } from '../../../../../utils/unixToDate'
+import { app_chain_id } from '../../../../../shared/data/chains'
+import { parseEther } from 'viem'
 
 
 export const useCreateAuction = (props) => {
@@ -17,15 +20,14 @@ export const useCreateAuction = (props) => {
 const nftData = useSelector(state=>state?.marketPlace?.createListing)
 
 
-
 let tokenId = nftData?.selectedNft?.identifier
 let image = nftData?.selectedNft?.image_url
 let name = nftData?.selectedNft?.name
-let price = nftData?.floorPrice
-let buyNow = nftData?.buyNow
-let startTime = nftData?.startTime
-let endTime = nftData?.endTime
-console.log()
+let price = toDecimals(nftData?.floorPrice,18)
+let buyNow = toDecimals(nftData?.buyNow,18)
+let startTime = toUnix(nftData?.startTime)
+let endTime = toUnix(nftData?.endTime)
+
 
 const args = [
 tokenId,
@@ -45,9 +47,9 @@ buyNow,
         address: marketplace_contract  && marketplace_contract ,
         abi: abi&&abi,
         functionName: 'createAuction',
-        chainId: 97,
+        chainId: app_chain_id&&app_chain_id,
         args: args && args,
-        value: 0.25,
+        value: parseEther('0.025'),
         onSuccess(data, error) {
              toast.custom(
              (t) => (
@@ -105,7 +107,7 @@ buyNow,
         onSuccess(data) {
             toast.custom(
                 (t) => (
-                  <Popup productImage={image && image || null} show={true} t={t} button={{title:'view your listings',link:'/dashboard/marketplace/my-listings'}} title={`${name&&name} Listed successfully !`} desc={`${name&&name} Has been listed for sale : ${price} BNB`}/>
+                  <Popup productImage={image && image || null} show={true} t={t} button={{title:'view your listings',link:'/dashboard/marketplace/my-listings'}} title={`${name&&name} Listed successfully !`} desc={`${name&&name} Has been listed for sale : ${parseEther(Number(price))} BNB`}/>
                 ),
                 { position: "bottom-center", duration: 5000 }
               )

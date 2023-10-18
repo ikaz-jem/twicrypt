@@ -6,7 +6,7 @@ import DeleteListingModal from "../DeleteListingModal";
 import EditListingModal from "../EditListingModal";
 import NoListings from "../NoListings";
 import { MdOutlineLocalOffer } from 'react-icons/md'
-import { unixCountDown, unixToDate } from "../../../../utils/unixToDate";
+import { unixCountDown, unixCountDownDays, unixToDate } from "../../../../utils/unixToDate";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { nft_contract } from "../../data/Addresses";
@@ -28,7 +28,15 @@ useEffect(()=> {
 
 
 const currentTime = Math.floor(new Date().getTime() / 1000);
-
+const startsAt = (time)=>{
+    const starts = time-currentTime
+    if (time <= currentTime) {
+        return '--'
+    } else {
+        return unixCountDownDays(starts)
+    }
+     
+}
 
 
 
@@ -46,7 +54,7 @@ const formatPrice= (num)=>{
     const decimal = Number(num);
     const price = formatEther(decimal)
     const priceNum = Number(price)
-    return priceNum.toFixed(2)
+    return priceNum?.toFixed(2)
 }
 
 const auctionStatus = (startTime,endTime)=> {
@@ -56,7 +64,7 @@ const auctionStatus = (startTime,endTime)=> {
         return <p className="text-red-500 p-0 m-0 font-bold">auction ended</p>
     }else {
 
-        return <p className="text-red-500 p-0 m-0 font-bold">starting in : {unixCountDown(Number(startTime)) }</p> 
+        return <p className="text-yellow-500 p-0 m-0 font-bold">awaiting start</p> /* {unixCountDown(Number(startTime)) } */ 
     }
     
 
@@ -84,7 +92,8 @@ return(
                         {/* <div className="w-1/6 flex  text-white ">{unixToDate(Number((item?.listedAt).toString()))}</div> */}
                         <div className="w-1/6 flex  text-white ">{auctionStatus(item?.startsAt , item?.endsAt)}</div>
                         <div className="w-1/6 flex text-white">{formatPrice(item?.floorPrice)} BNB</div>
-                        <div className="w-1/6 flex text-white">{formatPrice(item?.highestBid)} BNB</div>
+                        <div className="w-1/6 flex text-white">{ Number(item?.highestBid) ==0 ? 'no bids yet' : formatPrice(item?.highestBid) + ' BNB'} </div>
+                        <div className="w-1/6 flex text-white">{startsAt(Number(item?.startsAt))}</div>
 
                         <div className="w-1/4 flex gap-2">
 
@@ -117,6 +126,7 @@ return (
         <p className="w-1/6 flex">status</p>
         <p className="w-1/6 flex">floor</p>
         <p className="w-1/6 flex">highest bid</p>
+        <p className="w-1/6 flex">starts in</p>
         <p className="w-1/4 flex">action</p>
     </div>
     <div className="w-full overflow-y-scroll h-[40vh]" >

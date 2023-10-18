@@ -10,6 +10,7 @@ import { useCancelOffer } from "../../hooks/web3Hooks/Offers/useCancelOffer"
 import { useAcceptOffer } from "../../hooks/web3Hooks/Offers/useAcceptOffer"
 import { useState } from "react"
 import AcceptBidModal from "./AcceptBidModal"
+import { useGetAuctionData } from "../../hooks/web3Hooks/Auction/useGetAuctionData"
 
 const AuctionBids = ({ isSeller, isOwner , isListed }) => {
 const [offerToAccept,setOfferToAccept]=useState(null)
@@ -18,7 +19,8 @@ let [isOpen, setIsOpen] = useState(false)
     const nftOffers = useSelector(state => state.marketPlace.nftOffers)
     const pageVisitor = useSelector(state => state.session.address)
 
-
+const auctionData = useSelector(state=>state.marketPlace.mylistings)
+console.log(auctionData)
 
 
     

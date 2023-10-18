@@ -30,7 +30,7 @@ if (nftOwner !==marketplace_contract && nftOwner===pageVisitor || isSeller) {
     return  ( <OwnerViewDetails  seller={seller}  data={data} isListed={isListed} auctionData={auctionData}  />)
 } else if (nftOwner===undefined ){
     return  <NoNftOwner  seller={seller}  data={data} isListed={isListed} auctionData={auctionData} />
-} else if (!isSeller ){ return <BuyerViewDetails/> }
+} else if (!isSeller ){ return <BuyerViewDetails  seller={seller}  data={data} isListed={isListed} auctionData={auctionData} /> }
 
 }
 
