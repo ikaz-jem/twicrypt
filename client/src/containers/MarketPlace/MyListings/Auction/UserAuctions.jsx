@@ -19,7 +19,6 @@ const allListings = useSelector(state=>state?.marketPlace?.mylistings)
 const myListings = allListings?.userAuctions
 const {address} = useSelector(state=>state.session)
 
-console.log(allListings)
 
 
 useEffect(()=> {

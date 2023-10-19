@@ -10,7 +10,7 @@ import erc721 from '../../../abi/ERC721.json'
 import { useSelector } from 'react-redux'
 import { toUnix } from '../../../../../utils/unixToDate'
 import { app_chain_id } from '../../../../../shared/data/chains'
-import { parseEther } from 'viem'
+import { formatEther, parseEther } from 'viem'
 
 
 export const useCreateAuction = (props) => {
@@ -49,7 +49,7 @@ buyNow,
         functionName: 'createAuction',
         chainId: app_chain_id&&app_chain_id,
         args: args && args,
-        value: parseEther('0.025'),
+        value: toDecimals(0.025,18).toString(),
         onSuccess(data, error) {
              toast.custom(
              (t) => (
@@ -65,7 +65,7 @@ buyNow,
         address: nft_contract && nft_contract,
         abi: erc721,
         functionName:'approve',
-        chainId: 97,
+        chainId: app_chain_id,
         args: [marketplace_contract && marketplace_contract, tokenId && toNumber(tokenId)],
         onMutate({ args, overrides }) {
            return toast.custom(
@@ -107,7 +107,7 @@ buyNow,
         onSuccess(data) {
             toast.custom(
                 (t) => (
-                  <Popup productImage={image && image || null} show={true} t={t} button={{title:'view your listings',link:'/dashboard/marketplace/my-listings'}} title={`${name&&name} Listed successfully !`} desc={`${name&&name} Has been listed for sale : ${parseEther(Number(price))} BNB`}/>
+                  <Popup productImage={image && image || null} show={true} t={t} button={{title:'view your listings',link:'/dashboard/marketplace/my-listings'}} title={`${name&&name} Listed successfully !`} desc={`${name&&name} Has been listed for sale : ${formatEther(Number(price))} BNB`}/>
                 ),
                 { position: "bottom-center", duration: 5000 }
               )

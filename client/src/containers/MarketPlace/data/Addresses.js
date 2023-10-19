@@ -1,5 +1,6 @@
 
-const marketplace_contract = '0x265E14b15eF4bc04a29Fa58f1C8B0277533de29C' // with offers and auction latest
+const marketplace_contract = '0xbe2de4A668F88125d627537F20C11a49de77E3F8' // with offers and auction latest
+// const marketplace_contract = '0x265E14b15eF4bc04a29Fa58f1C8B0277533de29C' // with offers and auction latest
 // const marketplace_contract = '0x94A2Fe47D3dDDE6B53589635c25DCE4b941E8d01' // with offers and auction
 // const marketplace_contract = '0x9bD87F565e4e8a672F52967C78F926814fab0Fd4' // with offers
 
