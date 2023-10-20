@@ -4,18 +4,18 @@ import ConnectWalletError from "../../../../shared/ConnectWalletError/ConnectWal
 import QuickListing from "../QuickListing/QuickListing"
 import { formatEther } from "viem"
 import { useCancelAuction } from "../../hooks/web3Hooks/Auction/useCancelAuction"
-import { unixCountDownDays, unixToDate } from "../../../../utils/unixToDate"
-import { useEffect,useState } from "react"
+import { unixToDate } from "../../../../utils/unixToDate"
 import AuctionCountdown from "./AuctionCountdown"
 import { Link } from "react-router-dom"
+import { useAcceptBid } from "../../hooks/web3Hooks/Auction/useAcceptBid"
 
 const OwnerViewDetails = ({ isListed, seller }) => {
 
-    const {address}=useSelector(state=>state.session)
+    const { address } = useSelector(state => state.session)
 
     const metadata = useSelector(state => state.marketPlace.nftDetailsPageState)
     // const { isListed, data } = useCheckIsListed()
-    const auctionData = useSelector(state=>state.marketPlace.mylistings)
+    const auctionData = useSelector(state => state.marketPlace.mylistings)
 
     const isVisitorConnected = metadata?.isVisitorConnected
     const isOwner = metadata?.isOwner
@@ -38,8 +38,15 @@ const OwnerViewDetails = ({ isListed, seller }) => {
         const auctionHasWinner = !highestBidder?.toLowerCase().includes('0x0000000')
 
 
+        const aceptIndex = auctionData?.allBids?.find((bid)=>{
+            return bid?.bidder?.toLowerCase() == highestBidder?.toLowerCase()
+        })
+        const index = auctionData?.allBids?.indexOf(aceptIndex)
 
-  
+
+        const {acceptBid} = useAcceptBid(index)
+
+
 
 
         const cancelAuction = useCancelAuction()
@@ -47,6 +54,10 @@ const OwnerViewDetails = ({ isListed, seller }) => {
         const handleClick = (e) => {
             e.preventDefault()
             cancelAuction.write()
+        }
+        const handleAccept = (e) => {
+            e.preventDefault()
+            acceptBid.write()
         }
 
 
@@ -59,7 +70,7 @@ const OwnerViewDetails = ({ isListed, seller }) => {
                         <div className="px-5 py-5">
                             <div className="border w-full h-full border-neutral-700 rounded-xl p-5 my-5 mx-auto">
                                 <div className="flex flex-col ">
-                                    {currentTime > startTime ?  <p className="text-left p-0 m-0 text-xs text-neutral-400"> {startTime > 0 ? 'end time :' + unixToDate(endTime) : 'loading ...'}</p> : <p className="text-left p-0 m-0 text-xs text-neutral-400"> {startTime > 0 ? 'start time :' + unixToDate(startTime) : 'loading ...'}</p>}
+                                    {currentTime > startTime ? <p className="text-left p-0 m-0 text-xs text-neutral-400"> {startTime > 0 ? 'end time :' + unixToDate(endTime) : 'loading ...'}</p> : <p className="text-left p-0 m-0 text-xs text-neutral-400"> {startTime > 0 ? 'start time :' + unixToDate(startTime) : 'loading ...'}</p>}
                                     <p className="text-left p-0 m-0 text-xs text-neutral-400"></p>
                                 </div>
 
@@ -72,37 +83,37 @@ const OwnerViewDetails = ({ isListed, seller }) => {
 
 
                             <div className="px-5 py-5 flex flex-col justify-between">
-                        <div className="flex justify-between items-center">
-
-                            <p className="text-left p-0 m-0 text-xs text-neutral-200 font-bold"> starting price :</p>
-                            <h4 className="text-left p-0 m-0 font-extrabold">{Number(price) == 0 ? "no floor price" : price + ' BNB'} </h4>
-                        </div>
-                        {
-                            <>
-                                <div className="flex justify-between items-center">
-                                    <p className="text-left p-0 m-0 text-xs text-neutral-200 font-bold"> {endTime < currentTime ? 'auction winner :' : 'highest bidder'}</p>
-                                    <p className="text-left text-neutral-400 font-bold text-sm p-0 m-0"> <Link to={ auctionHasWinner ?  `/dashboard/account/${highestBidder}` : './'} className="text-pink-500 hover:text-blue-500 font-bold">{auctionHasWinner ? highestBidder: "no bidders yet" }</Link></p>
-                                </div>
-                                <div>
-                                </div>
                                 <div className="flex justify-between items-center">
 
-                                    <p className="text-left p-0 m-0 text-xs text-neutral-200 font-bold"> highest bid :</p>
-                                    <h4 className="text-left p-0 m-0 font-bold text-green-500">{auctionHasWinner ? highestBid +" BNB": "no bid yet" } </h4>
+                                    <p className="text-left p-0 m-0 text-xs text-neutral-200 font-bold"> starting price :</p>
+                                    <h4 className="text-left p-0 m-0 font-extrabold">{Number(price) == 0 ? "no floor price" : price + ' BNB'} </h4>
                                 </div>
+                                {
+                                    <>
+                                        <div className="flex justify-between items-center">
+                                            <p className="text-left p-0 m-0 text-xs text-neutral-200 font-bold"> {endTime < currentTime ? 'auction winner :' : 'highest bidder'}</p>
+                                            <p className="text-left text-neutral-400 font-bold text-sm p-0 m-0"> <Link to={auctionHasWinner ? `/dashboard/account/${highestBidder}` : './'} className="text-pink-500 hover:text-blue-500 font-bold">{auctionHasWinner ? highestBidder : "no bidders yet"}</Link></p>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div className="flex justify-between items-center">
 
-                                { currentTime < endTime && auctionHasWinner && <>
-                                 <button className="text-white mt-5 border border-neutral-700 bg-neutral-800 w-auto rounded-md py-2 hover:bg-pink-700 font-bold transition-all duration-300">accept highest Bid ({highestBid + " BNB"})</button> 
-                                <p className="text-left py-1 text-neutral-500 text-xs p-0 m-0">tip  : you can accept the current highest bid and end auction immediately </p>
-                                </>
+                                            <p className="text-left p-0 m-0 text-xs text-neutral-200 font-bold"> highest bid :</p>
+                                            <h4 className="text-left p-0 m-0 font-bold text-green-500">{auctionHasWinner ? highestBid + " BNB" : "no bid yet"} </h4>
+                                        </div>
+
+                                        {currentTime < endTime && auctionHasWinner && <>
+                                            <button onClick={handleAccept} className="text-white mt-5 border border-neutral-700 bg-neutral-800 w-auto rounded-md py-2 hover:bg-pink-700 font-bold transition-all duration-300">accept highest Bid ({highestBid + " BNB"})</button>
+                                            <p className="text-left py-1 text-neutral-500 text-xs p-0 m-0">tip  : you can accept the current highest bid and end auction immediately </p>
+                                        </>
+                                        }
+
+                                        <p className="text-yellow-500 text-xs text-left p-0 m-0">Note : when auction finishes both parties can complete the transfer , canceling auction before time ends won't affect</p>
+                                    </>
+
                                 }
 
-<p className="text-yellow-500 text-xs text-left p-0 m-0">Note : when auction finishes both parties can complete the transfer , canceling auction before time ends won't affect</p>
-                            </>
-
-                            }
-
-                    </div>
+                            </div>
 
 
 
@@ -110,7 +121,7 @@ const OwnerViewDetails = ({ isListed, seller }) => {
                                 <button onClick={(e) => handleClick(e)} className="w-1/5 text-white font-bold bg-blue-500 rounded-lg h-10 hover:bg-pink-500 transition-all">{currentTime > endTime ? "complete auction" : "Cancel auction"}</button>
                                 {currentTime > endTime && highestBid > 0 && <p className="text-yellow-500 text-xs p-0 m-0">auction ended ! complete auction to receive {highestBid} BNB</p>}
                                 {currentTime > endTime && highestBid == 0 && <p className="text-red-500 text-xs font-bold  p-0 m-0">auction failed , click complete  to get your nft back</p>}
-       
+
                             </div>
                         </div>
                     </>

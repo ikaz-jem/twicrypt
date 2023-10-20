@@ -6,17 +6,36 @@ import { toDecimals } from "../../../../utils/web3Functions"
 import { useDispatch, useSelector } from "react-redux"
 import { useMakeOffer } from "../../hooks/web3Hooks/Offers/useMakeOffer"
 import { useSwitchCorrectNetwork } from "../../hooks/web3Hooks/Network/useSwitchCorrectNetwork"
+import { useAddBid } from "../../hooks/web3Hooks/Auction/useAddBid"
+import { formatEther } from "viem"
 
 
 
 const MakeBid =({nft})=> {
 
-
     let [isOpen, setIsOpen] = useState(false)
-    let [newPrice, setNewPrice] = useState(0)
+    let [newPrice, setNewPrice] = useState({
+      price:0,
+      value:0
+    })
     
 const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
-const dispatch=useDispatch()
+
+const {address} = useSelector(state=>state.session)
+
+const auctionData = useSelector(state=>state.marketPlace.mylistings)
+const bids = auctionData?.allBids
+
+const bidderIndex = bids?.find((bid, index) => {
+  return bid?.bidder?.toLowerCase() == address?.toLowerCase()
+  
+})
+
+const prevBidPrice = formatEther(Number(bidderIndex?.price))
+
+//hook to create bid
+const addBid = useAddBid(newPrice)
+
 
 function closeModal() {
       setIsOpen(false)
@@ -25,39 +44,50 @@ function closeModal() {
     function openModal() {
       setIsOpen(true)
     }
-  let listingsFees = toDecimals(0.025,18).toString()
 
   // hook to create new offer
-const createOffer = useMakeOffer({
-    price:newPrice&&  newPrice
-})
 
 const {switchNetwork,chain} = useSwitchCorrectNetwork({
-    fallback:()=> createOffer.write()
+    fallback:()=> addBid.write()
 })
 
    
-    const MakeOffer =(e) => {
-      const regex = /^(0(\.\d{1,3})?|100000(\.0{1,3})?|\d{1,5}(\.\d{1,3})?)$/;
-      
-      if (regex.test(newPrice)) {
-        e.preventDefault()
-        // approve.write()
-        createOffer.write()
-        closeModal()
-        e.target[0].setCustomValidity('')
-      }else {
-        // e.chidlren.setCustomValidity('Please enter a valid fezfezf number.'); // Set a custom validity message
-        e.target[0].setCustomValidity('Please enter a valid price from 0.0001 BNB .')
-        e.preventDefault()
-        
-      }
+    const createBid =(e) => {
+
+  
+  const regex = /^(0(\.\d{1,3})?|100000(\.0{1,3})?|\d{1,5}(\.\d{1,3})?)$/;
+  
+  if (regex.test(newPrice?.price)) {
+    e.preventDefault()
+    // approve.write()
+    addBid.write()
+    closeModal()
+    e.target[0].setCustomValidity('')
+  }else {
+    // e.chidlren.setCustomValidity('Please enter a valid fezfezf number.'); // Set a custom validity message
+    e.target[0].setCustomValidity('Please enter a valid price from 0.0001 BNB .')
+    e.preventDefault()
+    
+  
+}
 
       
     };
 
     const handleChangePrice =(e)=> {
-        setNewPrice(Number(e.target.value))
+if (prevBidPrice>0){
+
+  setNewPrice((prev)=>({
+    price: Number(e.target.value ),
+    value: Number(e.target.value - prevBidPrice)
+  }))
+}else{
+  setNewPrice((prev)=>({
+    price: Number(e.target.value ),
+    value: Number(e.target.value )
+  }))
+
+}
         e.target.setCustomValidity('')
     }
 
@@ -106,7 +136,7 @@ const {switchNetwork,chain} = useSwitchCorrectNetwork({
                       as="h3"
                       className="text-lg font-medium leading-6 text-neutral-300"
                       >
-                      {`list ${nftDetails?.metadata?.name} for sale `}
+                      {`bid on ${nftDetails?.metadata?.name}  `}
                     </Dialog.Title>
                         </div> 
 
@@ -118,10 +148,10 @@ const {switchNetwork,chain} = useSwitchCorrectNetwork({
                       <img src={nftDetails?.imageLink} alt="Art image" className="rounded-2xl" />
 
                     </div>
-<form  onSubmit={(e)=> MakeOffer(e)}>
+<form  onSubmit={(e)=> createBid(e)}>
 
-  <p className="p-0 mt-3">set offer price :</p>
-  <input  required className='rounded-md mt-2 px-5 outline-none border text-neutral-900 ' type="text" placeholder="new price" onChange={handleChangePrice}/>
+  <p className="p-0 mt-3">make / update bid :</p>
+  <input  required className='rounded-md mt-2 px-5 outline-none border text-neutral-900 ' type="text" placeholder="bid amount" onChange={handleChangePrice}/>
   
                       {/* <p className="p-0 text-xs pt-2 ">listing fees: 0.02BNB</p> */}
                     <div className="mt-2 flex gap-5">
@@ -139,6 +169,7 @@ const {switchNetwork,chain} = useSwitchCorrectNetwork({
                         close
                       </button>
                     </div>
+                      <p className="text-xs text-orange-500 py-2">Note : if you have an existing bid , the new bid will ovewrite it , only the price diffrence between old bid and the new one will be deducted from your account </p>
                         </form>
                   </Dialog.Panel>
                 </Transition.Child>

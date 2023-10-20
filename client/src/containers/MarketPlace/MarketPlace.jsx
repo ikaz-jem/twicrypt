@@ -60,18 +60,15 @@ return ()=> controller.abort()
 
     return (
         <React.Fragment>
-            <div className="lg:flex  relative h-auto w-auto  ">
+            <div className="lg:flex  relative h-auto w-full  ">
 
-                <div className="flex flex-col gap-0  w-full relative  h-full   container--xxxlarge px-10 pl-18 mx-auto sm:pl-25 md:pl-26 lg:pl-10  container--center ">
+                <div className="flex flex-col gap-0  w-full relative  h-full container--xxxlarge px-0 pl-5 mx-auto sm:pl-25 md:pl-26 lg:pl-0  container--center ">
                     <div className="w-full h-auto relative   ">
                         <TabFilter  page={page} setSearchParams={setSearchParams} />
-               <div className="w-80 flex items-center justify-start">
 
-              
-               </div>
                         <Suspense fallback={
                             <>
-                                <div className=" h-screen  flex justify-center items-center  w-auto " >
+                                <div className=" h-screen  flex justify-center items-center  w-full " >
                                     <HashLoader size={50} color="#fff" style={{ text: 'center' }} />
                                 </div>
                             </>}>

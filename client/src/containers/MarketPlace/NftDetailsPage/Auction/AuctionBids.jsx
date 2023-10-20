@@ -7,8 +7,7 @@ import { bigIntToFormated } from "../../../../utils/web3Functions";
 import { useSwitchCorrectNetwork } from "../../hooks/web3Hooks/Network/useSwitchCorrectNetwork"
 import { mainChainId } from "../../data/chains"
 import { useState } from "react"
-import AcceptBidModal from "./AcceptBidModal"
-import { formatEther } from "viem"
+
 
 
 const AuctionBids = ({ isSeller, isOwner , isListed }) => {
@@ -22,24 +21,17 @@ let [isOpen, setIsOpen] = useState(false)
     const bids = auctionData?.allBids
 
 
-    const highestBidder = auctionData?.Auction?.highestBidder
-    const highestBid = formatEther(Number(auctionData?.Auction?.highestBid))
+   // checks if specific auction has any bids
     const auctionHasBids = bids?.length > 0 ? true : false
-
-
-
-    
-
+// checks if the connected user is bidder or has not yet
     const isBidder = bids?.some((item) => item?.bidder?.toLowerCase() == pageVisitor?.toLowerCase())
-
-
+// finds the bid of user if already has one
     const bidderIndex = bids?.find((bid, index) => {
         return bid?.bidder?.toLowerCase() == pageVisitor?.toLowerCase()
-
+        
     })
 
-
-
+// switches network in case user conneceted to other unsupported ones
     const { switchNetwork, chain } = useSwitchCorrectNetwork({
         chainId: mainChainId && mainChainId,
         fallback: () => ''
@@ -83,7 +75,7 @@ let [isOpen, setIsOpen] = useState(false)
 
                             <li className=" flex justify-start items-center w-full border-b border-neutral-800 rounded-3xl py-3 pl-3" role="row" key={i}>
                                 <p className="w-1/4 flex">{bid?.bidder.slice(0, 10)}</p>
-                                <p className="w-1/4 flex">{unixToDate(Number(bid?.biddedAt).toString())}</p>
+                                <p className="w-1/4 flex">{unixToDate(Number(bid?.bidsAt).toString())}</p>
                                 <p className="w-1/4 flex">{bigIntToFormated(Number(bid?.price), 18)} BNB</p>
                                 <p className="w-auto flex">{Number(bid?.tokenId)}</p>
                             

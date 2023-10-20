@@ -43,10 +43,6 @@ const location = useLocation()
             link: 'nfts'
         },
         {
-            title: "Token Sale",
-            link: 'token-sale'
-        },
-        {
             title: "Mint Nfts",
             link: 'mint'
         },
@@ -73,13 +69,13 @@ const location = useLocation()
             { id: 3, name: 'New users annually', value: '46,000' },
         ]
         return (
-            <div className="bg-slate-300 py-5 sm:py-2 rounded-md">
+            <div className="bg-neutral-800 py-5 sm:py-2 rounded-md mx-12">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <dl className="grid grid-cols-1 gap-x-5 gap-y-5 text-center lg:grid-cols-3">
                         {stats.map((stat) => (
                             <div key={stat.id} className="mx-auto flex max-w-xs flex-col gap-y-0">
                                 <dt className="text-base  text-gray-600">{stat.name}</dt>
-                                <dd className="order-first text-lg font-semibold tracking-tight text-gray-900 sm:text-lg">
+                                <dd className="order-first text-lg font-semibold tracking-tight text-gray-500 sm:text-lg">
                                     {stat.value}
                                 </dd>
                             </div>
@@ -93,14 +89,14 @@ const location = useLocation()
 
 
 
-    const Components = {
-        'home': <EarnHome />,
-        'stats': <TwiWallet />,
-        2: <QuickLinks />,
-        3: <Link2 />,
-        'sectionWhy': <SectionWhy />,
-        'nfts': <Nfts />
-    }
+    // const Components = {
+    //     'home': <EarnHome />,
+    //     'stats': <TwiWallet />,
+    //     2: <QuickLinks />,
+    //     3: <Link2 />,
+    //     'sectionWhy': <SectionWhy />,
+    //     'nfts': <Nfts />
+    // }
 
 
     return (
@@ -124,24 +120,15 @@ const location = useLocation()
                         <QuickMint togglePanel={togglePanel} />
                     </SidePanel >
 
-                    {/* <MenuTransition show={show}> */}
-                    {/* flex flex-col gap-0  w-full relative  h-full   container--xxxlarge px-10 pl-28 sm:pl-25 md:pl-24 lg:pl-5  container--center  */}
                     <div className="w-full h-auto relative lg:px-10   ">
                         <Outlet />
-                        {/* {Components[component]} */}
-                        {/* <Routes>
-
-                                <Route  path={'/5'} element={<EarnHome setComponent={setComponent} />} />
-                                <Route  path={'./'} element={<TwiWallet />} />
-                                </Routes> */}
-                        {/* {Component} */}
+              
                     </div>
 
-                    {/* </MenuTransition> */}
 
                 </div>
             </div>
-            {/* <SectionWhy/> */}
+                {/* <SectionWhy/> */}
         </>
     )
 

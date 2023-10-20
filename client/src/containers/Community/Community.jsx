@@ -2,8 +2,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import SingleAccordion from "../../shared/Accordion/SingleAccordion"
-import SaleStagesCards from "../TokenSale/SaleStages/SaleStagesCards"
-import Contribute from "../TokenSale/Contribute/Contribute"
 import { RiMoneyDollarCircleLine } from 'react-icons/ri'
 import { MdOutlinePending, MdGeneratingTokens } from 'react-icons/md'
 import { AiOutlineCheckCircle } from 'react-icons/ai'
@@ -53,7 +51,7 @@ const Community = ()=> {
     }
 return (
     <div className=" w-auto container--xxxlarge p-0 container--center ">
-        <SaleStagesCards />
+        {/* <SaleStagesCards /> */}
         <div className="grid grid-cols-2 gap-10  w-auto container--xxxlarge px-5 container--center  place-items-start place-content-start relative   ">
 {RenderMenu()}
                 {/* <ul className="flex justify-start gap-10 py-2 wrap my-2  w-full border-b border-neutral-800  rounded-xl text-sm text-neutral-400">
@@ -74,7 +72,7 @@ return (
                 </div>
             </div>
             <div className=" w-full lg:w-[50%] ">
-                <Contribute />
+                {/* <Contribute /> */}
             </div>
         </div>
     </div>

@@ -1,5 +1,3 @@
-import ButtonPrimary from "../../../shared/Button/ButtonPrimary";
-import ButtonSecondary from "../../../shared/Button/ButtonSecondary";
 import axios from 'axios'
 import { useEffect, useState, lazy, Suspense } from "react";
 import { useNftOwner } from "../hooks/web3Hooks/useNftOwner";
@@ -8,11 +6,9 @@ import { useDispatch } from "react-redux";
 import { setNftDetailsPageState } from "../../../app/features/MarketPlace/MarketplaceSlice";
 import Spinner from "../../../shared/Spinner/Spinner";
 import { clearNftDetailsState } from "../../../app/features/MarketPlace/MarketplaceSlice";
-import { useGetOffers } from "../hooks/web3Hooks/Offers/useGetOffers";
 import { useCheckIsListed } from "../hooks/web3Hooks/Listing/useCheckIsListed";
 import AuctionInfoTable from "./Auction/AuctionInfoTable";
 import AuctionBids from "./Auction/AuctionBids";
-import { useGetAuctionData } from "../hooks/web3Hooks/Auction/useGetAuctionData";
 
 
 const NftInfoTable = lazy(() => import('./components/NftInfoTable'))

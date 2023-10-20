@@ -15,6 +15,7 @@ const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
 const{address}= useSelector(state=>state.session)
 
 const auctionData = useGetAuctionData()
+
 const nftOwner = nftDetails?.nftOwner
 
 

@@ -27,7 +27,6 @@ import TwiWallet from "../containers/Earn/components/TwiWallet";
 import EarnHome from "../containers/Earn/components/EarnHome";
 import MintPage from "../containers/Earn/components/Nfts/Mint/MintPage";
 import Docs from "../containers/Docs/Docs";
-import TokenSale from "../containers/TokenSale/TokenSale";
 import MiningHome from "../containers/Mining/MiningHome";
 import Withdraw from "../containers/Withdraw/Withdraw";
 import Faq from "../containers/Faq/Faq";
@@ -72,11 +71,7 @@ const Pages = [
         component: Docs,
         requiresAuth: false,
     },
-    {
-        path: '/token-sale',
-        component: TokenSale,
-        requiresAuth: false,
-    },
+
     {
         path: 'marketplace',
         component: MarketPlace,
@@ -144,11 +139,7 @@ const NestedRoutes = [
         component: Community,
         requiresAuth: false,
     },
-    {
-        path: 'token-sale',
-        component: TokenSale,
-        requiresAuth: false,
-    },
+
     {
         path: 'account',
         component: AccountPage,

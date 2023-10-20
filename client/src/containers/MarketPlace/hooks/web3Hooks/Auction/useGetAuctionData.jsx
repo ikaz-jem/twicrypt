@@ -22,14 +22,14 @@ const tokenId = nftData?.tokenId
             functionName:'getAuctionData',
             chainId:app_chain_id && app_chain_id,
             args:[tokenId && tokenId],
-           
             
         })
+
 useEffect(()=>{
 const controller = new AbortController();
 data && setData(data);
 return ()=> controller.abort()
-},[data,address ,abi])
+},[data,address])
 
 return data
 

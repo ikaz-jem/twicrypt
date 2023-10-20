@@ -17,7 +17,7 @@ const NAVIGATION_DEMO_2 = [
         name: "Stats",
         tooltip: "Inbox",
         icon: FcDoughnutChart,
-        component: '/earn/stats',
+        component: '/dashboard/stats',
         page: 'home',
 
     },
@@ -27,7 +27,7 @@ const NAVIGATION_DEMO_2 = [
         name: "Daily rewards",
         tooltip: "Inbox",
         icon: FcCurrencyExchange,
-        component: './daily-rewards',
+        component: '/dashboard/daily-rewards',
         page: 'stats'
     },
     {
@@ -36,7 +36,7 @@ const NAVIGATION_DEMO_2 = [
         name: "Nfts",
         tooltip: "/earn/nfts",
         icon: FcEmptyTrash,
-        component: "/earn/nfts"
+        component: "/dashboard/nfts"
     },
 
     {
@@ -45,7 +45,7 @@ const NAVIGATION_DEMO_2 = [
         name: "Community",
         tooltip: "Inbox",
         icon: FcElectronics,
-        component: './community'
+        component: '/dashboard/community'
     },
     {
 
@@ -53,7 +53,7 @@ const NAVIGATION_DEMO_2 = [
         name: "Withdraw",
         tooltip: "Inbox",
         icon: FcDownLeft,
-        component: "./withdraw"
+        component: "/dashboard/withdraw"
     },
     {
 
@@ -69,7 +69,7 @@ const NAVIGATION_DEMO_2 = [
         name: "Support",
         tooltip: "Inbox",
         icon: FcAnswers,
-        component: "./support"
+        component: "/dashboard/support"
     },
 
 ];

@@ -6,12 +6,13 @@ import DeleteListingModal from "../DeleteListingModal";
 import EditListingModal from "../EditListingModal";
 import NoListings from "../NoListings";
 import { MdOutlineLocalOffer } from 'react-icons/md'
-import { unixCountDown, unixCountDownDays, unixToDate } from "../../../../utils/unixToDate";
+import {  unixCountDownDays } from "../../../../utils/unixToDate";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { nft_contract } from "../../data/Addresses";
 import NoAuctions from "./NoAuctions";
 import { formatEther } from "viem";
+import CancelListingModal from "./CancelAuctionModal";
 
 const UserAuctions = ()=> {
 
@@ -96,8 +97,7 @@ return(
 
                         <div className="w-1/4 flex gap-2">
 
-                        <DeleteListingModal nft={item} />
-                        <EditListingModal nft={item} />
+                        <CancelListingModal nft={item} />
                         </div>
                     </div>
                 )

@@ -10,13 +10,22 @@ import { app_chain_id } from "../../../../../shared/data/chains"
 
 
 
-export const useAcceptBid = ({index})=> {
+export const useAcceptBid = ()=> {
     const [approveHash, setApproveHash] = useState(null)
     const [transferHash, setTransferHash] = useState(null)
 
 const nftDetails = useSelector(state=>state.marketPlace.auctionDetailsPageState)
+const auctionData = useSelector(state=>state.marketPlace.mylistings)
+console.log(auctionData)
 
-let tokenId = nftDetails?.tokenId && Number(nftDetails?.tokenId)
+const highestBidder = auctionData?.Auction?.highestBidder
+const aceptIndex = auctionData?.allBids?.find((bid)=>{
+  return bid?.bidder?.toLowerCase() == highestBidder?.toLowerCase()
+})
+const index = auctionData?.allBids?.indexOf(aceptIndex)
+let tokenId = Number(auctionData?.Auction?.tokenId) 
+
+
 
 const approve = useContractWrite({
   address: nft_contract && nft_contract,
