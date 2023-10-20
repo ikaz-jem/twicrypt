@@ -150,7 +150,7 @@ if (prevBidPrice>0){
                     </div>
 <form  onSubmit={(e)=> createBid(e)}>
 
-  <p className="p-0 mt-3">make / update bid :</p>
+  <p className="p-0 mt-3">{prevBidPrice >0 ? "update bid :" : "make new bid"}</p>
   <input  required className='rounded-md mt-2 px-5 outline-none border text-neutral-900 ' type="text" placeholder="bid amount" onChange={handleChangePrice}/>
   
                       {/* <p className="p-0 text-xs pt-2 ">listing fees: 0.02BNB</p> */}
@@ -159,7 +159,7 @@ if (prevBidPrice>0){
                         type="submit"
                         className="inline-flex justify-center items-center gap-2 rounded-md border border-transparent bg-blue-500 hover:bg-pink-500 px-4 py-2 text-sm font-medium text-white transition-all duration-300"
                         >
-                       <MdOutlineLocalOffer className="text-white transition-all duration-300"/> <p className="text-white">make Bid</p>
+                       <MdOutlineLocalOffer className="text-white transition-all duration-300"/> <p className="text-white">{prevBidPrice >0 ? "update bid " : "make bid"}</p>
                       </button>
                       <button
                         type="button"
@@ -169,6 +169,29 @@ if (prevBidPrice>0){
                         close
                       </button>
                     </div>
+
+                    { prevBidPrice >0 ?  <div className="flex flex-col w-full justify-center items-start">
+                      <ul className="text-base text-white font-bold p-0 m-0 my-2">
+                        <li className="text-neutral-200">
+                          your previous bid : 
+                          <span className="text-red-500 font-bold">
+                          {" " + prevBidPrice+ ' BNB'} 
+                          </span>
+                          </li>
+                        <li className="text-neutral-200">   
+                        amount to be added : 
+                        <span className="text-green-500 font-bold" >
+                            {" "}
+                        { newPrice.price && " " +  (newPrice?.price - prevBidPrice )?.toFixed(3) + " BNB"}
+                        </span>
+                        
+                        </li>
+                  
+
+                      </ul>
+
+                      </div> : null}
+
                       <p className="text-xs text-orange-500 py-2">Note : if you have an existing bid , the new bid will ovewrite it , only the price diffrence between old bid and the new one will be deducted from your account </p>
                         </form>
                   </Dialog.Panel>

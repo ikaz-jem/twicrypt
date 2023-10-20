@@ -1,20 +1,24 @@
 import { useContractWrite, useNetwork, useSwitchNetwork } from "wagmi"
-import { marketplace_contract } from "../../data/Addresses"
-import marketPlaceAbi from '../../abi/marketPlace2.json'
 import { useSelector } from "react-redux"
 import toast from "react-hot-toast"
-import Popup from "../../../../shared/popup/Popup"
+import Popup from "../../../../../shared/popup/Popup"
 import { useWaitForTransaction } from "wagmi"
 import { useState } from "react"
+import { toDecimals } from "../../../../../utils/web3Functions"
+import { marketplace_contract } from "../../../data/Addresses"
+import marketPlaceAbi from '../../../abi/marketPlace2.json'
 
-export const useBuyAuction = ({price})=> {
+export const useBuyAuction = ()=> {
 
 const nftDetails = useSelector(state=>state.marketPlace.auctionDetailsPageState)
 const [approveHash, setApproveHash] = useState(null)
 
+const auctionData = useSelector(state=>state.marketPlace.mylistings)
+const price = Number(auctionData?.Auction?.buyNow)?.toString()
+const tokenId= Number(auctionData?.Auction?.tokenId)
 
 
-let tokenId = nftDetails?.tokenId && Number(nftDetails?.tokenId)
+
 const buy = useContractWrite({
     address:  marketplace_contract && marketplace_contract,
     abi : marketPlaceAbi && marketPlaceAbi ,

@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux"
 import { useState,useEffect } from "react"
-import { formatEther } from "viem"
 import { unixCountDownDays } from "../../../../utils/unixToDate"
 
 const AuctionCountdown = ()=> {

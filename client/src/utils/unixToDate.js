@@ -44,7 +44,7 @@ export function unixCountDownDays(unixTimestamp) {
 
   let years = date.getFullYear();
   let months= date.getMonth() + 1;
-  let days = date.getDate();
+  let days = date.getDate()-1;
   let hours = date.getHours()
   let minutes = date.getMinutes()
   let seconds = date.getSeconds()

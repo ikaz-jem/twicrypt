@@ -16,7 +16,7 @@ export const useAcceptBid = ()=> {
 
 const nftDetails = useSelector(state=>state.marketPlace.auctionDetailsPageState)
 const auctionData = useSelector(state=>state.marketPlace.mylistings)
-console.log(auctionData)
+
 
 const highestBidder = auctionData?.Auction?.highestBidder
 const aceptIndex = auctionData?.allBids?.find((bid)=>{

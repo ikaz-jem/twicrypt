@@ -12,7 +12,7 @@ import { useGetOffers } from "../hooks/web3Hooks/Offers/useGetOffers";
 import { useCheckIsListed } from "../hooks/web3Hooks/Listing/useCheckIsListed";
 
 
-const NftInfoTable = lazy(() => import('./components/NftInfoTable'))
+const AuctionInfoTable = lazy(() => import('./components/AuctionInfoTable'))
 const NftDetailsImage = lazy(() => import('./components/NftDetailsImage'))
 const NftTraits = lazy(() => import('./components/NFtTraits'))
 const NftOffers = lazy(() => import('./components/NftOffers'))
@@ -147,7 +147,7 @@ const AuctionDetailsPage = () => {
                             <Suspense fallback={
                                 <Spinner message={'getting Nft Infos ...'} />
                             }>
-                                <NftInfoTable />
+                                <AuctionInfoTable />
 
                                 
                             </Suspense>

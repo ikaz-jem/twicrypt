@@ -27,11 +27,12 @@ const OwnerViewDetails = ({ isListed, seller }) => {
     const RenderDetails = () => {
 
         const price = formatEther(Number(auctionData?.Auction?.floorPrice))
+        const buyNow = formatEther(Number(auctionData?.Auction?.buyNow))
         const highestBid = formatEther(Number(auctionData?.Auction?.highestBid))
         const startTime = Number(auctionData?.Auction?.startsAt)
         const endTime = Number(auctionData?.Auction?.endsAt)
         const currentTime = Math.floor(new Date().getTime() / 1000);
-
+   
 
         const highestBidder = auctionData?.Auction?.highestBidder
         const isAuctionWinner = highestBidder?.toLowerCase() === address?.toLowerCase() ? true : false
@@ -82,12 +83,27 @@ const OwnerViewDetails = ({ isListed, seller }) => {
 
 
 
-                            <div className="px-5 py-5 flex flex-col justify-between">
-                                <div className="flex justify-between items-center">
 
-                                    <p className="text-left p-0 m-0 text-xs text-neutral-200 font-bold"> starting price :</p>
-                                    <h4 className="text-left p-0 m-0 font-extrabold">{Number(price) == 0 ? "no floor price" : price + ' BNB'} </h4>
-                                </div>
+                            <div className="border rounded-md border-neutral-800 p-2 mb-5 mx-4 ">
+<div className="flex justify-between items-center">
+
+<p className="text-left p-0 m-0 text-sm text-neutral-200 font-bold"> starting price :</p>
+<h4 className="text-left p-0 m-0 font-extrabold">{Number(price) == 0 ? "no floor price" : Number(price)?.toFixed(2) + ' BNB'} </h4>
+</div>
+<div className="flex justify-between items-center">
+
+<p className="text-left p-0 m-0 text-sm text-neutral-200 font-bold"> buy Now price :</p>
+<h4 className="text-left p-0 m-0 font-extrabold">{Number(price) == 0 ? "no direct buy price" : Number(buyNow)?.toFixed(2) + ' BNB'} </h4>
+</div>
+
+</div>
+
+
+                            <div className="px-5 py-5 flex flex-col justify-between">
+                               
+
+
+
                                 {
                                     <>
                                         <div className="flex justify-between items-center">
@@ -99,11 +115,11 @@ const OwnerViewDetails = ({ isListed, seller }) => {
                                         <div className="flex justify-between items-center">
 
                                             <p className="text-left p-0 m-0 text-xs text-neutral-200 font-bold"> highest bid :</p>
-                                            <h4 className="text-left p-0 m-0 font-bold text-green-500">{auctionHasWinner ? highestBid + " BNB" : "no bid yet"} </h4>
+                                            <h4 className="text-left p-0 m-0 font-bold text-green-500">{auctionHasWinner ? Number(highestBid)?.toFixed(2) + " BNB" : "no bid yet"} </h4>
                                         </div>
 
                                         {currentTime < endTime && auctionHasWinner && <>
-                                            <button onClick={handleAccept} className="text-white mt-5 border border-neutral-700 bg-neutral-800 w-auto rounded-md py-2 hover:bg-pink-700 font-bold transition-all duration-300">accept highest Bid ({highestBid + " BNB"})</button>
+                                            <button onClick={handleAccept} className="text-white mt-5 border border-neutral-700 bg-neutral-800 w-auto rounded-md py-2 hover:bg-pink-700 font-bold transition-all duration-300">accept highest Bid ({Number(highestBid)?.toFixed(2) + " BNB"})</button>
                                             <p className="text-left py-1 text-neutral-500 text-xs p-0 m-0">tip  : you can accept the current highest bid and end auction immediately </p>
                                         </>
                                         }

@@ -7,6 +7,7 @@ import { bigIntToFormated } from "../../../../utils/web3Functions";
 import { useSwitchCorrectNetwork } from "../../hooks/web3Hooks/Network/useSwitchCorrectNetwork"
 import { mainChainId } from "../../data/chains"
 import { useState } from "react"
+import { useCancelBid } from "../../hooks/web3Hooks/Auction/useCancelBid"
 
 
 
@@ -34,15 +35,17 @@ let [isOpen, setIsOpen] = useState(false)
 // switches network in case user conneceted to other unsupported ones
     const { switchNetwork, chain } = useSwitchCorrectNetwork({
         chainId: mainChainId && mainChainId,
-        fallback: () => ''
+        fallback: () => cancelBid.write()
     })
 
     const bidToAccept = offerToAccept && nftOffers?.data?.indexOf(offerToAccept)
+    const cancelBid = useCancelBid()
 
-    const handleCancelOffer = (e) => {
+
+    const handleCancelBid = (e) => {
         if (chain.id == mainChainId) {
             e.preventDefault()
-            // cancelOffer.write()
+            cancelBid.write()
         } else {
             e.preventDefault()
             switchNetwork.switchNetwork()
@@ -62,7 +65,7 @@ let [isOpen, setIsOpen] = useState(false)
                     <p className="w-1/4 flex">{unixToDate(Number(bidderIndex?.bidsAt).toString())}</p>
                     <p className="w-1/4 flex">{bigIntToFormated(Number(bidderIndex?.price), 18)} BNB</p>
                     <p className="w-auto mr-3 flex">{Number(bidderIndex?.tokenId)}</p>
-                    {isBidder && <button onClick={(e) => handleCancelOffer(e)} className=" mx-auto px-2 lg:px-3 xl:px-4 text-xs flex justify-center rounded-xl h-8 items-center bg-blue-500 hover:bg-pink-600 transition-all duration-300">{"Cancel bid"}</button>}
+                    {isBidder && <button onClick={(e) => handleCancelBid(e)} className=" mx-auto px-2 lg:px-3 xl:px-4 text-xs flex justify-center rounded-xl h-8 items-center bg-blue-500 hover:bg-pink-600 transition-all duration-300">{"Cancel bid"}</button>}
                 </li>}
                 {bids?.length >0 ? bids?.map((bid, i) => {
 
