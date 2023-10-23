@@ -5,6 +5,7 @@ import { marketplace_contract } from "../../../data/Addresses";
 import { setMyListings } from "../../../../../app/features/MarketPlace/MarketplaceSlice";
 import abi from '../../../abi/marketPlace2.json'
 import { app_chain_id } from "../../../../../shared/data/chains";
+import { setListingType } from "../../../../../app/features/MarketPlace/MarketplaceSlice";
 
 export const useGetAuctionData = ()=> {
 const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const tokenId = nftData?.tokenId
             functionName:'getAuctionData',
             chainId:app_chain_id && app_chain_id,
             args:[tokenId && tokenId],
-            
+            watch:true
         })
 
 useEffect(()=>{

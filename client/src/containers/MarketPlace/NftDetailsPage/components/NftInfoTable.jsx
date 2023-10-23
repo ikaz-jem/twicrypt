@@ -37,6 +37,9 @@ if (nftOwner !==marketplace_contract && nftOwner===pageVisitor || isSeller) {
 
 }
 
+
+
+
 return (
         <>
 { nftDetails?.metadata ? <RenderSidBar/> : <Spinner message={'loading ...'}/>  }

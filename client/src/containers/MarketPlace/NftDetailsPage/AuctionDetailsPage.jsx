@@ -1,5 +1,3 @@
-import ButtonPrimary from "../../../shared/Button/ButtonPrimary";
-import ButtonSecondary from "../../../shared/Button/ButtonSecondary";
 import axios from 'axios'
 import { useEffect, useState, lazy, Suspense } from "react";
 import { useNftOwner } from "../hooks/web3Hooks/useNftOwner";
@@ -8,19 +6,16 @@ import { useDispatch } from "react-redux";
 import { setNftDetailsPageState } from "../../../app/features/MarketPlace/MarketplaceSlice";
 import Spinner from "../../../shared/Spinner/Spinner";
 import { clearNftDetailsState } from "../../../app/features/MarketPlace/MarketplaceSlice";
-import { useGetOffers } from "../hooks/web3Hooks/Offers/useGetOffers";
 import { useCheckIsListed } from "../hooks/web3Hooks/Listing/useCheckIsListed";
+import AuctionInfoTable from "./Auction/AuctionInfoTable";
+import AuctionBids from "./Auction/AuctionBids";
+import { useSelector } from 'react-redux';
 
-
-const AuctionInfoTable = lazy(() => import('./components/AuctionInfoTable'))
 const NftDetailsImage = lazy(() => import('./components/NftDetailsImage'))
 const NftTraits = lazy(() => import('./components/NFtTraits'))
-const NftOffers = lazy(() => import('./components/NftOffers'))
-
-
-
 
 const AuctionDetailsPage = () => {
+
     const [searchParams] = useSearchParams()
     const [metadata, setMetadata] = useState({
         metadata: null,
@@ -30,13 +25,7 @@ const AuctionDetailsPage = () => {
         metadata_Url: null,
         chainId: null
     })
-
-    // const {nftDetailsPageState} = useSelector(state=>state.marketPlace)
-    // console.log(nftDetailsPageState)
-
-    const tokenId = searchParams?.get('id')
     
-    useGetOffers({ id: tokenId && tokenId })
 
     const dispatch = useDispatch()
     const setNftStore = (data) => dispatch(setNftDetailsPageState(data))
@@ -74,8 +63,7 @@ const AuctionDetailsPage = () => {
     //custom hook to compare nft owner and page visitor
     const { nftOwner, pageVisitor, isOwner, loading, error, isVisitorConnected } = useNftOwner()
     // custom hook to check if nft is listed
-    const {isListed,data,seller} = useCheckIsListed()
-    const isSeller = pageVisitor?.toLowerCase() === seller?.toLowerCase() ? true :false
+    const {isListed,data,seller,listingType,isSeller} = useCheckIsListed()
 
 
 
@@ -116,14 +104,12 @@ const AuctionDetailsPage = () => {
     }
 
 
+
     return (
         <div className="m-0 mb-10  shadow-lg  border-t   border-[#353d284b] h-auto relative flex rounded-xl overflow-hidden  flex-wrap ">
             <div className="flex h-full w-full m-2 flex-wrap lg:flex-nowrap gap-0 lg:gap-0  ">
                 <div className=" flex flex-col gap-2 w-full  lg:w-1/2 ">
-
                     <div className="w-full">
-
-
                         <Suspense fallback={
                             <Spinner message={'getting Nft Infos ...'} />
                         }>
@@ -144,16 +130,10 @@ const AuctionDetailsPage = () => {
                         <div className="">
                             {/* <Table/> */}
                             {/* <RenderInfoTable /> */}
-                            <Suspense fallback={
-                                <Spinner message={'getting Nft Infos ...'} />
-                            }>
-                                <AuctionInfoTable />
-
-                                
-                            </Suspense>
-
-                            <NftOffers isOwner={isOwner} isSeller={isSeller} pageVisitor={pageVisitor} isListed={isListed} />
-
+                   
+                          <AuctionInfoTable isOwner={isOwner} isSeller={isSeller} data={data}  isListed={isListed} seller={seller}/>
+                          <AuctionBids isOwner={isOwner} isSeller={isSeller}  isListed={isListed} />
+                            
                         </div>
                     </div>
                 </div>

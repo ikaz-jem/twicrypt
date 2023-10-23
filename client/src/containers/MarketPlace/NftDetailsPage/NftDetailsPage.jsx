@@ -9,16 +9,14 @@ import { clearNftDetailsState } from "../../../app/features/MarketPlace/Marketpl
 import { useCheckIsListed } from "../hooks/web3Hooks/Listing/useCheckIsListed";
 import AuctionInfoTable from "./Auction/AuctionInfoTable";
 import AuctionBids from "./Auction/AuctionBids";
-
-
+import { useSelector } from 'react-redux';
 const NftInfoTable = lazy(() => import('./components/NftInfoTable'))
 const NftDetailsImage = lazy(() => import('./components/NftDetailsImage'))
 const NftTraits = lazy(() => import('./components/NFtTraits'))
 const NftOffers = lazy(() => import('./components/NftOffers'))
 
-
-
 const NftDetailsPage = () => {
+
     const [searchParams] = useSearchParams()
     const [metadata, setMetadata] = useState({
         metadata: null,
@@ -29,10 +27,11 @@ const NftDetailsPage = () => {
         chainId: null
     })
     
+
+
     // const auctionData = useGetAuctionData()
     // const {nftDetailsPageState} = useSelector(state=>state.marketPlace)
     // console.log(nftDetailsPageState)
-
 
 
     const dispatch = useDispatch()
@@ -74,6 +73,7 @@ const NftDetailsPage = () => {
     const {isListed,data,seller,listingType,isSeller} = useCheckIsListed()
 
 
+
     const getNFtData = async () => {
         let isUrl = await metadata?.metadata_Url?.includes('https')
         if (isUrl) {
@@ -112,22 +112,27 @@ const NftDetailsPage = () => {
 
 const RenderDetails = ()=> {
 
-if (listingType == 'auction') {
-return <>
+    
+    if (listingType == 'auction') {
+        return (<>
      <AuctionInfoTable isOwner={isOwner} isSeller={isSeller} data={data}  isListed={isListed} seller={seller}/>
     <AuctionBids isOwner={isOwner} isSeller={isSeller}  isListed={isListed} />
-     </>
-} else {
-return  <>
+     </>)
+} else  {
+    return  <>
 <Suspense fallback={
     <Spinner message={'getting Nft Infos ...'} />
- }>
+}>
      <NftInfoTable isOwner={isOwner} isSeller={isSeller} data={data} isListed={isListed} seller={seller}/>
      <NftOffers isOwner={isOwner} isSeller={isSeller}  isListed={isListed} />
  </Suspense>
 
      </> 
 }
+
+
+
+
 }
 
     return (
@@ -156,7 +161,7 @@ return  <>
                             {/* <Table/> */}
                             {/* <RenderInfoTable /> */}
                            { 
-                          RenderDetails()
+                          <RenderDetails/>
                                 // :
                                 // <>
                                 // <AuctionInfoTable />

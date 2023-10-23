@@ -14,9 +14,11 @@ const nftDetails = useSelector(state=>state.marketPlace.auctionDetailsPageState)
 const [approveHash, setApproveHash] = useState(null)
 
 const auctionData = useSelector(state=>state.marketPlace.mylistings)
-const price = Number(auctionData?.Auction?.buyNow)?.toString()
+const price = Number(auctionData?.Auction?.buyNow)
+const hb = Number(auctionData?.Auction?.highestBid)
 const tokenId= Number(auctionData?.Auction?.tokenId)
 
+const extractBuyPrice = ()=> (price + hb)?.toString()
 
 
 const buy = useContractWrite({
@@ -24,7 +26,7 @@ const buy = useContractWrite({
     abi : marketPlaceAbi && marketPlaceAbi ,
     functionName:'buyNowAuction',
     args:[tokenId&&tokenId],
-    value:price&&price,
+    value:extractBuyPrice(),
     onMutate({ args, overrides }) {
          toast.custom(
          (t) => (

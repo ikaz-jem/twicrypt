@@ -14,7 +14,13 @@ const AuctionInfoTable = ({isListed, data,seller,isSeller }) => {
 const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
 const{address}= useSelector(state=>state.session)
 
-const auctionData = useGetAuctionData()
+
+
+const DataAuction = ()=> {
+    const data = useGetAuctionData()
+    
+}
+
 
 const nftOwner = nftDetails?.nftOwner
 
@@ -28,15 +34,17 @@ const RenderSidBar = ()=> {
 
 //  nftOwner ||  pageVisitor ===sellerAddress
 if (nftOwner !==marketplace_contract && nftOwner===pageVisitor || isSeller) {
-    return  ( <OwnerViewDetails  seller={seller}  data={data} isListed={isListed} auctionData={auctionData}  />)
+    return  ( <OwnerViewDetails  seller={seller}  data={data} isListed={isListed}   />)
 } else if (nftOwner===undefined ){
-    return  <NoNftOwner  seller={seller}  data={data} isListed={isListed} auctionData={auctionData} />
-} else if (!isSeller ){ return <BuyerViewDetails  seller={seller}  data={data} isListed={isListed} auctionData={auctionData} /> }
+    return  <NoNftOwner  seller={seller}  data={data} isListed={isListed}  />
+} else if (!isSeller ){ return <BuyerViewDetails  seller={seller}  data={data} isListed={isListed}  /> }
 
 }
 
+
 return (
         <>
+ <DataAuction/>
 { nftDetails?.metadata ?  <RenderSidBar  /> : <Spinner message={'loading ...'}/>  }
         </>
     )

@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 import { useState,useEffect } from "react"
 import { unixCountDownDays } from "../../../../utils/unixToDate"
 
-const AuctionCountdown = ()=> {
+const AuctionCountdown = ({checkEnd})=> {
 
     const [timer,setTimer]=useState(0)
 
@@ -14,11 +14,14 @@ const AuctionCountdown = ()=> {
 
     const timeLeft = startTime - currentTime
     const remaining = endTime - currentTime
+    const isEnded = currentTime >= endTime ? true : false
+
 
 
     useEffect(() => {
         const interval = setInterval(() => {
             currentTime < startTime ? setTimer(timeLeft) : setTimer(remaining)
+          
         }, 1000)
         return () => clearInterval(interval)
     }, [timer])

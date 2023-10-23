@@ -38,6 +38,7 @@ import UserProfile from "../containers/Account/UserProfile/UserProfile";
 import CreateListing from "../containers/MarketPlace/CreateListing/CreateListing";
 import AccountPage from '../containers/Account/AccountPage'
 import CreateAuction from "../containers/MarketPlace/CreateAuction/CreateAuction";
+import AuctionDetailsPage from "../containers/MarketPlace/NftDetailsPage/AuctionDetailsPage";
 
 const Pages = [
     {
@@ -100,7 +101,7 @@ const NestedRoutes = [
         requiresAuth: false,
     },
     {
-        path: 'nfts/:id',
+        path: 'nfts/marketplace/listings/:id',
         component: NftDetailsPage,
         requiresAuth: false,
     },
@@ -174,11 +175,11 @@ const marketPlaceRoutes = [
         component: MarketPlace,
         requiresAuth: false,
     },
-
-
- 
-
-
+    {
+        path: 'listings/auction/:id',
+        component: NftDetailsPage,
+        requiresAuth: false,
+    },
 
 ]
 
@@ -220,6 +221,8 @@ const AppRoutes = () => {
 
 
                                     <Route path="marketplace/:page/nft" element={<NftDetailsPage />}/>
+                                    <Route path="marketplace/:page/auction" element={<AuctionDetailsPage/>}/>
+                                  
 
 
 

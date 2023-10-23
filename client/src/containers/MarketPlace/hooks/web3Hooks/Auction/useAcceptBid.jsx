@@ -11,7 +11,6 @@ import { app_chain_id } from "../../../../../shared/data/chains"
 
 
 export const useAcceptBid = ()=> {
-    const [approveHash, setApproveHash] = useState(null)
     const [transferHash, setTransferHash] = useState(null)
 
 const nftDetails = useSelector(state=>state.marketPlace.auctionDetailsPageState)
@@ -24,38 +23,7 @@ const aceptIndex = auctionData?.allBids?.find((bid)=>{
 })
 const index = auctionData?.allBids?.indexOf(aceptIndex)
 let tokenId = Number(auctionData?.Auction?.tokenId) 
-
-
-
-const approve = useContractWrite({
-  address: nft_contract && nft_contract,
-  abi: ERC271,
-  functionName:'approve',
-  chainId: app_chain_id && app_chain_id,
-  args: [marketplace_contract && marketplace_contract, tokenId && tokenId],
-  onMutate({ args, overrides }) {
-     return toast.custom(
-      (t) => (
-        <Popup productImage={nftDetails?.imageLink} show={true} t={t} title={`approving ${nftDetails?.metadata?.name || 'Nft'}`}    desc={`please approve ${nftDetails?.metadata?.name || 'Nft'} in Order to complete the exchange ...`}/>
-      ),
-      { position: "bottom-center", duration: 2000 }
-    );
-  },
-  
-  onSuccess(data, error) {
-      setApproveHash(data.hash)
-    
-
-  },
-  onError(error) {
-      return toast.custom(
-       (t) => (
-         <Popup productImage={ null} show={true} t={t} title={`something went wrong 😭 `}    desc={`${error?.details} `}/>
-       ),
-       { position: "bottom-center", duration: 2000 }
-     );
-     },
-})
+const image = auctionData?.Auction?.image
 
 const acceptBid = useContractWrite({
     address:  marketplace_contract && marketplace_contract,
@@ -63,12 +31,13 @@ const acceptBid = useContractWrite({
     functionName:'acceptBid',
     args:[tokenId&&tokenId,index&&index],
     enabled: index && tokenId ? true : false,
+    chainId: app_chain_id && app_chain_id,
     onMutate({ args, overrides }) {
          toast.custom(
          (t) => (
-           <Popup productImage={nftDetails?.imageLink || null} show={true} t={t} title={`Approved  🥳 !! Transfering  ${nftDetails?.metadata?.name || 'nft'} ...`} desc={`Transfering  ${nftDetails?.metadata?.name  || 'nft'} to new owner ... `}/>
+           <Popup productImage={image|| null} show={true} t={t} title={`Approved  🥳 !! Transfering  ${nftDetails?.metadata?.name || 'nft'} ...`} desc={`Transfering  ${nftDetails?.metadata?.name  || 'nft'} to new owner ... `}/>
          ),
-         { position: "bottom-center", duration: 3000 }
+         { position: "bottom-center", duration: 2000 }
        );
        
        },
@@ -78,9 +47,9 @@ const acceptBid = useContractWrite({
        onError(error) {
         return toast.custom(
          (t) => (
-           <Popup productImage={nftDetails?.imageLink || null} show={true} t={t} title={'Error ! 🚧'} desc={`${error?.details  || 'something went wrong !'} `}/>
+           <Popup productImage={image|| null} show={true} t={t} title={'Error ! 🚧'} desc={`${error?.details  || 'something went wrong !'} `}/>
          ),
-         { position: "bottom-center", duration: 3000 }
+         { position: "bottom-center", duration: 2000 }
        );
        },
 
@@ -88,28 +57,21 @@ const acceptBid = useContractWrite({
 
 
 
-const waitTransaction = useWaitForTransaction({
-    hash: approveHash && approveHash,
-    onSuccess(data) { 
-          acceptBid.write()
-    },
- 
-})
 const waitTransferTransaction = useWaitForTransaction({
     hash: transferHash && transferHash,
     onSuccess(data) {
         return toast.custom(
             (t) => (
-              <Popup productImage={nftDetails?.imageLink || null} show={true} t={t} title={` ${nftDetails?.metadata?.name || 'nft'} exchange success 🥳`} desc={` ownership of ${nftDetails?.metadata?.name  || 'nft'} has been transfered and funds has been sent to your account !  `}/>
+              <Popup productImage={image|| null} show={true} t={t} title={` ${nftDetails?.metadata?.name || 'nft'} exchange success 🥳`} desc={` ownership of ${nftDetails?.metadata?.name  || 'nft'} has been transfered and funds has been sent to your account !  `}/>
             ),
-            { position: "bottom-center", duration: 3000 }
+            { position: "bottom-center", duration: 2000 }
           );
 
     },
  
 })
 
-return {approve , acceptBid}
+return { acceptBid}
 
 
 }

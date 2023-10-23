@@ -14,6 +14,7 @@ export const MarketPlaceSlice = createSlice({
                     limit: 50,
                     },
           allListings:null,
+          listingType:null,
           mylistings:null,  
           myAuctions:null,
           createListing:null ,
@@ -68,6 +69,9 @@ export const MarketPlaceSlice = createSlice({
                     ...action.payload,
                 }
             },
+            setListingType:(state,action)=>{
+                state.listingType= action.payload
+            },
             
             
             clearNftDetailsState:(state)=>{
@@ -96,5 +100,5 @@ export const {
     setNftDetailsPageState,
     clearNftDetailsState,
     setNftOffers,
-    setAuctionDetailsPageState
+    setAuctionDetailsPageState,setListingType
 } = MarketPlaceSlice.actions

@@ -41,11 +41,6 @@ useEffect(()=>{
 return ()=> controller.abort()
 },[page])
 
-
-
-
-
-
     const Components = {
     'all-nfts': <NftsPage  />,
     'all-listings': <AllListings />,
@@ -54,9 +49,6 @@ return ()=> controller.abort()
     'create-listing': <CreateListing />,
     'create-auction': <CreateAuction />
 }
-
-
-
 
     return (
         <React.Fragment>

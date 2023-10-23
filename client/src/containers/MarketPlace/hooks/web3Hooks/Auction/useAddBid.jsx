@@ -40,7 +40,15 @@ const image = auctionData?.Auction?.image
            onSuccess(data){
             setSuccessHash(data.hash)
 
-           }
+           }, onError(error) {
+            return toast.custom(
+             (t) => (
+               <Popup productImage={image|| null} show={true} t={t} title={'Error ! 🚧'} desc={`${error?.details  || 'something went wrong !'} `}/>
+             ),
+             { position: "bottom-center", duration: 2000 }
+           );
+           },
+    
 
     })
 

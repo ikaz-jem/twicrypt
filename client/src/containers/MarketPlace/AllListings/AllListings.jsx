@@ -122,7 +122,7 @@ const AllListings = ({ className = "" }) => {
                 </div>
                 {/* <hr className=" mt-5 mb-5 border-slate-700 " /> */}
                 <div className="flex flex-col  gap-10  w-auto h-auto items-center justify-center   ">
-                    <Sliders />
+                    {/* <Sliders /> */}
                     <div className="grid gap-10 place-content-center">
 
                         <RenderCards />

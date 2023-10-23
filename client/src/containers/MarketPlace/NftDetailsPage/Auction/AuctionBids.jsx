@@ -4,20 +4,12 @@ import { useSelector } from "react-redux"
 import Spinner from "../../../../shared/Spinner/Spinner"
 import { unixToDate } from "../../../../utils/unixToDate"
 import { bigIntToFormated } from "../../../../utils/web3Functions";
-import { useSwitchCorrectNetwork } from "../../hooks/web3Hooks/Network/useSwitchCorrectNetwork"
-import { mainChainId } from "../../data/chains"
-import { useState } from "react"
-import { useCancelBid } from "../../hooks/web3Hooks/Auction/useCancelBid"
 
 
 
-const AuctionBids = ({ isSeller, isOwner , isListed }) => {
-const [offerToAccept,setOfferToAccept]=useState(null)
-let [isOpen, setIsOpen] = useState(false)
+const AuctionBids = () => {
 
-    const nftOffers = useSelector(state => state?.marketPlace?.nftOffers)
     const pageVisitor = useSelector(state => state?.session?.address)
-
     const auctionData = useSelector(state=>state.marketPlace.mylistings)
     const bids = auctionData?.allBids
 
@@ -32,31 +24,6 @@ let [isOpen, setIsOpen] = useState(false)
         
     })
 
-// switches network in case user conneceted to other unsupported ones
-    const { switchNetwork, chain } = useSwitchCorrectNetwork({
-        chainId: mainChainId && mainChainId,
-        fallback: () => cancelBid.write()
-    })
-
-    const bidToAccept = offerToAccept && nftOffers?.data?.indexOf(offerToAccept)
-    const cancelBid = useCancelBid()
-
-
-    const handleCancelBid = (e) => {
-        if (chain.id == mainChainId) {
-            e.preventDefault()
-            cancelBid.write()
-        } else {
-            e.preventDefault()
-            switchNetwork.switchNetwork()
-        }
-    }
-
-    const handleClick = (offer)=>{
-        setOfferToAccept(offer)
-        setIsOpen(!isOpen)
-    }
-
     const RenderBids = () => {
         return (
             <>
@@ -65,7 +32,6 @@ let [isOpen, setIsOpen] = useState(false)
                     <p className="w-1/4 flex">{unixToDate(Number(bidderIndex?.bidsAt).toString())}</p>
                     <p className="w-1/4 flex">{bigIntToFormated(Number(bidderIndex?.price), 18)} BNB</p>
                     <p className="w-auto mr-3 flex">{Number(bidderIndex?.tokenId)}</p>
-                    {isBidder && <button onClick={(e) => handleCancelBid(e)} className=" mx-auto px-2 lg:px-3 xl:px-4 text-xs flex justify-center rounded-xl h-8 items-center bg-blue-500 hover:bg-pink-600 transition-all duration-300">{"Cancel bid"}</button>}
                 </li>}
                 {bids?.length >0 ? bids?.map((bid, i) => {
 
@@ -81,18 +47,9 @@ let [isOpen, setIsOpen] = useState(false)
                                 <p className="w-1/4 flex">{unixToDate(Number(bid?.bidsAt).toString())}</p>
                                 <p className="w-1/4 flex">{bigIntToFormated(Number(bid?.price), 18)} BNB</p>
                                 <p className="w-auto flex">{Number(bid?.tokenId)}</p>
-                            
-                                {/* {isSeller || isOwner ?  <button onClick={()=>handleClick(bid)} className=" mx-auto px-2 lg:px-3 xl:px-4 text-xs flex justify-center rounded-xl h-8 items-center bg-blue-500 hover:bg-pink-600 transition-all duration-300">accept</button> : null} */}
-                              
-                                {/* <AcceptBidModal  offer={offerToAccept} index={bidToAccept} isListed={isListed} isOpen={isOpen} setIsOpen={setIsOpen} chain={chain} onChange={()=>console.log('clicked')} /> */}
-                                {/* { isBidder && i == bidderIndex ? <button className=" px-5 text-xs flex justify-center rounded-xl h-8 items-center bg-blue-500 hover:bg-pink-600 transition-all duration-300">{"Cancel offer"}</button> : null} */}
                             </li>
-
-
                         )
                     }
-
-
                 }) :
                     <h1>somethings went wrong !</h1>
                 }
@@ -102,17 +59,13 @@ let [isOpen, setIsOpen] = useState(false)
     const RenderNoBids = () => {
         return (
             <>
-
                 <div className="flex flex-col items-center justify-center w-full h-full py-10">
-
                     <h1 className="text-neutral-800 p-0 m-0">This Asset has no bids yet ...</h1>
                     <MdOutlineLocalOffer className="text-6xl text-neutral-800" />
                 </div>
-
             </>
         )
     }
-
 
 
     return (

@@ -7,23 +7,20 @@ import abi from '../../../abi/marketPlace2.json'
 import { formatEther } from 'viem'
 import { useSelector } from 'react-redux'
 import { app_chain_id } from '../../../../../shared/data/chains'
-import { setListingType } from '../../../../../app/features/MarketPlace/MarketplaceSlice'
-import { useDispatch } from 'react-redux'
 
-export const useCancelAuction = (bid) => {
-    const [cancelHash,setCancelHash]=useState(null)
+export const useCompleteAuction = (bid) => {
+    const [completeHash,setCompleteHash]=useState(null)
+
+
+
  
     const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
-
-
-    const dispatch = useDispatch()
-    const setListingDependency = (data)=>dispatch(setListingType(data))
-
 
     let tokenId = nftDetails?.tokenId && Number(nftDetails?.tokenId)
     const image = nftDetails?.imageLink
 
-    const cancelAuction = useContractWrite({
+
+    const completeAuction = useContractWrite({
         address: marketplace_contract  && marketplace_contract ,
         abi: abi&&abi,
         functionName: 'cancelAuction',
@@ -32,47 +29,48 @@ export const useCancelAuction = (bid) => {
         onMutate(){
             toast.custom(
                 (t) => (
-                  <Popup productImage={ image || null} show={true} t={t} title={`canceling auction ...`} desc={`complete transaction ...`}/>
+                  <Popup productImage={image || null} show={true} t={t} title={`finalizing auction ...`} desc={`complete transaction ...`}/>
                 ),
-                { position: "bottom-center", duration: 2000 }
+                { position: "bottom-center", duration: 1500 }
                 )
         },
         onSuccess(data, error) {
-         
+          setCompleteHash(data?.hash)
              toast.custom(
              (t) => (
                <Popup productImage={ image || null} show={true} t={t} title={`transaction sent ...`} desc={`waiting confirmation ...`}/>
              ),
-             { position: "bottom-center", duration: 2000 }
+             { position: "bottom-center", duration: 1500 }
              )
-             setCancelHash(data?.hash)
            },
            onError( error) {
             toast.custom(
             (t) => (
               <Popup productImage={ image || null} show={true} t={t} title={`something went wrong ...`} desc={`${error?.details|| "uknown issue ..." } `}/>
             ),
-            { position: "bottom-center", duration: 2000 }
+            { position: "bottom-center", duration: 1500 }
             )
           },
+
+
     })
 
 
     const waitTransaction = useWaitForTransaction({
-        hash: cancelHash && cancelHash,
+        hash: completeHash && completeHash,
         onSuccess(data) {
-          setListingDependency('auction canceled')
+
             toast.custom(
                 (t) => (
-                  <Popup productImage={ image || null} show={true} t={t} title={`auction canceled !`} desc={`nft is transfered to your account ! all bids if exists will be refunded`}/>
+                  <Popup productImage={ image || null} show={true} t={t} title={`auction completed  !`} desc={`the highest bid has been sent to your account !`}/>
                 ),
-                { position: "bottom-center", duration: 2000 }
+                { position: "bottom-center", duration: 1500 }
               )
         },
     })
 
 
-    return cancelAuction
+    return completeAuction
 
 
 }

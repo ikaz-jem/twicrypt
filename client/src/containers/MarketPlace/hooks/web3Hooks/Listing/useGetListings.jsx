@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { marketplace_contract } from "../../../data/Addresses";
 import abi from '../../../abi/marketPlace2.json'
+import { app_chain_id } from "../../../../../shared/data/chains";
 
 export const useGetListing = ()=> {
 const dispatch = useDispatch();
@@ -17,10 +18,10 @@ const setData = (data)=> dispatch(setListings(data))
             address: marketplace_contract,
             abi :abi&&abi,
             functionName:'getActiveListings',
-            chainId:97,
+            chainId:app_chain_id,
         })
 
-
+console.log(data)
 
 
 useEffect(()=>{

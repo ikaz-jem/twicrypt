@@ -7,23 +7,16 @@ import abi from '../../../abi/marketPlace2.json'
 import { formatEther } from 'viem'
 import { useSelector } from 'react-redux'
 import { app_chain_id } from '../../../../../shared/data/chains'
-import { setListingType } from '../../../../../app/features/MarketPlace/MarketplaceSlice'
-import { useDispatch } from 'react-redux'
 
-export const useCancelAuction = (bid) => {
-    const [cancelHash,setCancelHash]=useState(null)
+export const useClaimAuction = (bid) => {
+    const [claim,setClaim]=useState(null)
  
     const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
-
-
-    const dispatch = useDispatch()
-    const setListingDependency = (data)=>dispatch(setListingType(data))
-
 
     let tokenId = nftDetails?.tokenId && Number(nftDetails?.tokenId)
     const image = nftDetails?.imageLink
 
-    const cancelAuction = useContractWrite({
+    const claimAuction = useContractWrite({
         address: marketplace_contract  && marketplace_contract ,
         abi: abi&&abi,
         functionName: 'cancelAuction',
@@ -32,39 +25,38 @@ export const useCancelAuction = (bid) => {
         onMutate(){
             toast.custom(
                 (t) => (
-                  <Popup productImage={ image || null} show={true} t={t} title={`canceling auction ...`} desc={`complete transaction ...`}/>
+                  <Popup productImage={image || null} show={true} t={t} title={`claiming ${ nftDetails?.metadata?.name ||'Nft'} ...`} desc={`complete transaction ...`}/>
                 ),
                 { position: "bottom-center", duration: 2000 }
                 )
         },
         onSuccess(data, error) {
-         
              toast.custom(
              (t) => (
                <Popup productImage={ image || null} show={true} t={t} title={`transaction sent ...`} desc={`waiting confirmation ...`}/>
              ),
              { position: "bottom-center", duration: 2000 }
              )
-             setCancelHash(data?.hash)
+             setClaim(data?.hash)
            },
-           onError( error) {
-            toast.custom(
-            (t) => (
-              <Popup productImage={ image || null} show={true} t={t} title={`something went wrong ...`} desc={`${error?.details|| "uknown issue ..." } `}/>
-            ),
-            { position: "bottom-center", duration: 2000 }
-            )
-          },
+        onError( error) {
+             toast.custom(
+             (t) => (
+               <Popup productImage={ image || null} show={true} t={t} title={`something went wrong ...`} desc={`${error?.details|| "uknown issue ..." } `}/>
+             ),
+             { position: "bottom-center", duration: 2000 }
+             )
+           },
+
     })
 
 
     const waitTransaction = useWaitForTransaction({
-        hash: cancelHash && cancelHash,
+        hash: claim && claim,
         onSuccess(data) {
-          setListingDependency('auction canceled')
             toast.custom(
                 (t) => (
-                  <Popup productImage={ image || null} show={true} t={t} title={`auction canceled !`} desc={`nft is transfered to your account ! all bids if exists will be refunded`}/>
+                  <Popup productImage={ image || null} show={true} t={t} title={`${ nftDetails?.metadata?.name ||'Nft'}  Claimed !`} desc={`nft is transfered to your account ! all bids if exists will be refunded`}/>
                 ),
                 { position: "bottom-center", duration: 2000 }
               )
@@ -72,7 +64,7 @@ export const useCancelAuction = (bid) => {
     })
 
 
-    return cancelAuction
+    return claimAuction
 
 
 }
