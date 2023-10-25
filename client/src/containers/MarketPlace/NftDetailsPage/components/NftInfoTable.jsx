@@ -9,7 +9,7 @@ import { useGetOffers } from "../../hooks/web3Hooks/Offers/useGetOffers"
 import { useSearchParams } from "react-router-dom";
 
 
-const NftInfoTable = ({isListed, data,seller,isSeller }) => {
+const NftInfoTable = () => {
     const [searchParams] = useSearchParams()
 
 const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
@@ -18,12 +18,25 @@ const{address}= useSelector(state=>state.session)
 // const { isListed, data,seller } = useCheckIsListed()
 const tokenId = searchParams?.get('id')
     
-useGetOffers({ id: tokenId && tokenId })
 
 const nftOwner = nftDetails?.nftOwner
 
 const pageVisitor = address
 // const isSeller = pageVisitor?.toLowerCase() == sellerAddress?.toLowerCase() ? true :false
+
+const GetOffers = ()=>{
+
+    useGetOffers({ id: tokenId && tokenId })
+    
+}
+
+
+const ListingData = ()=>{
+    const {isListed, data,seller,isSeller }=useCheckIsListed()
+    return {isListed, data,seller,isSeller }
+}
+
+const {isListed, data,seller,isSeller } = ListingData()
 
 
 const RenderSidBar = ()=> {
@@ -42,6 +55,7 @@ if (nftOwner !==marketplace_contract && nftOwner===pageVisitor || isSeller) {
 
 return (
         <>
+        <GetOffers/>
 { nftDetails?.metadata ? <RenderSidBar/> : <Spinner message={'loading ...'}/>  }
         </>
     )

@@ -5,9 +5,9 @@ import { bigIntToFormated } from "../../../../utils/web3Functions"
 import { useCancelListing } from "../../hooks/web3Hooks/Listing/useCancelListing"
 import QuickListing from "../QuickListing/QuickListing"
 import { formatEther } from "viem"
+import { useIsListed } from "../../hooks/web3Hooks/Listing/useIsListed"
 
-
-const OwnerViewDetails = ({isListed, data,seller}) => {
+const OwnerViewDetails = ({ data,seller}) => {
 
 
     const metadata = useSelector(state=>state.marketPlace.nftDetailsPageState)
@@ -33,6 +33,15 @@ const handleClick = (e)=> {
     e.preventDefault()
 cancelListing.write()
 }
+
+
+function Check() {
+    const {isListed} = useIsListed()
+    return {isListed}
+}  
+const {isListed} = Check()
+
+
                 return (
                     <>
         {isListed && pageVisitor == sellerArrdess ? 

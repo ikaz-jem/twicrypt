@@ -19,7 +19,6 @@ chainId:app_chain_id && app_chain_id,
 watch:true
 })
 
-
 // const seller = data && data[2]
 // const isListed =  data && seller?.includes('0x00000000000000000000000000000') ? false : true
 

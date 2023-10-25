@@ -92,7 +92,7 @@ const handleMakeOffer = ()=> {
             <div className="my-5 px-5 rounded-2xl ">
                 <div className="  rounded-xl w-full flex flex-col items-start justify-center">
                     <h2 className="m-0 p-0 font-extrabold">{metadata?.metadata?.name}</h2>
-                    <p className="text-left text-neutral-400 font-bold text-sm p-0 m-0">Owned by : {pageVisitor == sellerArrdess ? "you" : <Link to={`/earn/account/${nftOwner}`} className="text-pink-500 hover:text-blue-500 font-bold">{nftOwner}</Link>}</p>
+                    <p className="text-left text-neutral-400 font-bold text-sm p-0 m-0">Owned by : {pageVisitor == sellerArrdess ? "you" : <Link to={`/dashboard/account/${sellerArrdess}`} className="text-pink-500 hover:text-blue-500 font-bold">{sellerArrdess}</Link>}</p>
                 </div>
                 {isVisitorConnected ?
                     <div className="border border-neutral-700  mt-5  rounded-2xl bg-neutral-900 flex flex-col">

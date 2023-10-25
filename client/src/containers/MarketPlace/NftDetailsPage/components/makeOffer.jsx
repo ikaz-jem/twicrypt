@@ -6,6 +6,7 @@ import { toDecimals } from "../../../../utils/web3Functions"
 import { useDispatch, useSelector } from "react-redux"
 import { useMakeOffer } from "../../hooks/web3Hooks/Offers/useMakeOffer"
 import { useSwitchCorrectNetwork } from "../../hooks/web3Hooks/Network/useSwitchCorrectNetwork"
+import { formatEther } from "viem"
 
 
 
@@ -13,10 +14,21 @@ const MakeOffer =({nft})=> {
 
 
     let [isOpen, setIsOpen] = useState(false)
-    let [newPrice, setNewPrice] = useState(0)
+    let [newPrice, setNewPrice] = useState({
+      price:0,
+      value:0
+    })
     
 const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
+const offers = useSelector(state=>state.marketPlace.nftOffers)
+const {address}= useSelector(state=>state?.session)
 const dispatch=useDispatch()
+
+
+  const offer = offers?.data?.find((offer,i)=>offer?.offerer?.toLowerCase() == address?.toLowerCase()) 
+
+const prevPrice = formatEther(Number(offer?.price))
+
 
 function closeModal() {
       setIsOpen(false)
@@ -28,9 +40,7 @@ function closeModal() {
   let listingsFees = toDecimals(0.025,18).toString()
 
   // hook to create new offer
-const createOffer = useMakeOffer({
-    price:newPrice&&  newPrice
-})
+const createOffer = useMakeOffer(newPrice)
 
 const {switchNetwork,chain} = useSwitchCorrectNetwork({
     fallback:()=> createOffer.write()
@@ -40,7 +50,7 @@ const {switchNetwork,chain} = useSwitchCorrectNetwork({
     const MakeOffer =(e) => {
       const regex = /^(0(\.\d{1,3})?|100000(\.0{1,3})?|\d{1,5}(\.\d{1,3})?)$/;
       
-      if (regex.test(newPrice)) {
+      if (regex.test(newPrice?.price)) {
         e.preventDefault()
         // approve.write()
         createOffer.write()
@@ -57,9 +67,22 @@ const {switchNetwork,chain} = useSwitchCorrectNetwork({
     };
 
     const handleChangePrice =(e)=> {
-        setNewPrice(Number(e.target.value))
-        e.target.setCustomValidity('')
-    }
+      if (prevPrice>0){
+      
+        setNewPrice((prev)=>({
+          price: Number(e.target.value ),
+          value: Number(e.target.value - prevPrice)
+        }))
+      }else{
+        setNewPrice((prev)=>({
+          price: Number(e.target.value ),
+          value: Number(e.target.value )
+        }))
+      
+      }
+              e.target.setCustomValidity('')
+          }
+      
 
 
     return (
@@ -120,7 +143,7 @@ const {switchNetwork,chain} = useSwitchCorrectNetwork({
                     </div>
 <form  onSubmit={(e)=> MakeOffer(e)}>
 
-  <p className="p-0 mt-3">set offer price :</p>
+<p className="p-0 mt-3">{prevPrice >0 ? "update offer :" : "make new offer"}</p>
   <input  required className='rounded-md mt-2 px-5 outline-none border text-neutral-900 ' type="text" placeholder="new price" onChange={handleChangePrice}/>
   
                       {/* <p className="p-0 text-xs pt-2 ">listing fees: 0.02BNB</p> */}
@@ -139,7 +162,38 @@ const {switchNetwork,chain} = useSwitchCorrectNetwork({
                         close
                       </button>
                     </div>
+                      
+                      
+
+
+                    { prevPrice >0 ?  <div className="flex flex-col w-full justify-center items-start">
+                      <ul className="text-base text-white font-bold p-0 m-0 my-2">
+                        <li className="text-neutral-200">
+                          your previous offer : 
+                          <span className="text-red-500 font-bold">
+                          {" " + prevPrice+ ' BNB'} 
+                          </span>
+                          </li>
+                        <li className="text-neutral-200">   
+                        amount to be added : 
+                        <span className="text-green-500 font-bold" >
+                            {" "}
+                        { newPrice?.price && " " +  parseFloat((newPrice?.price - prevPrice )?.toFixed(3)) + " BNB"}
+                        </span>
+                        
+                        </li>
+                  
+
+                      </ul>
+
+                      </div> : null}
+
+                      <p className="text-xs text-orange-500 py-2">Note : if you have an existing offer , the new offer will ovewrite it , only the price diffrence between old offer and the new one will be deducted from your account </p>
                         </form>
+
+
+
+
                   </Dialog.Panel>
                 </Transition.Child>
               </div>

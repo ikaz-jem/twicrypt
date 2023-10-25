@@ -18,7 +18,7 @@ const price = Number(auctionData?.Auction?.buyNow)
 const hb = Number(auctionData?.Auction?.highestBid)
 const tokenId= Number(auctionData?.Auction?.tokenId)
 
-const extractBuyPrice = ()=> (price + hb)?.toString()
+const extractBuyPrice = ()=> (price + hb+(1*10**16))?.toString()
 
 
 const buy = useContractWrite({
@@ -26,7 +26,7 @@ const buy = useContractWrite({
     abi : marketPlaceAbi && marketPlaceAbi ,
     functionName:'buyNowAuction',
     args:[tokenId&&tokenId],
-    value:extractBuyPrice(),
+    value:extractBuyPrice() ,
     onMutate({ args, overrides }) {
          toast.custom(
          (t) => (

@@ -129,7 +129,6 @@ const [time,setTime]=useState(0)
         }
     
         const {isListed} = Check()
-  console.log(isAuctionWinner)
 
         return (
             <>

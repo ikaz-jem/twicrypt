@@ -22,7 +22,8 @@ const nftOffers = useContractRead({
     functionName:'getAllOffersForToken',
     args:[id&&id || props?.id],
     enabled: nftDetails ? true : false,
-    chainId:mainChainId && mainChainId || 97
+    chainId:mainChainId && mainChainId || 97,
+    watch:true
 })
 
 useEffect(()=>{

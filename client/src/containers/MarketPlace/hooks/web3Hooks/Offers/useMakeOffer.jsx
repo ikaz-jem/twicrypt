@@ -8,12 +8,16 @@ import marketPlaceAbi from '../../../abi/marketPlace2.json'
 import { toDecimals } from "../../../../../utils/web3Functions"
 import { app_chain_id } from "../../../../../shared/data/chains"
 
-export const useMakeOffer = ({price})=> {
+export const useMakeOffer = (offer)=> {
     const [approveHash, setApproveHash] = useState(null)
 
 const nftDetails = useSelector(state=>state.marketPlace.nftDetailsPageState)
 
 let tokenId = nftDetails?.tokenId && Number(nftDetails?.tokenId)
+const {price,value} =offer
+
+
+const msgValue = toDecimals(value,18).toString();
 
 const createOffer = useContractWrite({
     address:  marketplace_contract && marketplace_contract,
@@ -21,7 +25,7 @@ const createOffer = useContractWrite({
     functionName:'makeOffer',
     chainId:app_chain_id&& app_chain_id,
     args:[tokenId&&tokenId,price&&toDecimals(price,18)],
-    value:`${toDecimals(price,18)}`,
+    value:msgValue && msgValue,
     onMutate({ args, overrides }) {
         return toast.custom(
          (t) => (
