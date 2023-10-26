@@ -89,7 +89,6 @@ const Home = () => {
 
 const sponsorships = useGetAllAds()
 
-
   return (
 
     <>

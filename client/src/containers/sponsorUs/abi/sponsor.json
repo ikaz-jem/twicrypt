@@ -2,6 +2,34 @@
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "_addr",
+				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "_isParnter",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_percent",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_partnerId",
+				"type": "uint256"
+			}
+		],
+		"name": "add_partner",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "string",
 				"name": "_image",
 				"type": "string"
@@ -89,6 +117,13 @@
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "delete_expired_ads",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -125,11 +160,6 @@
 			},
 			{
 				"internalType": "uint256",
-				"name": "_endsAt",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
 				"name": "_id",
 				"type": "uint256"
 			}
@@ -160,11 +190,6 @@
 				"internalType": "string",
 				"name": "_website",
 				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_endsAt",
-				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
@@ -207,13 +232,31 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "_fees",
+				"name": "_carouselFees",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_sliderFees",
 				"type": "uint256"
 			}
 		],
 		"name": "set_fees",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_partnerId",
+				"type": "uint256"
+			}
+		],
+		"name": "sponsoruspartner",
+		"outputs": [],
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -273,12 +316,44 @@
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_partnerId",
+				"type": "uint256"
+			}
+		],
+		"name": "withraw_partner_profits",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"stateMutability": "payable",
 		"type": "receive"
 	},
 	{
 		"inputs": [],
 		"name": "balance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_partnerId",
+				"type": "uint256"
+			}
+		],
+		"name": "calculatePercentage",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -426,7 +501,7 @@
 							}
 						],
 						"internalType": "struct sponsorships.sponsor[]",
-						"name": "carousel",
+						"name": "carousel_data",
 						"type": "tuple[]"
 					},
 					{
@@ -483,7 +558,7 @@
 							}
 						],
 						"internalType": "struct sponsorships.sponsor[]",
-						"name": "slider",
+						"name": "slider_data",
 						"type": "tuple[]"
 					}
 				],
@@ -498,6 +573,77 @@
 	{
 		"inputs": [],
 		"name": "get_carousel_data",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "payment",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "image",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "icon",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "brand",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "website",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "startAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "endsAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "duration",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct sponsorships.sponsor[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "get_carousel_sponsor",
 		"outputs": [
 			{
 				"components": [
@@ -762,7 +908,7 @@
 							}
 						],
 						"internalType": "struct sponsorships.sponsor[]",
-						"name": "carousel",
+						"name": "carousel_data",
 						"type": "tuple[]"
 					},
 					{
@@ -819,7 +965,7 @@
 							}
 						],
 						"internalType": "struct sponsorships.sponsor[]",
-						"name": "slider",
+						"name": "slider_data",
 						"type": "tuple[]"
 					}
 				],

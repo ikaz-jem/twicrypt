@@ -175,14 +175,14 @@ if (prevBidPrice>0){
                         <li className="text-neutral-200">
                           your previous bid : 
                           <span className="text-red-500 font-bold">
-                          {" " + prevBidPrice+ ' BNB'} 
+                          {" " + parseFloat(Number(prevBidPrice))?.toFixed(3)+ ' BNB'} 
                           </span>
                           </li>
                         <li className="text-neutral-200">   
                         amount to be added : 
                         <span className="text-green-500 font-bold" >
                             {" "}
-                        { newPrice.price && " " +  (newPrice?.price - prevBidPrice )?.toFixed(3) + " BNB"}
+                        { newPrice.price && " " +  parseFloat((Number(newPrice?.price) - Number(prevBidPrice) )?.toFixed(3)) + " BNB"}
                         </span>
                         
                         </li>

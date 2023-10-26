@@ -20,6 +20,7 @@ const {data,isLoading,isError} = useContractRead({
     abi : sponsor_abi && sponsor_abi ,
     chainId: app_chain_id && app_chain_id ,
     functionName:'get_all_ads',
+    watch:true
 })
 
 

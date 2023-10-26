@@ -52,6 +52,11 @@ const Pages = [
         requiresAuth: false,
     },
     {
+        path: '/sponsor/:id',
+        component: SponsorUs,
+        requiresAuth: false,
+    },
+    {
         path: '/preparations',
         component: Preparations,
         requiresAuth: false,

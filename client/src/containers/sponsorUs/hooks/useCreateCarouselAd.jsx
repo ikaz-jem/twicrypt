@@ -9,6 +9,7 @@ import { sponsor_contract } from '../data'
 import { carouselFees } from '../data'
 import { toUnix } from '../../../utils/unixTimestamp'
 import { parseEther } from 'viem'
+import { useParams } from 'react-router-dom'
 
 export const useCreateCarouselAd = (ad) => {
   const [createHash,setCreateHash]=useState(null)
@@ -18,13 +19,22 @@ export const useCreateCarouselAd = (ad) => {
   const startTime = toUnix(startsAt)
   
   
+  const {id} = useParams()
+  const getAffiliate= ()=>{
+    const affiliate =  id == undefined || isNaN(id) ? 0 :  Number(id)
+  return affiliate
+  }
+  const affiliate = getAffiliate()
+
+
   const args = [
     image && image,
     icon && icon ,
     name && name ,
     website && website,
     startTime,
-    duration && Number(duration)
+    duration && Number(duration),
+    affiliate
   
   ]
   

@@ -20,7 +20,7 @@ export const Sponsorships = createSlice({
 
         setSponsorshipData:(state,action)=>{
           
-          state.sponsorships = {slider:action.payload.slider,carousel:action.payload.carousel}
+          state.sponsorships = {slider:action.payload.slider_data,carousel:action.payload.carousel_data}
           state.isLoading = action.payload.isLoading
           state.isError = action.payload.isError
         

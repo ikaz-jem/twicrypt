@@ -1,5 +1,5 @@
 
 
-export const sponsor_contract ='0xD7C70cAF19c2AD8357EC36445B1743Fe1B4B5A72';
-export const sliderFees = 0.1;
-export const carouselFees = 0.25;
+export const sponsor_contract ='0x06217aE1Ac528AB9D781844557014695DF315285';
+export const sliderFees = 0.39;
+export const carouselFees = 0.49;

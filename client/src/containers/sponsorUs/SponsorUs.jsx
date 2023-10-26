@@ -5,6 +5,7 @@ import SliderSponsor from "./sliderSponsor/SliderSponsor"
 import CarouselTransition from "../../shared/transitions/CarouselTransition"
 import { Transition } from "@headlessui/react"
 import './sliderSponsor/style.css'
+import { useParams } from "react-router-dom"
 
 
 const SponsorUs = () => {
@@ -15,14 +16,15 @@ const SponsorUs = () => {
     setShow(true)
   }, [])
 
+
+
   return (
     <div className="flex  flex-col ">
-
       <div className="h-full  ">
 
         <button className=" text-black text-bold animate-bg w-full">{show ? " Your sponsorship will Appear on the main slider you can switch to cazousel" : "Your sponsorship will Appear on main carousel switch to slider view"}</button>
         <CarouselTransition show={show} >
-          <SliderSponsor show={show} setShow={setShow} />
+          <SliderSponsor show={show} setShow={setShow}  />
         </CarouselTransition>
 
         <Transition
@@ -36,7 +38,7 @@ const SponsorUs = () => {
           leaveFrom="opacity-100 translate-x-0 z-0 "
           leaveTo="opacity-0 translate-x-40  z-0"
         >
-          <CarouselSponsor show={!show} setShow={setShow} />
+          <CarouselSponsor show={!show} setShow={setShow}  />
 
         </Transition>
 
