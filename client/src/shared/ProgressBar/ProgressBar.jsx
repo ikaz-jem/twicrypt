@@ -13,7 +13,7 @@ const ProgressBar = ({className='', percentage , min ,max})=> {
     
 <div>
         <div className="w-full rounded-full bg-neutral-400 p-0 flex ">
-        <div className="bg-pink-600  text-xs font-medium animate-pulse text-white text-center p-1 leading-none rounded-full" style={{ "width": `${percentage}%` }}>{percentage + '%'}</div>
+        <div className="bg-pink-600  text-xs font-medium animate-pulse text-white text-center p-1 leading-none rounded-full" style={{ "width": `${percentage}%` }}>{parseFloat(percentage?.toFixed(3)) + '%'}</div>
       </div>
 
       <div className="flex justify-between  text-slate-300 m-0 p-0">

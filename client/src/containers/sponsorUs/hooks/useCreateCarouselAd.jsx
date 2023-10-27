@@ -26,7 +26,6 @@ export const useCreateCarouselAd = (ad) => {
   }
   const affiliate = getAffiliate()
 
-
   const args = [
     image && image,
     icon && icon ,
@@ -37,6 +36,8 @@ export const useCreateCarouselAd = (ad) => {
     affiliate
   
   ]
+
+  console.log(affiliate)
   
   const fees = carouselFees * Number(duration)
   

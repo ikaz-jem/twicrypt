@@ -79,7 +79,7 @@ console.log(referralStats)
 
                         {/* <Discount /> */}
                         <Referrals data={referralStats} />
-                        <RenderLeftMenu />
+                        {/* <RenderLeftMenu /> */}
                     </div>
                 </div>
             </div>

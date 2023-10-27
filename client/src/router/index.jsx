@@ -16,7 +16,7 @@ import Dashboard2 from "../containers/Dashboard2/Dashboard2";
 import SponsorUs from "../containers/sponsorUs/SponsorUs";
 import NftsPage from "../containers/Earn/components/Nfts/NftsPage";
 import Dashboard from "../containers/Earn/Dashboard";
-import About from "../containers/About";
+import Partners from "../containers/Partners/Partners";
 import Preparations from "../containers/Preparations/Preparations";
 import MyProvider from "../Providers/Web3";
 import { userSession } from "../app/features/session/sessionSlice";
@@ -68,8 +68,8 @@ const Pages = [
     },
 
     {
-        path: '/about',
-        component: About,
+        path: '/partners',
+        component: Partners,
         requiresAuth: false,
     },
     {
