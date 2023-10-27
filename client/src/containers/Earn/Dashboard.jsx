@@ -38,10 +38,10 @@ const location = useLocation()
 
 
     const topMenuNavigation = [
-        {
-            title: "NFTs",
-            link: 'nfts'
-        },
+        // {
+        //     title: "NFTs",
+        //     link: 'nfts'
+        // },
         {
             title: "Mint Nfts",
             link: 'mint'

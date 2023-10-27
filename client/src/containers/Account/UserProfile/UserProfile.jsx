@@ -19,7 +19,7 @@ const UserProfile = () => {
                     <div className="relative py-5">
 
                         <div className="w-full h-60 bg-neutral-500 rounded-xl ">
-                            header
+                            {/* header */}
                         </div>
                         <div className="h-24 w-24 bg-red-500 absolute bottom-0 left-20 rounded-full">
 
@@ -31,18 +31,23 @@ const UserProfile = () => {
                         <main className="flex ">
                             {/* FILTER */}
 
+
+<div className="w-full  rounded-xl my-10">
+<img src="https://clipart-library.com/images_k/coming-soon-transparent-background/coming-soon-transparent-background-3.png" alt="" className="absolute top-0 backdrop-blur" />
+</div>
+
                             {/* <hr className=" mt-5 mb-5 border-slate-700 " /> */}
                             {/* <div className="flex flex-col  gap-10  w-auto h-auto items-center justify-center   ">
                                 <NftSliderCat2 />
                             </div> */}
                             {/* PAGINATION */}
-                                <SingleAccordion open={true} className={'rounded-none'} title={'hello'}/>
+                                {/* <SingleAccordion open={true} className={'rounded-none'} title={'hello'}/> */}
                             <div className="flex flex-col mt-12 lg:mt-16 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
                                 {/* <Pagination />
             <ButtonPrimary loading>Show me more</ButtonPrimary> */}
                             </div>
                         </main>
-                        <hr className="border-slate-200 dark:border-slate-700" />
+                        {/* <hr className="border-slate-200 dark:border-slate-700" /> */}
                     </div>
 
 

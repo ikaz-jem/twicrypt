@@ -105,7 +105,7 @@ const sponsorships = useGetAllAds()
           </div>
 
           <Nav className="flex items-center justify-center gap-5 flex-wrap">
-            <NavItem onClick={() => Navigate('/earn/mint')}>Mint</NavItem>
+            <NavItem onClick={() => Navigate('/dashboard/mint')}>Mint</NavItem>
             {/* <NavItem onClick={()=>Navigate('/earn/token-sale')} >Token Sale</NavItem> */}
             <NavItem onClick={() => Navigate('/preparations')}>RoadMap</NavItem>
             {/* <NavItem onClick={() => showPopup()}>show popup</NavItem>

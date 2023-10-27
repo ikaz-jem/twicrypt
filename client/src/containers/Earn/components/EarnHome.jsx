@@ -1,17 +1,19 @@
 import { useNavigate } from "react-router-dom"
-
+import available from '../../../media/available.png'
 
 
 
 
 const Data = [
     {
-        title: 'Staking',
+        comingSoon:false,
+        title: 'Nft',
         desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
         page: 'home',
-        component:'/dashboard/home'
+        component:'/dashboard/mint'
     },
     {
+        comingSoon:false,
         title: 'AP2E',
         desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
         page: 'stats',
@@ -19,18 +21,53 @@ const Data = [
 
     },
     {
-        title: 'Daily Free Rewards',
+        comingSoon:true,
+        title: 'user profile',
         desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
         page:'sectionWhy',
         component:'/dashboard/section-why'
     },
     {
+        comingSoon:true,
         title: 'Gift Cards and Coupons',
         desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
         link: 1
     },
     {
-        title: 'Nft Leveling',
+        comingSoon:false,
+        title: 'Nft MarketPlace',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
+        link: 1,
+        component:'/dashboard/marketplace'
+    },
+    {
+        comingSoon:false,
+        title: 'sponsorship system',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
+        link: 1
+    },
+    {
+        comingSoon:true,
+        title: 'token staking',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
+        link: 1
+    },
+    {
+        comingSoon:false,
+        title: 'affiliate system',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
+        link: 1
+
+    },
+    {
+        comingSoon:true,
+        title: 'lottery',
+        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
+        link: 1
+    },
+    {
+        comingSoon:true,
+        title: 'launchpad',
         desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
         link: 1
     },
@@ -43,8 +80,11 @@ const EarnHome = () => {
     const navigate = useNavigate();
 
     const handleChangePage = (item,e)=>{
-e.preventDefault();
-navigate(item)
+        if (!item?.comingSoon){
+            e.preventDefault();
+            navigate(item?.component)
+        }
+
     }
 
 
@@ -52,7 +92,7 @@ navigate(item)
 
         <div className=" w-full relative p-10 bg rounded-xl   color-ball ">
             <h3 className="m-0 py-2 text-[#995533]">Start Earning</h3>
-            <h1 className="m-0 mb-2">Before Token and Project Launch</h1>
+            <h1 className="m-0 mb-2">trimester mini-roadmap</h1>
           
 
 
@@ -64,7 +104,7 @@ navigate(item)
             <div className="flex flex-wrap justify-center w-auto h">
                 {
                     Data?.map((item, i) => {
-                        return <div className="border border-neutral-500 hover:border-neutral-200 bg-neutral-200 bg-opacity-10  m-5 w-60 flex rounded-xl relative text-white overflow-hidden flex-wrap hover:bg-blue-500 - hover:scale-[102%]  transition-all duration-150 ease-in cursor-pointer shadow-2xl shadow-[#721533] hover:shadow-blue-600 " key={i} onClick={(e) => handleChangePage(item.component,e)}>
+                        return <div className={`${item?.comingSoon ? "grayscale " : " cursor-pointer"} border border-neutral-500 hover:border-neutral-200 bg-neutral-200 bg-opacity-10  m-5 w-60 flex rounded-xl relative text-white overflow-hidden flex-wrap hover:bg-blue-500 - hover:scale-[102%]  transition-all duration-150 ease-in shadow-2xl shadow-[#721533] hover:shadow-blue-600 `} key={i} onClick={(e) => handleChangePage(item,e)}>
 
                             <div className=" flex flex-col   w-full h-auto gap-0  lg:items-center relative">
                                 <img src="https://thirdweb.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Frevenue-streams.10c7bba1.png&w=750&q=75" alt="" className=" object-contain p-0 m-0  w-full  " />
@@ -99,9 +139,12 @@ navigate(item)
                                     <p className="text-left text-neutral-300 p-0 m-0">
                                         {item.desc}
                                     </p>
-                                </div>
-                            </div>
 
+                                   
+                       </div>
+                            </div>
+{item.comingSoon ? <img src="https://clipart-library.com/images_k/coming-soon-transparent-background/coming-soon-transparent-background-3.png" alt="" className="absolute top-0 w-40" /> :  <img src={available} alt="" className="absolute top-0 w-40 rotate-16" />
+}
 
                         </div>
                     })

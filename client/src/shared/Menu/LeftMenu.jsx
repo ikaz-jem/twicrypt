@@ -4,12 +4,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { RiNftFill } from "react-icons/ri";
 import { AiOutlineArrowDown} from 'react-icons/ai'
 import { BsArrowBarDown} from 'react-icons/bs'
-
-import {  FcDoughnutChart, FcDownLeft, FcEmptyTrash, FcPortraitMode,FcAnswers,FcElectronics,FcCurrencyExchange } from "react-icons/fc";
+import {  FcDoughnutChart,FcBusinessman, FcDownLeft, FcEmptyTrash, FcPortraitMode,FcAnswers,FcElectronics,FcCurrencyExchange } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { setMenuPosition,toggleMintPanel } from "../../app/features/States/StatesSlice";
 
 const  NAVIGATION_DEMO_2 = [
+
   {
 
     href: "/page-collection",
@@ -155,6 +155,7 @@ return  <button
                       className="ml-2 h-4 w-4 text-slate-500"
                       aria-hidden="true"
                     />
+                   
                   </Disclosure.Button>
                 </span>
               )}
@@ -212,6 +213,7 @@ return  <button
                   className="ml-2 h-4 w-4 text-neutral-500"
                   aria-hidden="true"
                 />
+                
               </Disclosure.Button>
             </span>
           )}

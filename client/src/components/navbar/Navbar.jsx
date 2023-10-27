@@ -1,22 +1,20 @@
 import { navigation } from "./navigation"
 import { Web3Button } from "@web3modal/react";
 import { UseStartSession } from "../../hooks/useConnectUser";
-import { userData } from "../../app/features/session/sessionSlice";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { NavLink,Link } from "react-router-dom";
 import logo from '../../media/logo.png'
 import { userSession } from "../../app/features/session/sessionSlice";
-import UserModal from "../../shared/userModal/UserModal";
-import { useEffect } from "react";
-import DropDown from "./dropdown/DropDown";
 import AppMenu from "./dropdown/AppMenu";
+import { FcBusinessman} from "react-icons/fc";
+
+
 
 const Navbar = () => {
 
 
-const user = useSelector(userData)
 const isLogedIn = useSelector(userSession)
-
+ 
 const {userChanged} = UseStartSession()
 
 
@@ -30,7 +28,7 @@ return (
                 <div className="grid grid--middle h-100">
                     <div className="grid__column grid__column--2 hidden hidden@medium h-full" data-component="fadereveal">
                     
-            
+
 <Link className='logo ' to={'./'} >
            <img src={logo} alt="logo" className="w-6 h-6 mr-1 " />
             <p className="ml-1 p-0 text-xs text-pink-600 font-bold bg-yellow-400 bord">Twi<span className="text-yellow-300 ml-1 bg-pink-600">Crypt</span></p>
@@ -64,6 +62,7 @@ return (
                     <div className="flex justify-center items-center ">
 
                         <Web3Button icon="hide" label="Connect" balance="show" avatar="hide"/>
+                              <Link to={`/dashboard/account/${userChanged}`} >   <FcBusinessman className="text-4xl p-2 mx-5 bg-neutral-800 hover:bg-pink-600 transition-all rounded-full cursor-pointer " /> </Link> 
                     </div>
 
                             
