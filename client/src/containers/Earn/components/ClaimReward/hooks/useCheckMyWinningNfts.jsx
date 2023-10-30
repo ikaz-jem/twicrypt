@@ -1,32 +1,32 @@
+import { useSelector } from "react-redux"
+import { app_chain_id } from "../../../../../shared/data/chains"
 import { nft_contract } from "../../../../MarketPlace/data/Addresses"
 import nftAbi from "../../../components/Nfts/ERC721_Nft.json"
-import { useContractReads } from "wagmi"
+import { useContractRead } from "wagmi"
 
 
 export const useCheckMyWinningNfts = ()=>{
 
+    const {address} = useSelector(state=>state.session)
 
-const check = useContractReads({
-    contracts:[
-        {
+const {data,isLoading,isError} = useContractRead({
+
+    
             address:nft_contract && nft_contract,
             abi: nftAbi && nftAbi,
-            functionName:'checkMyNfts', 
-        },
-        {
-            address:nft_contract && nft_contract,
-            abi: nftAbi && nftAbi,
-            functionName:'checkNftReward', 
-        },
-    ]
+            functionName:'getUserNftRewardStats', 
+            chainId:app_chain_id,
+            args:[address]
+        
+  
 })
 
 
 
-const hasReward = check?.data[1]?.result;
-const winingNfts = check?.data[0]?.result;
+const isWinner =data && data?.userHaswon
+const winingNfts =data && data?.myWiningNfts;
 
-return {hasReward,winingNfts}
+return {data,isWinner,winingNfts,isLoading,isError}
 
 
 

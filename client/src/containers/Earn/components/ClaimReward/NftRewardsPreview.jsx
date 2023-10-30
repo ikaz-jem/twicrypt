@@ -21,7 +21,7 @@ return (
                     <div className="flex flex-col">
                        
 
-                        <div className="   w-full flex  border rounded-l-md h-full flex-wrap p-2 m-0 border-neutral-800 items-start justify-start  gap-2 ">
+                        <div className="   w-full flex  border rounded-xl h-full flex-wrap p-2 m-0 border-neutral-600 items-start justify-start  gap-2 ">
                             {Nfts?.data && Nfts?.data?.map((nft, i) => {
                                 if (nft_contract?.toLowerCase() == nft?.contract?.toLowerCase()) {
                                     return <img key={i} src={nft.image_url} className={`w-10 h-10 object-cover rounded-xl cursor-pointer ${myNfts?.selectedNft == nft && ' outline outline-pink-600 '} `} onClick={(e) => handleSelect(nft, i, e)} />
@@ -32,7 +32,7 @@ return (
                         
 
 
-                        {myNfts?.selectedNft && myNfts ?
+                        {/* {myNfts?.selectedNft && myNfts ?
                             <div className="">
                                 <img src={myNfts?.selectedNft?.image_url} className="w-80 h-80 object-cover rounded-xl cursor-pointer" />
                                 <h5 className="font-bold">{myNfts?.selectedNft?.name}</h5>
@@ -42,7 +42,7 @@ return (
                                     </p>
                                 </div>
                             </div>
-                        }
+                        } */}
                     </div>
                     </div>
                 </div>

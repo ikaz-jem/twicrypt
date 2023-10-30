@@ -64,6 +64,7 @@ let percentage = (20000 / 4000000) * minted
                     : 
                     <Link    className="w-40 bg-gray-500 text-black font-bold hover:text-white flex items-center justify-center  rounded py-2 px-4" > mint Nft </Link>
             }
+        
         </div>
     </div>
 
@@ -134,13 +135,15 @@ const reffs = Number(data?.reffCount) || 0
         <div className=" w-full flex  gap-5 justify-start items-start h-full p-5 flex-wrap">
                         <h3 className="text-left m-0 p-0 border-b border-purple-800 w-full rounded-2xl px-5 pb-2 text-pink-600 font-bold text-xl ">get Nft Win cash , mine tokens !  </h3>
                         <span className="m-0 pl-5 text-yellow-400 text-sm font-bold ">win up to 1BTC in a single mint !  </span> 
+                        <span className="m-0 pl-5 text-pink-400 text-sm font-bold ">claim cash rewards from nft instantly !  </span> 
        <div className="w-full flex flex-wrap gap-5 p-0 m-0 justify-between ">
        {RenderInput() }
+        {/* <div>
+            <h1 >lfnek</h1>
+        </div> */}
        <RenderImage/>
-
             </div>
 
-           
             <div className="w-full flex flex-wrap gap-5 p-0 m-0  ">
        <RenderSaleInfos/>
 
