@@ -4,6 +4,11 @@ import AccordionTabs from "../../shared/AccordionTabs/AccordionTabs"
 
 const Faq = ()=>{
 
+const send = ()=>{
+    
+}
+
+
 return (
 <>
 

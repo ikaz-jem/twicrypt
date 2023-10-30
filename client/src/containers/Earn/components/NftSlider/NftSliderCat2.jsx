@@ -9,17 +9,22 @@ const NftSliderCat2 = ({data=false}) => {
   const id = useId();
   const UNIQUE_CLASS = "glidejs" + id.replace(/:/g, "_");
 
+
+
   useEffect(() => {
     // @ts-ignore
     const OPTIONS = {
-      type:'carousel',
+      type:'slider',
       perView: 4,
       gap: 10,
+      startAt:2,
       animationDuration: 1000,
-      
+      focusAt:'center',
       autoplay:3000,
-      hoverpause:true,
+      hoverpause:false,
       direction:'ltr',
+      bound:true,
+      animationDuration:2000,
       breakpoints: {
         1280: {
           gap: 10,
@@ -58,7 +63,7 @@ const NftSliderCat2 = ({data=false}) => {
 <div className="glide group w-full h-full relative">
          
          
-            <div className="absolute shadow-lg group-hover:opacity-100 transition-all opacity-0 p-0 flex items-center justify-center duration-500  top-[40%] left-0 z-10 bg-white rounded-full " data-glide-el="controls">
+<div className="absolute shadow-lg group-hover:opacity-100 transition-all opacity-0 p-0 flex items-center justify-center duration-500  top-[40%] left-0 z-10 bg-white rounded-full " data-glide-el="controls">
             <button className="glide__arrow glide__arrow--left text-neutral-900" data-glide-dir="<">
                  <AiFillLeftCircle className="text-5xl hover:text-blue-600 transition-all"/>
             </button>

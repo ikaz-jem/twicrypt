@@ -61,13 +61,13 @@ const NftSlider = ({data}) => {
 <div className="glide group w-full h-full relative">
          
          
-            <div className="absolute shadow-lg group-hover:opacity-100 transition-all opacity-0 p-0 flex items-center justify-center duration-500  top-1/3 left-0 z-10 bg-white rounded-full " data-glide-el="controls">
-            <button className="glide__arrow glide__arrow--left" data-glide-dir="<">
+<div className="absolute shadow-lg group-hover:opacity-100 transition-all opacity-0 p-0 flex items-center justify-center duration-500  top-[40%] left-0 z-10 bg-white rounded-full " data-glide-el="controls">
+            <button className="glide__arrow glide__arrow--left text-neutral-900" data-glide-dir="<">
                  <AiFillLeftCircle className="text-5xl hover:text-blue-600 transition-all"/>
             </button>
             </div>
-            <div className="absolute shadow-lg group-hover:opacity-100 transition-all opacity-0 p-0 flex items-center justify-center  duration-500 top-1/3 right-0 z-10 bg-white rounded-full" data-glide-el="controls">
-            <button className="glide__arrow glide__arrow--right" data-glide-dir=">">
+            <div className="absolute shadow-lg group-hover:opacity-100 transition-all opacity-0 p-0 flex items-center justify-center  duration-500 top-[40%] right-0 z-10 bg-white rounded-full" data-glide-el="controls">
+            <button className="glide__arrow glide__arrow--right text-neutral-900" data-glide-dir=">">
             <AiFillRightCircle className="text-5xl hover:text-blue-600 transition-all"/>
             </button>
             </div>

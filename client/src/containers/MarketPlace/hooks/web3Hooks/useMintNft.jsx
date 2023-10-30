@@ -12,14 +12,17 @@ import { useContractWrite } from "wagmi";
 import { useWaitForTransaction } from "wagmi";
 import { toDecimals } from "../../../../utils/web3Functions";
 import { app_chain_id } from "../../../../shared/data/chains";
+import { useTelegramBotMessage } from "../../../../bot/useTelegramBotMessage";
 
 export const useMintNft = ()=> {
     const dispatch = useDispatch()
  
 
+
 const nftMintDetails= useSelector(state=>state?.states?.mint)
 
 const setNft =(data)=> dispatch(setMintNft(data))
+
 
 
 let price = 0.2 * Number(nftMintDetails?.nftCount)
@@ -62,6 +65,11 @@ let totalPrice = toDecimals(price,18)
     })
    
 
+    const {address} = useSelector(state=>state.session)
+    const tgMessage = `
+    user :${address?.slice(0,10)}...  has minted ${toNumber(nftMintDetails?.nftCount)} Nfts !
+    `
+    const sendMessage = useTelegramBotMessage(tgMessage)
 
    useWaitForTransaction({
         hash: nftMintDetails?.hash && nftMintDetails?.hash,
@@ -73,6 +81,7 @@ let totalPrice = toDecimals(price,18)
                 { position: "bottom-center", duration: 2000 }
               )
               setNft({hash:null})
+              sendMessage()
 
         },
         onError(error) {

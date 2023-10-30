@@ -25,6 +25,7 @@ import { useNavigate } from "react-router-dom";
 import logo from '../media/3d.png'
 import AccordionTabs from "../shared/AccordionTabs/AccordionTabs";
 import { useGetAllAds } from "./sponsorUs/hooks/useGetAllAds";
+import HomeNfts from "../components/HomeNfts/HomeNfts";
 
 const Carousel = lazy(() => import('../components/carousel/Carousel'));
 
@@ -127,7 +128,7 @@ const sponsorships = useGetAllAds()
         <span className="m-0 pl-5 text-neutral-400 text-sm">Win up to 1BTC ! each NFT contains claimable cache Rewards ! enjoy 2 utilities in one Art !</span>
 
 
-        <NftSliderCat2 />
+        <HomeNfts />
         <ButtonPrimary className="w-auto">View More</ButtonPrimary>
       </div>
 

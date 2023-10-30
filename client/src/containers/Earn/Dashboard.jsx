@@ -58,6 +58,10 @@ const location = useLocation()
             title: "MarketPlace",
             link: 'marketplace'
         },
+        {
+            title: "Claim Reward",
+            link: 'claim'
+        },
 
     ]
 

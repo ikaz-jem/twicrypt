@@ -1,15 +1,25 @@
 import { PlaceholderImage } from "../../../../shared/Placeholders/Placeholder";
 import { bigIntToFormated } from "../../../../utils/web3Functions";
 import bsc from '../../../../media/icons/bsc.svg'
-
+import { useNavigate } from "react-router-dom";
+import { nft_contract } from "../../../MarketPlace/data/Addresses";
 
 
 const NftsCard = ({ data }) => {
 
   const price = Number(data?.price)
   
+const navigate = useNavigate()
+
+const handleClick = (e,link)=>{
+  e.preventDefault();
+  navigate(`/dashboard/marketplace/my-nfts/nft/?address=${nft_contract}&id=${Number(data?.tokenId)}&cid=${data?.metadata_url}&chain=97`)
+  
+  
+  }
+
   return (
-    <div className={`border rounded-2xl ${!data.name && 'cursor-wait'} w-60 h-auto shadow-sm border-neutral-800 hover:shadow-lg pb-0 relative hover:translate-y-[-4%] transition-all cursor-pointer overflow-clip` }>
+    <div onClick={handleClick} className={`border rounded-2xl ${!data.name && 'cursor-wait'} w-60 h-auto shadow-sm border-neutral-800 hover:shadow-lg pb-0 relative hover:translate-y-[-4%] transition-all cursor-pointer overflow-clip` }>
       <div className="flex flex-col  h-80 w-full ">
         <div className=" rounded-lg overflow-hidden flex-col flex items-center jusify-center relative h-full">
           <img src={data?.image ||PlaceholderImage } className="pb-5 object-cover w-full h-full rounded-lg " />
@@ -20,7 +30,7 @@ const NftsCard = ({ data }) => {
           </dd>
           <div className="flex justify-between items-center w-full">
 
-          <dt className="text-base leading-7 text-gray-600 truncate text-ellipsis overflow-hidden ">{bigIntToFormated(price,18) || 0+ ' '} BNB</dt>
+          <dt className="text-xs font-bold leading-7 text-gray-200 truncate text-ellipsis overflow-hidden ">{ "price : "+ parseFloat(bigIntToFormated(price,18)?.toFixed(3)) || 0+ ' '} BNB</dt>
         <img src={bsc} className="w-5 h-5 opacity-40"/>
           </div>
         </div>

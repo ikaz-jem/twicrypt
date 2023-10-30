@@ -39,6 +39,7 @@ import CreateListing from "../containers/MarketPlace/CreateListing/CreateListing
 import AccountPage from '../containers/Account/AccountPage'
 import CreateAuction from "../containers/MarketPlace/CreateAuction/CreateAuction";
 import AuctionDetailsPage from "../containers/MarketPlace/NftDetailsPage/AuctionDetailsPage";
+import ClaimReward from "../containers/Earn/components/ClaimReward/ClaimReward";
 
 const Pages = [
     {
@@ -156,6 +157,11 @@ const NestedRoutes = [
         component: UserProfile,
         requiresAuth: false,
     },
+    {
+        path: 'claim',
+        component: ClaimReward,
+        requiresAuth: false,
+    },
 
 ]
 
@@ -185,6 +191,7 @@ const marketPlaceRoutes = [
         component: NftDetailsPage,
         requiresAuth: false,
     },
+
 
 ]
 
