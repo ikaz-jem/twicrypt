@@ -62,6 +62,10 @@ const location = useLocation()
             title: "Claim Reward",
             link: 'claim'
         },
+        {
+            title: "winning nfts",
+            link: 'winning-nfts'
+        },
 
     ]
 

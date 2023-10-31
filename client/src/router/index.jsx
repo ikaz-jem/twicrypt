@@ -40,6 +40,7 @@ import AccountPage from '../containers/Account/AccountPage'
 import CreateAuction from "../containers/MarketPlace/CreateAuction/CreateAuction";
 import AuctionDetailsPage from "../containers/MarketPlace/NftDetailsPage/AuctionDetailsPage";
 import ClaimReward from "../containers/Earn/components/ClaimReward/ClaimReward";
+import WiningNfts from "../containers/Earn/components/WinningNfts/WiningNfts";
 
 const Pages = [
     {
@@ -160,6 +161,11 @@ const NestedRoutes = [
     {
         path: 'claim',
         component: ClaimReward,
+        requiresAuth: false,
+    },
+    {
+        path: 'winning-nfts',
+        component: WiningNfts,
         requiresAuth: false,
     },
 

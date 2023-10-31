@@ -88,7 +88,7 @@ const Home = () => {
 
 
 
-const sponsorships = useGetAllAds()
+  const sponsorships = useGetAllAds()
 
   return (
 

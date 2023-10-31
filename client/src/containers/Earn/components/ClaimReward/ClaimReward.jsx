@@ -57,7 +57,7 @@ const ClaimReward = ()=>{
 
             {address ? <RenderData /> : <ConnectWalletError />}
             </div>
-            <NftRewardsStats/>
+          {address &&  <NftRewardsStats/>}
             </div>
         </React.Fragment>
     )

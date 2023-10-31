@@ -70,7 +70,7 @@ const storeData = useSelector(state=>state?.sponsorships)
 
         return (
             <>
-                {storeData?.sponsorships?.carousel ?
+                {storeData?.sponsorships?.carousel && storeData?.sponsorships?.carousel?.length > 0 ?
                     storeData?.sponsorships?.carousel?.map(({ brand: name, image , website , icon}, i) => {
                         return (<li className="frames__item glide__slide " key={i}>
                             <div dataref="slidereveal[el] ">

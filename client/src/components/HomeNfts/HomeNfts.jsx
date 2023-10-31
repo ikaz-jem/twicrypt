@@ -41,7 +41,7 @@ const HomeNfts = () => {
                         </Suspense>
                     }
                     <div className="flex items-center justify-end">
-                    <Link to='/dashboard/marketplace' className="w-auto bg-white text-black flex items-center px-4 py-2 rounded-full hover:bg-pink-500 hover:text-white">view more <BsArrowRightShort/> </Link>
+                    <Link to='/dashboard/marketplace/all-listings' className="w-auto bg-white text-black flex items-center px-4 py-2 rounded-full hover:bg-pink-500 hover:text-white">view more <BsArrowRightShort/> </Link>
                     </div>
 
 
@@ -51,7 +51,7 @@ const HomeNfts = () => {
                     </div>
                     {<NftSlider data={listings && listings?.listings} />}
                     <div className="flex items-center justify-end">
-                    <Link to='/dashboard/marketplace' className="w-auto bg-white text-black flex items-center px-4 py-2 rounded-full hover:bg-pink-500 hover:text-white">view more <BsArrowRightShort/> </Link>
+                    <Link to='/dashboard/marketplace/all-listings' className="w-auto bg-white text-black flex items-center px-4 py-2 rounded-full hover:bg-pink-500 hover:text-white">view more <BsArrowRightShort/> </Link>
                     </div>
                 </div>
             }

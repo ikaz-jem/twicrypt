@@ -6,9 +6,9 @@ import { app_chain_id } from "../../../../../shared/data/chains"
 
 
 
-const useGetClaimedRewards = ()=>{
+export const useGetClaimedRewards = ()=>{
 
-const claimedRewards= useContractRead({
+const {data,isLoading,isError}= useContractRead({
     address:nft_contract && nft_contract,
     abi : nftAbi && nftAbi,
     functionName : 'getClaimedRewards',
@@ -17,6 +17,6 @@ const claimedRewards= useContractRead({
 
 
 
-return claimedRewards ;
+return {data,isLoading,isError} ;
 
 }
