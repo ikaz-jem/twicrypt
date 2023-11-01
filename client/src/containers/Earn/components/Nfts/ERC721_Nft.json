@@ -659,6 +659,66 @@
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "get_mint_stats",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "baseURI",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "cost",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxSupply",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxMintAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nftPerAddressLimit",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalContributions",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "supply",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "paused",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "revealed",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct TestNFT.mintStats",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -701,38 +761,8 @@
 						"type": "uint256"
 					},
 					{
-						"internalType": "string",
-						"name": "baseURI",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "cost",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "maxSupply",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "maxMintAmount",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "nftPerAddressLimit",
-						"type": "uint256"
-					},
-					{
 						"internalType": "uint256",
 						"name": "reffConditon",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "totalContributions",
 						"type": "uint256"
 					},
 					{
@@ -744,21 +774,6 @@
 						"internalType": "uint256",
 						"name": "nftBalance",
 						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "supply",
-						"type": "uint256"
-					},
-					{
-						"internalType": "bool",
-						"name": "paused",
-						"type": "bool"
-					},
-					{
-						"internalType": "bool",
-						"name": "revealed",
-						"type": "bool"
 					},
 					{
 						"internalType": "uint256",

@@ -16,36 +16,29 @@ const {address}=useSelector(state=>state.session)
 const setData = (data)=> dispatch(setListings(data))
 
 
-
-        const {data,isLoading,hasError}  = useContractReads({
-            contracts:[  
-           {
-             address: marketplace_contract && marketplace_contract,
-            abi :abi && abi,
-            functionName:'getAllAuctions',
-            chainId:app_chain_id,
-            },
-           {
-             address: marketplace_contract && marketplace_contract,
-            abi :abi && abi,
-            functionName:'getAllListings',
-            chainId:app_chain_id,
-            }
+        const auction = useContractRead(           {
+          address: marketplace_contract && marketplace_contract,
+         abi :abi && abi,
+         functionName:'getAllAuctions',
+         chainId:app_chain_id,
+         },)
+        const listing = useContractRead(           {
+          address: marketplace_contract && marketplace_contract,
+         abi :abi && abi,
+         functionName:'getAllListings',
+         chainId:app_chain_id,
+         },)
 
 
-
-            ]
-        })
-
-const auctionData = data[0]?.result && data[0]?.result?.length < 5 ? data[0]?.result : data[0]?.result?.slice(0,5) 
-const listingData = data[1]?.result && data[1]?.result?.length < 5 ? data[1]?.result : data[1]?.result?.slice(0,5) 
+const auctionData = auction && auction?.data?.length < 5 ? auction?.data : auction?.data?.slice(0,5) 
+const listingData = listing  && listing?.data?.length < 5 ? listing?.data : listing?.data?.slice(0,5) 
 
 
 useEffect(()=>{
 const controller = new AbortController();
-data && setData({auction:auctionData,listings:listingData});
+auction?.data && setData({auction:auctionData,listings:listingData});
 return ()=> controller.abort()
-},[data,address ,abi])
+},[auction?.data,address ,abi])
 
 
 

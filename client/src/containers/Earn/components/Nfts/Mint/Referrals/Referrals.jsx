@@ -15,7 +15,7 @@ const location = useLocation()
 const affiliateLink = `https://twicrypt.com/dashboard/mint/${address}`
 
 
-const reffStats = data && data || null
+const reffStats = data?.referralStats?.data && data?.referralStats?.data || null
 const withdraw = useWithdrawReferralProfits()
 const isReferrer =reffStats&& reffStats?.isReferrer || null
 const isPartner = reffStats && reffStats?.isPartner|| null

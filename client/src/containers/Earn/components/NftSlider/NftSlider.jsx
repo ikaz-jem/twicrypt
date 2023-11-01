@@ -75,7 +75,7 @@ const NftSlider = ({data}) => {
      
 
         <ul className="glide__slides m-0 p-0">
-          {data.map((item, index) => (
+          {data && data?.map((item, index) => (
             <li key={index} className={`flex justify-center items-center glide__slide py-8 m-0  `} >
               <NftsCard data={item}
               /> 

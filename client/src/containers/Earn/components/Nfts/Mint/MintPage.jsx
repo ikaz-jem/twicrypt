@@ -25,8 +25,8 @@ const MintPage = () => {
      useSwitchNetwork()
     const { address = {} } = useParams();
 
-    const referralStats = useGetMinterStats()
 
+    const allStats = useGetMinterStats()
 
     return (
 
@@ -47,7 +47,7 @@ const MintPage = () => {
 
                         </div>
                     } >
-                        <MintNft data={referralStats} />
+                        <MintNft data={allStats} />
                     </Suspense>
 
                 </div>
@@ -59,7 +59,7 @@ const MintPage = () => {
                         <h3 className="text-left my-2 p-0 border-b border-purple-700 w-full rounded-2xl px-5 pb-2 text-yellow-500 font-bold text-xl ">twicrypt affiliate program<span className="m-0 pl-5 text-neutral-200 text-base ">up to 10% each sale : </span>  </h3>
 
                         {/* <Discount /> */}
-                        <Referrals data={referralStats} />
+                        <Referrals data={allStats} />
                         {/* <RenderLeftMenu /> */}
 
 

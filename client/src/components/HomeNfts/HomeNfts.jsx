@@ -12,7 +12,7 @@ const HomeNfts = () => {
 
     const listings = useSelector(state=>state.marketPlace.allListings)
     const marketData =useGetMarketListings()
-
+console.log(listings)
 
     return (
         <>
@@ -37,7 +37,7 @@ const HomeNfts = () => {
                                     <HashLoader size={50} color="#fff" style={{ text: 'center' }} />
                                 </div>
                             </>}>
-                            <NftSliderCat2 data={listings?.auction} />
+                            <NftSliderCat2 data={listings &&listings?.auction} />
                         </Suspense>
                     }
                     <div className="flex items-center justify-end">

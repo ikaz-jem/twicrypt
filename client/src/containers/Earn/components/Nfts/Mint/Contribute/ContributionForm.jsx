@@ -26,7 +26,8 @@ const refMint = useRefMint({address})
 
 const dispatch = useDispatch()
 const setMint = (data)=> dispatch(setMintNft(data))
-    
+const mintInfos = data?.mintStats?.data
+const userInfos = data?.referralStats?.data
     
     const RenderInput =()=> {
 
@@ -39,7 +40,8 @@ if (address?.length > 0 && address?.toLowerCase()!=user?.address?.toLowerCase() 
 }
 }
 
-const minted = Number(data?.supply)
+
+const minted = Number(mintInfos?.supply)
 
 let percentage = (20000 / 4000000) * minted
 
@@ -89,12 +91,12 @@ return (
 }
 
 const RenderSaleInfos = ()=> {
-const userContributions = formatEther(Number(data?.userContributions)) || 0
-const nftBalance = Number(data?.nftBalance) || 0
-const price = formatEther(Number(data?.cost)) || 0
-const max =  Number(data?.nftPerAddressLimit) || 0
-const totalContributions = formatEther(Number(data?.totalContributions)) || 0 
-const reffs = Number(data?.reffCount) || 0
+const userContributions = formatEther(Number(userInfos?.userContributions)) || 0
+const nftBalance = Number(userInfos?.nftBalance) || 0
+const price = formatEther(Number(mintInfos?.cost)) || 0
+const max =  Number(mintInfos?.nftPerAddressLimit) || 0
+const totalContributions = formatEther(Number(mintInfos?.totalContributions)) || 0 
+const reffs = Number(userInfos?.reffCount) || 0
 
     return (
      <>   
@@ -106,7 +108,7 @@ const reffs = Number(data?.reffCount) || 0
             <li className="text-purple-300" >item</li>
         </ul>
         <ul className="flex items-start flex-col  text-neutral-500 text-xs font-bold">
-            <li className="text-white" >{Number(userContributions).toFixed(2)} BNB</li>
+            <li className="text-white" >{isNaN(Number(userContributions).toFixed(2))? 0 : Number(userContributions).toFixed(2) + " BNB" } </li>
             <li className="text-white" > {nftBalance}</li>
             <li className="text-white" >{reffs}</li>
             <li className="text-white" >item</li>

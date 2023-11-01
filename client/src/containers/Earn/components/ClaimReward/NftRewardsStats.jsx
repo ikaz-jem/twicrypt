@@ -4,7 +4,6 @@ import { bigIntToFormated } from "../../../../utils/web3Functions";
 
 import {GiChart} from 'react-icons/gi'
 import { MdOutlineLocalOffer } from 'react-icons/md'
-import { unixToDate } from "../../../../utils/unixToDate";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { nft_contract } from "../../../MarketPlace/data/Addresses";
@@ -13,9 +12,7 @@ import { useGetClaimedRewards } from "./hooks/useGetClaimedRewards";
 
 const NftRewardsStats = () => {
 
-    const allListings = useSelector(state => state?.marketPlace?.mylistings)
     const { address } = useSelector(state => state.session)
-    const myListings = allListings?.userListings
 
 const {data,isLoading,isError} = useGetClaimedRewards()
 

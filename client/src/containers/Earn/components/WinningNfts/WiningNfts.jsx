@@ -9,22 +9,25 @@ const WiningNfts = () => {
 
     const { allClaimedNfts, allWinningNfts } = useGetUiNftRewardStats()
 
-    const totalWinningNfts = allWinningNfts?.length
     const totalClaimedNfts = allClaimedNfts?.length
-    const remaining = totalWinningNfts - totalClaimedNfts
+    const totalWinningNfts = allWinningNfts?.length + totalClaimedNfts
+    const remaining = allWinningNfts?.length
 
+
+    console.log(allWinningNfts)
     const totalRewards = allWinningNfts?.reduce((accumulator, object) => {
         return (Number(accumulator) + Number(object?.claimedReward) + Number(object?.reward))
     }, 0)
     const claimedAlredy = allClaimedNfts?.reduce((accumulator, object) => {
+
         return (Number(accumulator) + Number(object?.claimedReward))
     }, 0)
 
 
     const RenderStats = () => {
         const stats = [
-            { id: 1, name: 'in rewards to redeem from Nft', value: `${formatEther(totalRewards) + " BNB"}` },
-            { id: 2, name: 'claimed already', value: `${formatEther(claimedAlredy) + " BNB"}` },
+            { id: 1, name: 'in rewards to redeem from Nft', value: `${formatEther(Number(totalRewards)) + " BNB"}` },
+            { id: 2, name: 'claimed already', value: `${formatEther(Number(claimedAlredy)) + " BNB"}` },
             { id: 3, name: 'total winning Nfts ', value: totalWinningNfts },
             { id: 4, name: 'remaining opportunities', value: remaining },
         ]
@@ -57,7 +60,7 @@ const WiningNfts = () => {
                             {item?.claimed && <p className="text-xs  font-bold">{'token id : ' +  Number(item?.tokenId)}  </p> }
                         <p className="text-xs font-bold text-yellow-500" > {item?.claimed ? 'claimed' : 'reward not claimed yet'}</p>
                         <p className="text-xs"> {item?.claimed ? 'claimed reward : ' + formatEther(Number(item?.claimedReward)) + " BNB" : 'prize : ' + formatEther(Number(item?.reward)) + " BNB"}</p>
-                            {item?.claimed && <Link to={`/dashboard/account/${item?.claimer}`}  className="text-xs text-blue-500 hover:text-pink-500  font-bold">{'claimer : ' + item?.claimer.slice(0,10)}  </Link> }
+                            {item?.claimed && <Link to={`/dashboard/account/${item?.claimer}`}  className="text-xs text-blue-500 hover:text-pink-500  font-bold">{'claimer : ' + item?.claimer.slice(0,10)} ...  </Link> }
                     </div>
                 </div>
             </div>
@@ -74,18 +77,15 @@ const WiningNfts = () => {
             <div className="container container--xxxlarge  rounded-2xl mb-20 pb-10 ">
                 <div className="container container--xxlarge container--center  rounded-xl">
                     <RenderStats />
-                    <h3 className="text-left my-5 p-0 border-b border-purple-700 w-full rounded-2xl px-5 pb-2 text-yellow-500 font-bold text-xl ">All winning NFTs <span className="m-0 pl-5 text-neutral-200 text-base ">{ " remaing winning Nfts : " + totalWinningNfts + " units" }  </span>  </h3>
+                    <h3 className="text-left my-5 p-0 border-b border-purple-700 w-full rounded-2xl px-5 pb-2 text-yellow-500 font-bold text-xl ">All winning NFTs <span className="m-0 pl-5 text-neutral-200 text-base ">{ " remaing winning Nfts : " + remaining + " units" }  </span>  </h3>
                     <div className="flex gap-2 flex-wrap flex-col">
 
                         <div className="flex gap-3 flex-wrap ">
                             {
-                                allWinningNfts?.map((item, i) => {
-                                    if (item?.claimed) {
-                                        return null
-                                    } else {
+                              allWinningNfts &&  allWinningNfts?.map((item, i) => {
+                                   
                                         return <Card key={i} item={item} />
-                                    }
-
+                            
                                 })
                             }
                         </div>

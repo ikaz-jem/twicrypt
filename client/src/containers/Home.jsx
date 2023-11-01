@@ -128,7 +128,7 @@ const Home = () => {
         <span className="m-0 pl-5 text-neutral-400 text-sm">Win up to 1BTC ! each NFT contains claimable cache Rewards ! enjoy 2 utilities in one Art !</span>
 
 
-        <HomeNfts />
+          <HomeNfts />
         <ButtonPrimary className="w-auto">View More</ButtonPrimary>
       </div>
 

@@ -13,14 +13,22 @@ export const useGetMinterStats = ()=> {
 const {address} = useSelector(state=>state.session)
 
 
-const {data ,isError,isLoading} = useContractRead({
+const referralStats = useContractRead({
 
 address : nft_contract && nft_contract,
 abi : NftAbi && NftAbi,
 functionName:'get_user_stats',
 chainId:app_chain_id&& app_chain_id || null,
 args:[address && address],
-enabled:address ? true : false,
+enabled: address ? true : false,
+watch:true
+})
+const mintStats = useContractRead({
+
+address : nft_contract && nft_contract,
+abi : NftAbi && NftAbi,
+functionName:'get_mint_stats',
+chainId:app_chain_id&& app_chain_id || null,
 watch:true
 })
 
@@ -29,7 +37,7 @@ watch:true
 
 
 
-return data
+return {referralStats,mintStats}
 
 
 }
