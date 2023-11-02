@@ -9,7 +9,7 @@ export const MarketPlaceSlice = createSlice({
     initialState: {
         marketplacePage:'all-nfts',
         nftFilter: {
-                    chain:'bsctestnet',
+                    chain:'twicrypt',
                     execute: true,
                     limit: 50,
                     },

@@ -20,7 +20,6 @@ console.log(data)
     useEffect(() => {
     }, [address])
 
-    
 
     const NoClaimed = () => {
         return (

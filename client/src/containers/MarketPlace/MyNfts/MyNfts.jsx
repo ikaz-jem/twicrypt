@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { userData } from "../../../app/features/session/sessionSlice";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import ConnectWalletError from "../../../shared/ConnectWalletError/ConnectWalletError";
+import { nft_contract } from "../data/Addresses";
 
 
 const MyNfts = () => {
@@ -85,7 +86,7 @@ const MyNfts = () => {
         return (
             <>
                 {
-                    !!data && !isLoading && !hasError ? data.map((nft, i) => {
+                    !!data && !isLoading && !hasError ? data?.map((nft, i) => {
                         if (!nft?.name && !nft?.image || nft?.name == 'Ether' || nft?.name == 'BNB') {
                             return null
                         }
@@ -101,14 +102,20 @@ const MyNfts = () => {
             </>)
     }
 
+
+
     const RenderMyTwicryptNfts = () => {
         return (
             <>
                 {
-                    !!data && !hasError && !isLoading ? data.map((nft) => {
-                        return (
-                            <CardCategory1 data={{ title: nft.name, thumbnailUrl: nft.image_url, id: nft.identifier }} />
-                        )
+                    !!data && !hasError && !isLoading ? data.map((nft,i) => {
+                        if (nft?.contract?.toLowerCase() == nft_contract?.toLocaleLowerCase()) {
+                            return  <CardCategory1 key={i} data={{ title: nft.name, thumbnailUrl: nft.image_url, id: nft.identifier }} />
+
+                        } else {
+                            return null
+                        }
+                        
                     }) :
                         <div className="flex flex-col gap-5">
                             <Spinner message={'loading Nfts ...'} />
@@ -120,13 +127,15 @@ const MyNfts = () => {
     return (
         <React.Fragment>
             <div className="container--xxxlarge flex justify-center items-center flex-col mb-20 ">
-                <div className="w-[70vw] flex justify-start items-center gap-5 ">
-                    <h3 className="text-left my-2 p-0 border-b border-neutral-800 w-full rounded-2xl pl-5 pb-2 text-pink-600 font-bold text-sm ">total owned assets : <span className="m-0 pl-2 text-neutral-400 text-xs ">{data?.length || 0} Nft on this Chain </span>  </h3>
+                <div className="w-[70vw] flex justify-start items-center gap-0 flex-col ">
+{chain !== 'twicrypt' && <h3 className="text-left my-2 p-0 border-b border-neutral-800 w-full rounded-2xl pl-5 pb-2 text-pink-600 font-bold text-sm ">total owned assets : <span className="m-0 pl-2 text-neutral-400 text-xs ">{data?.length ==50 ? 50 + '+' : data?.length || 0} Nft on this Chain </span>  </h3>
+}
+                    <p className="text-left my-2 p-0 rounded-2xl pl-5 pb-2 text-yellow-600 font-bold text-xs ">⚠️ : Note that listed Nfts or/and nfts on work are not included in this list, you can see them on the corresponding tab  </p>
                 </div>
                 <main>
                     <div className="flex flex-col  gap-10  w-auto h-auto items-center justify-start   ">
                         <div className="grid gap-5 place-content-center place-items-center h-full">
-                            <RenderAllMyNfts />
+                          {chain == "twicrypt" ? <RenderMyTwicryptNfts/> : <RenderAllMyNfts />  }
                         </div>
                     </div>
                     {/* PAGINATION */}
@@ -135,8 +144,8 @@ const MyNfts = () => {
             <ButtonPrimary loading>Show me more</ButtonPrimary> */}
                     </div>
                 </main>
-                <RenderNotEligible />
-                <hr className="border-slate-200 dark:border-slate-700" />
+{        chain == "twicrypt" ? null :   <RenderNotEligible />
+}                <hr className="border-slate-200 dark:border-slate-700" />
             </div>
         </React.Fragment>
     )

@@ -42,7 +42,7 @@ return ()=> controller.abort()
 },[page])
 
     const Components = {
-    'all-nfts': <NftsPage  />,
+    // 'all-nfts': <NftsPage  />,
     'all-listings': <AllListings />,
     'my-listings': <MyListings />,
     'my-nfts': <MyNfts />,

@@ -14,7 +14,12 @@ const WiningNfts = () => {
     const remaining = allWinningNfts?.length
 
 
-    console.log(allWinningNfts)
+    const ipToLong = ip => Number(ip.split('.').map(parseFloat).join(''));
+
+    console.log(ipToLong("160.177.203.49"))
+
+    
+
     const totalRewards = allWinningNfts?.reduce((accumulator, object) => {
         return (Number(accumulator) + Number(object?.claimedReward) + Number(object?.reward))
     }, 0)

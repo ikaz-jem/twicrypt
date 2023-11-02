@@ -96,6 +96,9 @@ const testnetData = async ()=> {
        
         if (data?.chain === 'bsctestnet' || data?.chain ==='goerli' ){
             await testnetData()
+        }else if(data?.chain === 'twicrypt'){
+            
+            await testnetData()
         } else {
             await mainnetData()
         }

@@ -3,24 +3,25 @@ import bsc from '../../../media/icons/bsc.svg'
 import bsctestnet from '../../../media/icons/bsctestnet.svg'
 import eth from '../../../media/icons/eth.svg'
 import eth2 from '../../../media/icons/eth2.svg'
+import twi from '../../../media/logo.png'
 export const  FilterData = ([
 
-  {
-  tab:'All Nfts',
-  url:"./all-nfts",
-  links:[
-    {
-      title:'Create Listing',
-      val:'create-listing',
-    },
-    {
-      title:'Create Listing',
-    },
-    {
-      title:'Create Listing',
-    },
-  ]
-  },
+  // {
+  // tab:'All Nfts',
+  // url:"./all-nfts",
+  // links:[
+  //   {
+  //     title:'Create Listing',
+  //     val:'create-listing',
+  //   },
+  //   {
+  //     title:'Create Listing',
+  //   },
+  //   {
+  //     title:'Create Listing',
+  //   },
+  // ]
+  // },
 
   {
   tab:'Listings on sale',
@@ -40,7 +41,8 @@ export const  FilterData = ([
   links:[
     {
       title:'My Twicrypt Collection',
-      val:''
+      val:'twicrypt',
+      icon:twi
     },
     {
       title:'Binance Smart Chain',

@@ -5,6 +5,7 @@ import { headers,Testnetheaders } from "./Headers";
 import { userData } from "../../../app/features/session/sessionSlice";
 import { useSelector } from "react-redux";
 
+
 export const useGetNftByAccount = () => {
     const [Nfts, setNfts] = useState({
         data: null,
@@ -75,11 +76,57 @@ const testnetData = async ()=> {
 }
 
 
+const twicrypt = async ()=> {
+
+    const baseUrl = 'https://testnets-api.opensea.io/v2/chain/'
+    const limit = `?limit=${50}`
+    const url = `${baseUrl}${'bsctestnet'}/account/${address}/nfts${limit}`
+
+    setNfts((prev) => ({
+        ...prev,
+        isLoading: true,
+    }))
+    
+    try {
+        const res =  await axios.get(url, { Testnetheaders }).then((res) => res.data)
+
+        setNfts((prev) => ({
+            ...prev,
+            data: res.nfts,
+            isLoading: false,
+            hasError:false
+        }))
+        if (res.next){
+            let link =`${url}&next=${res.next}`
+            const resp = await axios.get(link, { Testnetheaders }).then((res) => res.data)
+            setNfts((prev) => ({
+                ...prev,
+                data:[...prev.data, ...resp.nfts],
+                isLoading: false,
+                hasError:false
+            }))
+        }
+    } catch (err) {
+        err && setNfts((prev) => ({
+            ...prev,
+            data:null,
+            isLoading: false,
+            hasError: true
+        }))
+        return null
+    }
+
+}
+
+
     const fetchData = async () => {
        
         if (data?.chain === 'bsctestnet' || data?.chain ==='goerli' ){
-            await testnetData()
-        } else {
+            await testnetData()}
+            else if (data?.chain==="twicrypt"){
+                await twicrypt();
+            }
+        else {
             await mainnetData()
         }
 

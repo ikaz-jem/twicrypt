@@ -27,6 +27,7 @@ import { useSearchParams } from "react-router-dom";
 import { setMiningPage } from "../../app/features/mining/MiningSlice";
 import { unixCountDown } from "../../utils/unixToDate";
 import { useGetAllMiningData } from "./hooks/useGetAllMiningData";
+import { app_chain_id } from "../../shared/data/chains";
 
 
 
@@ -115,7 +116,7 @@ const MiningHome = () => {
 
                     <div className="flex items-center justify-center gap-5">
                         {address && <p className="text-xs text-white opacity-80" > {address.slice(0, 5) + '...' + address.slice(35, 40)}</p>}
-                        {address && chain?.id != 97 ?
+                        {address && chain?.id != app_chain_id ?
                             <button onClick={changeNetwork} className="flex px-1 py-1 bg-blue-500 text-xs text-white items-center rounded-lg pag-2"> ⚠️ switch Network <img src={bsc} alt="bsc icon" className="pl-2 w-8" /></button> : null}
                     </div>
                 </div>

@@ -76,7 +76,7 @@ const setNftFilter = (item)=> dispatch(setFilter(item))
                      classNames(
                        'w-auto rounded-lg py-2 px-5 text-xs  leading-2 text-neutral-200  h-full flex items-center justify-start',
                        'ring-white ring-opacity-60 ',
-                          chain === list.val
+                          chain === list?.val
                        ? 'bg-pink-600 text-white '
                        : 'text-black hover:bg-neutral-200/[0.52] hover:text-white'
                        )                
