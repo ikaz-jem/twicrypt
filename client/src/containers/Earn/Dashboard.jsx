@@ -1,21 +1,14 @@
 
-import CarouselTransition from "../../shared/transitions/CarouselTransition";
 import './style.css';
 import { useEffect } from "react";
 
 import SectionWhy from "../../components/sectionWhy/SectionWhy";
 
 import Menu from "../../shared/Menu/Menu";
-import MenuTransition from "../../shared/transitions/MenuTransition";
 import MenuTopLinks from "./components/MenuTopLink/MenuTopLinks";
 import SidePanel from "./components/SidePanel/SidePanel";
 
 //Pages components 
-import EarnHome from "./components/EarnHome";
-import QuickLinks from "./components/QuickLinks";
-import TwiWallet from "./components/TwiWallet";
-import Link2 from "./components/Link2";
-import Nfts from "./components/Nfts/NftDetailPage";
 import { Outlet, useLocation } from "react-router-dom";
 import QuickMint from "./components/Nfts/QuickMint";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,10 +40,6 @@ const Dashboard = () => {
             link: 'mint'
         },
         {
-            title: "My Wallet",
-            link: 'stats'
-        },
-        {
             title: "auto P2E",
             link: 'auto-p2e?id=mining-session'
         },
@@ -68,45 +57,6 @@ const Dashboard = () => {
         },
 
     ]
-
-    const RenderStats = () => {
-        const stats = [
-            { id: 1, name: 'Up to 1BTC in Random Nfts', value: '300k$+ Rewards' },
-            { id: 2, name: 'Assets under holding', value: '$119 trillion' },
-            { id: 3, name: 'New users annually', value: '46,000' },
-            { id: 3, name: 'New users annually', value: '46,000' },
-        ]
-        return (
-            <div className="bg-neutral-800 py-5 sm:py-2 rounded-md mx-12">
-                <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <dl className="grid grid-cols-1 gap-x-5 gap-y-5 text-center lg:grid-cols-3">
-                        {stats.map((stat) => (
-                            <div key={stat.id} className="mx-auto flex max-w-xs flex-col gap-y-0">
-                                <dt className="text-base  text-gray-600">{stat.name}</dt>
-                                <dd className="order-first text-lg font-semibold tracking-tight text-gray-500 sm:text-lg">
-                                    {stat.value}
-                                </dd>
-                            </div>
-                        ))}
-                    </dl>
-                </div>
-            </div>
-        )
-    }
-
-
-
-
-    // const Components = {
-    //     'home': <EarnHome />,
-    //     'stats': <TwiWallet />,
-    //     2: <QuickLinks />,
-    //     3: <Link2 />,
-    //     'sectionWhy': <SectionWhy />,
-    //     'nfts': <Nfts />
-    // }
-
-
     return (
         <>
             <div className="lg:flex bg-gradient-to-b from-[#111111] to-black bg-opacity-70 relative h-auto w-full   ">
@@ -114,15 +64,10 @@ const Dashboard = () => {
                 <div className="h-full lg:z-10 lg:sticky xl:sticky xl:top-10 lg-top-10 md:top-10 overflow-x-none fixed top-20  z-10  ">
                     <Menu />
                 </div>
-                {/*                         
-        <a className="link" onClick={showIndex}> showIndex</a >
-    <a className="link" onClick={showTable}> showTable</a > */}
+               
                 <div className="flex  flex-col w-full h-full pl-20  md:pl-18 lg:pl-0">
-                    {/* {RenderMenu()} */}
-
 
                     <MenuTopLinks navigation={topMenuNavigation} />
-                    {/* <RenderStats /> */}
 
                     <SidePanel show={showPanel} togglePanel={togglePanel} >
                         <QuickMint togglePanel={togglePanel} />

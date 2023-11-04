@@ -12,7 +12,6 @@ import { Toaster } from 'react-hot-toast';
 import Navbar from "../components/navbar/Navbar";
 import Home from '../containers/Home';
 import Footer from "../components/Footer";
-import Dashboard2 from "../containers/Dashboard2/Dashboard2";
 import SponsorUs from "../containers/sponsorUs/SponsorUs";
 import NftsPage from "../containers/Earn/components/Nfts/NftsPage";
 import Dashboard from "../containers/Earn/Dashboard";
@@ -23,15 +22,11 @@ import { userSession } from "../app/features/session/sessionSlice";
 import { useSelector } from "react-redux";
 
 import RoutesTransition from '../shared/transitions/RoutesTransition'
-import TwiWallet from "../containers/Earn/components/TwiWallet";
 import EarnHome from "../containers/Earn/components/EarnHome";
 import MintPage from "../containers/Earn/components/Nfts/Mint/MintPage";
 import Docs from "../containers/Docs/Docs";
 import MiningHome from "../containers/Mining/MiningHome";
-import Withdraw from "../containers/Withdraw/Withdraw";
 import Faq from "../containers/Faq/Faq";
-import DailyRewards from "../containers/DailyRewards/DailyRewards";
-import Community from "../containers/Community/Community";
 import MarketPlace from "../containers/MarketPlace/MarketPlace";
 import NftDetailsPage from "../containers/MarketPlace/NftDetailsPage/NftDetailsPage";
 import UserProfile from "../containers/Account/UserProfile/UserProfile";
@@ -98,24 +93,14 @@ const NestedRoutes = [
         component: NftsPage,
         requiresAuth: false,
     },
-    {
-        path: 'stats',
-        component: TwiWallet,
-        requiresAuth: false,
-    },
-    {
-        path: 'nfts/my-collection',
-        component: EarnHome,
-        requiresAuth: false,
-    },
+    // {
+    //     path: 'nfts/my-collection',
+    //     component: EarnHome,
+    //     requiresAuth: false,
+    // },
     {
         path: 'nfts/marketplace/listings/:id',
         component: NftDetailsPage,
-        requiresAuth: false,
-    },
-    {
-        path: 'withdraw',
-        component: Withdraw,
         requiresAuth: false,
     },
     {
@@ -126,11 +111,6 @@ const NestedRoutes = [
     {
         path: 'solutions',
         component: Solutions,
-        requiresAuth: false,
-    },
-    {
-        path: 'daily-rewards',
-        component: DailyRewards,
         requiresAuth: false,
     },
     {
@@ -148,11 +128,7 @@ const NestedRoutes = [
         component: MiningHome,
         requiresAuth: false,
     },
-    {
-        path: 'community',
-        component: Community,
-        requiresAuth: false,
-    },
+
 
     // {
     //     path: 'account',
