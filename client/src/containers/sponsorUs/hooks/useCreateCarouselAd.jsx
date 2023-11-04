@@ -37,7 +37,6 @@ export const useCreateCarouselAd = (ad) => {
   
   ]
 
-  console.log(affiliate)
   
   const fees = carouselFees * Number(duration)
   

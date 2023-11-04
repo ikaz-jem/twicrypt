@@ -26,10 +26,10 @@ const Dashboard = () => {
     const dispatch = useDispatch()
     const menuPosition = (data) => dispatch(setMenuPosition(data))
     const togglePanel = () => dispatch(toggleMintPanel())
-    
+
     const showPanel = useSelector(state => state.states.showMintPanel)
     const width = window.innerWidth
-const location = useLocation()
+    const location = useLocation()
 
 
     useEffect(() => {
@@ -130,13 +130,13 @@ const location = useLocation()
 
                     <div className="w-full h-auto relative lg:px-10   ">
                         <Outlet />
-              
+
                     </div>
 
 
                 </div>
             </div>
-                {/* <SectionWhy/> */}
+            {/* <SectionWhy/> */}
         </>
     )
 

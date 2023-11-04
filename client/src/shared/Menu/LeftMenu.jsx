@@ -1,74 +1,269 @@
 import React, { useState } from "react";
 import { Disclosure } from "@headlessui/react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { RiNftFill } from "react-icons/ri";
 import { AiOutlineArrowDown} from 'react-icons/ai'
 import { BsArrowBarDown} from 'react-icons/bs'
-import {  FcDoughnutChart,FcBusinessman, FcDownLeft, FcEmptyTrash, FcPortraitMode,FcAnswers,FcElectronics,FcCurrencyExchange } from "react-icons/fc";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setMenuPosition,toggleMintPanel } from "../../app/features/States/StatesSlice";
+import logo from '../../media/logo.png'
+import {  FcDoughnutChart,
+  FcBusinessman,
+  FcDownLeft,
+  FcEmptyTrash,
+  FcPortraitMode,
+  FcAnswers,
+  FcElectronics,
+  FcCurrencyExchange,
+  FcShop
+  ,FcDonate,
+  FcIpad,
+  FcSafe,
+
+ } from "react-icons/fc";
 
 const  NAVIGATION_DEMO_2 = [
+    {
+    
+    href: "/page-collection-2",
+    name: "Twicrypt solutions",
+    icon:false,
+    image:logo,
+    component:"./solutions",
+   
+  },
 
   {
 
     href: "/page-collection",
-    name: "Stats",
+    name: "marketPlace",
     tooltip: "Inbox",
-    icon:FcDoughnutChart,
-    component:'./stats',
+    icon:FcShop,
+    component:'./marketplace/all-listings',
     page:'home',
+   children:[
+    {
+
+      href: "/page-collection",
+      name: "my nfts",
+      tooltip: "Inbox",
+      icon:FcIpad,
+      component:'/dashboard/marketplace/my-nfts',
+      page:'home',
+     
+    },
+    {
+
+      href: "/page-collection",
+      name: "my listings",
+      tooltip: "Inbox",
+      icon:FcIpad,
+      component:'/dashboard/marketplace/my-listings',
+      page:'home',
+     
+    },
+    {
+
+      href: "/page-collection",
+      name: "all listings",
+      tooltip: "Inbox",
+      icon:FcIpad,
+      component:'/dashboard/marketplace/all-listings',
+      page:'home',
+     
+    },
+    {
+
+      href: "/page-collection",
+      name: "create listing",
+      tooltip: "Inbox",
+      icon:FcIpad,
+      component:'/dashboard/marketplace/create-listing',
+      page:'home',
+     
+    },
+    {
+
+      href: "/page-collection",
+      name: "create auction",
+      tooltip: "Inbox",
+      icon:FcIpad,
+      component:'/dashboard/marketplace/create-auction',
+      page:'home',
+     
+    },
+   ]
+
+
+  },
+  {
+  
+    href: "/page-collection",
+    name: "virtual Mining (vm)",
+    tooltip: "Inbox",
+    icon:FcSafe,
+    component:'/dashboard/auto-p2e?id=mining-session',
+    page:'home',
+   
+  },
+  // {
+
+  //   href: "/page-collection",
+  //   name: "launchpad",
+  //   tooltip: "Inbox",
+  //   icon:FcIpad,
+  //   component:'./launchpad',
+  //   page:'home',
+   
+  // },
+  {
+    name: "earn",
+    tooltip: "Inbox",
+    icon:FcDonate,
+    component:"/dashboard/winning-nfts",
+    page:'home',
+    children:[
+      {
+        name: "mint & Win !",
+        tooltip: "Inbox",
+        icon:FcIpad,
+        component:'/dashboard/mint',
+        page:'home',
+       
+      },
+      {
+        name: "claim nft reward",
+        tooltip: "Inbox",
+        icon:FcIpad,
+        component:'/dashboard/claim',
+        page:'home',
+       
+      },
+      {
+        name: "check winning nfts",
+        tooltip: "Inbox",
+        icon:FcIpad,
+        component:'/dashboard/winning-nfts',
+        page:'home',
+       
+      },
+  {
+        name: "become partner",
+        tooltip: "Inbox",
+        icon:FcIpad,
+        component:'/dashboard/mint',
+        page:'home',
+       
+      },
+
+      {
+  
+
+        name: "token staking",
+        tooltip: "Inbox",
+        icon:FcIpad,
+        component:'',
+        page:'home',
+        comingSoon:true,
+       
+      },
+      {
+  
+
+        name: "nft staking",
+        tooltip: "Inbox",
+        icon:FcIpad,
+        component:'',
+        page:'home',
+        comingSoon:true,
+       
+      },
+      {
+  
+        href: "/page-collection",
+        name: "lottery",
+        tooltip: "Inbox",
+        icon:FcIpad,
+        component:'',
+        page:'home',
+        comingSoon:true,
+       
+      },
+     ]
    
   },
   {
     
     href: "/inbox",
-    name: "Daily rewards",
+    name: "claim rewards",
     tooltip: "Inbox",
     icon:FcCurrencyExchange,
-    component:'./daily-rewards',
+    
+    component:'/dashboard/claim',
     page:'stats'
   },
-  {
-    
-    href: "/page-collection-2",
-    name: "Nfts",
-    tooltip: "./nfts",
-    icon:FcEmptyTrash,
-    component:"./marketplace"
-  },
   
+
+  
+  // {
+    
+  //   href: "/page-collection-2",
+  //   name: "Community",
+  //   tooltip: "Inbox",
+  //   icon:FcElectronics,
+  //   component:'./community'
+  // },
+  // {
+    
+  //   href: "/inbox",
+  //   name: "Withdraw",
+  //   tooltip: "Inbox",
+  //   icon:FcDownLeft,
+  //   component:"./withdraw"
+  // },
+
+
   {
     
     href: "/page-collection-2",
-    name: "Community",
-    tooltip: "Inbox",
-    icon:FcElectronics,
-    component:'./community'
-  },
-  {
-    
-    href: "/inbox",
-    name: "Withdraw",
-    tooltip: "Inbox",
-    icon:FcDownLeft,
-    component:"./withdraw"
-  },
-  {
-    
-    href: "/page-collection-2",
-    name: "Sponsor Us",
-    tooltip: "Inbox",
-    icon:FcPortraitMode,
-    component:"/sponsor"
-  },
-  {
-    
-    href: "/page-collection-2",
-    name: "Support",
+    name: "docs & Support",
     tooltip: "Inbox",
     icon:FcAnswers,
-    component:"./support"
+    component:"./support",
+    children:[
+      {
+    
+        href: "/page-collection-2",
+        name: "whitepaper",
+        tooltip: "Inbox",
+        icon:FcPortraitMode,
+        component:"/whitepaper"
+      },
+      {
+    
+        href: "/page-collection-2",
+        name: "documentation",
+        tooltip: "Inbox",
+        icon:FcPortraitMode,
+        component:"/documentation"
+      },
+      {
+    
+        href: "/page-collection-2",
+        name: "frequently asked questions",
+        tooltip: "Inbox",
+        icon:FcPortraitMode,
+        component:"/frequently asked questions"
+      },
+      {
+    
+        href: "/page-collection-2",
+        name: "get live support",
+        tooltip: "Inbox",
+        icon:FcPortraitMode,
+        component:"/frequently asked questions"
+      },
+    ]
   },
   
 ];
@@ -87,7 +282,7 @@ const LeftMenu= ({
   })
 
 const dispatch = useDispatch()
-
+const {address}= useSelector(state=>state.session)
   const data = NAVIGATION_DEMO_2
   
   const toggleMenu = ()=>{
@@ -123,24 +318,25 @@ return  <button
     itemClass = " pl-3 text-neutral-200 font-medium "
   ) => {
     return (
-      <ul className="nav-mobile-sub-menu pl-6 pb-1 text-base">
+      <ul className="nav-mobile-sub-menu pl-6 pb-1 text-base text-left">
         {item.children?.map((i, index) => (
           <Disclosure key={i.href + index} as="li">
             <NavLink
               to={{
-                pathname: i.href || undefined,
+                pathname: i.component || undefined,
               }}
               className={({ isActive }) =>
-                `flex text-sm rounded-lg hover:bg-neutral-800 mt-0.5 pr-4 ${itemClass} ${
+                `flex text-xs font-bold rounded-lg hover:bg-neutral-800 mt-0.5 pr-4  border-b border-neutral-900${itemClass} ${
                   isActive ? "text-secondary bg-none " : ""
                 }`
               }
             >
               <span
-                className={`py-2.5 ${!i.children ? "block w-full" : ""}`}
+                className={`py-2.5 ${!i.children ? " w-full flex justify-between" : ""}`}
                 onClick={onClickClose}
               >
-                {i.name}
+                {i.name }
+                {i.comingSoon && <span className="bg-yellow-500 rounded-full text-xs  px-2 text-black ">coming soon</span>}
               </span>
               {i.children && (
                 <span
@@ -152,7 +348,7 @@ return  <button
                     className="flex justify-end flex-grow"
                   >
                     <AiOutlineArrowDown
-                      className="ml-2 h-4 w-4 text-slate-500"
+                      className="ml-2 h-4 w-4 text-pink-800 "
                       aria-hidden="true"
                     />
                    
@@ -184,7 +380,8 @@ return  <button
         <NavLink
           className={({ isActive }) =>
             `flex w-full items-center py-2.5 px-4 font-medium   tracking-wide text-sm   transition-all ease-out duration-200 hover:bg-neutral-500  rounded-lg ${isActive ? "text-primary  rounded-2xl bg-neutral-200 text-black"  : "bg-neutral-900 border-b border-neutral-700"}`}
-          to={item.component}
+          to={item?.component}
+          
           data-tooltip-id="MenuTooltip"
           data-tooltip-hidden={width.isOpen}
           data-tooltip-content={item.tooltip}
@@ -192,15 +389,15 @@ return  <button
           data-tooltip-offset={15}
         >
           <span
-            className={!item.children && width.isOpen ? "flex gap-4 w-full" : "flex gap-2 "}
+            className={!item?.children && width.isOpen ? "flex gap-4 w-full" : "flex gap-2 "}
             onClick={onClickClose}
           >
-            {<item.icon className={"text-3xl "}/>}
-            <span className={` opacity-100 transition delay-200 duration-100 ${width.isOpen ? "opacity-100 overflow-x-hidden flex justify-center items-center text-xs" : "opacity-0 overflow-x-hidden"}`}>
-         {   width.isOpen && item.name}
+            {item.icon ? <item.icon className={"text-3xl "}/> : <img src={item?.image} className="w-6 h-6"/>  }
+            <span className={` opacity-100 transition delay-200 duration-100 ${width?.isOpen ? "opacity-100 overflow-x-hidden flex justify-center items-center text-xs" : "opacity-0 overflow-x-hidden"}`}>
+         {   width?.isOpen && item?.name}
             </span>
           </span>
-          {item.children && (
+          {item?.children && width.isOpen && (
             <span
               className="block flex-grow"
               onClick={(e) => e.preventDefault()}
@@ -210,7 +407,7 @@ return  <button
                 className="flex justify-end flex-grow"
               >
                 <AiOutlineArrowDown
-                  className="ml-2 h-4 w-4 text-neutral-500"
+                  className="ml-2 h-6 w-6 text-pink-500 p-1 bg-neutral-800 rounded-full "
                   aria-hidden="true"
                 />
                 
@@ -218,7 +415,7 @@ return  <button
             </span>
           )}
         </NavLink>
-        {item.children && (
+        {item?.children && width?.isOpen&& (
           <Disclosure.Panel>{_renderMenuChild(item)}</Disclosure.Panel>
         )}
       </Disclosure>
@@ -228,18 +425,20 @@ return  <button
 
  
   return (
-    <div className={` overflow-x-none ${width.class} ${!width.isOpen ?"no-scrollbar " : " overflow-x-hidden " } h-[99vh] py-2 border-r border-neutral-700 border-opacity-40 backdrop-blur-md   transform shadow-r-xl  divide-y-2 divide-neutral-800  transition-all ease-in-out duration-400 delay-100  `}>
+    <div className={` overflow-x-none ${width?.class} ${!width.isOpen ?"no-scrollbar " : " overflow-x-hidden " } h-[99vh] py-2 border-r border-neutral-700 border-opacity-40 backdrop-blur-md   transform shadow-r-xl  divide-y-2 divide-neutral-800  transition-all ease-in-out duration-400 delay-100  `}>
       <div className="py-2 px-5 mt-5 ">
        {/* { width.isOpen && <Logo className="w-20 h-20"/>} */}
-          <div className= { ` ${!width.isOpen ? " flex justify-between items-center  transition-all" : "flex justify-end items-center  transition-all"} `}>
+          <div className= { ` ${!width?.isOpen ? " flex justify-between items-center  transition-all" : "flex justify-end items-center  transition-all"} `}>
         <div className=  { `  "  hover:bg-pink-800  transition rounded-full "} `}>
          {burgerButton()}
         </div>
           </div>
-        <div className={`flex ${width.isOpen && "flex-row"}  mt-5 text-slate-300 text-sm items-center justify-center`}>
+        <div className={`flex ${width?.isOpen && "flex-row"}  mt-5 text-slate-300 text-sm items-center justify-center`}>
           <span>
-          <div className={`flex ${!width.isOpen && "flex-col"} gap-2 mt-5 text-slate-300 text-sm items-center justify-center`}>
-        <RiNftFill className="text-5xl p-2 bg-neutral-800 hover:bg-pink-600 transition-all rounded-full cursor-pointer " onClick={()=> toggleMint()}/> 
+          <div className={`flex ${!width?.isOpen && "flex-col"} gap-2 mt-5 text-slate-300 text-sm items-center justify-center`}>
+<Link to={`/dashboard/account/${address}`} >
+        <FcBusinessman className="text-5xl p-2 bg-neutral-800 hover:bg-pink-600 transition-all rounded-full cursor-pointer " /> 
+</Link>
      
 
         {/* </ButtonPrimary> */}

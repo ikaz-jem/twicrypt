@@ -124,29 +124,36 @@ const MyNfts = () => {
             </>)
     }
 
-    return (
-        <React.Fragment>
-            <div className="container--xxxlarge flex justify-center items-center flex-col mb-20 ">
-                <div className="w-[70vw] flex justify-start items-center gap-0 flex-col ">
+
+const RenderMyNfts= ()=>{
+    return(
+        <div className="container--xxxlarge flex justify-center items-center flex-col mb-20 ">
+        <div className="w-[70vw] flex justify-start items-center gap-0 flex-col ">
 {chain !== 'twicrypt' && <h3 className="text-left my-2 p-0 border-b border-neutral-800 w-full rounded-2xl pl-5 pb-2 text-pink-600 font-bold text-sm ">total owned assets : <span className="m-0 pl-2 text-neutral-400 text-xs ">{data?.length ==50 ? 50 + '+' : data?.length || 0} Nft on this Chain </span>  </h3>
 }
-                    <p className="text-left my-2 p-0 rounded-2xl pl-5 pb-2 text-yellow-600 font-bold text-xs ">⚠️ : Note that listed Nfts or/and nfts on work are not included in this list, you can see them on the corresponding tab  </p>
+            <p className="text-left my-2 p-0 rounded-2xl pl-5 pb-2 text-yellow-600 font-bold text-xs ">⚠️ : Note that listed Nfts or/and nfts on work are not included in this list, you can see them on the corresponding tab  </p>
+        </div>
+        <main>
+            <div className="flex flex-col  gap-10  w-auto h-auto items-center justify-start   ">
+                <div className="grid gap-5 place-content-center place-items-center h-full">
+                  {chain == "twicrypt" ? <RenderMyTwicryptNfts/> : <RenderAllMyNfts />  }
                 </div>
-                <main>
-                    <div className="flex flex-col  gap-10  w-auto h-auto items-center justify-start   ">
-                        <div className="grid gap-5 place-content-center place-items-center h-full">
-                          {chain == "twicrypt" ? <RenderMyTwicryptNfts/> : <RenderAllMyNfts />  }
-                        </div>
-                    </div>
-                    {/* PAGINATION */}
-                    <div className="flex flex-col mt-12 lg:mt-16 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
-                        {/* <Pagination />
-            <ButtonPrimary loading>Show me more</ButtonPrimary> */}
-                    </div>
-                </main>
+            </div>
+            {/* PAGINATION */}
+            <div className="flex flex-col mt-12 lg:mt-16 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
+                {/* <Pagination />
+    <ButtonPrimary loading>Show me more</ButtonPrimary> */}
+            </div>
+        </main>
 {        chain == "twicrypt" ? null :   <RenderNotEligible />
 }                <hr className="border-slate-200 dark:border-slate-700" />
-            </div>
+    </div>
+    )
+}
+
+    return (
+        <React.Fragment>
+           {address ? <RenderMyNfts/> : <ConnectWalletError message={'connect your wallet to check your assets'}/> }
         </React.Fragment>
     )
 

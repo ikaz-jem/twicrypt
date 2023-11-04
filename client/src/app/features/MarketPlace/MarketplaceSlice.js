@@ -7,7 +7,7 @@ export const MarketPlaceSlice = createSlice({
 
     name: 'marketPlace',
     initialState: {
-        marketplacePage:'all-nfts',
+        marketplacePage:'all-listings',
         nftFilter: {
                     chain:'twicrypt',
                     execute: true,

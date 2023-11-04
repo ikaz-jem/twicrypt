@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const StatesSlice = createSlice({
     name:'states',
     initialState:{
-        menuposition:true,
+        menuposition:false,
         showMintPanel:false,
         mint:null,
         mining:{

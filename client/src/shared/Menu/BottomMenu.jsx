@@ -6,72 +6,261 @@ import { AiOutlineArrowDown } from 'react-icons/ai'
 import { BsArrowBarLeft } from 'react-icons/bs'
 
 
-import { FcDoughnutChart, FcDownLeft, FcEmptyTrash, FcPortraitMode, FcAnswers, FcElectronics, FcCurrencyExchange } from "react-icons/fc";
+
 import { setMenuPosition, toggleMintPanel } from "../../app/features/States/StatesSlice";
 import { useDispatch } from "react-redux";
+import logo from '../../media/logo.png'
 
-const NAVIGATION_DEMO_2 = [
+
+import {  
+    FcPortraitMode,
+    FcAnswers,
+    FcCurrencyExchange,
+    FcShop
+    ,FcDonate,
+    FcIpad,
+    FcSafe,
+  
+   } from "react-icons/fc";
+
+
+const  NAVIGATION_DEMO_2 = [
+    {
+    
+    href: "/page-collection-2",
+    name: "Twicrypt solutions",
+    tooltip: "Inbox",
+    icon:false,
+    image:logo,
+    component:"./solutions",
+   
+  },
+
+  {
+
+    href: "/page-collection",
+    name: "marketPlace",
+    tooltip: "Inbox",
+    icon:FcShop,
+    component:'./marketplace/all-listings',
+    page:'home',
+   children:[
     {
 
+      href: "/page-collection",
+      name: "my nfts",
+      tooltip: "Inbox",
+      icon:FcIpad,
+      component:'./launchpad',
+      page:'home',
+     
+    },
+    {
+
+      href: "/page-collection",
+      name: "my listings",
+      tooltip: "Inbox",
+      icon:FcIpad,
+      component:'./launchpad',
+      page:'home',
+     
+    },
+    {
+
+      href: "/page-collection",
+      name: "all listings",
+      tooltip: "Inbox",
+      icon:FcIpad,
+      component:'./launchpad',
+      page:'home',
+     
+    },
+    {
+
+      href: "/page-collection",
+      name: "create listing",
+      tooltip: "Inbox",
+      icon:FcIpad,
+      component:'./launchpad',
+      page:'home',
+     
+    },
+    {
+
+      href: "/page-collection",
+      name: "create auction",
+      tooltip: "Inbox",
+      icon:FcIpad,
+      component:'./launchpad',
+      page:'home',
+     
+    },
+   ]
+
+
+  },
+  {
+  
+    href: "/page-collection",
+    name: "virtual Mining (vm)",
+    tooltip: "Inbox",
+    icon:FcSafe,
+    component:'/dashboard/auto-p2e?id=mining-session',
+    page:'home',
+   
+  },
+  // {
+
+  //   href: "/page-collection",
+  //   name: "launchpad",
+  //   tooltip: "Inbox",
+  //   icon:FcIpad,
+  //   component:'./launchpad',
+  //   page:'home',
+   
+  // },
+  {
+
+    href: "/page-collection",
+    name: "earn",
+    tooltip: "Inbox",
+    icon:FcDonate,
+    component:'/dashboard/mint',
+    page:'home',
+    children:[
+      
+      {
+  
         href: "/page-collection",
-        name: "Stats",
+        name: "mint & Win !",
         tooltip: "Inbox",
-        icon: FcDoughnutChart,
-        component: '/dashboard/stats',
-        page: 'home',
-
-    },
-    {
-
-        href: "/inbox",
-        name: "Daily rewards",
+        icon:FcIpad,
+        component:'./launchpad',
+        page:'home',
+       
+      },
+  
+  {
+  
+        href: "/page-collection",
+        name: "become partner",
         tooltip: "Inbox",
-        icon: FcCurrencyExchange,
-        component: '/dashboard/daily-rewards',
-        page: 'stats'
-    },
-    {
+        icon:FcIpad,
+        component:'./launchpad',
+        page:'home',
+       
+      },
 
+      {
+  
+        href: "/page-collection",
+        name: "token staking",
+        tooltip: "Inbox",
+        icon:FcIpad,
+        component:'./launchpad',
+        page:'home',
+        comingSoon:true,
+       
+      },
+      {
+  
+        href: "/page-collection",
+        name: "nft staking",
+        tooltip: "Inbox",
+        icon:FcIpad,
+        component:'./launchpad',
+        page:'home',
+        comingSoon:true,
+       
+      },
+      {
+  
+        href: "/page-collection",
+        name: "lottery",
+        tooltip: "Inbox",
+        icon:FcIpad,
+        component:'./launchpad',
+        page:'home',
+        comingSoon:true,
+       
+      },
+     ]
+   
+  },
+  {
+    
+    href: "/inbox",
+    name: "claim rewards",
+    tooltip: "Inbox",
+    icon:FcCurrencyExchange,
+    
+    component:'/dashboard/claim',
+    page:'stats'
+  },
+  
+
+  
+  // {
+    
+  //   href: "/page-collection-2",
+  //   name: "Community",
+  //   tooltip: "Inbox",
+  //   icon:FcElectronics,
+  //   component:'./community'
+  // },
+  // {
+    
+  //   href: "/inbox",
+  //   name: "Withdraw",
+  //   tooltip: "Inbox",
+  //   icon:FcDownLeft,
+  //   component:"./withdraw"
+  // },
+
+
+  {
+    
+    href: "/page-collection-2",
+    name: "docs & Support",
+    tooltip: "Inbox",
+    icon:FcAnswers,
+    component:"./support",
+    children:[
+      {
+    
         href: "/page-collection-2",
-        name: "Nfts",
-        tooltip: "/earn/nfts",
-        icon: FcEmptyTrash,
-        component: "/dashboard/nfts"
-    },
-
-    {
-
+        name: "whitepaper",
+        tooltip: "Inbox",
+        icon:FcPortraitMode,
+        component:"/whitepaper"
+      },
+      {
+    
         href: "/page-collection-2",
-        name: "Community",
+        name: "documentation",
         tooltip: "Inbox",
-        icon: FcElectronics,
-        component: '/dashboard/community'
-    },
-    {
-
-        href: "/inbox",
-        name: "Withdraw",
-        tooltip: "Inbox",
-        icon: FcDownLeft,
-        component: "/dashboard/withdraw"
-    },
-    {
-
+        icon:FcPortraitMode,
+        component:"/documentation"
+      },
+      {
+    
         href: "/page-collection-2",
-        name: "Sponsor Us",
+        name: "frequently asked questions",
         tooltip: "Inbox",
-        icon: FcPortraitMode,
-        component: "/sponsor"
-    },
-    {
-
+        icon:FcPortraitMode,
+        component:"/frequently asked questions"
+      },
+      {
+    
         href: "/page-collection-2",
-        name: "Support",
+        name: "get live support",
         tooltip: "Inbox",
-        icon: FcAnswers,
-        component: "/dashboard/support"
-    },
-
+        icon:FcPortraitMode,
+        component:"/frequently asked questions"
+      },
+    ]
+  },
+  
 ];
 
 
@@ -115,59 +304,59 @@ const toggleMintNftPanel = ()=> dispatch(toggleMintPanel())
     }
 
 
-    const _renderMenuChild = (
-        item,
-        itemClass = " pl-3 text-neutral-200 font-medium "
-    ) => {
-        return (
-            <ul className="nav-mobile-sub-menu pl-6 pb-1 text-base">
-                {item.children?.map((i, index) => (
-                    <Disclosure key={i.href + index} as="li">
-                        <NavLink
-                            to={{
-                                pathname: i.href || undefined,
-                            }}
-                            className={({ isActive }) =>
-                                `flex text-sm rounded-lg hover:bg-neutral-800 mt-0.5 pr-4 ${itemClass} ${isActive ? "text-secondary bg-none " : ""
-                                }`
-                            }
-                        >
-                            <span
-                                className={`py-2.5 ${!i.children ? "block w-full" : ""}`}
-                                onClick={onClickClose}
-                            >
-                                {i.name}
-                            </span>
-                            {i.children && (
-                                <span
-                                    className="flex items-center flex-grow"
-                                    onClick={(e) => e.preventDefault()}
-                                >
-                                    <Disclosure.Button
-                                        as="span"
-                                        className="flex justify-end flex-grow"
-                                    >
-                                        <AiOutlineArrowDown
-                                            className="ml-2 h-4 w-4 text-slate-500"
-                                            aria-hidden="true"
-                                        />
-                                    </Disclosure.Button>
-                                </span>
-                            )}
-                        </NavLink>
-                        {i.children && (
-                            <Disclosure.Panel>
-                                {_renderMenuChild(
-                                    i,
-                                    "pl-3 text-slate-400 "
-                                )}
-                            </Disclosure.Panel>
-                        )}
-                    </Disclosure>
-                ))}
-            </ul>
-        );
-    };
+    // const _renderMenuChild = (
+    //     item,
+    //     itemClass = " pl-3 text-neutral-200 font-medium "
+    // ) => {
+    //     return (
+    //         <ul className="nav-mobile-sub-menu pl-6 pb-1 text-base">
+    //             {item.children?.map((i, index) => (
+    //                 <Disclosure key={i.href + index} as="li">
+    //                     <NavLink
+    //                         to={{
+    //                             pathname: i.href || undefined,
+    //                         }}
+    //                         className={({ isActive }) =>
+    //                             `flex text-sm rounded-lg hover:bg-neutral-800 mt-0.5 pr-4 ${itemClass} ${isActive ? "text-secondary bg-none " : ""
+    //                             }`
+    //                         }
+    //                     >
+    //                         <span
+    //                             className={`py-2.5 ${!i.children ? "block w-full" : ""}`}
+    //                             onClick={onClickClose}
+    //                         >
+    //                             {i.name}
+    //                         </span>
+    //                         {i.children && (
+    //                             <span
+    //                                 className="flex items-center flex-grow"
+    //                                 onClick={(e) => e.preventDefault()}
+    //                             >
+    //                                 <Disclosure.Button
+    //                                     as="span"
+    //                                     className="flex justify-end flex-grow"
+    //                                 >
+    //                                     <AiOutlineArrowDown
+    //                                         className="ml-2 h-4 w-4 text-slate-500"
+    //                                         aria-hidden="true"
+    //                                     />
+    //                                 </Disclosure.Button>
+    //                             </span>
+    //                         )}
+    //                     </NavLink>
+    //                     {i.children && (
+    //                         <Disclosure.Panel>
+    //                             {_renderMenuChild(
+    //                                 i,
+    //                                 "pl-3 text-slate-400 "
+    //                             )}
+    //                         </Disclosure.Panel>
+    //                     )}
+    //                 </Disclosure>
+    //             ))}
+    //         </ul>
+    //     );
+    // };
 
     const _renderItem = (item, index) => {
         return (
@@ -187,15 +376,15 @@ const toggleMintNftPanel = ()=> dispatch(toggleMintPanel())
                     data-tooltip-offset={15}
                 >
                     <span
-                        className={!item.children && "flex gap-4 w-full"}
+                        className={!item.children && "flex items-center justify-center gap-0 w-full"}
                         onClick={onClickClose}
                     >
-                        {<item.icon className={"text-3xl "} />}
+            {item.icon ? <item.icon className={"text-3xl "}/> : <img src={item?.image} className="w-6 h-6"/>  }
                         <span className={` overflow-x-hidden flex justify-center items-center text-xs`}>
-                            {item.name}
+                            {/* {item.name} */}
                         </span>
                     </span>
-                    {item.children && (
+                    {/* {item.children && (
                         <span
                             className="block flex-grow"
                             onClick={(e) => e.preventDefault()}
@@ -210,11 +399,11 @@ const toggleMintNftPanel = ()=> dispatch(toggleMintPanel())
                                 />
                             </Disclosure.Button>
                         </span>
-                    )}
+                    )} */}
                 </NavLink>
-                {item.children && (
+                {/* {item.children && (
                     <Disclosure.Panel>{_renderMenuChild(item)}</Disclosure.Panel>
-                )}
+                )} */}
             </Disclosure>
         );
     };
@@ -233,7 +422,7 @@ const toggleMintNftPanel = ()=> dispatch(toggleMintPanel())
                 <div className="flex items-center justify-center ">
                             <div className={`   rounded-md m-0 flex items-center justify-center gap-2 `}>
                                 <BurgerButton/>
-                        <RiNftFill className="text-5xl p-2  bg-neutral-800 text-white hover:bg-pink-500 transition-all rounded-full cursor-pointer " onClick={() => toggleMintNftPanel()} />
+                        {/* <RiNftFill className="text-5xl p-2  bg-neutral-800 text-white hover:bg-pink-500 transition-all rounded-full cursor-pointer " onClick={() => toggleMintNftPanel()} /> */}
                             </div>
 
                     <ul className={`flex  items-center justify-center px-2 gap-1 space-y-1/2  overflow-y-auto   overflow-x-hidden`} >
