@@ -11,7 +11,6 @@ import { Toaster } from 'react-hot-toast';
 
 import Navbar from "../components/navbar/Navbar";
 import Home from '../containers/Home';
-import Footer from "../components/Footer";
 import SponsorUs from "../containers/sponsorUs/SponsorUs";
 import NftsPage from "../containers/Earn/components/Nfts/NftsPage";
 import Dashboard from "../containers/Earn/Dashboard";
@@ -228,7 +227,6 @@ const AppRoutes = () => {
 
                         </Route>
                     </Routes>
-                    {/* <Footer/> */}
                 </>
 
             </MyProvider>

@@ -16,7 +16,7 @@ const affiliateLink = `https://twicrypt.com/dashboard/mint/${address}`
 
 
 const reffStats = data?.referralStats?.data && data?.referralStats?.data || null
-const withdraw = useWithdrawReferralProfits()
+const withdraw = useWithdrawReferralProfits(data?.referralStats?.data)
 const isReferrer =reffStats&& reffStats?.isReferrer || null
 const isPartner = reffStats && reffStats?.isPartner|| null
 
@@ -109,7 +109,7 @@ return (
                     <ul className="flex items-start justify-center flex-col text-xs text-white">
                         <li>{totalReferrals}</li>
                         <li className="text-yellow-500 font-bold">{rewardpercent}% </li>
-                        <li>{totalWithdrawls} BNB</li>
+                        <li>{formatEther(totalWithdrawls)} BNB</li>
                         <li>{referralsContributions} BNB</li>
                     </ul>
                 </div>

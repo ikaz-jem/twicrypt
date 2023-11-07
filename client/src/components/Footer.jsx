@@ -26,10 +26,10 @@ return(
 
     <div className="footer__wrapper wrapper container container--xlarge container--center space space--large">
       <section>
-        <p className="paragraph">All rights reserved</p>
+        <p className="text-white font-bold">All rights reserved</p>
 
-        <p className="paragraph">
-          Copyright © 2022-{((new Date()).getFullYear())} <a href="http://jedrzejchalubek.com/">Twicrypt</a>
+        <p className="text-white font-bold">
+          Copyright © 2022-{((new Date()).getFullYear())} <a href="https://twicrypt.com/" className="text-blue-500 font-bold hover:text-pink-500">Twicrypt</a>
         </p>
       </section>
 

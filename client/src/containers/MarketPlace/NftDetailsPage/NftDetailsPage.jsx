@@ -41,6 +41,7 @@ const NftDetailsPage = () => {
         const contractAddress = searchParams.get('address')
         const tokenId = searchParams?.get('id')
         const metadata_Url = searchParams?.get('cid')
+        console.log(metadata_Url)
         const chainId = Number(searchParams?.get('chain'))
         contractAddress && tokenId && chainId && setMetadata((prev) => ({
             ...prev,
@@ -77,7 +78,7 @@ const NftDetailsPage = () => {
     const getNFtData = async () => {
         let isUrl = await metadata?.metadata_Url?.includes('https')
         if (isUrl) {
-            const res = await axios.get(metadata?.metadata_Url).then((res) => res.data)
+            const res = await axios.get(metadata?.metadata_Url).then((res) => res?.data)
             setMetadata((prev) => ({
                 ...prev,
                 metadata: res,

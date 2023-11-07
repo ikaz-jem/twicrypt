@@ -1,6 +1,4 @@
 import ProgressBar from "../../../../../../shared/ProgressBar/ProgressBar" 
-import Nav from "../../../../../../shared/Nav/Nav"
-import NavItem from "../../../../../../shared/NavItem/NavItem"
 import logo from '../../../../../../media/logo.png'
 import { useMintNft } from "../../../../../MarketPlace/hooks/web3Hooks/useMintNft"
 import { useDispatch, useSelector } from "react-redux"

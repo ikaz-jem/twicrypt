@@ -4,9 +4,24 @@ import abi from '../abi/mining.json'
 import toast from "react-hot-toast"
 import Popup from "../../../shared/popup/Popup"
 import { app_chain_id } from "../../../shared/data/chains"
-
+import { useTelegramBotMessage } from "../../../bot/useTelegramBotMessage"
+import { useSelector } from "react-redux"
+import { formatEther } from "viem"
 
 export const useClaimBank = ()=>{
+
+const {address} = useSelector(state=>state.session)
+
+
+const mess = `<b> 🏦🏦 ⚠️ a new free bank has been claimed ! ⚠️ 🏦🏦</b>
+user :  <pre>${address}</pre> claimed a Free bank to store mining Earnings !
+transaction :
+
+`
+
+const sendMessage  = useTelegramBotMessage(mess)
+
+
 
     const claimBank=useContractWrite({
         address:mining_contract && mining_contract,
@@ -28,6 +43,9 @@ export const useClaimBank = ()=>{
             ),
             { position: "bottom-center", duration: 2000 }
           ); 
+          },
+         onSuccess(error) {
+          sendMessage()
           },
     })
 

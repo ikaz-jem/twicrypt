@@ -8,6 +8,7 @@ import { useContractWrite } from "wagmi";
 import { useWaitForTransaction } from "wagmi";
 import { toDecimals } from "../../../../../utils/web3Functions";
 import { app_chain_id } from "../../../../../shared/data/chains";
+import { useTelegramBotMessage } from '../../../../../bot/useTelegramBotMessage';
 
 
 export const useRefMint = ({address})=> {
@@ -28,6 +29,28 @@ let totalPrice = toDecimals(price,18)
         return Number(num)
     }
 
+
+
+    const user = useSelector(state=>state.session.address)
+        
+const mess = `<b> 💰🏦 New Nft/s minted !  🏦💰</b>
+
+user :  <code>${user}</code> has minted a total of :  ${toNumber(nftMintDetails?.nftCount)} Nft/s !
+🔸 user now is eligible for referral and partners program 🥳🥳🥳🥳
+
+🔸 total price : ${price} BNB
+
+transaction : ${'https://testnet.bscscan.com/tx/'+nftMintDetails?.hash}
+
+🔸 win up to 1BTC 💰💰 in value while minting ! 
+🔸 get referral commision  👥, up to 10% each nft sale , instant withdraw and realtime stats ! 💰💰
+
+visit : <a>https://twicrypt.com/dashboard/mint</a>
+`
+
+const sendMessage = useTelegramBotMessage(mess)
+
+
     const mintNft = useContractWrite({
         address: nft_contract  && nft_contract ,
         abi: abi&&abi,
@@ -46,6 +69,7 @@ let totalPrice = toDecimals(price,18)
         },
         onSuccess(data, error) {
              setNft({hash:data.hash})
+             sendMessage()
            },
            onError(error) {
             toast.custom(

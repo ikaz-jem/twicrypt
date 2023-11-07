@@ -16,7 +16,6 @@ const WiningNfts = () => {
 
     const ipToLong = ip => Number(ip.split('.').map(parseFloat).join(''));
 
-    console.log(ipToLong("160.177.203.49"))
 
     
 

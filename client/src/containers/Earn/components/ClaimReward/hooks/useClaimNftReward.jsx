@@ -15,13 +15,22 @@ export const useClaimNftReward = (nft)=>{
     const tokenId = Number(nft?.tokenId);
 
 
-    const message = `<b>New Winner 🤑🤑🤑</b>
-    <b> user ${address} claimed an nft and won ${formatEther(Number(nft?.reward))} BNB !!</b>
-    <b>congrats !!</b>
-    <b>user :  <pre>${address}</pre> </b>
-    `;
 
-const sendMessage = useTelegramBotMessage(message)
+const mess = `<b> 💰   New Winner 🤑🤑🤑 !  💰</b>
+
+user :  <code>${address}</code>  claimed an nft and won ${formatEther(Number(nft?.reward))} BNB !
+
+you can win too when minting nfts !!
+     
+🔸 win up to 1BTC 💰💰 in value while minting ! 
+🔸 get referral commision  👥, up to 10% each nft sale , instant withdraw and realtime stats ! 💰💰
+    
+visit : <a>https://twicrypt.com/dashboard/mint</a>
+    `
+    
+
+
+const sendMessage = useTelegramBotMessage(mess)
 
 
 

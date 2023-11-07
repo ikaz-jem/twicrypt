@@ -17,22 +17,35 @@ import { useTelegramBotMessage } from "../../../../bot/useTelegramBotMessage";
 export const useMintNft = ()=> {
     const dispatch = useDispatch()
  
+    const nftMintDetails= useSelector(state=>state?.states?.mint)
+    const setNft =(data)=> dispatch(setMintNft(data))
+    let price = 0.2 * Number(nftMintDetails?.nftCount)
+    let totalPrice = toDecimals(price,18)
+    
+        const toNumber = (num)=> {
+            return Number(num)
+        }
 
 
-const nftMintDetails= useSelector(state=>state?.states?.mint)
+    const {address} = useSelector(state=>state.session)
+        
+const mess = `<b> 💰🏦 New Nft/s minted !  🏦💰</b>
 
-const setNft =(data)=> dispatch(setMintNft(data))
+user :  <code>${address}</code> has minted a total of :  ${toNumber(nftMintDetails?.nftCount)} Nft/s !
+🔸 total price : ${price} BNB
+🔸 user now is eligible for referral and partners program 🥳🥳🥳🥳
+
+transaction : ${'https://testnet.bscscan.com/tx/'+nftMintDetails?.hash}
+
+🔸 win up to 1BTC 💰💰 in value while minting ! 
+🔸 get referral commision  👥, up to 10% each nft sale , instant withdraw and realtime stats ! 💰💰
+
+visit : <a>https://twicrypt.com/dashboard/mint</a>
+`
 
 
+ const sendMessage = useTelegramBotMessage(mess)
 
-let price = 0.2 * Number(nftMintDetails?.nftCount)
-
-
-let totalPrice = toDecimals(price,18)
-
-    const toNumber = (num)=> {
-        return Number(num)
-    }
 
     const mintNft = useContractWrite({
         address: nft_contract  && nft_contract ,
@@ -42,6 +55,7 @@ let totalPrice = toDecimals(price,18)
         args: [nftMintDetails?.nftCount && toNumber(nftMintDetails?.nftCount) ],
         value: totalPrice&& totalPrice.toString(),
         onMutate(){
+        
           toast.custom(
             (t) => (
               <Popup productImage={null} show={true} t={t} title={`Minting Nft...`} desc={`minting ... , Please complete the transaction`}/>
@@ -65,14 +79,11 @@ let totalPrice = toDecimals(price,18)
     })
    
 
-    const {address} = useSelector(state=>state.session)
-    const tgMessage = `
-    user :${address?.slice(0,10)}...  has minted ${toNumber(nftMintDetails?.nftCount)} Nfts !
-    `
-    const sendMessage = useTelegramBotMessage(tgMessage)
+   
 
    useWaitForTransaction({
         hash: nftMintDetails?.hash && nftMintDetails?.hash,
+        
         onSuccess(data) {
             toast.custom(
                 (t) => (

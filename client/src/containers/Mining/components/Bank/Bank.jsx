@@ -22,7 +22,6 @@ const Bank = ({ nftWarning }) => {
     const nftBalance = useNftBalanceOf()
     const minBalance = 1
 
-    console.log(sessionData)
 
 
     // const banks = useGetBanks()

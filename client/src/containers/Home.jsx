@@ -26,6 +26,8 @@ import logo from '../media/3d.png'
 import AccordionTabs from "../shared/AccordionTabs/AccordionTabs";
 import { useGetAllAds } from "./sponsorUs/hooks/useGetAllAds";
 import HomeNfts from "../components/HomeNfts/HomeNfts";
+import Footer from "../components/Footer"; 
+
 
 const Carousel = lazy(() => import('../components/carousel/Carousel'));
 
@@ -138,6 +140,7 @@ const Home = () => {
       <SectionWhy />
       <SectionToken />
       <Sponsors />
+      <Footer />
 
     </>
   )

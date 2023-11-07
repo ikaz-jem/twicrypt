@@ -7,7 +7,6 @@ import bsc from '../../media/icons/bsc.svg'
 
 import { lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useMiningData } from "./hooks/useMiningData";
 import { formatEther } from "viem";
 
 import bg from '../../media/icons/bg.png'

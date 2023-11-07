@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux'
 import { toUnix } from '../../../../../utils/unixToDate'
 import { app_chain_id } from '../../../../../shared/data/chains'
 import { formatEther, parseEther } from 'viem'
+import { useTelegramBotMedia } from '../../../../../bot/useTelegramBotMedia'
 
 
 export const useCreateAuction = (props) => {
@@ -20,6 +21,7 @@ export const useCreateAuction = (props) => {
 const nftData = useSelector(state=>state?.marketPlace?.createListing)
 
 
+const {address}= useSelector(state=>state.session)
 let tokenId = nftData?.selectedNft?.identifier
 let image = nftData?.selectedNft?.image_url
 let name = nftData?.selectedNft?.name
@@ -39,6 +41,27 @@ endTime,
 buyNow,
 ]
 
+const msgUrl = `http://twicrypt.com/dashboard/marketplace/my-nfts/nft/?address=${nft_contract}&id=${tokenId}&cid=${nftData?.selectedNft?.metadata_url}&chain=${app_chain_id}`       
+const capp = `<b> 💰🏦 new auction online  🏦💰</b>
+
+user :  <code>${address}</code> created a new auction !
+
+🔸 starting price : ${nftData?.floorPrice} BNB
+🔸 buy Now price : ${nftData?.buyNow} BNB
+🔸 auction start : ${nftData?.startTime} 
+🔸 auction end : ${nftData?.endTime} 
+
+☑️ <a href='${msgUrl}' >view auction</a>
+
+`
+
+const sendMessage = useTelegramBotMedia({
+  message: capp,
+  photo:image,
+})
+
+
+
     const toNumber = (num)=> {
         return Number(num)
     }
@@ -50,6 +73,7 @@ buyNow,
         chainId: app_chain_id&&app_chain_id,
         args: args && args,
         value: toDecimals(0.025,18).toString(),
+     
         onSuccess(data, error) {
              toast.custom(
              (t) => (
@@ -68,6 +92,7 @@ buyNow,
         chainId: app_chain_id,
         args: [marketplace_contract && marketplace_contract, tokenId && toNumber(tokenId)],
         onMutate({ args, overrides }) {
+        
            return toast.custom(
             (t) => (
               <Popup productImage={image && image || null} show={true} t={t} title={`approving ${name&&name}`}    desc={`please approve ${name&&name} token transfer to marketplace`}/>
@@ -105,6 +130,8 @@ buyNow,
    useWaitForTransaction({
         hash: listingHash && listingHash,
         onSuccess(data) {
+          sendMessage()
+
             toast.custom(
                 (t) => (
                   <Popup productImage={image && image || null} show={true} t={t} button={{title:'view your listings',link:'/dashboard/marketplace/my-listings'}} title={`${name&&name} Listed successfully !`} desc={`${name&&name} Has been listed for sale : ${formatEther(Number(price))} BNB`}/>

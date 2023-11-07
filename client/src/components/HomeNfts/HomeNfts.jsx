@@ -12,8 +12,8 @@ const HomeNfts = () => {
 
     const listings = useSelector(state=>state.marketPlace.allListings)
     const marketData =useGetMarketListings()
-console.log(listings)
 
+    
     return (
         <>
 
