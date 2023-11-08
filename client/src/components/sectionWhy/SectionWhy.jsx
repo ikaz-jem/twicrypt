@@ -11,7 +11,7 @@ const SectionWhy = () => {
 
 
   return (
-    <div className="index__body bg-light ">
+    <div className="index__body  py-10 pb-40">
 
       <div className="space space--small ">
         <div className="wrapper container container--xxlarge container--center ">

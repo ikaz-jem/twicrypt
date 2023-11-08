@@ -42,11 +42,11 @@ const sendMessage = useTelegramBotMessage(mess)
             { position: "bottom-center", duration: 2000 }
           ); 
           },
-          onSuccess(error) {
+          onSuccess(data) {
             sendMessage()
             toast.custom(
             (t) => (
-              <Popup productImage={ null} show={true} t={t} title={`error ⚠️`} desc={`${ error.details ||"something went wrong ! you don not have active workers or not started session yet "}`}/>
+              <Popup productImage={ null} show={true} t={t} title={`battery charged !! `} desc={`${ "your boost has been fully charged "}`}/>
             ),
             { position: "bottom-center", duration: 2000 }
           ); 

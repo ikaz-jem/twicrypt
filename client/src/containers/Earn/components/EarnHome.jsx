@@ -92,7 +92,7 @@ const EarnHome = () => {
 
         <div className=" w-full relative p-10 bg rounded-xl   color-ball ">
             <h3 className="m-0 py-2 text-[#995533]">Start Earning</h3>
-            <h1 className="m-0 mb-2">trimester mini-roadmap</h1>
+            <h1 className="m-0 mb-2 font-bold">Trimester Mini-Roadmap</h1>
           
 
 

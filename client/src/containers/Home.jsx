@@ -27,7 +27,9 @@ import AccordionTabs from "../shared/AccordionTabs/AccordionTabs";
 import { useGetAllAds } from "./sponsorUs/hooks/useGetAllAds";
 import HomeNfts from "../components/HomeNfts/HomeNfts";
 import Footer from "../components/Footer"; 
-
+import TokenMetrics from "../components/TokenMetrics/TokenMetrics";
+import NftMetrics from "../components/NftMetrics/NftMetrics";
+import Solutions from "./Solutions/Solutions";
 
 const Carousel = lazy(() => import('../components/carousel/Carousel'));
 
@@ -137,8 +139,15 @@ const Home = () => {
 
       <Cta />
       <EarnHome />
+      <TokenMetrics />
+      <NftMetrics />
+      <div className="container container--xxlarge container--center">
+
+      <Solutions />
+      </div>
+
       <SectionWhy />
-      <SectionToken />
+      {/* <SectionToken /> */}
       <Sponsors />
       <Footer />
 
