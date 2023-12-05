@@ -13,6 +13,7 @@ import {store} from './app/store/store'
 // chainImages={
 //   { 97: process.env.REACT_APP_BSC_LOGO }
 // } 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

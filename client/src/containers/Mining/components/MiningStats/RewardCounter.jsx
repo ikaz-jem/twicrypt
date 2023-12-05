@@ -72,24 +72,24 @@ const RewardCounter = () => {
     const renderStats = () => {
         return <>
             <div className="flex gap-2 items-center">
-                <p className="font-bold text-md text-green-500">mining session available </p>
+                <p className="font-bold text-xs text-green-500">mining session available </p>
             </div>
             <div className="flex gap-2 items-center">
 
-                <p className="font-bold text-md text-white">mining :</p>
-                {sessionStartIn <= 0 || endTime > currentTime ? <p className="font-bold text-lg text-pink-600">{formatEther(reward)} tw</p> : <p className="text-orange-500">session Ended come back when new session is available!</p>}
+                <p className="font-bold text-xs text-white">mining :</p>
+                {sessionStartIn <= 0 || endTime > currentTime ? <p className="font-bold text-md text-pink-500">{formatEther(reward)} tw</p> : <p className="text-orange-500">session Ended come back when new session is available!</p>}
             </div>
        
 
 
             <div className="flex gap-2 items-center">
-                <p className="font-bold text-md text-white">estimated earnings  :</p>
-                <p className="font-bold text-lg text-pink-600">{miningData?.userData? formatEther(totalSessionRewards)+ ' Tw Tokens / session ' : 'loading ...'}</p>
+                <p className="font-bold text-xs text-white truncate">estimated earnings  :</p>
+                <p className="font-bold text-md text-pink-500 truncate">{miningData?.userData? formatEther(totalSessionRewards)+ ' Tw Tokens / session ' : 'loading ...'}</p>
 
             </div>
             <div className="flex gap-2 items-center">
-                <p className="font-bold text-md text-white">mining speed/power :</p>
-                <p className="font-bold text-lg text-pink-600" >{miningData?.userData ? Number(formatEther(miningSpeed)).toFixed(4) + ' tw/s' : 'loading ...' }</p>
+                <p className="font-bold text-xs text-white truncate">mining speed/power :</p>
+                <p className="font-bold text-md text-pink-500" >{miningData?.userData ? Number(formatEther(miningSpeed)).toFixed(4) + ' tw/s' : 'loading ...' }</p>
             </div>
         </>
 
@@ -102,27 +102,27 @@ const RewardCounter = () => {
             <div className="flex gap-2 items-center">
 
 
-                <p className="font-bold text-md text-white">bank Level :</p>
-            <p className="font-bold text-lg text-pink-600">{miningData?.bankData?.level}</p>
+                <p className="font-bold text-xs text-white">bank Level :</p>
+            <p className="font-bold text-md text-pink-500">{miningData?.bankData?.level}</p>
             </div>
             <div className="flex gap-2 items-center">
-                <p className="font-bold text-md text-white">total earnings :</p>
-                <p className="font-bold text-lg text-pink-600">{totalEarnings ? totalEarnings : 'loading ...'} </p>
+                <p className="font-bold text-xs text-white">total earnings :</p>
+                <p className="font-bold text-md text-pink-500">{totalEarnings ? totalEarnings : 'loading ...'} </p>
             </div>
 
 
             <div className="flex gap-2 items-center">
-                <p className="font-bold text-md text-white">total workers  :</p>
-                <p className="font-bold text-lg text-pink-600">{miningData ? Number(miningData?.nftBalance)  : 'loading ...'}</p>
+                <p className="font-bold text-xs text-white">total workers  :</p>
+                <p className="font-bold text-md text-pink-500">{miningData ? Number(miningData?.nftBalance)  : 'loading ...'}</p>
 
             </div>
             <div className="flex gap-2 items-center">
-                <p className="font-bold text-md text-white">earnings per 24h :</p>
-                <p className="font-bold text-lg text-pink-600" >{miningData?.userData ? ((Number(formatEther(miningSpeed))*3600)*24).toFixed(2) + ' tw' : 'loading ...' }</p>
+                <p className="font-bold text-xs text-white">earnings per 24h :</p>
+                <p className="font-bold text-md text-pink-500" >{miningData?.userData ? ((Number(formatEther(miningSpeed))*3600)*24).toFixed(2) + ' tw' : 'loading ...' }</p>
             </div>
             <div className="flex gap-2 items-center">
-                <p className="font-bold text-md text-white">total sessions :</p>
-                <p className="font-bold text-lg text-pink-600" >{miningData?.userData ?Number(totalSessions) : 'loading ...' }</p>
+                <p className="font-bold text-xs text-white">total sessions :</p>
+                <p className="font-bold text-md text-pink-500" >{miningData?.userData ?Number(totalSessions) : 'loading ...' }</p>
             </div>
         </>
 
@@ -134,9 +134,9 @@ const RewardCounter = () => {
 
 <div className="flex w-full h-full flex-col">
             {renderSessionInfos()}
-            <div className="flex py-2">
-                <p className="text-xs text-pink-200">{address}</p>
-            </div>
+            {/* <div className="flex py-2">
+                <p className="text-xs text-pink-200 truncate">{address}</p>
+            </div> */}
 </div>
 <div className="flex w-full h-full flex-col">
          
@@ -146,12 +146,12 @@ const RewardCounter = () => {
      { currentTime <= NextSession && endTime  <= currentTime   ?
             <div className="flex flex-col gap-2">
             <div className="flex gap-2 items-center">
-                <p className="font-bold text-md text-white">next session : </p>
-                <p className="font-bold text-lg text-pink-600" >{miningData?.userData ? unixToDate(NextSession) : 'loading'} </p>
+                <p className="font-bold text-xs text-white">next session : </p>
+                <p className="font-bold text-md text-pink-500" >{miningData?.userData ? unixToDate(NextSession) : 'loading'} </p>
             </div>
             <div className="flex gap-2 items-center">
-                <p className="font-bold text-md text-white">next session starts in : </p>
-                <p className="font-bold text-lg text-pink-600" > {currentTime <= NextSession && endTime <= currentTime ? unixCountDown(countdown) : 'mining session available'}</p>
+                <p className="font-bold text-xs text-white">next session starts in : </p>
+                <p className="font-bold text-md text-pink-500" > {currentTime <= NextSession && endTime <= currentTime ? unixCountDown(countdown) : 'mining session available'}</p>
             </div>
 
 

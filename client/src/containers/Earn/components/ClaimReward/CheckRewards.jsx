@@ -36,13 +36,23 @@ return (
                         isWinner ? <div className="gap-2 w-full h-full flex justify-center flex-col items-center">
                             <h2 className="p-0 m-0 text-yellow-500 font-bold"> you have a winning Nft 🥳🥳!!</h2>
                             <div className="flex w-full items-center justify-start ">
+                           <div className="flex items-center justify-center flex-col md:flex-row  w-full">
+
                             <img src={winningNft?.image} alt="" className="w-40 h-40 rounded-2xl" />
-                            <ul className=" w-full text-left font-bold text-white">
+                            <ul className=" w-full  font-bold text-white md:text-left">
                                 <li>id : {Number(winningNft?.tokenId)}</li>
                                 <li>reward : {formatEther(Number(winningNft?.reward))} BNB</li>
 
                             </ul>
+                           </div>
                             </div>
+                            { isWinner &&   
+                            
+                            <div className="flex items-center md:justify-start justify-center w-full">
+
+                            <button onClick={handleClick} className="bg-blue-500 px-4 py-2 hover:bg-pink-500 transition-all rounded-xl text-sm">Claim reward from nft</button>
+                            </div>
+                            }               
                         </div>
 
 
@@ -53,8 +63,6 @@ return (
                             
                             </div>
                     }
-                    { isWinner &&   <button onClick={handleClick} className="bg-orange-500 px-4 py-2 hover:bg-blue-500 transition-all rounded-xl">Claim reward from nft</button>
-                    }               
 
  </div>
             </div>

@@ -54,7 +54,7 @@ const MiningHome = () => {
     const platformData = useGetAllMiningData()
 
     const extractData = () => {
-        if (platformData?.length > 0 && platformData[0]?.result && id) {
+        if (platformData?.length >= 1 && platformData[0]?.result && id) {
             return platformData[0]?.result
         } else {
             return false
@@ -102,21 +102,33 @@ const MiningHome = () => {
         return (
 
             <div className="w-full border-b px-5 border-neutral-700 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl text-xs text-white font-bold shadow-xl" >
-                <div className="flex justify-between items-center flex-wrap">
+                <div className="flex flex-col justify-start md:items-center  md:justify-between md:flex-row items-start flex-wrap ">
                     <div className="flex ">
-                        <ul className="flex justify-start items-center gap-4 py-1 wrap my-2  w-full flex-wrap ">
-                            <img src={bank} alt="" className="w-9 h-9" />
-                            <li className="text-white font-bold">  Bank capacity : {bankData && formatEther(bankData?.capacity) + ' tw'} </li>
-                            <img src={coin} alt="" className="w-9 h-9 " /> <li className="text-white font-bold">Total Earnings : {bankData && Number(formatEther(bankData?.funds)).toFixed(2) + ' tw'}</li>
-                            <img src={time} alt="" className="w-9 h-9" /> <li className="text-white font-bold">next Session : {currentTime >= NextSession ? <span className="p-0 m-0 text-green-500 font-bold">available now</span> : unixCountDown(NextSession)}</li>
-                            <img src={clock} alt="" className="w-9 h-9" /><li className="text-white font-bold">mining speed : {userData && formatEther(userData?.miningPower) + ' tw/s'}</li>
+                        <ul className="flex justify-start items-center gap-4 flex-col md:flex-row py-1 wrap my-2  w-full flex-wrap ">
+                            <div className="flex items-center justify-start gap-1">
+                                <img src={bank} alt="" className="w-6 h-6" />
+                                <li className="text-white font-bold">  Bank capacity : {bankData && formatEther(bankData?.capacity) + ' tw'} </li>
+                            </div>
+
+                            <div className="flex items-center justify-start gap-1">
+                                <img src={coin} alt="" className="w-6 h-6 " /> <li className="text-white font-bold text-xs">Total Earnings : {bankData && Number(formatEther(bankData?.funds)).toFixed(2) + ' tw'}</li>
+                            </div>
+
+                            <div className="flex items-center justify-start gap-1">
+                                <img src={time} alt="" className="w-6 h-6" /> <li className="text-white font-bold">next Session : {currentTime >= NextSession ? <span className="p-0 m-0 text-green-500 font-bold">available now</span> : unixCountDown(NextSession)}</li>
+                            </div>
+
+                            <div className="flex items-center justify-start gap-1">
+                                <img src={clock} alt="" className="w-6 h-6" /><li className="text-white font-bold">mining speed : {userData && formatEther(userData?.miningPower) + ' tw/s'}</li>
+                            </div>
+
                         </ul>
                     </div>
 
-                    <div className="flex items-center justify-center gap-5">
-                        {address && <p className="text-xs text-white opacity-80" > {address.slice(0, 5) + '...' + address.slice(35, 40)}</p>}
+                    <div className="flex items-center justify-center gap-5 px-2">
+                        {/* {address && <p className="text-xs text-white opacity-80" > {address.slice(0, 5) + '...' + address.slice(35, 40)}</p>} */}
                         {address && chain?.id != app_chain_id ?
-                            <button onClick={changeNetwork} className="flex px-1 py-1 bg-blue-500 text-xs text-white items-center rounded-lg pag-2"> ⚠️ switch Network <img src={bsc} alt="bsc icon" className="pl-2 w-8" /></button> : null}
+                            <button onClick={changeNetwork} className="flex px-1 py-1 bg-blue-500 text-xs text-white items-center rounded-lg pag-2"> ⚠️ switch Network <img src={bsc} alt="bsc icon" className="pl-2 w-6" /></button> : null}
                     </div>
                 </div>
             </div>
@@ -128,16 +140,16 @@ const MiningHome = () => {
         <div className=" w-auto container--xxxlarge container--center  bg-gradient-to-r from-indigo-900 via-purple-900 to-[#3b002173] rounded-3xl opacity-90  overflow-hidden mb-40 px-5 pb-5 relative">
 
 
-            <div className="flex rounded-xl my-5">
+            <div className="flex rounded-xl my-5 ">
                 <MenuNavbar />
             </div>
-            
+
             <div className="grid grid-cols-2 gap-2 h-auto w-auto container--xxxlarge p-2 container--center  place-items-start place-content-start relative ">
 
                 <div className="w-full lg:w-[45%] h-full  border border-neutral-700 bg-[#071952] rounded-xl overflow-hidden shadow-xl shadow-pink-900 ">
                     <div className=" h-auto w-full p-1">
                         <MiningMenu />
-                        
+
                     </div>
                     <div className="w-full flex justify-center items-center  relative gap-10  ">
                     </div>
@@ -147,7 +159,7 @@ const MiningHome = () => {
                         {address ?
                             <div className="z-10 w-full g-full p-2">
 
-                                {!components[page] && !data ?   <h5>somethings went wrong ... please refresh</h5> : components[page] }
+                                {!components[page] && !data ? <h5>somethings went wrong ... please refresh</h5> : components[page]}
                             </div> : <ConnectWalletError />
                         }
                     </div>
@@ -163,7 +175,7 @@ const MiningHome = () => {
 
             </div>
 
-            
+
         </div>
     )
 

@@ -14,7 +14,6 @@ const WiningNfts = () => {
     const remaining = allWinningNfts?.length
 
 
-    const ipToLong = ip => Number(ip.split('.').map(parseFloat).join(''));
 
 
     
@@ -30,20 +29,20 @@ const WiningNfts = () => {
 
     const RenderStats = () => {
         const stats = [
-            { id: 1, name: 'in rewards to redeem from Nft', value: `${formatEther(Number(totalRewards)) + " BNB"}` },
+            { id: 1, name: 'remaining rewards', value: `${formatEther(Number(totalRewards)) + " BNB"}` },
             { id: 2, name: 'claimed already', value: `${formatEther(Number(claimedAlredy)) + " BNB"}` },
             { id: 3, name: 'total winning Nfts ', value: totalWinningNfts },
-            { id: 4, name: 'remaining opportunities', value: remaining },
+            { id: 4, name: 'remaining chances', value: remaining },
         ]
 
         return (
-            <div className="bg-neutral-300 py-5 sm:py-2 rounded-md  w-full">
-                <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <dl className="grid grid-cols-1 gap-x-5 gap-y-5 text-center lg:grid-cols-3">
+            <div className="bg-neutral-800 py-5 sm:py-2 rounded-md w-full my-2 mb-5">
+                <div className="  px-4 lg:px-4">
+                    <dl className="flex items-start justify-evenly flex-wrap">
                         {stats?.map((stat) => (
                             <div key={stat?.id} className="mx-auto flex max-w-xs flex-col gap-y-0">
-                                <dt className="text-base  text-gray-800">{stat?.name}</dt>
-                                <dd className="order-first text-lg font-semibold tracking-tight text-gray-800 sm:text-lg">
+                                <dt className="text-xs  text-gray-300 font-bold">{stat?.name}</dt>
+                                <dd className="order-first text-md font-semibold tracking-tight text-pink-600 ">
                                     {stat?.value}
                                 </dd>
                             </div>

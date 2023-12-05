@@ -41,17 +41,17 @@ if (address?.length > 0 && address?.toLowerCase()!=user?.address?.toLowerCase() 
 
 const minted = Number(mintInfos?.supply)
 
-let percentage = (20000 / 4000000) * minted
+let percentage =  minted * 0.01
 
     return (
         <div className="w-auto m-0  flex flex-col  grow gap-0 border border-purple-900 p-5 rounded-lg ">
             <h3 className="text-left p-0 m-0 py-2 font-bold">Mint Nft</h3>
-        <ProgressBar percentage={percentage} min={minted + ' nft'} max={20000 + ' Nft'} />
+        <ProgressBar percentage={percentage} min={"minted nfts : " + minted + ' unit'} max={10000 + ' Nft'} />
         <div className=" flex p-0 gap-1 m-0">
             <div className="m-0 p-0 flex flex-col w-full justify-center gap-10">
                 <input
                     type='number'
-                    className="w-full py-2 h-full placeholder-white
+                    className="w-full py-2 h-full placeholder-white z-50
                       bg-neutral-900 px-4 rounded-xl outline-none text-sm text-white focus:bg-neutral-700   transition-all duration-700 '"
                     placeholder='Nft Amount'
                     name='link'
@@ -103,13 +103,11 @@ const reffs = Number(userInfos?.reffCount) || 0
             <li className="text-purple-300" >your Contributions : </li>
             <li className="text-purple-300" >NFTs : </li>
             <li className="text-purple-300" >Refferals :</li>
-            <li className="text-purple-300" >item</li>
         </ul>
         <ul className="flex items-start flex-col  text-neutral-500 text-xs font-bold">
             <li className="text-white" >{isNaN(Number(userContributions).toFixed(2))? 0 : Number(userContributions).toFixed(2) + " BNB" } </li>
             <li className="text-white" > {nftBalance}</li>
             <li className="text-white" >{reffs}</li>
-            <li className="text-white" >item</li>
         </ul>
     </div>
     <div className="flex justify-between  items-start grow px-2 border border-purple-900  rounded-lg py-5">
@@ -120,7 +118,7 @@ const reffs = Number(userInfos?.reffCount) || 0
             <li className="text-purple-300">Max per wallet</li>
         </ul>
         <ul className="flex items-start flex-col  text-white text-xs font-bold">
-            <li className="text-white">20k units</li>
+            <li className="text-white">10k units</li>
             <li className="text-white" > {price} BNB</li>
             <li className="text-white" >{totalContributions} bnb</li>
             <li className="text-white" >{max} nft</li>

@@ -120,7 +120,7 @@ const AppMenu =()=> {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute bg-gradient-to-r from-pink-500 to-purple-500  rounded-2xl pt-1 left-1/2 z-10 mt-3 w-screen max-w-xs -translate-x-1/2 transform sm:px-0 lg:max-w-4xl ">
+              <Popover.Panel className="absolute bg-gradient-to-r from-pink-500 to-purple-500  rounded-2xl pt-1 left-1/5 z-10 mt-2 w-screen max-w-xs -translate-x-1/2 transform sm:px-0 lg:max-w-4xl ">
 
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-neutral-700 flex ">
                   <div className="flex gap-8  bg-neutral-900 p-7 flex-wrap justify-between items-start w-auto relative  ">

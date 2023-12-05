@@ -28,19 +28,17 @@ return (
                 <RewardCounter />
 
 
-                <div className="flex w-full ">
-                    <div className="w-1/2 h-full text-xs ">
+                <div className="flex w-full pb-5 ">
                         <MiningGifts bankData={bankData} />
-                    </div>
-                    <div className='w-1/2' >
+                    {/* <div className='w-1/2' >
                         <img src={animation} alt="" className="w-[83%]" />
-                    </div>
+                    </div> */}
                 </div>
 
 
                 <div className=" w-full h-full rounded  ">
                     <div className=" flex gap-5 ">
-                        <div className="border rounded-lg border-neutral-900 p-2 w-1/2 bg-[#00000070] shadow-lg text-xs flex justify-between items-center">
+                        <div className="border rounded-lg border-neutral-900 p-2 w-full bg-[#00000070] shadow-lg text-xs flex justify-between items-center">
                             {Number(userData?.lastMiningSession) > 0 ?
                                 <>
                                     <div className="flex flex-col items-start" >

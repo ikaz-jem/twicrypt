@@ -4,7 +4,7 @@ import twFocusClass from '../../utils/twFocusClass'
 
 
 const NavItem = ({
-  className = "px-5 py-2.5 text-xs sm:text-sm sm:px-6 sm:py-3 capitalize shadow-lg shadow-[#00000059]",
+  className = "px-5 py-2.5 text-xs sm:text-sm sm:px-6 sm:py-3 capitalize shadow-lg shadow-[#00000059] w-40",
   radius = "rounded-full",
   children,
   onClick = () => {},

@@ -10,6 +10,8 @@ import { useCheckIsListed } from "../hooks/web3Hooks/Listing/useCheckIsListed";
 import AuctionInfoTable from "./Auction/AuctionInfoTable";
 import AuctionBids from "./Auction/AuctionBids";
 import { useSelector } from 'react-redux';
+
+
 const NftInfoTable = lazy(() => import('./components/NftInfoTable'))
 const NftDetailsImage = lazy(() => import('./components/NftDetailsImage'))
 const NftTraits = lazy(() => import('./components/NFtTraits'))
@@ -41,7 +43,6 @@ const NftDetailsPage = () => {
         const contractAddress = searchParams.get('address')
         const tokenId = searchParams?.get('id')
         const metadata_Url = searchParams?.get('cid')
-        console.log(metadata_Url)
         const chainId = Number(searchParams?.get('chain'))
         contractAddress && tokenId && chainId && setMetadata((prev) => ({
             ...prev,
@@ -64,9 +65,13 @@ const NftDetailsPage = () => {
         return () => controller.abort()
     }, [])
 
+
     useEffect(() => {
         metadata.metadata_Url && getNFtData()
     }, [metadata.metadata_Url])
+
+
+
 
     //custom hook to compare nft owner and page visitor
     const { nftOwner, pageVisitor, isOwner, loading, error, isVisitorConnected } = useNftOwner()

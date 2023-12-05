@@ -184,8 +184,8 @@ const  NAVIGATION_DEMO_2 = [
         name: "lottery",
         tooltip: "Inbox",
         icon:FcIpad,
-        component:'',
-        page:'home',
+        component:'/dashboard/lottery',
+        page:'./lottery',
         comingSoon:true,
        
       },

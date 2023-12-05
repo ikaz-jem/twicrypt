@@ -133,7 +133,6 @@ const Home = () => {
 
 
           <HomeNfts />
-        <ButtonPrimary className="w-auto">View More</ButtonPrimary>
       </div>
 
 

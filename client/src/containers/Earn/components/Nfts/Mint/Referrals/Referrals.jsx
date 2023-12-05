@@ -44,7 +44,7 @@ return (
     <div className="w-full h-full py-5">
         <p className="text-white font-bold p-0 m-0 text-left text-sm "> your affiliate Link :</p>
     <div className="border border-neutral-400 p-2 flex items-center justify-between rounded-xl">
-      <p className="text-xs ">{affiliateLink}</p>
+      <p className="text-xs truncate">{affiliateLink}</p>
       <button onClick={copyToClipboard}><BsClipboardCheck className="text-xl hover:text-pink-500  transition-all"/></button>
       
     </div>

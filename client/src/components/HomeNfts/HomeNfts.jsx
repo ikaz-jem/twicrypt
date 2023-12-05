@@ -28,7 +28,6 @@ const HomeNfts = () => {
                 <div>
                     <div className="flex justify-between overflow-visible ">
                         <h3 className="text-left my-2 p-0 border-b border-neutral-800 w-auto pb-2 text-pink-600 font-bold text-xl ">Auctions <span className="m-0 pl-5 text-neutral-400 text-base ">twicrypt auctions</span>  </h3>
-                        <Link to='/dashboard/mint' className="w-auto bg-white text-black flex items-center px-4 rounded-full hover:bg-pink-500 hover:text-white">Get your chance  !</Link>
                     </div>
                     {
                         <Suspense fallback={

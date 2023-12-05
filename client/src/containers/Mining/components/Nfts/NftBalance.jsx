@@ -15,7 +15,7 @@ const NftBalance = () => {
     const Nfts = useGetMintedNfts({
         chain: 'bsctestnet'
     })
-    console.log(Nfts)
+
     const hasTwicryptNft = Nfts?.data?.map((nft)=>nft?.contract?.toLocaleLowerCase()).includes(nft_contract?.toLocaleLowerCase())
     
   
@@ -123,7 +123,7 @@ return (
               
                 {Nfts?.data ? Nfts && Nfts?.data?.map((nft, i) => {
                     if ((nft.contract).toLocaleLowerCase() == (nft_contract).toLocaleLowerCase()) {
-                        console.log(nft)
+
                         return <Card onClick={(e) => handleClick(nft)} key={i} data={nft} />
                         
                     } else {
@@ -136,9 +136,7 @@ return (
                     </div>
                 }
             </div> 
-            
-       
-
+        
 
                 </>
 )

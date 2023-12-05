@@ -179,7 +179,7 @@ const web3Solutions = [
 const Solutions = () => {
     const Card = ({ sol }) => {
         return (
-            <div className={`w-40 h-40 border rounded-lg border-neutral-900 p-2 ${!sol?.commingsoon ? 'cursor-pointer ' : 'grayscale'}  hover:bg-neutral-900 hover:border-neutral-800 relative`}>
+            <div className={`w-40 h-40 border rounded-lg border-neutral-900 p-2 grow lg:grow-0 ${!sol?.commingsoon ? 'cursor-pointer ' : 'grayscale'}  hover:bg-neutral-900 hover:border-neutral-800 relative`}>
                <Link to={sol?.link} >
                 <div className='flex items-center justify-center p-auto py-2'>
                     <sol.icon className='text-5xl text-yellow-500' />
@@ -201,7 +201,7 @@ const Solutions = () => {
 
     return (
         <Fragment>
-            <div className='container container--xxxlarge container--center mb-20 border rounded-xl border-neutral-900 p-5 shadow'>
+            <div className='container container--xxxlarge container--center mb-20 border rounded-xl border-neutral-900 p-5 shadow '>
                 <div className='opacity-40 text-center flex justify-center'>
 <div className=''>
 
@@ -210,7 +210,7 @@ const Solutions = () => {
                 </div>
         
                 <h4 className='text-left border-b rounded-xl pl-5 py-2 my-5 border-yellow-950 flex  items-center gap-5 text-yellow-500 font-bold'>  Twicrypt Earn <FcDonate className='text-2xl'/></h4>
-                <div className='flex items-center justify-start flex-wrap gap-4'>
+                <div className='flex items-center justify-start flex-wrap gap-4 px-auto mx-auto'>
                     {
                         earn?.map((sol, i) => <Card sol={sol} />)
                     }

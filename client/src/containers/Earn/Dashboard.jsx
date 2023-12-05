@@ -3,6 +3,8 @@ import './style.css';
 import { useEffect } from "react";
 
 import SectionWhy from "../../components/sectionWhy/SectionWhy";
+import MetaTags from 'react-meta-tags';
+
 
 import Menu from "../../shared/Menu/Menu";
 import MenuTopLinks from "./components/MenuTopLink/MenuTopLinks";
@@ -59,6 +61,18 @@ const Dashboard = () => {
     ]
     return (
         <>
+
+
+
+<MetaTags>
+            <title>user ffff Dashboard</title>
+            <meta name="description" content="user vbvv dashboard" />
+            <meta property="og:title" content="title" />
+            <meta property="og:image" content="path/to/image.jpg" />
+          </MetaTags>
+
+
+
             <div className="lg:flex bg-gradient-to-b from-[#111111] to-black bg-opacity-70 relative h-auto w-full   ">
 
                 <div className="h-full lg:z-10 lg:sticky xl:sticky xl:top-10 lg-top-10 md:top-10 overflow-x-none fixed top-20  z-10  ">

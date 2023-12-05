@@ -57,12 +57,28 @@ const Carousel = () => {
         setShow(true)
 
     }, [])
-    const PlaceHolder = [1, 2, 3, 4]
+
+const random = Math.floor(Math.random()*5000)
+
+    const PlaceHolder = [
+        `https://api.twicrypt.com/eth/img/${random}.png`,
+
+        `https://api.twicrypt.com/eth/img/${random+7}.png`,
+ 
+        `https://api.twicrypt.com/eth/img/${random+9}.png`,
+        `https://api.twicrypt.com/eth/img/${random+3}.png`,
+        `https://api.twicrypt.com/eth/img/${random+6}.png`,
+        `https://api.twicrypt.com/eth/img/${random+69}.png`,
+  
+ 
+    ]
 
     
-  
-const storeData = useSelector(state=>state?.sponsorships)
-
+    
+    
+    const storeData = useSelector(state=>state?.sponsorships)
+    
+    const foundSponsor = storeData?.sponsorships?.carousel?.length > 0 ? true : false
 
 
     const RenderCarouselItems = () => {
@@ -70,9 +86,11 @@ const storeData = useSelector(state=>state?.sponsorships)
 
         return (
             <>
-                {storeData?.sponsorships?.carousel && storeData?.sponsorships?.carousel?.length > 0 ?
+                {storeData?.sponsorships?.carousel && foundSponsor  ?
                     storeData?.sponsorships?.carousel?.map(({ brand: name, image , website , icon}, i) => {
-                        return (<li className="frames__item glide__slide " key={i}>
+                        return (
+                 
+                        <li className="frames__item glide__slide " key={i}>
                             <div dataref="slidereveal[el] ">
                                 <div className="frame " dataref="hero[el]">
 
@@ -96,7 +114,14 @@ const storeData = useSelector(state=>state?.sponsorships)
 
                                 </div>
                             </div>
-                        </li>)
+                        </li>
+                        
+                      
+
+                    
+                        )
+
+
                     }) :
                     PlaceHolder?.map((item, i) => {
                         return (<li className="frames__item glide__slide " key={i}>
@@ -105,12 +130,117 @@ const storeData = useSelector(state=>state?.sponsorships)
                                 <div className="frame " dataref="hero[el]">
 
                                     <div className="frame-front ">
+                                    <img src={`https://twicrypt.com/media/sponsor.png`} alt="" className=" absolute top-0  " />
 
+                                    <img src={item} alt="" className="carousel-img" />
                                         <div className="flex items-center justify-center">
 
                                             <Link target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%]">
 
-                                                <p className='text-gray-500'>brand name / img</p>
+                                                <p className='text-gray-500'>brand name & link</p>
+
+                                            </Link>
+                                        </div>
+                                    </div>
+
+                                    {/* right side */}
+                                    <div> </div>
+                                    {/* left side */}
+                                    <div> </div>
+
+                                </div>
+                            </div>
+                        </li>)
+                    })}
+            </>
+        )
+    }
+
+    const RenderFewSponsors = () => {
+        useMount()
+
+        return (
+            <>
+
+
+<li className="frames__item glide__slide ">
+                            <div dataref="slidereveal[el] ">
+                                <div className="frame " dataref="hero[el]">
+
+                                    <div className="frame-front ">
+                                    <img src={`https://twicrypt.com/media/sponsor.png`} alt="" className=" absolute top-0  " />
+
+                                        <img src={PlaceHolder[2]} alt="" className="carousel-img" />
+
+                                        <div className="flex items-center justify-center  ">
+
+                                            <Link to={'https://twicrypt.com'} target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%]  rounded py-4 hover hover:bg-neutral-800 text-white">
+                                                <img src={ logo} alt="icon" className="w-5 h-5" />
+                                                <p className='text-neutral-400'>{ 'Twicrypt' }</p>
+
+                                            </Link>
+                                        </div>
+                                    </div>
+
+                                    {/* right side */}
+                                    <div> </div>
+                                    {/* left side */}
+                                    <div> </div>
+
+                                </div>
+                            </div>
+                        </li>
+
+                {storeData?.sponsorships?.carousel && foundSponsor  ?
+                    storeData?.sponsorships?.carousel?.map(({ brand: name, image , website , icon}, i) => {
+                        return (
+                        <>
+
+                        <li className="frames__item glide__slide " key={i}>
+                            <div dataref="slidereveal[el] ">
+                                <div className="frame " dataref="hero[el]">
+
+                                    <div className="frame-front ">
+                                        <img src={image || logo3d} alt="" className="carousel-img" />
+
+                                        <div className="flex items-center justify-center  ">
+
+                                            <Link to={website} target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%]  rounded py-4 hover hover:bg-neutral-800 text-white">
+                                                <img src={icon || logo} alt="icon" className="w-5 h-5" />
+                                                <p className='text-neutral-400'>{name|| 'Twicrypt' }</p>
+
+                                            </Link>
+                                        </div>
+                                    </div>
+
+                                    {/* right side */}
+                                    <div> </div>
+                                    {/* left side */}
+                                    <div> </div>
+
+                                </div>
+                            </div>
+                        </li>
+
+
+                    </>
+                        )
+                    }) :
+                    PlaceHolder?.map((item, i) => {
+                        return (<li className="frames__item glide__slide " key={i}>
+                            <div dataref="slidereveal[el]">
+
+                                <div className="frame " dataref="hero[el]">
+
+                                    <div className="frame-front ">
+                                    <img src={`https://twicrypt.com/media/sponsor.png`} alt="" className=" absolute top-0  " />
+
+                                    <img src={item} alt="" className="carousel-img" />
+                                        <div className="flex items-center justify-center">
+
+                                            <Link target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%]">
+
+                                                <p className='text-gray-500'>brand name & link</p>
 
                                             </Link>
                                         </div>
@@ -150,7 +280,7 @@ const storeData = useSelector(state=>state?.sponsorships)
 
                             <ul className="frames__list glide__slides">
 
-                                <RenderCarouselItems />
+                            { storeData?.sponsorships?.carousel && storeData?.sponsorships?.carousel?.length <=2 ?  <RenderFewSponsors /> : <RenderCarouselItems />}
                             </ul>
 
 

@@ -20,24 +20,24 @@ let   className = "my-1";
   return (
     <div className={`flex flex-col   ${className}`}>
 
-      <div className="flex  flex-wrap   items-center   justify-center  py-2  rounded-xl relative ">
+      <div className="flex  flex-wrap   items-center   justify-center  py-2  rounded-xl  ">
         <Nav
-          className="sm:space-x-2  flex flex-wrap gap-1"
-          containerClassName="relative flex w-auto  text-sm md:text-base   "
+          className="sm:space-x-4  flex flex-wrap gap-1 w-full items-center justify-center"
+          containerClassName="relative flex w-full  text-sm md:text-base   "
         >
-          {navigation.map(
+          {navigation?.map(
             (item, index) => (
               <NavItem
                 key={index}
-                isActive={tabActive === item.title}
+                isActive={tabActive === item?.title}
                 onClick={(e)=>{
-                  setTabActive(item.title)
-                Navigate(`${item.link}`)
+                  setTabActive(item?.title)
+                Navigate(`${item?.link}`)
                  }
                 
                 }
               >
-                {item.title}
+                {item?.title}
               </NavItem>
             )
             )}

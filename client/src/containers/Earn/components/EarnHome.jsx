@@ -8,68 +8,84 @@ const Data = [
     {
         comingSoon:false,
         title: 'Nft',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
+        desc: 'hand made art planted with a reward from 1k$ to 30k$ with numerous utilities',
         page: 'home',
-        component:'/dashboard/mint'
-    },
+        component:'/dashboard/mint',
+        img:"https://twicrypt.com/media/features/nfts.jpg"    },
     {
         comingSoon:false,
         title: 'AP2E',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
+        desc: 'vm (virtual mining) or auto-p2e , make your nfts works for you',
         page: 'stats',
-        component:'/dashboard/auto-p2e?id=mining-session'
+        component:'/dashboard/auto-p2e?id=mining-session',
+        img:"https://twicrypt.com/media/features/mining.png"
 
     },
     {
         comingSoon:true,
         title: 'user profile',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
+        desc: 'DC user profile , follow users see their stats and share content',
         page:'sectionWhy',
-        component:'/dashboard/section-why'
+        component:'/dashboard/section-why',
+        img:"https://twicrypt.com/media/features/profile.png"
     },
     {
         comingSoon:true,
         title: 'Gift Cards and Coupons',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
-        link: 1
+        desc: 'gift cards , coupons and discounts for twicrypt users and nft holders exclusively ',
+        link: 1,
+        img:"https://twicrypt.com/media/features/gift-cards.png"
     },
     {
         comingSoon:false,
         title: 'Nft MarketPlace',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
+        desc: 'buy / sell twicrypt nfts , organize auctions , create sales ',
         link: 1,
-        component:'/dashboard/marketplace/all-listings'
+        component:'/dashboard/marketplace/all-listings',
+        img:"https://twicrypt.com/media/features/marketplace.png"
     },
     {
         comingSoon:false,
         title: 'sponsorship system',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
-        link: 1
+        desc: 'automated web3 sponsorship system , sponsor twicrypt and appear on our main page',
+        link: 1,
+        img:"https://twicrypt.com/media/features/sponsorship.png"
     },
     {
         comingSoon:true,
         title: 'token staking',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
-        link: 1
+        desc: 'stake twicrypt token for a varity of tokens with flixible and fixed staking plans',
+        link: 1,
+        img:"https://api.twicrypt.com/eth/img/15.png"
     },
     {
         comingSoon:false,
         title: 'affiliate system',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
-        link: 1
+        desc: 'become an affiliate or a partner and earn up to 10% or more each sale ',
+        link: 1,
+        img:"https://twicrypt.com/media/features/affiliate.png"
 
     },
     {
         comingSoon:true,
         title: 'lottery',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
-        link: 1
+        desc: 'different lotteries with different unique mechanisms up to 1M$ ! yes it is real !',
+        link: 1,
+        img:"https://api.twicrypt.com/eth/img/15.png"
     },
     {
         comingSoon:true,
         title: 'launchpad',
-        desc: '   and more recently with desktop publishing software like Aldus PageMaker ',
-        link: 1
+        desc: 'create different type of sale for your project ! exclusive discounts and free memberships for twicrypt users',
+        link: 1,
+        img:"https://twicrypt.com/media/features/launchpad.png"
+    },
+    {
+        comingSoon:false,
+        title: 'Twibot',
+        desc: 'twibot is an Intelligent telegram bot that keep users informed of all actions on website',
+        link: 1,
+        img:"https://twicrypt.com/media/features/twibot.png"
     },
 ]
 
@@ -104,10 +120,10 @@ const EarnHome = () => {
             <div className="flex flex-wrap justify-center w-auto h">
                 {
                     Data?.map((item, i) => {
-                        return <div className={`${item?.comingSoon ? "grayscale " : " cursor-pointer"} border border-neutral-500 hover:border-neutral-200 bg-neutral-200 bg-opacity-10  m-5 w-52 flex rounded-xl relative text-white overflow-hidden flex-wrap hover:bg-blue-500 - hover:scale-[102%]  transition-all duration-150 ease-in shadow-2xl shadow-[#721533] hover:shadow-blue-600 `} key={i} onClick={(e) => handleChangePage(item,e)}>
+                        return <div className={`${item?.comingSoon ? "grayscale " : " cursor-pointer"} border border-neutral-500 hover:border-neutral-200 bg-neutral-200 bg-opacity-10  m-5 w-52 flex rounded-xl relative text-white overflow-hidden flex-wrap hover:bg-blue-500 - hover:scale-[102%]  transition-all duration-150 ease-in shadow-2xl shadow-[#721533] hover:shadow-blue-600 grow md:grow-0`} key={i} onClick={(e) => handleChangePage(item,e)}>
 
                             <div className=" flex flex-col   w-full h-auto gap-0  lg:items-center relative">
-                                <img src="https://thirdweb.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Frevenue-streams.10c7bba1.png&w=750&q=75" alt="" className=" object-contain p-0 m-0  w-full  " />
+                                <img src={item?.img} alt="" className=" object-contain p-0 m-0  w-full  " />
 
                                 <div className="flex flex-col items-start justify-start px-2 py-2 gap-2 ">
 

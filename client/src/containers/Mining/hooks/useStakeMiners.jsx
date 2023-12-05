@@ -11,6 +11,7 @@ import { nft_contract } from "../../MarketPlace/data/Addresses"
 
 export const useStakeMiners = ({ids , images})=>{
 const [hash,setHash] = useState(null);
+const [singleHash,setSingleHashHash] = useState(null);
 const {address}= useSelector(state=>state.session)
 
 const stakeMiners = useContractWrite({
@@ -20,14 +21,7 @@ const stakeMiners = useContractWrite({
     args:[ids && ids,images && images],
     chainId:app_chain_id&&app_chain_id,
     
-    onMutate({ args, overrides }) {
-        toast.custom(
-        (t) => (
-          <Popup productImage={ null} show={true} t={t} title={`transfering Nfts...`} desc={`please complete Nft transfer ..`}/>
-        ),
-        { position: "bottom-center", duration: 2000 }
-      ); 
-      },  onError(error) {
+   onError(error) {
         toast.custom(
         (t) => (
           <Popup productImage={ null} show={true} t={t} title={`error ⚠️`} desc={`${error?.details || "something went wrong ... "}`}/>
@@ -36,7 +30,12 @@ const stakeMiners = useContractWrite({
       ); 
       },
       onSuccess(data){
-        setHash(data?.hash)
+        toast.custom(
+          (t) => (
+            <Popup productImage={ null} show={true} t={t} title={`miner is on work `} desc={`your miners will work for you you can start a mining session now !`}/>
+          ),
+          { position: "bottom-center", duration: 2000 }
+        ); 
       }
 
 })
@@ -46,14 +45,7 @@ const stakeMiners = useContractWrite({
         abi:IERC721,
         functionName:'setApprovalForAll',
         args:[mining_contract && mining_contract,true],
-        onMutate({ args, overrides }) {
-            toast.custom(
-            (t) => (
-              <Popup productImage={ null} show={true} t={t} title={`approving Nfts ...`} desc={`please complete the transaction ..`}/>
-            ),
-            { position: "bottom-center", duration: 2000 }
-          ); 
-          },  onError(error) {
+        onError(error) {
             toast.custom(
             (t) => (
               <Popup productImage={ null} show={true} t={t} title={`error ⚠️`} desc={`${error?.details || "something went wrong"}`}/>
@@ -88,7 +80,7 @@ const stakeMiners = useContractWrite({
           ); 
           },
           onSuccess(data){
-              setHash(data?.hash)
+            setSingleHashHash(data?.hash)
           }
 
 
@@ -98,6 +90,18 @@ const stakeMiners = useContractWrite({
 
     const transaction = useWaitForTransaction({
         hash: hash && hash,
+        onSuccess(data) {
+            toast.custom(
+                (t) => (
+                  <Popup productImage={ null} show={true} t={t} title={`Approved !`} desc={`please complet Nft workers transfer `}/>
+                ),
+                { position: "bottom-center", duration: 1000 }
+              )
+              stakeMiners.write()
+        },
+    })
+    const singletransaction = useWaitForTransaction({
+        hash: singleHash && singleHash,
         onSuccess(data) {
             toast.custom(
                 (t) => (

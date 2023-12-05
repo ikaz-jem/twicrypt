@@ -36,6 +36,7 @@ import AuctionDetailsPage from "../containers/MarketPlace/NftDetailsPage/Auction
 import ClaimReward from "../containers/Earn/components/ClaimReward/ClaimReward";
 import WiningNfts from "../containers/Earn/components/WinningNfts/WiningNfts";
 import Solutions from "../containers/Solutions/Solutions";
+import Lottery from "../containers/Earn/components/Lottery/Lottery";
 
 const Pages = [
     {
@@ -149,6 +150,11 @@ const NestedRoutes = [
         component: WiningNfts,
         requiresAuth: false,
     },
+    {
+        path: 'lottery',
+        component: Lottery,
+        requiresAuth: false,
+    },
 
 ]
 
@@ -194,7 +200,7 @@ const AppRoutes = () => {
 
 
                     <Routes>
-                        {Pages.map(({ component: Component, path, requiresAuth }, index) => {
+                        {Pages?.map(({ component: Component, path, requiresAuth }, index) => {
                             return requiresAuth  ? null
                                 :
                                 <Route key={index} path={path} element={<Component />} />
@@ -202,7 +208,7 @@ const AppRoutes = () => {
 
                         <Route path="/dashboard" element={<Dashboard />}>
                             <Route index element={<Solutions />} />
-                            {NestedRoutes.map(({ component: Component, path, requiresAuth }, index) => {
+                            {NestedRoutes?.map(({ component: Component, path, requiresAuth }, index) => {
                                 return requiresAuth  ? null
                                     :
                                     <Route key={index} path={path} element={<Component />} />

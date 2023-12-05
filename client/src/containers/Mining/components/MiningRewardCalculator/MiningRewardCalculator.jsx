@@ -20,7 +20,7 @@ const MiningRewardCalculator = () => {
 
 const bankData = useSelector(state=>state.mining.banks)
 const banks = bankData?.result
-
+console.log(banks)
 
 const extractData = ()=> {
     let price = 0
@@ -56,16 +56,10 @@ return {price,level,capacity}
     const totalTokens = calculateTotal()
 
     const calculateInvestment = ()=>{
-
         const {price,level,capacity}=extractData();
-        let unit =  (Number(capacity)/1000)
-        let ggg = unit * 0.22
-
-        let nftPrice = 0.1
-        let bank = calculate?.banklevel ==1 ? 0 : ggg
-        let Total = (calculate?.nftCount * nftPrice)+ bank
-        return Total?.toFixed(2)
-
+        let nftPrice = 0.15
+        let Total = (Number(calculate?.nftCount) * nftPrice) + Number(price)
+        return Total.toFixed(2)
     }
 
 
