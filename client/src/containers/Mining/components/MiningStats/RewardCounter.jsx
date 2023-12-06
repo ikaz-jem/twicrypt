@@ -6,6 +6,8 @@ import { useSessionData } from "../../hooks/useSessionData";
 import { useSelector } from "react-redux";
 import { formatEther } from "viem";
 import { unixCountDown, unixToDate } from "../../../../utils/unixToDate";
+import { userData } from "../../../../app/features/session/sessionSlice";
+import { toFormated } from "../../../../utils/web3Functions";
 
 
 
@@ -95,8 +97,8 @@ const RewardCounter = () => {
 
     }
     const renderSessionInfos = () => {
-        const earnings =  Number(miningData?.userData?.earnedRewards)
-        const totalEarnings = formatEther(earnings) || false
+        const earnings =  Number(miningData?.userData?.earnedRewards.toString())
+        const totalEarnings = parseFloat(toFormated(earnings,18).toFixed(2))
 
         return <>
             <div className="flex gap-2 items-center">
@@ -106,8 +108,8 @@ const RewardCounter = () => {
             <p className="font-bold text-md text-pink-500">{miningData?.bankData?.level}</p>
             </div>
             <div className="flex gap-2 items-center">
-                <p className="font-bold text-xs text-white">total earnings :</p>
-                <p className="font-bold text-md text-pink-500">{totalEarnings ? totalEarnings : 'loading ...'} </p>
+                <p className="font-bold text-xs text-white">total earnings + spendings :</p>
+                <p className="font-bold text-md text-pink-500">{totalEarnings ? totalEarnings + " tw " : 'loading ...'} </p>
             </div>
 
 

@@ -63,11 +63,11 @@ const random = Math.floor(Math.random()*5000)
     const PlaceHolder = [
         `https://api.twicrypt.com/eth/img/${random}.png`,
 
-        `https://api.twicrypt.com/eth/img/${random+7}.png`,
+        `https://api.twicrypt.com/eth/img/${random+70}.png`,
  
-        `https://api.twicrypt.com/eth/img/${random+9}.png`,
-        `https://api.twicrypt.com/eth/img/${random+3}.png`,
-        `https://api.twicrypt.com/eth/img/${random+6}.png`,
+        `https://api.twicrypt.com/eth/img/${random+19}.png`,
+        `https://api.twicrypt.com/eth/img/${random+30}.png`,
+        `https://api.twicrypt.com/eth/img/${random+120}.png`,
         `https://api.twicrypt.com/eth/img/${random+69}.png`,
   
  
@@ -135,9 +135,9 @@ const random = Math.floor(Math.random()*5000)
                                     <img src={item} alt="" className="carousel-img" />
                                         <div className="flex items-center justify-center">
 
-                                            <Link target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%]">
-
-                                                <p className='text-gray-500'>brand name & link</p>
+                                        <Link to={'https://twicrypt.com'} target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%]  rounded py-4 hover hover:bg-neutral-800 text-white">
+                                                <img src={ logo} alt="icon" className="w-5 h-5" />
+                                                <p className='text-neutral-400'>{ 'Twicrypt' }</p>
 
                                             </Link>
                                         </div>
@@ -238,9 +238,9 @@ const random = Math.floor(Math.random()*5000)
                                     <img src={item} alt="" className="carousel-img" />
                                         <div className="flex items-center justify-center">
 
-                                            <Link target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%]">
-
-                                                <p className='text-gray-500'>brand name & link</p>
+                                        <Link to={'https://twicrypt.com'} target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%]  rounded py-4 hover hover:bg-neutral-800 text-white">
+                                                <img src={ logo} alt="icon" className="w-5 h-5" />
+                                                <p className='text-neutral-400'>{ 'Twicrypt' }</p>
 
                                             </Link>
                                         </div>

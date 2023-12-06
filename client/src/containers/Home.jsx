@@ -109,15 +109,15 @@ const Home = () => {
 
           </div>
 
-          <Nav className="flex items-center justify-center gap-5 flex-wrap">
+          {/* <Nav className="flex items-center justify-center gap-5 flex-wrap">
             <NavItem onClick={() => Navigate('/dashboard/mint')}>Mint</NavItem>
-            {/* <NavItem onClick={()=>Navigate('/earn/token-sale')} >Token Sale</NavItem> */}
+            <NavItem onClick={()=>Navigate('/earn/token-sale')} >Token Sale</NavItem>
             <NavItem onClick={() => Navigate('/preparations')}>RoadMap</NavItem>
-            {/* <NavItem onClick={() => showPopup()}>show popup</NavItem>
-            <NavItem onClick={() => toastP()}>show popup 2</NavItem> */}
+            <NavItem onClick={() => showPopup()}>show popup</NavItem>
+            <NavItem onClick={() => toastP()}>show popup 2</NavItem>
             <NavItem onClick={() => Navigate('/sponsor')}>Sponsor </NavItem>
-            {/* <NavItem onClick={()=> Navigate('/documentations')}>Docs </NavItem> */}
-          </Nav>
+            <NavItem onClick={()=> Navigate('/documentations')}>Docs </NavItem>
+          </Nav> */}
 
           <CallToAction />
         </div>
