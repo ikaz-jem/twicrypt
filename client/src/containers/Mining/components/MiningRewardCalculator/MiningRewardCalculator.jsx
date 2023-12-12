@@ -44,7 +44,7 @@ return {price,level,capacity}
 
 
     const calculateTotal = () => {
-        let power = ((calculate?.nftCount*80)+(calculate?.banklevel*8)/2)
+        let power = ((calculate?.nftCount*800)+(calculate?.banklevel*80)/2)
         const hours = calculate?.hours *3600
         const result = Number(power)*Number(hours)
         const total = (result/10000)
@@ -90,7 +90,7 @@ return {price,level,capacity}
                 <h5 className="p-0 m-0 font-bold text-blue-500"> estimated earnings : </h5>
 
                 <h5 className="p-0 m-0 font-bold text-sm">total in token : {totalTokens || 0 } tw tokens </h5>
-                <h5 className="p-0 m-0 font-bold text-sm">total in dollar :{(calculateTotal() * 0.1).toFixed(2)} $  </h5>
+                <h5 className="p-0 m-0 font-bold text-sm">total in dollar :{(calculateTotal() * 0.01).toFixed(2)} $  </h5>
                 <h5 className="p-0 m-0 font-bold text-sm">investment in BNB :{ calculate?.banklevel <= 5 ? calculateInvestment() + " BNB" :  " max Bank level is 5" }  </h5>
 </div>
 

@@ -11,28 +11,24 @@ const NftMetrics = () => {
   const nftTitles = ['cash reward', 'available units']
   const nftRows = [
     {
-      reward: '10 $ / 0.1bnb ',
-      unit: '20 nft'
+      reward: '100 BNB',
+      unit: '1 Unit'
     },
     {
-      reward: '80$',
-      unit: '50 nft'
+      reward: '50 BNB',
+      unit: '2 Unit'
     },
     {
-      reward: '80$',
-      unit: '50 nft'
+      reward: '4 BNB',
+      unit: '25 Unit'
     },
     {
-      reward: '80$',
-      unit: '50 nft'
+      reward:'2 BNB',
+      unit: '25 Unit'
     },
     {
-      reward: '80$',
-      unit: '50 nft'
-    },
-    {
-      reward: '80$',
-      unit: '50 nft'
+      reward: '1 BNB',
+      unit: '50 Unit'
     },
   ]
 
@@ -188,11 +184,11 @@ const NftMetrics = () => {
                     <li className=' text-pink-500'>20 k Nft token</li>
                     <li className=' text-sm font-bold text-neutral-200'>50</li >
                     <li className=' text-sm font-bold text-neutral-200'>10 nfts per tx </li>
-                    <li className=' text-sm font-bold text-neutral-200'>120K $ + </li>
+                    <li className=' text-sm font-bold text-neutral-200'>100K $ + </li>
                     <li className=' text-sm font-bold text-neutral-200'>100+ nft</li>
                   </ul>
                 </div>
-                <p className='text-xs font-bold text-yellow-500 pl-4 py-5'>note : launch price will be greater than 0.1$</p>
+
               </div>
 
 

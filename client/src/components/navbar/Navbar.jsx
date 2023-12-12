@@ -24,13 +24,13 @@ const {userChanged} = UseStartSession()
 
 return (
 
-        <div className="navbar sticky top-0  ">
+        <div className="navbar sticky top-0 bg-neutral-200 bg-opacity-10 ">
            
 {/* {isLogedIn && user.accountType !== 'guest' && !user.hasAccount && <UserModal address={address} show={!user.hasAccount} />} */}
 
-            <div className="   container container--xxxlarge container--center  shadow-xl  backdrop-blur-sm rounded-3xl overfllow-hidden m-0  ">
+            <div className="   container container--xxlarge container--center  shadow-xl  backdrop-blur-sm rounded-3xl overfllow-hidden m-0  ">
 
-             <div className="flex h-full justify-between p-2">
+             <div className="flex h-full justify-between p-1">
                     
                 <Link className='logo ' to={'./'} >
                         <img src={logo} alt="logo" className="w-6 h-6 mr-1 " />
@@ -47,7 +47,7 @@ return (
                                         (link,i) => {
                                             return <li className="list__item h-100" key={i}>
                                            {
-                                               link?.requireAuth && !isLogedIn ? null : <NavLink to={link?.url} className='link  '> {link?.name}</NavLink>
+                                               link?.requireAuth && !isLogedIn ? null : <NavLink to={link?.url} className='link font-sans font-thin tracking-widest  '> {link?.name}</NavLink>
                                                
                                             }
                                         </li>
@@ -62,7 +62,8 @@ return (
 
  
                     <div className=" flex items-center justify-center px-2">
-                       <Web3Button icon="hide" label="Connect" avatar="hide"/>
+                       {/* <Web3Button icon="hide" label="Connect" avatar="hide"/> */}
+                       <w3m-button />
                         {/* <Link to={`/dashboard/account/${userChanged}`} className="collapse lg:visible" >   <FcBusinessman className="text-4xl p-2 mx-4 bg-neutral-800 hover:bg-pink-600 transition-all rounded-full cursor-pointer " /> </Link>  */}
                     </div>
 
