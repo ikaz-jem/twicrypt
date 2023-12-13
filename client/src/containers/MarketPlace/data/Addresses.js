@@ -7,7 +7,7 @@ const marketplace_contract = '0xeA69098B2992FD3B289ABD89904622d0ef88Fb1D' // mar
 // const marketplace_contract = '0x94A2Fe47D3dDDE6B53589635c25DCE4b941E8d01' // with offers and auction
 // const marketplace_contract = '0x9bD87F565e4e8a672F52967C78F926814fab0Fd4' // with offers
 
-const nft_contract = '0x2f531C10c4bCf7dA81B2445367f574D1D98A052B' //twi collection
+const nft_contract = '0x6f1e8B285B38c6E07da3f44DF8BD7635350f37Ce' //twi collection
 
 // const nft_contract = '0x019c8f52Bb07F0431C54A7C893b85f8D1A8e81bD' //9testnet
 // const nft_contract = '0x2844f8666Ad4063e96252a2f565715f2DA9dE3F1' //ganach

@@ -24,7 +24,7 @@ const {userChanged} = UseStartSession()
 
 return (
 
-        <div className="navbar sticky top-0 bg-neutral-200 bg-opacity-10 ">
+        <div className="navbar fixed w-full top-0 bg-gradient-to-b from-[#ffffff15] to-[#ffffff1c]  ">
            
 {/* {isLogedIn && user.accountType !== 'guest' && !user.hasAccount && <UserModal address={address} show={!user.hasAccount} />} */}
 

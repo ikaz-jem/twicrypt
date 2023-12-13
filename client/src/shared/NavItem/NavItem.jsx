@@ -4,7 +4,7 @@ import twFocusClass from '../../utils/twFocusClass'
 
 
 const NavItem = ({
-  className = "px-5 py-2.5 text-xs sm:text-sm sm:px-6 sm:py-3 capitalize shadow-lg shadow-[#00000059] w-40",
+  className = "px-3 py-2 text-xs sm:text-sm sm:px-6 sm:py-3 capitalize shadow-lg shadow-[#00000059] w-40",
   radius = "rounded-full",
   children,
   onClick = () => {},
@@ -15,10 +15,10 @@ const NavItem = ({
     <li className="nc-NavItem relative" data-nc-id="NavItem">
       {renderX && renderX}
       <button
-        className={`block !leading-none font-medium whitespace-nowrap transition  duration-200 border-neutral-800 border   ${className} ${radius} ${
+        className={`block !leading-none font-sans whitespace-nowrap transition  duration-200 border-neutral-800 border   ${className} ${radius} ${
           isActive
             ? "bg-slate-100 text-black text-bold "
-            : "text-slate-400 hover:text-white hover:bg-pink-600"
+            : "text-slate-300 hover:text-white hover:bg-pink-600"
         } ${twFocusClass()}`}
         onClick={() => {
           onClick && onClick();

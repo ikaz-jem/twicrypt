@@ -1,10 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createRoot } from 'react-dom/client';
 
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createRoot } from "react-dom/client";
 
 import {Provider} from 'react-redux'
 import {store} from './app/store/store'
@@ -15,8 +14,8 @@ import {store} from './app/store/store'
 // chainImages={
 //   { 97: process.env.REACT_APP_BSC_LOGO }
 // } 
-const container = document.getElementById('root')
-const root = createRoot(container);
+const rootElement = document.getElementById('root')
+const root =createRoot(rootElement);
 root.render(
   <React.StrictMode>
  

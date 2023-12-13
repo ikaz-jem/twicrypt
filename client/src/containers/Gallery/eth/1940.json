@@ -1,0 +1,31 @@
+{
+  "name": "Twicrypt #1940",
+  "description": "Twicrypt is built on Etherscan and operates on handmade arts  , Unlocking exclusive rewards hidden in selected Nfts ranging between $1,000 - $30,000 , Explore more at twicrypt.com",
+  "image": "https://api.twicrypt.com/eth/img/1940.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Burnt Orange"
+    },
+    {
+      "trait_type": "Body",
+      "value": "female"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Blunt Bangs Green"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Silver TankTop"
+    }
+  ],
+  "dna": "ece0bf565b26435c84ba8b1443f2884f28049545",
+  "edition": 1940,
+  "external_url": "https://nft.twicrypt.com",
+  "date": 1701555752662
+}

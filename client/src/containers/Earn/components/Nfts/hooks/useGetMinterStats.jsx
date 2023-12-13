@@ -36,7 +36,6 @@ watch:true
 
 
 
-
 return {referralStats,mintStats}
 
 

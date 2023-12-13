@@ -79,44 +79,6 @@
 		"type": "event"
 	},
 	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "user",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "totalNfts",
-				"type": "uint256"
-			}
-		],
-		"name": "sessionStarted",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "user",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "userClaimed",
-		"type": "event"
-	},
-	{
 		"inputs": [],
 		"name": "claimBank",
 		"outputs": [],
@@ -147,6 +109,389 @@
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "rechargeBoost",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "totalNfts",
+				"type": "uint256"
+			}
+		],
+		"name": "sessionStarted",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_duration",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_fees",
+				"type": "uint256"
+			}
+		],
+		"name": "set_Boost_Data",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_maxClaimAmount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_minFundsTowithdraw",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint8",
+				"name": "_claimFees",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_minClaimTokenHoldings",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint8",
+				"name": "_minClaimNftHoldings",
+				"type": "uint8"
+			}
+		],
+		"name": "set_claim_conditions",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "_minNftForMining",
+				"type": "uint8"
+			}
+		],
+		"name": "set_Mining_holdings_conditions",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_cooldownTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_miningDuration",
+				"type": "uint256"
+			}
+		],
+		"name": "set_mining_settings",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_rate",
+				"type": "uint256"
+			}
+		],
+		"name": "setBankMiningRate",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_addrs",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_newTime",
+				"type": "uint256"
+			}
+		],
+		"name": "setBoostForUser",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "contract IERC721",
+				"name": "_nft",
+				"type": "address"
+			}
+		],
+		"name": "setCollection",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_max",
+				"type": "uint256"
+			}
+		],
+		"name": "setMaxWorkers",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bool",
+				"name": "_started",
+				"type": "bool"
+			}
+		],
+		"name": "setMiningStarted",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "_level",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_capacity",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_imageUrl",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_price",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_index",
+				"type": "uint256"
+			}
+		],
+		"name": "setNewUpgrade",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_rate",
+				"type": "uint256"
+			}
+		],
+		"name": "setNftMiningRate",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "contract IERC20",
+				"name": "_token",
+				"type": "address"
+			}
+		],
+		"name": "setRewardToken",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "_tokenId",
+				"type": "uint8"
+			},
+			{
+				"internalType": "string",
+				"name": "_imageUrl",
+				"type": "string"
+			}
+		],
+		"name": "stake",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint8[]",
+				"name": "_tokenId",
+				"type": "uint8[]"
+			},
+			{
+				"internalType": "string[]",
+				"name": "_imageUrl",
+				"type": "string[]"
+			}
+		],
+		"name": "stakeMultiple",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "startSession",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "unstake",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint8[]",
+				"name": "_tokenId",
+				"type": "uint8[]"
+			}
+		],
+		"name": "unstakeMultiple",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "upgrade",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "userClaimed",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdraw_earnings",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_token",
+				"type": "address"
+			}
+		],
+		"name": "withdraw_token",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
 	},
 	{
 		"inputs": [],
@@ -298,8 +643,18 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "boostStartTime",
+						"name": "boostEndTime",
 						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "miningStarted",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "claimEnabled",
+						"type": "bool"
 					}
 				],
 				"internalType": "struct TwicryptMiner.allData",
@@ -484,258 +839,62 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "rechargeBoost",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "renounceOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_rate",
-				"type": "uint256"
-			}
-		],
-		"name": "setBankMiningRate",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "_addrs",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_newTime",
-				"type": "uint256"
-			}
-		],
-		"name": "setBoostForUser",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "contract IERC721",
-				"name": "_nft",
+				"name": "",
 				"type": "address"
 			}
 		],
-		"name": "setCollection",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint8",
-				"name": "_level",
-				"type": "uint8"
-			},
+		"name": "sessionData",
+		"outputs": [
 			{
 				"internalType": "uint256",
-				"name": "_capacity",
+				"name": "totalUsedNfts",
 				"type": "uint256"
 			},
 			{
-				"internalType": "string",
-				"name": "_imageUrl",
-				"type": "string"
+				"internalType": "uint16",
+				"name": "totalSessions",
+				"type": "uint16"
 			},
 			{
 				"internalType": "uint256",
-				"name": "_price",
+				"name": "miningPower",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "_index",
-				"type": "uint256"
-			}
-		],
-		"name": "setNewUpgrade",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_rate",
-				"type": "uint256"
-			}
-		],
-		"name": "setNftMiningRate",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "contract IERC20",
-				"name": "_token",
-				"type": "address"
-			}
-		],
-		"name": "setRewardToken",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_duration",
+				"name": "lastMiningSession",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "_fees",
-				"type": "uint256"
-			}
-		],
-		"name": "set_Boost_Data",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint8",
-				"name": "_minNftForMining",
-				"type": "uint8"
-			}
-		],
-		"name": "set_Mining_holdings_conditions",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_maxClaimAmount",
+				"name": "miningStartTime",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "_minFundsTowithdraw",
+				"name": "miningEndTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "earnedRewards",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint8",
-				"name": "_claimFees",
+				"name": "giftCount",
 				"type": "uint8"
 			},
 			{
 				"internalType": "uint256",
-				"name": "_minClaimTokenHoldings",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint8",
-				"name": "_minClaimNftHoldings",
-				"type": "uint8"
-			}
-		],
-		"name": "set_claim_conditions",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_cooldownTime",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_miningDuration",
+				"name": "lastClaim",
 				"type": "uint256"
 			}
 		],
-		"name": "set_mining_settings",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint8",
-				"name": "_tokenId",
-				"type": "uint8"
-			},
-			{
-				"internalType": "string",
-				"name": "_imageUrl",
-				"type": "string"
-			}
-		],
-		"name": "stake",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint8[]",
-				"name": "_tokenId",
-				"type": "uint8[]"
-			},
-			{
-				"internalType": "string[]",
-				"name": "_imageUrl",
-				"type": "string[]"
-			}
-		],
-		"name": "stakeMultiple",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "startSession",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -763,69 +922,5 @@
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "unstake",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint8[]",
-				"name": "_tokenId",
-				"type": "uint8[]"
-			}
-		],
-		"name": "unstakeMultiple",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "upgrade",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "withdraw",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "withdraw_earnings",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_token",
-				"type": "address"
-			}
-		],
-		"name": "withdraw_token",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"stateMutability": "payable",
-		"type": "receive"
 	}
 ]

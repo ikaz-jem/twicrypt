@@ -7,7 +7,7 @@ function App() {
 
 
   return (
-    <div className=" h-screen hero  ">
+    <div className=" h-auto min-h-screen  hero  ">
       <Suspense fallback={
         <>
           <div className=" h-80  flex justify-center items-center " >

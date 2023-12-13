@@ -11,6 +11,7 @@ import BatteryGauge from 'react-battery-gauge'
 import { useChargeBoost } from "../../hooks/useChargeBoost"
 import { unixCountDown } from "../../../../utils/unixToDate"
 import { TiBatteryCharge } from 'react-icons/ti'
+import { useUnstakeMiners } from "../../hooks/useUnstakeMiners"
 
 const cssOverride = {
   batteryBody: {
@@ -60,16 +61,15 @@ const MiningSession = ({ nftWarning }) => {
   const sessionData = useSelector(state => state.mining.session)
   const stats = useSelector(state => state.mining.stats)
 
-
-
+  
   const miningSessionData = stats ? sessionData?.result : [];
-
+  
   const currentTime = Math.floor(new Date().getTime() / 1000);
-
-
-
-  const boostEndTime = Number(miningSessionData?.boostStartTime)
-
+  
+  
+  
+  const boostEndTime = Number(miningSessionData?.boostEndTime)
+  
   let remainingTime = boostEndTime - currentTime;
   let boostDuration = stats ? Number(stats?.result?.boost_duration) : 0
   //2h
@@ -151,8 +151,10 @@ const MiningSession = ({ nftWarning }) => {
 
   return (
     <div className="w-full" >
+
       <div className="flex flex-wrap gap-2 px-0 justify-center my-2">
         <StakedNfts />
+
 
         {miningSessionData?.staked?.length > 0 ?
 

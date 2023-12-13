@@ -40,7 +40,7 @@ const claim = useContractWrite({
     abi :nftAbi,
     functionName : 'claimNftReward',
     chainId:app_chain_id,
-    args:[tokenId],
+    args:[tokenId && tokenId],
     onSuccess(data){
         sendMessage();
     }
@@ -50,3 +50,13 @@ const claim = useContractWrite({
 return claim
 
 }
+
+const met = {
+    "name": "Twicrypt",
+    "description": "Twicrypt is a decentralized digital currency built on the Binance smart chain that operates on handmade arts that includes , Unlocking exclusive rewards hidden in selected Nfts ranging between $1,000 - $30,000 ,Mining , Free passes , Discounts , Partners program and more … Explore more at twicrypt.com",
+    "image": "https://api.twicrypt.com/bsc/twicrypt.png",
+    "external_url": "https://twicrypt.com",
+    "seller_fee_basis_points": 500,
+    "fee_recipient" : "0xbE4c82757CB65263c2675DbaFC9e5225E3D1cEe1",
+    "collaborators": ["0xbE4c82757CB65263c2675DbaFC9e5225E3D1cEe1"]
+  }

@@ -6,7 +6,20 @@ import { useSelector } from "react-redux";
 import logo from '../../media/logo.png'
 import logo2 from '../../media/3d2.png'
 
-const placeHolders = [1,1,1,1,1,1]
+const random = Math.floor(Math.random()*5000)
+
+    const placeHolders = [
+        `https://api.twicrypt.com/eth/img/${random}.png`,
+
+        `https://api.twicrypt.com/eth/img/${random+326}.png`,
+ 
+        `https://api.twicrypt.com/eth/img/${random+782}.png`,
+        `https://api.twicrypt.com/eth/img/${random+2}.png`,
+        `https://api.twicrypt.com/eth/img/${random+320}.png`,
+        `https://api.twicrypt.com/eth/img/${random+1622}.png`,
+  
+ 
+    ]
 
 const Sponsors = () => {
   const id = useId();
@@ -58,30 +71,29 @@ const sliderData = sponsorships?.sponsorships?.slider
 
 
 
-
   return (
-    <div className={` container mx-auto  overflow-hidden  ${UNIQUE_CLASS} `}>
+    <div className={` container mx-2  overflow-hidden w-full h-full ${UNIQUE_CLASS} `}>
       <h1 className="pl-10 m-0 text-left ">Sponsors </h1>
       <div className="  overflow-hidden " data-glide-el="track">
         <ul className="glide__slides m-0 p-0 ">
          {
-// sliderData ? sliderData?.map(({brand,image,icon,website}, index) => (
-//   <li key={index} className={`glide__slide flex gap-5 m-0 p-0 items-center justify-center `} >
-//     <Card
-//       name={brand}
-//       img={image}
-//       icon={icon}
-//           website={website}
-//       /> 
-//   </li>
-// ))
-// :
-placeHolders?.map((item, index) => (
-  <li key={index} className={`glide__slide flex gap-2 m-0 p-0 items-center justify-center `} >
+sliderData?.length >0 ? sliderData?.map(({brand,image,icon,website}, index) => (
+  <li key={index} className={`glide__slide flex gap-5 m-0 p-0 items-center justify-center `} >
     <Card
-      name={'twicrypt'}
-      img={logo2}
-      icon={logo}
+      name={brand}
+      img={image}
+      icon={icon}
+          website={website}
+      /> 
+  </li>
+))
+:
+placeHolders?.map((item, index) => (
+  <li key={index} className={`glide__slide flex gap-0 m-0 p-0 items-center justify-center `} >
+    <Card
+      name={'Twicrypt.com'}
+      img={"https://twicrypt.com/media/sponsor.png"}
+      icon={"https://twicrypt.com/media/sponsor.png"}
       website={'/'}
     /> 
   </li>

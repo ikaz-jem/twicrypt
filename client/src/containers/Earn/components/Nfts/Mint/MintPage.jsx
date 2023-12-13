@@ -56,7 +56,7 @@ const MintPage = () => {
                     </div>
                     <div className="m-0 p-0 flex flex-col gap-1">
 
-                        <h3 className="text-left my-2 p-0 border-b border-purple-700 w-full rounded-2xl px-5 pb-2 text-yellow-500 font-bold text-xl ">twicrypt affiliate program<span className="m-0 pl-5 text-neutral-200 text-base ">up to 10% each sale : </span>  </h3>
+                        <h3 className="text-left my-2 p-0 border-b border-purple-700 w-full rounded-2xl px-5 pb-2 text-yellow-500 font-bold text-xl ">twicrypt affiliate program<span className="m-0 pl-5 text-neutral-200 text-sm "> <span className="font-extrabold text-lg text-orange-500"> 2 BNB Reward</span> for you each 10 BNB !! </span>  </h3>
 
                         {/* <Discount /> */}
                         <Referrals data={allStats} />

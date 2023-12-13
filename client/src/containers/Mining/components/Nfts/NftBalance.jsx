@@ -9,7 +9,7 @@ import { app_chain_id } from "../../../../shared/data/chains"
 import { Link } from "react-router-dom"
 
 
-const NftBalance = () => {
+const NftBalance = ({nftCount}) => {
 
     const [selectedNft, setSelectedNft] = useState([])
     const Nfts = useGetMintedNfts({
@@ -17,10 +17,16 @@ const NftBalance = () => {
     })
 
     const hasTwicryptNft = Nfts?.data?.map((nft)=>nft?.contract?.toLocaleLowerCase()).includes(nft_contract?.toLocaleLowerCase())
-    
+     
+  const isRoomAvailabe = ()=> {
+    return (selectedNft?.length + Number(nftCount) < 20) 
+  }
+
   
+  
+
     const handleClick = (nft) => {
-        if (!selectedNft.some((item) => item.identifier === nft.identifier)) {
+        if (!selectedNft.some((item) => item.identifier === nft.identifier) && isRoomAvailabe() ) {
             setSelectedNft((prev) => [...prev, nft]);
         }
     }
@@ -31,16 +37,7 @@ const NftBalance = () => {
             ))
         }
         
-        const selectAll = () => {
-            Nfts?.data?.map((nft) => {
-                if (nft?.contract?.toLocaleLowerCase() == nft_contract?.toLocaleLowerCase()) {
-                    if (!selectedNft.some((item) => item.identifier === nft.identifier)) {
-                        return setSelectedNft((prev) => [...prev, nft]);
-                    }
-                } else return null
-                
-            })
-        }
+       
         
         
         const prepareData = () => {
@@ -56,8 +53,6 @@ const NftBalance = () => {
         const [Ids, images] = prepareData()
         
     
-        
-        
         const { approve, approveSingle } = useStakeMiners({
             ids: Ids && Ids,
             images: images && images
@@ -66,6 +61,7 @@ const NftBalance = () => {
     const { switchNetwork, chain } = useCorrectNetwork({
         fallback: selectedNft.length == 1 ? () => approveSingle.write() : () => approve.write()
     })
+
 
 
     const putMinersOnWork = (e) => {
@@ -122,7 +118,7 @@ return (
 <div className=" gap-2 flex items-start justify-start   h-auto flex-wrap w-full   mx-auto overflow-y-scroll border rounded overflow-hidden border-purple-500 p-2">
               
                 {Nfts?.data ? Nfts && Nfts?.data?.map((nft, i) => {
-                    if ((nft.contract).toLocaleLowerCase() == (nft_contract).toLocaleLowerCase()) {
+                    if ((nft?.contract).toLocaleLowerCase() == (nft_contract).toLocaleLowerCase()) {
 
                         return <Card onClick={(e) => handleClick(nft)} key={i} data={nft} />
                         
@@ -137,7 +133,6 @@ return (
                 }
             </div> 
         
-
                 </>
 )
 
@@ -146,12 +141,20 @@ return (
 
 
     return (
+        <>
+ {
+                nftCount >= 20 && <div className="absolute w-full h-full top-0  flex items-center justify-center z-50">
+                    <h1 className="font-sans tet-neutral-200 text-3xl font-bold">Maximum workers Reached !</h1>
+                </div>
 
-        <div className=" gap-2 flex items-start justify-start  p-2 h-[50vh] flex-wrap w-full   mx-auto  overflow-auto">
+            }
+
+        <div className={`gap-2 flex items-start justify-start  p-2 h-[50vh] flex-wrap w-full   mx-auto  overflow-auto  ${nftCount >= 20 && 'cursor-not-allowed grayscale blur '} `}>
+           
 
            { hasTwicryptNft && Nfts?.data  && <div className="w-full border py-2 border-purple-500 rounded">
-                <p className="p-0 m-0 text-white text-xs">click to select/unselect</p>
-                <div className="gap-2 flex items-center justify-start  px-2 h-auto flex-wrap w-full   mx-auto ">
+                <p className="p-0 m-0 text-white text-xs">{ isRoomAvailabe() ? "click to select/unselect" : `max workers reached you can add only ${selectedNft?.length} more ` }</p>
+                <div className={`gap-2 flex items-center justify-start  px-2 h-auto flex-wrap w-full   mx-auto ${!isRoomAvailabe() && "grayscale"}`}>
 
                     {selectedNft && selectedNft?.map((nft, i) => {
                         return <Card2 key={i} data={nft} />
@@ -168,8 +171,7 @@ return (
                  <div className="flex gap-2 items-center justify-center py-2">
 
                     <button className="px-4 bg-green-500 rounded hover:bg-orange-500 text-sm py-1" onClick={(e) => putMinersOnWork(e)}>put to work</button>
-                    <button onClick={() => selectAll()} className="px-4 bg-blue-500 rounded hover:bg-pink-500 text-sm py-1">select all</button>
-                    <button onClick={() => setSelectedNft([])} className="px-4 bg-blue-500 rounded hover:bg-pink-500 text-sm py-1">unselect all</button>
+                    <button onClick={() => setSelectedNft([])} className="px-4 bg-blue-500 rounded hover:bg-pink-500 text-sm py-1 disabled:cursor-not-allowed disabled:bg-neutral-500" >unselect all</button>
                 </div>
                 }
 
@@ -190,7 +192,7 @@ return (
 
 
         </div>
-
+        </>
     )
 
 }

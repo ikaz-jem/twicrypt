@@ -50,6 +50,10 @@ const Dashboard = () => {
             link: 'marketplace'
         },
         {
+            title: "Gallery",
+            link: '/gallery'
+        },
+        {
             title: "Claim Reward",
             link: 'claim'
         },

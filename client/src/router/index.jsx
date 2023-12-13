@@ -37,6 +37,7 @@ import ClaimReward from "../containers/Earn/components/ClaimReward/ClaimReward";
 import WiningNfts from "../containers/Earn/components/WinningNfts/WiningNfts";
 import Solutions from "../containers/Solutions/Solutions";
 import Lottery from "../containers/Earn/components/Lottery/Lottery";
+import Gallery from "../containers/Gallery/Gallery";
 
 const Pages = [
     {
@@ -68,6 +69,11 @@ const Pages = [
     {
         path: '/partners',
         component: Partners,
+        requiresAuth: false,
+    },
+    {
+        path: '/gallery',
+        component: Gallery,
         requiresAuth: false,
     },
     {
@@ -195,8 +201,9 @@ const AppRoutes = () => {
         <BrowserRouter>
             <Toaster />
             <MyProvider>
-                <>
                     <Navbar />
+                <div className=" relative w-full h-full my-12">
+
 
 
                     <Routes>
@@ -233,7 +240,7 @@ const AppRoutes = () => {
 
                         </Route>
                     </Routes>
-                </>
+                </div>
 
             </MyProvider>
 

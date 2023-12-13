@@ -1,24 +1,104 @@
-import { useSelector } from "react-redux"
-
-import Spinner from "../../../../shared/Spinner/Spinner"
-import { Link } from "react-router-dom"
+import { useSelector } from "react-redux";
+import {useState} from 'react';
+import Spinner from "../../../../shared/Spinner/Spinner";
+import { Link } from "react-router-dom";
+import { useUnstakeMiners } from "../../hooks/useUnstakeMiners";
 
 
 
 
 const StakedNfts = () => {
+const [selectedNft,setSelectedNft]=useState([])
+
 
     const staked = useSelector(state => state.mining.session)
     const onWorkNfts = staked ? staked?.result?.staked : []
 
+// prepares array of ids for Unstaking
+    const prepareData = () => {
+        const Ids = [];
+        selectedNft?.map((item) => {
+            Ids.push(Number(item?.tokenId))
+        })
+        return [Ids]
+    }
+    const [Ids] = prepareData()
+    // const miningSessionData = useSessionData()
+    const {unstakeMiners} = useUnstakeMiners({
+      ids:Ids
+    })
+
+    const unstakeAll = ()=> {
+            unstakeMiners.write()
+    }
+
+  const handleSelect= (nft) => {
+    if (!selectedNft.some((item) => item.tokenId === nft.tokenId)) {
+        setSelectedNft((prev) => [...prev, nft]);
+    }
+  }
+  const selectAll = () => {
+    onWorkNfts?.map((nft) => {
+        
+            if (!selectedNft.some((item) => item.tokenId === nft.tokenId)) {
+                return setSelectedNft((prev) => [...prev, nft]);
+            }
+    })
+  }
+
+console.log(selectedNft)
+  const isRoomAvailable = ()=> {
+    return selectedNft?.length < onWorkNfts?.length
+  }
+
+const deselectAll = (nft) => {
+    setSelectedNft((prev) => (
+        prev.filter((item) => item?.identifier != nft?.identifier)
+        ))
+    }
+  
+     
+
+
+
 
     const Card = ({ data }) => {
+          
+    const isSelected = (nft) => {
+        if (selectedNft.length > 0) {
+            return selectedNft.includes(nft)
+        }
+    }
+    
+    const handleDeselect = (nft) => {
+        setSelectedNft((prev) => (
+            prev.filter((item) => item?.tokenId !== nft?.tokenId)
+            ))
+        }
+      
+
         return (
-            <><div className=" border my-1 h-10 w-10 rounded-lg overflow-hidden cursor-pointer hover:border-pink-500">
-                <img alt="art nft" src={data?.imageUrl  }/>
+            <><div className={` border my-1 h-14 w-14 rounded-lg overflow-hidden cursor-pointer hover:border-pink-500 ${isSelected(data) && "border border-pink-800  transition-all scale-[80%] grayscale"} ` }>
+                <img alt="art nft" src={data?.imageUrl  } onClick={()=> isSelected(data) ? handleDeselect(data) : handleSelect(data)}/>
             </div></>
         )
     }
+
+
+const Buttons = ()=> {
+
+    const handleUnstake = ()=> {
+        unstakeMiners?.write()
+    }
+
+return (
+    <div className="flex items-center justify-center gap-5 font-neutral-200 font-sans text-xs w-full my-5 ">
+    <button onClick={handleUnstake} className={`py-1 text-xs  hover:bg-neutral-200 hover:text-black transition-all duration-300 bg-blue-500 rounded flex items-center justify-center px-2  ${!isRoomAvailable() && "bg-red-500" }  `}>{isRoomAvailable() ?  'withdraw Selected' : "withdraw all workers"}</button>
+    {isRoomAvailable() && <button onClick={ selectAll} className={`py-1 text-xs  hover:bg-neutral-200 hover:text-black transition-all duration-300 bg-blue-500 rounded flex items-center justify-center  px-2 `}> withdraw All</button>}
+</div>  
+)
+
+}
 
 
     const RenderStaked = () => {
@@ -31,10 +111,10 @@ const StakedNfts = () => {
                         <p className="text-xs text-white"> Nft Miners on work:</p>
                     <div className="flex gap-2 items-center justify-center flex-wrap">
                         {
-                            onWorkNfts &&   onWorkNfts?.map((item, i) => <Card data={item} key={i}/>)
+                            onWorkNfts &&   onWorkNfts?.map((item, i) => <Card data={item} key={i}  />)
                         }
-                        </div>    
-                    
+                        </div>  
+                       {selectedNft?.length > 0 && <Buttons/>}
                     
                     </div>
                     : 

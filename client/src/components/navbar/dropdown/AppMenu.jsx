@@ -8,6 +8,10 @@ import {BsWallet} from 'react-icons/bs'
 import {CiShop} from 'react-icons/ci'
 import {MdOutlineCardGiftcard} from 'react-icons/md'
 import {BiCoinStack,BiCollection,BiSupport,BiBook,BiChevronDownCircle} from 'react-icons/bi'
+import { BsTwitterX } from "react-icons/bs";
+import { RiTelegramFill } from "react-icons/ri";
+import { FaXTwitter } from "react-icons/fa6";
+import { GiMining } from "react-icons/gi";
 
 const solutions = [
 
@@ -16,58 +20,59 @@ const solutions = [
     description: 'Keep track of your growth',
     href: '/dashboard/mint',
     icon: RiNftFill,
+    target:'_self'
   },
-  {
-    name: 'Token Sale',
-    description: 'Participate in Twicypt IDO',
-    href: '/dashboard/token-sale',
-    icon: BiCoinStack,
-  },
+
   {
     name: 'Dashboard',
     description: 'manage yor account',
     href: '/dashboard',
     icon: RxDashboard,
-  },
-
-
-  {
-    name: 'Wallet',
-    description: 'your assets on Twicrypt',
-    href: '/dashboard/stats',
-    icon: BsWallet,
+    target:'_self'
   },
   {
     name: 'MarketPlace',
     description: 'Buy / sell List your NFTs',
     href: '/dashboard/marketplace',
     icon: CiShop,
+    target:'_self'
   },
   {
     name: 'Art Collections',
     description: 'NFT Art Gallery',
-    href: '/dashboard/nfts',
+    href: '/gallery',
     icon: BiCollection,
+    target:'_self'
   },
   {
-    name: 'Gift Cards',
-    description: 'rewards / coupons ...',
-    href: '##',
-    icon: MdOutlineCardGiftcard,
+    name: 'Mining',
+    description: 'about Twicrypt services',
+    href: '/dashboard/auto-p2e?id=mining-session',
+    icon: GiMining,
+    target:'_slef'
   },
   {
     name: 'Documentations',
-    description: 'All about Twicrypt services',
-    href: '##',
+    description: 'about Twicrypt services',
+    href: 'https://docs.twicrypt.com/',
     icon: BiBook,
+    target:'blank'
   },
   {
     name: 'Support',
     description: 'Contact us',
     href: '/dashboard/support',
     icon: BiSupport,
+    target:'_self'
   },
 ]
+// {
+//   name: 'Gift Cards',
+//   description: 'rewards / coupons ...',
+//   href: '##',
+//   icon: 'MdOutzlineCardGiftcard',
+//   target:'_self'
+// },
 
 const AppMenu =()=> {
 
@@ -123,12 +128,13 @@ const AppMenu =()=> {
               <Popover.Panel className="absolute bg-gradient-to-r from-pink-500 to-purple-500  rounded-2xl pt-1 left-1/5 z-10 mt-2 w-screen max-w-xs -translate-x-1/2 transform sm:px-0 lg:max-w-4xl ">
 
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-neutral-700 flex ">
-                  <div className="flex gap-8  bg-neutral-900 p-7 flex-wrap justify-between items-start w-auto relative  ">
+                  <div className="flex gap-8  bg-neutral-900 p-7 flex-wrap justify-start items-start w-auto relative  ">
                     {solutions.map((item) => (
 
                       <Link
                         key={item.name}
                         to={item.href}
+                        target={item.target}
                         className="-m-4 group  w-auto lg:w-1/3 flex justify-start text-left lg:grow-0 grow  flex-wrap items-center  rounded-lg p-5 transition-all duration-300 ease-in-out hover:bg-white hover:bg-opacity-10 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 "
                       onClick={()=>onMouseLeaveMenu()}
                      >
@@ -137,10 +143,10 @@ const AppMenu =()=> {
                           
                         </div>
                         <div className="ml-4">
-                          <p className="text-sm font-bold  text-gray-300 m-0 p-0 group-hover:text-pink-500">
+                          <p className="text-xs font-bold  text-gray-300 m-0 p-0 group-hover:text-pink-500">
                             {item.name}
                           </p>
-                          <p className="text-xs text-gray-500 m-0 p-0">
+                          <p className="text-[12px] text-gray-500 m-0 p-0">
                             {item.description}
                           </p>
                         </div>
@@ -150,8 +156,16 @@ const AppMenu =()=> {
                     
                   </div>
                 
-                  <div className="bg-neutral-400 w-5 flex flex-col">
-                    {/* <Link
+                  <div className="bg-neutral-400 w-10 flex flex-col py-5">
+                    <p className='border rounded-full bg-pink-500'>
+                      <Link to={'https://x.com/twicrypt'} target='blank'>
+
+                  <FaXTwitter className='text-2xl rounded-full   text-black m-1 hover:text-white cursor-pointer' />
+                      </Link>
+                  <RiTelegramFill className='text-2xl rounded-full   text-black m-1 hover:text-white cursor-pointer' />
+                    </p>
+                
+                    {/* <a
                       to="##"
                       className="flow-root  rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-neutral-500 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                     >
@@ -163,7 +177,7 @@ const AppMenu =()=> {
                       <span className="block text-sm text-gray-500">
                         Start integrating products and tools
                       </span>
-                    </Link> */}
+                    </a> */}
                   </div>
                 </div>
               </Popover.Panel>

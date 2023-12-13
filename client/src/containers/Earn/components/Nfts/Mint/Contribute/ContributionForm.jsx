@@ -44,7 +44,7 @@ const minted = Number(mintInfos?.supply)
 let percentage =  minted * 0.01
 
     return (
-        <div className="w-auto m-0  flex flex-col  grow gap-0 border border-purple-900 p-5 rounded-lg ">
+        <div className="w-auto m-0  flex flex-col  grow gap-0  bg-blue-800 p-5 rounded-lg ">
             <h3 className="text-left p-0 m-0 py-2 font-bold">Mint Nft</h3>
         <ProgressBar percentage={percentage} min={"minted nfts : " + minted + ' unit'} max={10000 + ' Nft'} />
         <div className=" flex p-0 gap-1 m-0">
@@ -132,7 +132,7 @@ const reffs = Number(userInfos?.reffCount) || 0
     return (
         <div className=" w-full flex  gap-5 justify-start items-start h-full p-5 flex-wrap">
                         <h3 className="text-left m-0 p-0 border-b border-purple-800 w-full rounded-2xl px-5 pb-2 text-pink-600 font-bold text-xl ">get Nft Win cash , mine tokens !  </h3>
-                        <span className="m-0 pl-5 text-yellow-400 text-sm font-bold ">win up to 1BTC in a single mint !  </span> 
+                        <span className="m-0 pl-5 text-yellow-400 text-sm font-bold ">win up to 100 BNB in a single mint !  </span> 
                         <span className="m-0 pl-5 text-pink-400 text-sm font-bold ">claim cash rewards from nft instantly !  </span> 
        <div className="w-full flex flex-wrap gap-5 p-0 m-0 justify-between ">
        {RenderInput() }

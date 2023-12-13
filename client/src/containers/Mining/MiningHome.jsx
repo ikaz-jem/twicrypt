@@ -51,7 +51,10 @@ const MiningHome = () => {
     }, [id])
 
     // const data = useMiningData()
-    const platformData = useGetAllMiningData()
+    const allData = useGetAllMiningData()
+
+   const dataPlaceholder = [{result:null},{result:null},{result:null},{result:null}]
+    const platformData = allData || dataPlaceholder
 
     const extractData = () => {
         if (platformData?.length >= 1 && platformData[0]?.result && id) {
@@ -61,7 +64,7 @@ const MiningHome = () => {
         }
     }
     const data = extractData();
-
+const stakedNftsCount = data?.staked?.length || 0
 
     const { chain, switchNetwork } = useCorrectNetwork({
         fallback: () => null
@@ -83,7 +86,7 @@ const MiningHome = () => {
     let components = {
         'mining-session': <MiningSession nftWarning={nftWarning} />,
         'banks': <Bank data={data} nftWarning={nftWarning} />,
-        'miners': <NftBalance nftWarning={nftWarning} />,
+        'miners': <NftBalance nftWarning={nftWarning} nftCount={stakedNftsCount} />,
         'profit-calculator': <MiningRewardCalculator />,
     }
 

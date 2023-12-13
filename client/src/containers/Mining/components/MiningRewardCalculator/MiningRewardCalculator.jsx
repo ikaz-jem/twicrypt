@@ -44,7 +44,7 @@ return {price,level,capacity}
 
 
     const calculateTotal = () => {
-        let power = ((calculate?.nftCount*800)+(calculate?.banklevel*80)/2)
+        let power = ((calculate?.nftCount*800000)+(calculate?.banklevel*80000)/2)
         const hours = calculate?.hours *3600
         const result = Number(power)*Number(hours)
         const total = (result/10000)
@@ -86,12 +86,11 @@ return {price,level,capacity}
             <input className="placeholder-black m-2 text-black px-4 rounded-lg" type="number" placeholder="bankLevel" onChange={handleChange} name="banklevel" />
 
             <div className=" my-2 flex justify-start items-center">
-<div className="flex flex-col items-start">
-                <h5 className="p-0 m-0 font-bold text-blue-500"> estimated earnings : </h5>
+<div className="flex flex-col items-start justify-start">
+                <h5 className="p-0 m-0 font-bold text-blue-500 text-left"> estimated earnings : </h5>
 
-                <h5 className="p-0 m-0 font-bold text-sm">total in token : {totalTokens || 0 } tw tokens </h5>
-                <h5 className="p-0 m-0 font-bold text-sm">total in dollar :{(calculateTotal() * 0.01).toFixed(2)} $  </h5>
-                <h5 className="p-0 m-0 font-bold text-sm">investment in BNB :{ calculate?.banklevel <= 5 ? calculateInvestment() + " BNB" :  " max Bank level is 5" }  </h5>
+                <h5 className="p-0 m-0 font-bold text-sm text-left">total in token : {totalTokens || 0 } tw tokens </h5>
+                <h5 className="p-0 m-0 font-bold text-sm text-left">investment in BNB :{ calculate?.banklevel <= 5 ? calculateInvestment() + " BNB" :  " max Bank level is 5" }  </h5>
 </div>
 
             </div>

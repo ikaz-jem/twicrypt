@@ -53,6 +53,7 @@ return (
 
             <ul className=' text-neutral-300'>
                <li className=' text-lg font-extrabold text-pink-500'>Total supply</li>  
+               <li className=' text-sm font-bold text-neutral-200'>Fairlaunch </li> 
                <li className=' text-sm font-bold text-neutral-200'>Mining / VM </li> 
                <li className=' text-sm font-bold text-neutral-200'>Nft staking</li> 
                <li className=' text-sm font-bold text-neutral-200'> Token staking</li> 
@@ -63,6 +64,7 @@ return (
 
             <ul className='font-bold text-neutral-300'>
                <li className=' text-pink-500'>100 B token</li>  
+               <li className=' text-sm font-bold text-neutral-200'>80 B tokens</li> 
                <li className=' text-sm font-bold text-neutral-200'>10 B tokens</li> 
                <li className=' text-sm font-bold text-neutral-200'>2.5 B token </li> 
                <li className=' text-sm font-bold text-neutral-200'>2.5 B token </li> 
@@ -73,7 +75,7 @@ return (
                 </div>
                 <p className='text-xs font-bold text-yellow-500 pl-4 py-5'>note : launch price will be greater than  0.0000001$</p>
             </div>
-            <div className='w-1/3  h-full'>
+            <div className='w-1/3  h-full '>
 <Doughnut data= {data} width={100} height={60} options={{ maintainAspectRatio: false }} />
             </div>
                 

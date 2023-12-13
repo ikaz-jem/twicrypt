@@ -156,7 +156,7 @@ return (
     </div>
        <ul className="flex items-start justify-center flex-col text-xs text-white">
                         <li className=" text-xs text-white">🔸 you need at least to hold 1 Nft to participate</li>
-                        <li className=" text-xs text-white">🔸 you can win up  to 10% from each sale</li>
+                        <li className=" text-xs text-white">🔸 you can win up  2 BNB each 10 BNB solde !</li>
                         <li className=" text-xs text-white">🔸 holding more Nfts increases affiliate percentage !</li>
                         <li className=" text-xs text-white">🔸 each Nft has a reward rate of 1%  !</li>
                         <li className=" text-xs text-white">🔸 max rate is 10% </li>
@@ -196,12 +196,7 @@ return (
 
         <div className="w-full h-full flex flex-col gap-2 ">
             
-            { !isPartner && !isReferrer ?
-                <>
-                <RenderNotEligible/>
-                </>
-                    :
-                    
+            { 
                     <>
                     <RenderStats />
           

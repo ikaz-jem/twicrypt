@@ -37,7 +37,7 @@ const RewardCounter = () => {
     const sessionLength = endTime - startTime;
     const totalSessionRewards = Number(sessionLength) * formatEther(userPower);
     const realtimeReward = (currentTime - startTime) * userPower
-    const miningSpeed = (totalSessionRewards / (sessionLength))
+    const miningSpeed = isNaN((totalSessionRewards / (sessionLength))) ? 0 : (totalSessionRewards / (sessionLength))
 
     let sessionStartIn = NextSession - currentTime
 
@@ -97,7 +97,7 @@ const RewardCounter = () => {
     }
     const renderSessionInfos = () => {
         const earnings =  Number(miningData?.userData?.earnedRewards.toString())
-        const totalEarnings = parseFloat(toFormated(earnings,18).toFixed(2))
+        const totalEarnings =  isNaN(earnings) ? 0 :  parseFloat(toFormated(earnings,18).toFixed(2))
 
         return <>
             <div className="flex gap-2 items-center">
@@ -108,7 +108,7 @@ const RewardCounter = () => {
             </div>
             <div className="flex gap-2 items-center">
                 <p className="font-bold text-xs text-white">total earnings + spendings :</p>
-                <p className="font-bold text-md text-pink-500">{totalEarnings ? totalEarnings + " tw " : 'loading ...'} </p>
+                <p className="font-bold text-md text-pink-500">{totalEarnings >= 0 ? totalEarnings + " tw " : 'loading ...'} </p>
             </div>
 
 
@@ -119,7 +119,7 @@ const RewardCounter = () => {
             </div>
             <div className="flex gap-2 items-center">
                 <p className="font-bold text-xs text-white">earnings per 24h :</p>
-                <p className="font-bold text-md text-pink-500" >{miningData?.userData ? (miningSpeed*3600*24).toFixed(2) + ' tw' : 'loading ...' }</p>
+                <p className="font-bold text-md text-pink-500" >{miningData?.userData ?  (miningSpeed*3600*24).toFixed(2) + ' tw' : 'loading ...' }</p>
             </div>
             <div className="flex gap-2 items-center">
                 <p className="font-bold text-xs text-white">total sessions :</p>

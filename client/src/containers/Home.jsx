@@ -32,7 +32,7 @@ import NftMetrics from "../components/NftMetrics/NftMetrics";
 import Solutions from "./Solutions/Solutions";
 
 const Carousel = lazy(() => import('../components/carousel/Carousel'));
-
+const HomeSlider = lazy(()=> import("../components/HomeNfts/HomeSlider/HomeSlider"))
 
 const Home = () => {
 
@@ -133,14 +133,21 @@ const Home = () => {
 
 
           <HomeNfts />
+          
       </div>
 
 
       <Cta />
+
+<Suspense fallback='loading ...'>
+      <HomeSlider />
+</Suspense>
+
+
       <EarnHome />
       <TokenMetrics />
       <NftMetrics />
-      <div className="container container--xxlarge container--center">
+      <div className="container container--xxlarge container--center sticky top-0">
 
       <Solutions />
       </div>

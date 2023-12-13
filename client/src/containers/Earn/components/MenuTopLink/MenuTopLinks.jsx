@@ -22,8 +22,8 @@ let   className = "my-1";
 
       <div className="flex  flex-wrap   items-center   justify-center  py-2  rounded-xl  ">
         <Nav
-          className="sm:space-x-4  flex flex-wrap gap-1 w-full items-center justify-center"
-          containerClassName="relative flex w-full  text-sm md:text-base   "
+          className="sm:space-x-2 flex flex-wrap gap-1 w-full items-center justify-center"
+          containerClassName="relative flex w-full  text-sm md:text-sm   "
         >
           {navigation?.map(
             (item, index) => (

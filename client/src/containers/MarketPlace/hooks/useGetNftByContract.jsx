@@ -17,7 +17,7 @@ export const useGetNftByContract = (change = '') => {
 
     const testnetData = async () => {
         const Base = opensea_testnet;
-        const nftlimit = `?limit=${data?.limit || ""}`
+        const nftlimit = `?limit=${data?.limit || 50}`
         const constructed = `${Base}${'bsctestnet'}/account/${address && address}/nfts${nftlimit}`
 
         setMyNftsData({

@@ -38,11 +38,6 @@
 				"internalType": "string",
 				"name": "_initBaseURI",
 				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_initNotRevealedUri",
-				"type": "string"
 			}
 		],
 		"stateMutability": "nonpayable",
@@ -120,29 +115,6 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "_id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_ip",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "_country",
-				"type": "string"
-			}
-		],
-		"name": "claim_gif_card",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
 				"name": "_tId",
 				"type": "uint256"
 			}
@@ -163,39 +135,6 @@
 		"name": "mint",
 		"outputs": [],
 		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "_image",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_type",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_amount",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_discount",
-				"type": "uint256"
-			}
-		],
-		"name": "new_gift_card",
-		"outputs": [],
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -243,13 +182,6 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "reveal",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -291,7 +223,7 @@
 			},
 			{
 				"internalType": "bytes",
-				"name": "data",
+				"name": "_data",
 				"type": "bytes"
 			}
 		],
@@ -340,6 +272,19 @@
 			}
 		],
 		"name": "setBaseURI",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_contractUri",
+				"type": "string"
+			}
+		],
+		"name": "setContractUri",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -407,37 +352,6 @@
 			}
 		],
 		"name": "setNftReward",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_notRevealedURI",
-				"type": "string"
-			}
-		],
-		"name": "setNotRevealedURI",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_ip",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_id",
-				"type": "uint256"
-			}
-		],
-		"name": "spend_gift",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -601,11 +515,6 @@
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "_referrer",
-				"type": "address"
-			},
-			{
 				"internalType": "uint256",
 				"name": "_amount",
 				"type": "uint256"
@@ -631,6 +540,25 @@
 			}
 		],
 		"name": "calculatePercentage",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_salePrice",
+				"type": "uint256"
+			}
+		],
+		"name": "calculateRoyalty",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -699,9 +627,22 @@
 						"type": "uint256"
 					}
 				],
-				"internalType": "struct TestNFT.nftReward[]",
+				"internalType": "struct Twicrypt.nftReward[]",
 				"name": "",
 				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "contractURI",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
 			}
 		],
 		"stateMutability": "view",
@@ -765,14 +706,9 @@
 						"internalType": "bool",
 						"name": "paused",
 						"type": "bool"
-					},
-					{
-						"internalType": "bool",
-						"name": "revealed",
-						"type": "bool"
 					}
 				],
-				"internalType": "struct TestNFT.mintStats",
+				"internalType": "struct Twicrypt.mintStats",
 				"name": "",
 				"type": "tuple"
 			}
@@ -808,23 +744,8 @@
 						"type": "address[]"
 					},
 					{
-						"internalType": "bool",
-						"name": "isReferrer",
-						"type": "bool"
-					},
-					{
-						"internalType": "bool",
-						"name": "isPartner",
-						"type": "bool"
-					},
-					{
 						"internalType": "uint256",
 						"name": "percentage",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "reffConditon",
 						"type": "uint256"
 					},
 					{
@@ -848,7 +769,7 @@
 						"type": "uint256"
 					}
 				],
-				"internalType": "struct TestNFT.stats",
+				"internalType": "struct Twicrypt.stats",
 				"name": "",
 				"type": "tuple"
 			}
@@ -927,7 +848,7 @@
 						"type": "uint256"
 					}
 				],
-				"internalType": "struct TestNFT.nftReward[]",
+				"internalType": "struct Twicrypt.nftReward[]",
 				"name": "",
 				"type": "tuple[]"
 			}
@@ -987,7 +908,7 @@
 						"type": "uint256"
 					}
 				],
-				"internalType": "struct TestNFT.nftReward[]",
+				"internalType": "struct Twicrypt.nftReward[]",
 				"name": "",
 				"type": "tuple[]"
 			},
@@ -1039,7 +960,7 @@
 						"type": "uint256"
 					}
 				],
-				"internalType": "struct TestNFT.nftReward[]",
+				"internalType": "struct Twicrypt.nftReward[]",
 				"name": "",
 				"type": "tuple[]"
 			}
@@ -1112,12 +1033,12 @@
 								"type": "uint256"
 							}
 						],
-						"internalType": "struct TestNFT.nftReward[]",
+						"internalType": "struct Twicrypt.nftReward[]",
 						"name": "myWiningNfts",
 						"type": "tuple[]"
 					}
 				],
-				"internalType": "struct TestNFT.NftRewardStats",
+				"internalType": "struct Twicrypt.NftRewardStats",
 				"name": "",
 				"type": "tuple"
 			}
@@ -1177,7 +1098,7 @@
 						"type": "uint256"
 					}
 				],
-				"internalType": "struct TestNFT.nftReward[]",
+				"internalType": "struct Twicrypt.nftReward[]",
 				"name": "",
 				"type": "tuple[]"
 			}
@@ -1194,44 +1115,6 @@
 			}
 		],
 		"name": "hasWinningNft",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_referrer",
-				"type": "address"
-			}
-		],
-		"name": "is_partner",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_referrer",
-				"type": "address"
-			}
-		],
-		"name": "is_referrer",
 		"outputs": [
 			{
 				"internalType": "bool",
@@ -1313,19 +1196,6 @@
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "notRevealedUri",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
 			}
 		],
 		"stateMutability": "view",
@@ -1435,12 +1305,54 @@
 	},
 	{
 		"inputs": [],
-		"name": "revealed",
+		"name": "royaltyFees",
 		"outputs": [
 			{
-				"internalType": "bool",
+				"internalType": "uint256",
 				"name": "",
-				"type": "bool"
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_tokenId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_salePrice",
+				"type": "uint256"
+			}
+		],
+		"name": "royaltyInfo",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "receiver",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "royaltyAmount",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "royaltyReceiver",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",

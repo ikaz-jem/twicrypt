@@ -38,11 +38,6 @@
 				"internalType": "string",
 				"name": "_initBaseURI",
 				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_initNotRevealedUri",
-				"type": "string"
 			}
 		],
 		"stateMutability": "nonpayable",
@@ -120,6 +115,19 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
+				"name": "_tId",
+				"type": "uint256"
+			}
+		],
+		"name": "claimNftReward",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
 				"name": "_mintAmount",
 				"type": "uint256"
 			}
@@ -174,13 +182,6 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "reveal",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -222,7 +223,7 @@
 			},
 			{
 				"internalType": "bytes",
-				"name": "data",
+				"name": "_data",
 				"type": "bytes"
 			}
 		],
@@ -278,6 +279,19 @@
 	{
 		"inputs": [
 			{
+				"internalType": "string",
+				"name": "_contractUri",
+				"type": "string"
+			}
+		],
+		"name": "setContractUri",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "uint256",
 				"name": "_newCost",
 				"type": "uint256"
@@ -317,12 +331,27 @@
 	{
 		"inputs": [
 			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "reward",
+				"type": "uint256"
+			},
+			{
 				"internalType": "string",
-				"name": "_notRevealedURI",
+				"name": "image",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_tokenURI",
 				"type": "string"
 			}
 		],
-		"name": "setNotRevealedURI",
+		"name": "setNftReward",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -486,11 +515,6 @@
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "_referrer",
-				"type": "address"
-			},
-			{
 				"internalType": "uint256",
 				"name": "_amount",
 				"type": "uint256"
@@ -527,6 +551,104 @@
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_salePrice",
+				"type": "uint256"
+			}
+		],
+		"name": "calculateRoyalty",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "checkMyNfts",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "reward",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "claimed",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "claimedReward",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "hasReward",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "metadata",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "image",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "claimer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "claimedAt",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Twicrypt.nftReward[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "contractURI",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "cost",
 		"outputs": [
@@ -534,6 +656,61 @@
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "get_mint_stats",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "baseURI",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "cost",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxSupply",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxMintAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nftPerAddressLimit",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalContributions",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "supply",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "paused",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct Twicrypt.mintStats",
+				"name": "",
+				"type": "tuple"
 			}
 		],
 		"stateMutability": "view",
@@ -567,53 +744,8 @@
 						"type": "address[]"
 					},
 					{
-						"internalType": "bool",
-						"name": "isReferrer",
-						"type": "bool"
-					},
-					{
-						"internalType": "bool",
-						"name": "isPartner",
-						"type": "bool"
-					},
-					{
 						"internalType": "uint256",
 						"name": "percentage",
-						"type": "uint256"
-					},
-					{
-						"internalType": "string",
-						"name": "baseURI",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "cost",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "maxSupply",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "maxMintAmount",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "nftPerAddressLimit",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "reffConditon",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "totalContributions",
 						"type": "uint256"
 					},
 					{
@@ -628,21 +760,6 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "supply",
-						"type": "uint256"
-					},
-					{
-						"internalType": "bool",
-						"name": "paused",
-						"type": "bool"
-					},
-					{
-						"internalType": "bool",
-						"name": "revealed",
-						"type": "bool"
-					},
-					{
-						"internalType": "uint256",
 						"name": "refContributions",
 						"type": "uint256"
 					},
@@ -652,7 +769,7 @@
 						"type": "uint256"
 					}
 				],
-				"internalType": "struct TestNFT.stats",
+				"internalType": "struct Twicrypt.stats",
 				"name": "",
 				"type": "tuple"
 			}
@@ -680,19 +797,172 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_referrer",
-				"type": "address"
-			}
-		],
-		"name": "is_partner",
+		"inputs": [],
+		"name": "getClaimedRewards",
 		"outputs": [
 			{
-				"internalType": "bool",
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "reward",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "claimed",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "claimedReward",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "hasReward",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "metadata",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "image",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "claimer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "claimedAt",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Twicrypt.nftReward[]",
 				"name": "",
-				"type": "bool"
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getUiNftRewardStats",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "reward",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "claimed",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "claimedReward",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "hasReward",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "metadata",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "image",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "claimer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "claimedAt",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Twicrypt.nftReward[]",
+				"name": "",
+				"type": "tuple[]"
+			},
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "reward",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "claimed",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "claimedReward",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "hasReward",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "metadata",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "image",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "claimer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "claimedAt",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Twicrypt.nftReward[]",
+				"name": "",
+				"type": "tuple[]"
 			}
 		],
 		"stateMutability": "view",
@@ -702,11 +972,149 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "_referrer",
+				"name": "_addr",
 				"type": "address"
 			}
 		],
-		"name": "is_referrer",
+		"name": "getUserNftRewardStats",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "bool",
+						"name": "userHaswon",
+						"type": "bool"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "tokenId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "reward",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "claimed",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint256",
+								"name": "claimedReward",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "hasReward",
+								"type": "bool"
+							},
+							{
+								"internalType": "string",
+								"name": "metadata",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "image",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "claimer",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "claimedAt",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Twicrypt.nftReward[]",
+						"name": "myWiningNfts",
+						"type": "tuple[]"
+					}
+				],
+				"internalType": "struct Twicrypt.NftRewardStats",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getWiningNfts",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "reward",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "claimed",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "claimedReward",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "hasReward",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "metadata",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "image",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "claimer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "claimedAt",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Twicrypt.nftReward[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "hasWinningNft",
 		"outputs": [
 			{
 				"internalType": "bool",
@@ -788,19 +1196,6 @@
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "notRevealedUri",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
 			}
 		],
 		"stateMutability": "view",
@@ -910,12 +1305,54 @@
 	},
 	{
 		"inputs": [],
-		"name": "revealed",
+		"name": "royaltyFees",
 		"outputs": [
 			{
-				"internalType": "bool",
+				"internalType": "uint256",
 				"name": "",
-				"type": "bool"
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_tokenId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_salePrice",
+				"type": "uint256"
+			}
+		],
+		"name": "royaltyInfo",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "receiver",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "royaltyAmount",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "royaltyReceiver",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
