@@ -8,18 +8,7 @@ import logo2 from '../../media/3d2.png'
 
 const random = Math.floor(Math.random()*5000)
 
-    const placeHolders = [
-        `https://api.twicrypt.com/eth/img/${random}.png`,
-
-        `https://api.twicrypt.com/eth/img/${random+326}.png`,
- 
-        `https://api.twicrypt.com/eth/img/${random+782}.png`,
-        `https://api.twicrypt.com/eth/img/${random+2}.png`,
-        `https://api.twicrypt.com/eth/img/${random+320}.png`,
-        `https://api.twicrypt.com/eth/img/${random+1622}.png`,
-  
- 
-    ]
+    const placeHolders = [1,1,1,1,1,1,1]
 
 const Sponsors = () => {
   const id = useId();
@@ -28,12 +17,14 @@ const Sponsors = () => {
   useEffect(() => {
     // @ts-ignore
     const OPTIONS = {
-      type:'carouzel',
+      type:'slider',
       perView: 5,
       gap: 0,
-      
+      fucusAt:5,
+      startAt:1,
       autoplay:2000,
-      hoverpause:true,
+      bound:true,
+      hoverpause:false,
       direction:'ltr',
       breakpoints: {
         1280: {

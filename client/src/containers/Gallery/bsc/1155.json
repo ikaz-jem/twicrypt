@@ -1,0 +1,39 @@
+{
+  "name": "Twicrypt #1155",
+  "description": "Twicrypt is a decentralized digital currency built on the Binance smart chain that operates on handmade arts that includes , Unlocking exclusive rewards hidden in selected Nfts ranging between $1,000 - $30,000 ,Mining , Free passes , Discounts , Partners program and more … Explore more at twicrypt.com",
+  "image": "https://api.twicrypt.com/bsc/img/1155.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Avocado"
+    },
+    {
+      "trait_type": "Body",
+      "value": "female"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Umask",
+      "value": "Squide Game"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Long Straight"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Pink Bikini"
+    },
+    {
+      "trait_type": "Hand",
+      "value": "desert eagle gray"
+    }
+  ],
+  "dna": "1df48247fe4ee4c0e5be682abb76f40df24488b6",
+  "edition": 1155,
+  "external_url": "https://nft.twicrypt.com",
+  "date": 1701557134203
+}

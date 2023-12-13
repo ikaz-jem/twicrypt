@@ -66,15 +66,15 @@ const HomeSlider = () => {
 
 
   return (
-    <div className={` container mx-2  overflow-hidden w-full h-screen  ${UNIQUE_CLASS} `}>
+    <div className={` container mx-2  overflow-hidden w-full h-screen relative ${UNIQUE_CLASS} `}>
+      <h1 className=" mt-10 absolute top-10 text-left font-extrabold  ">Quality Art </h1>
       <div className="  overflow-hidden  items-center flex justify-center h-full" data-glide-el="track">
-        <ul className="w-full h-full flex items-center justify-center ">
-      <h1 className=" m-0 text-left font-extrabold  ">Quality Art </h1>
+        <ul className="w-full h-full flex items-center justify-center p-0 m-0 ">
          {
 
 
 placeHolders?.map((item, index) => (
-  <li key={index} className='glide__slide flex gap-0 m-0 p-0 items-center justify-center w-full h-full' >
+  <li key={index} className='glide__slide  flex gap-0 m-0 p-0 items-center justify-center w-full h-full' >
     <Card
       name={'twicrypt'}
       img={item}

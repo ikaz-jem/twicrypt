@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react"
-import axios from 'axios'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import Spinner from "../../shared/Spinner/Spinner"
 import ImageCard from './ImageCard'
-import FilterCard from "./FilterCard"
 
 import { Masks,Bakgrounds,Clothing,Hair,Hand,Eyes } from "./traits"
 import { useTotalSupply } from "./hooks/useTotalSupply"
-import {useSelector} from 'react-redux'
 
 
 
@@ -45,7 +42,7 @@ const Gallery = () => {
     let results = []
   
     for (let i=0; i< nftSupply; i++){
-      let tempData = require(`./eth/${i}.json`)
+      let tempData = require(`./bsc/${i}.json`)
       let filter = tempData.attributes.some(attr => Object?.values(attr).find((tr) => tr == filterData?.Background || tr == filterData?.Mask || tr == filterData?.Umask || tr == filterData?.Clothing || tr == filterData?.Hair || tr == filterData?.Eyes || tr == filterData?.Hand)) 
       filter == true && results.push(i)
       
@@ -59,15 +56,7 @@ const Gallery = () => {
   },[filterData])
  
 
-  // useEffect(() => {
-  //   const nfts = selected ? axios.get('https://api.twicrypt.com/eth/metadata/_metadata.json').then((res) => setData(res?.data)) : null
-  //   console.log('fetching')
-  // }, [selected])
 
-
-  // const filteredData = data?.length > 10 && data?.filter((item)=> item?.attributes?.map((attr)=>attr?.value==filter) )
-  // const filteredData = data && data?.filter((obj) => obj.attributes.some(attr => Object?.values(attr).find((tr) => tr == filterData?.Background || tr == filterData?.Mask || tr == filterData?.Umask || tr == filterData?.Clothing || tr == filterData?.Hair || tr == filterData?.Eyes || tr == filterData?.Hand))) || 0
-  
   const checkHasMore = ()=>{
 
     if (!selected && nftSupply <= perView){
@@ -103,11 +92,7 @@ const Gallery = () => {
 
       }
 
-      // setTimeout(() => {
-      //   setNftArray(nftArray.concat(perViewArray))
-
-      // }, 1000)
-
+   
 
     } else {
       

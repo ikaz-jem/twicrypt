@@ -28,13 +28,13 @@ return (
            
 {/* {isLogedIn && user.accountType !== 'guest' && !user.hasAccount && <UserModal address={address} show={!user.hasAccount} />} */}
 
-            <div className="   container container--xxlarge container--center  shadow-xl  backdrop-blur-sm rounded-3xl overfllow-hidden m-0  ">
+            <div className="   container container--xxlarge container--center h-10  shadow-xl  backdrop-blur-sm rounded-3xl overfllow-hidden m-0  ">
 
-             <div className="flex h-full justify-between p-1">
+             <div className="flex h-full justify-between px-5">
                     
                 <Link className='logo ' to={'./'} >
                         <img src={logo} alt="logo" className="w-6 h-6 mr-1 " />
-                            <p className="ml-1 p-0 text-xs text-pink-600 font-bold bg-yellow-400 bord">Twi<span className="text-yellow-300 ml-1 bg-pink-600">Crypt</span></p>
+                            <p className="ml-1 p-0 text-xs text-pink-600 font-bold bg-yellow-400 invisible md:visible ">Twi<span className="text-yellow-300 ml-1 bg-pink-600">Crypt</span></p>
                 </Link>
 
 

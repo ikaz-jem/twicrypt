@@ -44,26 +44,26 @@ export const  FilterData = ([
       val:'twicrypt',
       icon:twi
     },
-    {
-      title:'Binance Smart Chain',
-      val:'bsc',
-      icon:bsc
-    },
-    {
-      title:'Ethereum',
-      val:'ethereum',
-      icon:eth2
-    },
-    {
-      title:'binance Testnet',
-      val:'bsctestnet',
-      icon:bsctestnet
-    },
-    {
-      title:'goerli',
-      val:'goerli',
-      icon:eth
-    },
+    // {
+    //   title:'Binance Smart Chain',
+    //   val:'bsc',
+    //   icon:bsc
+    // },
+    // {
+    //   title:'Ethereum',
+    //   val:'ethereum',
+    //   icon:eth2
+    // },
+    // {
+    //   title:'binance Testnet',
+    //   val:'bsctestnet',
+    //   icon:bsctestnet
+    // },
+    // {
+    //   title:'goerli',
+    //   val:'goerli',
+    //   icon:eth
+    // },
   ]
   }
 

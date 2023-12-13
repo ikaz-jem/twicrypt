@@ -7,6 +7,9 @@ import { BsArrowBarDown} from 'react-icons/bs'
 import { useDispatch, useSelector } from "react-redux";
 import { setMenuPosition,toggleMintPanel } from "../../app/features/States/StatesSlice";
 import logo from '../../media/logo.png'
+import { BsTwitterX } from "react-icons/bs";
+import { FaTelegramPlane } from "react-icons/fa";
+
 import {  FcDoughnutChart,
   FcBusinessman,
   FcDownLeft,
@@ -438,6 +441,7 @@ return  <button
           <div className={`flex ${!width?.isOpen && "flex-col"} gap-2 mt-5 text-slate-300 text-sm items-center justify-center`}>
 <Link to={`/dashboard/account/${address}`} >
         <FcBusinessman className="text-5xl p-2 bg-neutral-800 hover:bg-pink-600 transition-all rounded-full cursor-pointer " /> 
+        
 </Link>
      
 
@@ -453,8 +457,14 @@ return  <button
         {  data.map(_renderItem)}
        
       </ul>
-      <div className="flex items-center justify-between py-6 px-5 space-x-2">
-   
+      <div className={`flex items-center justify-center py-1 px-5 gap-2  ${!width?.isOpen && "flex-col"} py-2 ` }>
+        <Link to={'/'}>
+      <BsTwitterX className="text-2xl hover:text-white text-neutral-700 transition-all cursor-pointer"/>
+        </Link>
+        <Link to={''}>
+      <FaTelegramPlane className="text-3xl hover:text-white transition-all text-neutral-700 cursor-pointer "/>
+        </Link>
+
       </div>
     </div>
   );

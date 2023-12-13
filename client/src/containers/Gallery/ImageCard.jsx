@@ -10,8 +10,8 @@ const [show,setShow] = useState(false)
 
   const basUrl = 'https://api.twicrypt.com/'
     // console.log(`${collection?.basUrl}${collection?.network}/metadata/${data}.json`)
-    const metadata = require(`./eth/${nftIndex}.json`)
-    const image = `${basUrl}eth/img/thumbnails/tn_${nftIndex}.png`
+    const metadata = require(`./bsc/${nftIndex}.json`)
+    const image = `${basUrl}bsc/img/thumbnails/tn_${nftIndex}.png`
 
     return (
       <div className="flex items-center justify-center flex-col cursor-pointer" onClick={()=>setShow(true)} >

@@ -78,7 +78,7 @@ const RewardCounter = () => {
             <div className="flex gap-2 items-center">
 
                 <p className="font-bold text-xs text-white">mining :</p>
-                {sessionStartIn <= 0 || endTime > currentTime ? <p className="font-bold text-md text-pink-500">{formatEther(reward)} tw</p> : <p className="text-orange-500">session Ended come back when new session is available!</p>}
+                {sessionStartIn <= 0 || endTime > currentTime ? <p className="font-bold text-md text-pink-500">{parseFloat(toFormated(reward,18).toFixed(2))} tw</p> : <p className="text-orange-500">session Ended come back when new session is available!</p>}
             </div>
        
 
