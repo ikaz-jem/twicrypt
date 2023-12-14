@@ -8,15 +8,83 @@ import Glide from "@glidejs/glide";
 
 
 
-const NftSlider = ({data}) => {
+const NftSlider = ({data=[]}) => {
   const id = useId();
   const UNIQUE_CLASS = "glidejs" + id.replace(/:/g, "_");
+
+
+  const Nfts = [
+    ...data ,
+   {
+   name: 'Twicrypt Demo',
+   tokenId:7102,
+   price:4500000000000000000,
+   image:'https://api.twicrypt.com/eth/img/7102.png',
+   metadata_url:'https://api.twicrypt.com/eth/metadata/7102.json'
+   
+   },
+   {
+   name: 'Twicrypt Demo',
+   tokenId:15,
+   price:60000000000000000000,
+   image:'https://api.twicrypt.com/eth/img/7480.png',
+   metadata_url:'https://api.twicrypt.com/eth/metadata/7480.json'
+   
+   },
+   {
+   name: 'Twicrypt Demo',
+   tokenId:15,
+   price:85000000000000000000,
+   image:'https://api.twicrypt.com/eth/img/6988.png',
+   metadata_url:'https://api.twicrypt.com/eth/metadata/6988.json'
+   
+   },
+   {
+   name: 'Twicrypt Demo',
+   tokenId:15,
+   price:100000000000000000000,
+   image:'https://api.twicrypt.com/eth/img/7434.png',
+   metadata_url:'https://api.twicrypt.com/eth/metadata/7434.json'
+   
+   },
+   {
+   name: 'Twicrypt Demo',
+   tokenId:15,
+   price:16500000000000000000,
+   image:'https://api.twicrypt.com/eth/img/7003.png',
+   metadata_url:'https://api.twicrypt.com/eth/metadata/7003.json'
+   }
+   
+   ]
+
+   const exctractItems = ()=>{
+
+    return (
+    
+    <>
+    {Nfts?.map((item, index) => (
+                <li key={index} className={`flex justify-center items-center glide__slide py-8 m-0  `} >
+                <NftsCard data={item}
+                /> 
+              </li>
+              ))}
+    
+    </>
+    
+    )
+    
+    
+    }
+
+
 
   useEffect(() => {
     // @ts-ignore
     const OPTIONS = {
       type:'carousel',
       perView: 5,
+      bound:true,
+      focusAt:5,
       gap: 10,
       animationDuration: 1000,
       
@@ -75,12 +143,11 @@ const NftSlider = ({data}) => {
      
 
         <ul className="glide__slides m-0 p-0">
-          {data && data?.map((item, index) => (
-            <li key={index} className={`flex justify-center items-center glide__slide py-8 m-0  `} >
-              <NftsCard data={item}
-              /> 
-            </li>
-          ))}
+          {
+
+exctractItems()
+
+          }
         </ul>
      
         </div>

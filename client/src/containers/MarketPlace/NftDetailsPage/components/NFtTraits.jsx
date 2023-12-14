@@ -10,7 +10,7 @@ import { unixToDate } from "../../../../utils/unixToDate"
 const NftTraits = () => {
 
 const metadata = useSelector(state=>state.marketPlace.nftDetailsPageState)
-console.log(metadata)
+
 
     return (
         <>

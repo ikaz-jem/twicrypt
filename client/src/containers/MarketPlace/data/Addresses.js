@@ -1,11 +1,7 @@
 
-const marketplace_contract = '0xeA69098B2992FD3B289ABD89904622d0ef88Fb1D' // market trest
-// const marketplace_contract = '0x5517bA2DbC9EEfA527a2b356EdA71c998c16A46d' // with offers and auction latest
-// const marketplace_contract = '0x4798BB506ecde79048a00d93D44B6e9b5022Bfb7' // with offers and auction latest
-// const marketplace_contract = '0xbe2de4A668F88125d627537F20C11a49de77E3F8' // with offers and auction latest
-// const marketplace_contract = '0x265E14b15eF4bc04a29Fa58f1C8B0277533de29C' // with offers and auction latest
-// const marketplace_contract = '0x94A2Fe47D3dDDE6B53589635c25DCE4b941E8d01' // with offers and auction
-// const marketplace_contract = '0x9bD87F565e4e8a672F52967C78F926814fab0Fd4' // with offers
+const marketplace_contract = '0xa122fCE0301713C73d9d43a94961127A29069726' // market trest
+// const marketplace_contract = '0xeA69098B2992FD3B289ABD89904622d0ef88Fb1D' // market trest
+
 
 const nft_contract = '0x6f1e8B285B38c6E07da3f44DF8BD7635350f37Ce' //twi collection
 

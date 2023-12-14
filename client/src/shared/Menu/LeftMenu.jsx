@@ -458,10 +458,10 @@ return  <button
        
       </ul>
       <div className={`flex items-center justify-center py-1 px-5 gap-2  ${!width?.isOpen && "flex-col"} py-2 ` }>
-        <Link to={'/'}>
+        <Link to={'https://x.com/twicrypt'} target="blank">
       <BsTwitterX className="text-2xl hover:text-white text-neutral-700 transition-all cursor-pointer"/>
         </Link>
-        <Link to={''}>
+        <Link to={'https://t.me/twicrypt'} target="blank">
       <FaTelegramPlane className="text-3xl hover:text-white transition-all text-neutral-700 cursor-pointer "/>
         </Link>
 

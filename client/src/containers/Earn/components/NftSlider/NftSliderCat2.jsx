@@ -5,10 +5,81 @@ import NftsCardCat2 from "../NftCards/NftsCardCat2";
 import Glide from "@glidejs/glide";
 
 
-const NftSliderCat2 = ({data=false}) => {
+const NftSliderCat2 = ({data=[]}) => {
   const id = useId();
   const UNIQUE_CLASS = "glidejs" + id.replace(/:/g, "_");
 
+
+  
+
+const Nfts = [
+ ...data ,
+{
+name: 'Twicrypt Demo',
+tokenId:7102,
+floorPrice:500000000000000000,
+buyNow:30000000000000000000,
+image:'https://api.twicrypt.com/eth/img/7102.png',
+metadata_url:'https://api.twicrypt.com/eth/metadata/7102.json'
+
+},
+{
+name: 'Twicrypt Demo',
+tokenId:7480,
+floorPrice:1000000000000000000,
+buyNow:80000000000000000000,
+image:'https://api.twicrypt.com/eth/img/7480.png',
+metadata_url:'https://api.twicrypt.com/eth/metadata/7480.json'
+
+},
+{
+name: 'Twicrypt Demo',
+tokenId:6988,
+floorPrice:5000000000000000000,
+buyNow:35000000000000000000,
+image:'https://api.twicrypt.com/eth/img/6988.png',
+metadata_url:'https://api.twicrypt.com/eth/metadata/6988.json'
+
+},
+{
+name: 'Twicrypt Demo',
+tokenId:7434,
+floorPrice:2000000000000000000,
+buyNow:8400000000000000000,
+image:'https://api.twicrypt.com/eth/img/7434.png',
+metadata_url:'https://api.twicrypt.com/eth/metadata/7434.json'
+
+},
+{
+name: 'Twicrypt Demo',
+tokenId:7003,
+floorPrice:750000000000000000,
+buyNow:22000000000000000000,
+image:'https://api.twicrypt.com/eth/img/7003.png',
+metadata_url:'https://api.twicrypt.com/eth/metadata/7003.json'
+}
+
+]
+
+
+const exctractItems = ()=>{
+
+return (
+
+<>
+{Nfts?.map((item, index) => (
+            <li key={index} className={`flex justify-center items-center glide__slide py-8 m-0  `} >
+              <NftsCardCat2 data={item}
+              /> 
+            </li>
+          ))}
+
+</>
+
+)
+
+
+}
 
 
   useEffect(() => {
@@ -51,7 +122,7 @@ const NftSliderCat2 = ({data=false}) => {
     };
 
     let slider = new Glide(`.${UNIQUE_CLASS}`, OPTIONS);
-    data && slider.mount();
+     slider.mount();
     return () => {
       slider.destroy();
     };
@@ -77,12 +148,7 @@ const NftSliderCat2 = ({data=false}) => {
      
 
         <ul className="glide__slides m-0 p-0">
-          { data ? data?.map((item, index) => (
-            <li key={index} className={`flex justify-center items-center glide__slide py-8 m-0  `} >
-              <NftsCardCat2 data={item}
-              /> 
-            </li>
-          )):""}
+          { exctractItems()}
         </ul>
      
         </div>

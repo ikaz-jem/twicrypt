@@ -37,7 +37,7 @@ const MarketplaceSliders = () => {
                                     <HashLoader size={50} color="#fff" style={{ text: 'center' }} />
                                 </div>
                             </>}>
-                            <NftSliderCat2 data={listings?.auction} />
+                           {<NftSliderCat2 data={listings?.auction} />}
                         </Suspense>
                     }
 

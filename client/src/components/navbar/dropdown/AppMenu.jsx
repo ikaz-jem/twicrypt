@@ -49,7 +49,7 @@ const solutions = [
     description: 'about Twicrypt services',
     href: '/dashboard/auto-p2e?id=mining-session',
     icon: GiMining,
-    target:'_slef'
+    target:'_self'
   },
   {
     name: 'Documentations',
@@ -162,7 +162,9 @@ const AppMenu =()=> {
 
                   <FaXTwitter className='text-2xl rounded-full   text-black m-1 hover:text-white cursor-pointer' />
                       </Link>
+                      <Link to={'https://t.me/twicrypt'} target='blank' >
                   <RiTelegramFill className='text-2xl rounded-full   text-black m-1 hover:text-white cursor-pointer' />
+                      </Link>
                     </p>
                 
                     {/* <a

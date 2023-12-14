@@ -7,7 +7,6 @@ import { HashLoader } from 'react-spinners';
 import { useDispatch, useSelector } from 'react-redux'
 
 import { getCarouselData } from "../../../app/features/carousel/carouselThunks"; 
-import { fetchedCarouselData } from "../../../app/features/carousel/carouselSlice";
 
 import MarketplaceSliders from "./MarketplaceSliders";
 
@@ -19,7 +18,7 @@ const NftSliderCat2 = React.lazy(() => import("../../Earn/components/NftSlider/N
 const AllListings = ({ className = "" }) => {
 
     const dispatch = useDispatch()
-    const Nfts = useSelector(fetchedCarouselData)
+
     const listings = useSelector(state=>state.marketPlace.allListings)
 
     // const {isLoading,hasError} = useGetListing()
@@ -38,7 +37,55 @@ const AllListings = ({ className = "" }) => {
 
     const RenderCards = () => {
         // const { isLoading, data=false } = Nfts
-        let  data  = listings?.listings
+        let  data  = listings?.listings || []
+
+        const random = Math.floor(Math.random()*500)
+
+
+        const Nfts = [
+            ...data ,
+           {
+           name: 'Twicrypt Demo',
+           tokenId:random+256,
+           price:random+256*100000000000000000,
+           image:`https://api.twicrypt.com/eth/img/${random+265}.png`,
+           metadata_url:`https://api.twicrypt.com/eth/metadata/${random+256}.json`
+           
+           },
+           {
+           name: 'Twicrypt Demo',
+           tokenId:random+69,
+           price:random+69*100000000000000000,
+           image:`https://api.twicrypt.com/eth/img/${random+69}.png`,
+           metadata_url:`https://api.twicrypt.com/eth/metadata/${random+69}.json`
+           
+           },
+           {
+           name: 'Twicrypt Demo',
+           tokenId:random+96,
+           price:random+96*100000000000000000,
+           image:`https://api.twicrypt.com/eth/img/${random+96}.png`,
+           metadata_url:`https://api.twicrypt.com/eth/metadata/${random+96}.json`
+           
+           },
+           {
+           name: 'Twicrypt Demo',
+           tokenId:random+369,
+           price:random+369*100000000000000000,
+           image:`https://api.twicrypt.com/eth/img/${random+369}.png`,
+           metadata_url:`https://api.twicrypt.com/eth/metadata/${random+369}.json`
+           
+           },
+           {
+           name: 'Twicrypt Demo',
+           tokenId:random,
+           price:random*100000000000000000,
+           image:`https://api.twicrypt.com/eth/img/${random}.png`,
+           metadata_url:`https://api.twicrypt.com/eth/metadata/${random}.json`
+           }
+           
+           ]
+
 
         return (
             <>
@@ -48,7 +95,7 @@ const AllListings = ({ className = "" }) => {
                         <p className="text-whie">Getting All Nfts data ...</p>
                     </div>
                     :
-                    data?.map((item, index) => (
+                    Nfts?.map((item, index) => (
                         <NftsCard data={item} key={index} />
                     ))
                 }

@@ -96,7 +96,7 @@ const RewardCounter = () => {
 
     }
     const renderSessionInfos = () => {
-        const earnings =  Number(miningData?.userData?.earnedRewards.toString())
+        const earnings =  Number(miningData?.userData?.earnedRewards.toString()) || 0
         const totalEarnings =  isNaN(earnings) ? 0 :  parseFloat(toFormated(earnings,18).toFixed(2))
 
         return <>

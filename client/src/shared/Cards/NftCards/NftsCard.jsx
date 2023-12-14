@@ -41,8 +41,8 @@ const token = Number(tokenId)
 
 const metadata = require(`../.../../../../containers/Gallery/bsc/${token}.json`)
 const image = `https://api.twicrypt.com/bsc/img/thumbnails/tn_${token}.png`
-console.log(image)
-  return (
+
+return (
         <Link to={url} >
     <div  className={`border border-neutral-800 bg-[#2c2c2c3d] rounded-2xl ${!metadata?.name && 'cursor-wait'} w-60 h-auto shadow-sm  hover:shadow-lg pb-0 relative hover:translate-y-[-1%] transition-all cursor-pointer overflow-clip` }>
       <div className="flex flex-col  h-86 w-full ">

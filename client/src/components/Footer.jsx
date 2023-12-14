@@ -1,5 +1,6 @@
 import { BsTwitterX } from "react-icons/bs";
 import { FaTelegramPlane } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 
 
@@ -37,16 +38,16 @@ return(
 
       <ul className="list list--inline list--unstyle gutter gutter--large">
         <li className="list__item">
-          <a href="http://github.com/jedrzejchalubek">
+          <Link to="https://t.me/twicrypt" target="blank">
             <FaTelegramPlane className="text-3xl hover:text-white transition-all "/>
-          </a>
+          </Link>
         </li>
 
         <li className="list__item">
-          <a href="http://twitter.com/jedrzejchalubek">
+          <Link to="https://twitter.com/twicrypt" target="blank">
             <BsTwitterX className="text-3xl hover:text-white  transition-all"/>
          
-          </a>
+          </Link>
         </li>
 
        

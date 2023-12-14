@@ -22,13 +22,13 @@ const NoNftOwner = () => {
                         <div className="px-5 border-b border-neutral-700">
                             
                             <h3>This Nft has Not been Minted Yet !</h3>
-                        <p className=" text-neutral-400 font-bold text-sm p-0 m-0">Mint random Nft and take your change to win more than 1BTC  🥳</p>
+                        <p className=" text-neutral-400 font-bold text-sm p-0 m-0">Mint random Nft and take a change to win more than 100 BNB  🥳</p>
                         </div>
                        
                         <div className="" >
                             <div className="flex w-full gap-5 border-t border-neutral-800 p-5 ">
-                                <Link  to='/earn/mint' className="w-1/2 text-white font-bold bg-pink-500 rounded-lg h-14 flex items-center justify-center">Mint Nft</Link>
-                                <Link to='/earn/marketplace/all-nfts' className="w-1/2 text-black font-bold bg-neutral-300 rounded-lg h-14 flex items-center justify-center">View All Nft Types</Link>
+                                {/* <Link  to='/dashboard/mint' className="w-1/2 text-white font-bold bg-pink-500 rounded-lg h-14 flex items-center justify-center">Mint Nft</Link>
+                                <Link to='/dashboard/marketplace/all-nfts' className="w-1/2 text-black font-bold bg-neutral-300 rounded-lg h-14 flex items-center justify-center">View All Nft Types</Link> */}
                             </div>
                         </div>
                     </div> : <ConnectWalletError/>}

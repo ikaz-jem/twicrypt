@@ -125,7 +125,7 @@ const ownerNftIds = useWalletOfOwner()
 
 
     const RenderMyTwicryptNfts = () => {
-        console.log(ownerNftIds)
+
         return (
             <>
                 {

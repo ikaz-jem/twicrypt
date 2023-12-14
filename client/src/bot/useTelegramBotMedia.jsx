@@ -5,8 +5,8 @@ import axios from "axios";
 
 export const useTelegramBotMedia = (data)=>{
 
-const chatId ="@ikazjemtest"
-const botToken = "6344685153:AAES_WcrCiP-v3KyjlGejYFbYrDDwOxN3Go"
+const chatId ="@twicrypt"
+const botToken = "6610376100:AAFYGutw1S5t2hhmO-IJdSguiBOLfPmGJVA"
 
     const sendMedia = async () => {
         try {
@@ -17,9 +17,9 @@ const botToken = "6344685153:AAES_WcrCiP-v3KyjlGejYFbYrDDwOxN3Go"
             parse_mode: 'HTML',
             has_spoiler:false
           });
-          console.log('Message sent:', response.data);
+          // console.log('Message sent:', response.data);
         } catch (error) {
-          console.error('Error sending message:', error);
+          // console.error('Error sending message:', error);
         }
       };
 
