@@ -16,14 +16,16 @@ return(
         <h3 className="heading">It’s All for you</h3>
 
         <div className="container container--medium container--center">
-          <h4 className=" text-neutral-200">Join the community and enjoy all the great Features !</h4>
+           <h4 className=" text-neutral-200">Join the community and enjoy all the great Features !</h4>
         </div>
 
-        <button href="docs/index-2.html" className="border border-neutral-200 px-5 py-2 text-neutral-200 hover:text-neutral-800 hover:bg-neutral-200 transition-all">
+         <Link to={'https://t.me/twicrypt'} target="blank">
+        <button  className="border border-neutral-200 px-5 py-2 text-neutral-200 hover:text-neutral-800 hover:bg-neutral-200 transition-all">
         
 
           <span>Join Community</span>
         </button>
+           </Link>
       </div>
     </div>
 

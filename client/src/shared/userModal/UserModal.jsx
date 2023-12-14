@@ -64,36 +64,22 @@ const signUp = ()=> dispatch(createAccount(address))
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-xl bg-black bg-opacity-50 backdrop-blur-sm p-10 text-left align-middle shadow-xl transition-all border border-gray-400">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-white"
+                    className="text-lg font-medium leading-6 text-white p-0 m-0 pb-5"
                   >
-                    Yo don't have an account !
+                  Wrong Network !  
                   </Dialog.Title>
-                  <div className="mt-2">
+                  <div className="mt-0">
                     <p className="text-sm text-gray-200">
-                      you need an account to get access to all features and services 
+                     Please switch your network to <b className='text-yellow-500'> Binance Smart Chain</b> in order to access to all features and services 
                       
                     </p>
                          
 
                   </div>
 
-                  <div className="mt-4 flex justify-between">
-                    <button
-                      type="button"
-                      className="button  text-sm"
-                      onClick={signUp}
-                    >
-                     one Click account
-                    </button>
-
-                    <button
-                      type="button"
-                      className="button button--hollow"
-                      onClick={guest}
-                    >
-                     continue as guest
-                    </button>
-             
+                  <div className="mt-5 flex justify-between">
+    
+                    <w3m-network-button />
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

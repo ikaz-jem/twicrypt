@@ -32,7 +32,7 @@ const solutions = [
   },
   {
     name: 'MarketPlace',
-    description: 'Buy / sell List your NFTs',
+    description: 'Buy / Sell List your NFTs',
     href: '/dashboard/marketplace',
     icon: CiShop,
     target:'_self'

@@ -1,5 +1,5 @@
 
-import { lazy, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { Suspense } from "react";
 import AccordionTabs from "../../../../../shared/AccordionTabs/AccordionTabs";
 import { nftFaq } from "./Contribute/data";
@@ -11,7 +11,8 @@ import { useParams } from 'react-router-dom'
 import Spinner from "../../../../../shared/Spinner/Spinner";
 import Referrals from "./Referrals/Referrals";
 import { useGetMinterStats } from "../hooks/useGetMinterStats";
-
+import UserModal from "../../../../../shared/userModal/UserModal";
+import { app_chain_id } from "../../../../../shared/data/chains";
 
 
 
@@ -19,11 +20,17 @@ import { useGetMinterStats } from "../hooks/useGetMinterStats";
 const MintNft = lazy(() => import('./Contribute/MintNft'))
 
 const MintPage = () => {
+    const[show,setShow] = useState(false)
     const [bnb, setBNB] = useState(0.1)
     const { chain } = useNetwork()
     const { chains, error, isLoading, pendingChainId, switchNetwork } =
      useSwitchNetwork()
     const { address = {} } = useParams();
+
+useEffect(()=>{
+    chain?.id !== app_chain_id ? setShow(true) : setShow(false)
+},[chain?.id])
+
 
 
     const allStats = useGetMinterStats()
@@ -48,6 +55,7 @@ const MintPage = () => {
                         </div>
                     } >
                         <MintNft data={allStats} />
+                        <UserModal show={show} />
                     </Suspense>
 
                 </div>

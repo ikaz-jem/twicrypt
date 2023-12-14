@@ -9,9 +9,9 @@ const RoadMap = () => {
 
   return (
     <>
-      <div className=' w-full h-auto   container  overflow-hidden p-20 ' >
+      <div className=' w-full h-auto  overflow-hidden  ' >
 
-        <VerticalTimeline lineColor='red'   >
+        <VerticalTimeline lineColor='red' className=''  >
 
 
 

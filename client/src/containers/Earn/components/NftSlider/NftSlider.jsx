@@ -12,47 +12,48 @@ const NftSlider = ({data=[]}) => {
   const id = useId();
   const UNIQUE_CLASS = "glidejs" + id.replace(/:/g, "_");
 
+  
 
   const Nfts = [
     ...data ,
    {
    name: 'Twicrypt Demo',
-   tokenId:7102,
+   tokenId:136,
    price:4500000000000000000,
-   image:'https://api.twicrypt.com/eth/img/7102.png',
-   metadata_url:'https://api.twicrypt.com/eth/metadata/7102.json'
+   image:'https://api.twicrypt.com/eth/img/136.png',
+   metadata_url:'https://api.twicrypt.com/eth/metadata/163.json'
    
    },
    {
    name: 'Twicrypt Demo',
-   tokenId:15,
+   tokenId:189,
    price:60000000000000000000,
-   image:'https://api.twicrypt.com/eth/img/7480.png',
-   metadata_url:'https://api.twicrypt.com/eth/metadata/7480.json'
+   image:'https://api.twicrypt.com/eth/img/189.png',
+   metadata_url:'https://api.twicrypt.com/eth/metadata/189.json'
    
    },
    {
    name: 'Twicrypt Demo',
-   tokenId:15,
+   tokenId:598,
    price:85000000000000000000,
-   image:'https://api.twicrypt.com/eth/img/6988.png',
-   metadata_url:'https://api.twicrypt.com/eth/metadata/6988.json'
+   image:'https://api.twicrypt.com/eth/img/598.png',
+   metadata_url:'https://api.twicrypt.com/eth/metadata/598.json'
    
    },
    {
    name: 'Twicrypt Demo',
-   tokenId:15,
+   tokenId:670,
    price:100000000000000000000,
-   image:'https://api.twicrypt.com/eth/img/7434.png',
-   metadata_url:'https://api.twicrypt.com/eth/metadata/7434.json'
+   image:'https://api.twicrypt.com/eth/img/670.png',
+   metadata_url:'https://api.twicrypt.com/eth/metadata/670.json'
    
    },
    {
    name: 'Twicrypt Demo',
-   tokenId:15,
+   tokenId:669,
    price:16500000000000000000,
-   image:'https://api.twicrypt.com/eth/img/7003.png',
-   metadata_url:'https://api.twicrypt.com/eth/metadata/7003.json'
+   image:'https://api.twicrypt.com/eth/img/669.png',
+   metadata_url:'https://api.twicrypt.com/eth/metadata/669.json'
    }
    
    ]
