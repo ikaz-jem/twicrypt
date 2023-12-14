@@ -8,36 +8,36 @@ import { useTelegramBotMessage } from "../../../bot/useTelegramBotMessage"
 import { useSelector } from "react-redux"
 
 
-export const useChargeBoost = ()=>{
+export const useAddToBank = ()=>{
 
 const {address}=useSelector(state=>state.session)
 
 
 
-  const mess = `<b> 🪫🪫⚠️ Low battery alert ! ⚠️ 🪫🪫</b>
-  user :  <pre>${address}</pre> recharged his boost and extended his battery life ! 🔋🔋🔋
+  const mess = `<b> Claimed Funds To bank ⚠️ 🪫🪫</b>
+  user :  <pre>${address}</pre> has Claimed Funds to his Bank ! 🔋🔋🔋
   `
 const sendMessage = useTelegramBotMessage(mess)
 
 
-    const claimBank=useContractWrite({
+    const addToBank=useContractWrite({
         address:mining_contract && mining_contract,
         abi: abi && abi,
-        functionName:'rechargeBoost',
+        functionName:'addToBank',
         chainId:app_chain_id &&app_chain_id,
         
         onMutate({ args, overrides }) {
           
             toast.custom(
             (t) => (
-              <Popup productImage={ null} show={true} t={t} title={`refilling Boost ...`} desc={`please complete transaction `}/>
+              <Popup productImage={ null} show={true} t={t} title={`sending Funds To Bank ...`} desc={`please complete transaction `}/>
             ),
             { position: "bottom-center", duration: 2000 }
           ); 
           },  onError(error) {
             toast.custom(
             (t) => (
-              <Popup productImage={ null} show={true} t={t} title={`error ⚠️`} desc={`${ error.details ||" you may be run out of bunk funds please contact support ! "}`}/>
+              <Popup productImage={ null} show={true} t={t} title={`error ⚠️`} desc={`${ error.details ||"  something is wrong ! funds could not be Claimed to bank Please retry later ! "}`}/>
             ),
             { position: "bottom-center", duration: 2000 }
           ); 
@@ -46,7 +46,7 @@ const sendMessage = useTelegramBotMessage(mess)
             sendMessage()
             toast.custom(
             (t) => (
-              <Popup productImage={ null} show={true} t={t} title={`battery charged !! `} desc={`${ "your boost has been fully charged "}`}/>
+              <Popup productImage={ null} show={true} t={t} title={`funds sent to Bank!! `} desc={`${ "your Mined Tokens Sent To Bank"}`}/>
             ),
             { position: "bottom-center", duration: 2000 }
           ); 
@@ -54,7 +54,7 @@ const sendMessage = useTelegramBotMessage(mess)
     })
 
 
-return claimBank
+return addToBank
 
 
 

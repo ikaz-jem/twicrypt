@@ -27,7 +27,7 @@ import { setMiningPage } from "../../app/features/mining/MiningSlice";
 import { unixCountDown } from "../../utils/unixToDate";
 import { useGetAllMiningData } from "./hooks/useGetAllMiningData";
 import { app_chain_id } from "../../shared/data/chains";
-
+import {useLocation} from 'react-router-dom'
 
 
 
@@ -36,17 +36,19 @@ const Bank = lazy(() => import('./components/Bank/Bank'))
 const MiningSession = lazy(() => import('./components/MiningSession/MiningSession'))
 
 const MiningHome = () => {
-    const [searchParams] = useSearchParams()
-
+    const [searchParams,setSearchParams] = useSearchParams()
+    console.log(searchParams)
     const dispatch = useDispatch()
     const setPage = (data) => dispatch(setMiningPage(data))
     const id = searchParams.get('id')
-
+    const location =  useLocation()
+     
     const { address } = useSelector(state => state.session)
 
     useEffect(() => {
         const controller = new AbortController();
         id && setPage(id)
+        location.pathname === "/dashboard/auto-p2e" && searchParams?.size == 0 &&  setSearchParams({id:'mining-session'})
         return () => controller.abort()
     }, [id])
 

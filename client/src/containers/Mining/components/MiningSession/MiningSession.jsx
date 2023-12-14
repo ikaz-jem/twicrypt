@@ -12,6 +12,7 @@ import { useChargeBoost } from "../../hooks/useChargeBoost"
 import { unixCountDown } from "../../../../utils/unixToDate"
 import { TiBatteryCharge } from 'react-icons/ti'
 import { useUnstakeMiners } from "../../hooks/useUnstakeMiners"
+import { useAddToBank } from "../../hooks/useAddToBank"
 
 const cssOverride = {
   batteryBody: {
@@ -53,6 +54,7 @@ const MiningSession = ({ nftWarning }) => {
 
   const startMining = useStartMining()
   const claimBank = useClaimBank();
+  const addToBank = useAddToBank()
   // balance check from nft contract
   const nftBalance = useNftBalanceOf()
   const chargeBoost = useChargeBoost()
@@ -134,6 +136,11 @@ const MiningSession = ({ nftWarning }) => {
   }
 
 
+  const handleAddToBank = ()=> {
+
+addToBank?.write()
+
+  }
 
   const handleClaimBank = (e) => {
     if (chain?.id == app_chain_id && minToClaimBank != 0) {
@@ -190,6 +197,9 @@ const MiningSession = ({ nftWarning }) => {
 
         <div className="flex  gap-1 items-center justify-center w-full">
           {miningSessionData?.staked?.length > 0 && currentTime >= miningSessionData?.userData?.miningStartTime ? <button onClick={handleClick} disabled={isFull} className={`rounded-lg px-5  py-2 bg-blue-500 hover:bg-neutral-200 hover:text-black transition-all duration-300 text-xs disabled:cursor-not-allowed`}>Start mining</button> :
+            null
+          }
+          {miningSessionData?.staked?.length > 0 && currentTime && !isFull >= miningSessionData?.userData?.miningStartTime ? <button onClick={handleAddToBank} className={`rounded-lg px-5  py-2 bg-orange-500 hover:bg-neutral-200 hover:text-black transition-all duration-300 text-xs disabled:cursor-not-allowed`}>Add To Bank</button> :
             null
           }
 

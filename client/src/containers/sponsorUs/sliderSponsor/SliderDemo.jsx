@@ -9,27 +9,27 @@ import Glide from "@glidejs/glide";
 
 export const CATS_DISCOVER = [
   {
-    name: "Explore new arrivals",
+    name: "twicrypt.com",
     desc: "Shop the latest <br /> from top brands",
-    featuredImage: 'https://picsum.photos/200',
+    featuredImage: 'https://api.twicrypt.com/eth/img/thumbnails/tn_50.png',
     color: "bg-yellow-50",
   },
   {
-    name: "Digital gift cards",
+    name: "twicrypt.com",
     desc: "Give the gift <br /> of choice",
-    featuredImage: 'https://picsum.photos/201',
+    featuredImage: 'https://api.twicrypt.com/eth/img/thumbnails/tn_5.png',
     color: "bg-red-50",
   },
   {
-    name: "Sale collection",
+    name: "twicrypt.com",
     desc: "Up to <br /> 80% off retail",
-    featuredImage: 'https://picsum.photos/202',
+    featuredImage: 'https://api.twicrypt.com/eth/img/thumbnails/tn_68.png',
     color: "bg-blue-50",
   },
   {
-    name: "Sale collection",
+    name: "twicrypt.com",
     desc: "Up to <br /> 80% off retail",
-    featuredImage: 'https://picsum.photos/199',
+    featuredImage: 'https://api.twicrypt.com/eth/img/thumbnails/tn_27.png',
     color: "bg-green-50",
   },
 

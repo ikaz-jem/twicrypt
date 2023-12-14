@@ -71,11 +71,11 @@ const Pages = [
         component: Partners,
         requiresAuth: false,
     },
-    {
-        path: '/gallery',
-        component: Gallery,
-        requiresAuth: false,
-    },
+    // {
+    //     path: '/gallery',
+    //     component: Gallery,
+    //     requiresAuth: false,
+    // },
     {
         path: '/documentations',
         component: Docs,
@@ -97,6 +97,11 @@ const NestedRoutes = [
     {
         path: 'nfts',
         component: NftsPage,
+        requiresAuth: false,
+    },
+    {
+        path: 'gallery',
+        component: Gallery,
         requiresAuth: false,
     },
     // {

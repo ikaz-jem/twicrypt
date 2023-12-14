@@ -24,7 +24,7 @@ const CarouselDemo = ({ carouselData }) => {
     }
 
 
-    const placeholder = { name: '', image: logo, title: 'Twicrypt', icon: FaTelegram }
+    const placeholder = { name: '', image: 'https://api.twicrypt.com/eth/img/167.png', title: 'Twicrypt', icon: FaTelegram }
 
 
 
@@ -69,7 +69,7 @@ const CarouselDemo = ({ carouselData }) => {
 
 <Link to={carouselData.link ? carouselData.link : placeholder.link} target="blank" className="flex items-center justify-center gap-2 w-[80%] h-[60%] ">
     {carouselData.icon ? <img src={carouselData.icon} alt="icon" className="w-5 h-5" /> : <p> {<placeholder.icon />}</p>}
-    <p className='text-gray-500'>{carouselData.name ? carouselData.name : placeholder.title}</p>
+    <p className='text-neutral-200 text-sm'>{carouselData.name ? carouselData.name : placeholder.title}</p>
 
 </Link>
 </div>

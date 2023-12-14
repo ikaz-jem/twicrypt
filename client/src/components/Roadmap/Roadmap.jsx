@@ -30,15 +30,14 @@ const RoadMap = () => {
 
 
             <h3 className="vertical-timeline-element-title text-left">Twicrypt Preparations</h3>
-            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">Preparations for Launch</h4>
+            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">Preparing for Launch</h4>
 
             <p className='text-neutral-300 text-left text-sm font-light'>
-              this present platform is ment to Provide users with necissary informations and to pre-create their accounts on the main Platform , as well as providing earning options and benifits to users wich includes NFTs , staking , refferall system , mining , free passes and gifts coupons cash rewards ect ...
-            </p>
+            This present platform is meant to provide users with necessary information and to pre-create their accounts on the main platform. It also offers earning options and benefits to users, including NFTs, staking, referral systems, mining, free passes, gift coupons, cash rewards, etc.            </p>
             <div className='flex justify-end gap-5'>
 
-              <button className='button'> view More </button>
-              <button className='button'> view </button>
+              {/* <button className='button'> view More </button>
+              <button className='button'> view </button> */}
             </div>
           </VerticalTimelineElement>
 
@@ -85,13 +84,17 @@ const RoadMap = () => {
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
             icon={<AiOutlineUserAdd />}
           >
-            <h3 className="vertical-timeline-element-title text-left">mining app</h3>
-            <h4 className="vertical-timeline-element-subtitle  text-pink-600 text-left ">twicrypt mining app starts before all</h4>
+            <h3 className="vertical-timeline-element-title text-left">Mining App</h3>
+            <h4 className="vertical-timeline-element-subtitle  text-pink-600 text-left ">The Twicrypt Mining App takes the lead:</h4>
    
 
-            <p className='text-neutral-300 text-left'>
-              twicrypt mining app will allow nft holders to mine tokens before and after launch using a cleaver mechanism for project sustainability and general health , as well as prividing a surious income source 
-            </p>
+            <ul className='text-neutral-300 text-left'>
+<li className='text-neutral-300 text-left'>1. The Twicrypt Mining App initiates before all.</li>
+<li className='text-neutral-300 text-left'>2. It enables NFT holders to mine tokens both before and after launch.</li>
+<li className='text-neutral-300 text-left'>3. Leveraging a clever mechanism, it ensures project sustainability and overall health.</li>
+<li className='text-neutral-300 text-left'>4. Additionally, it provides a secure income source.</li>
+
+            </ul>
           </VerticalTimelineElement>
         
 
@@ -110,16 +113,17 @@ const RoadMap = () => {
           >
 
 
-            <h3 className="vertical-timeline-element-title text-left">Fairlaunch </h3>
-            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">twicrypt token fairlaunch</h4>
+            <h3 className="vertical-timeline-element-title text-left">Fair Launch </h3>
+            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">Embarking on the Twicrypt Token Fair Launch journey:</h4>
+              <ul className='text-neutral-300 text-left'>
+  <li className='text-neutral-300 text-left'>- Ensuring fairness and security in the creation of the Twicrypt Token.</li>
+  <li className='text-neutral-300 text-left'>- Utilizing a third-party launchpad for a transparent and equitable fair launch process.</li>
+              </ul>
 
-            <p className='text-neutral-300 text-left text-sm font-light'>
-            creating fairlaunch fairly and securely on a third-party launchpad
-            </p>
             <div className='flex justify-end gap-5'>
-
+{/* 
               <button className='button'> view More </button>
-              <button className='button'> view </button>
+              <button className='button'> view </button> */}
             </div>
           </VerticalTimelineElement>
 
@@ -138,16 +142,20 @@ const RoadMap = () => {
           >
 
 
-            <h3 className="vertical-timeline-element-title text-left">Listings , partnerships , sponsorships</h3>
-            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">working on twicrypt token</h4>
+            <h3 className="vertical-timeline-element-title text-left">Listings , Partnerships , Sponsorships</h3>
+            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">Navigating the Twicrypt Token journey</h4>
 
-            <p className='text-neutral-300 text-left text-sm font-light'>
-           planning starts from the very first moment and never stops!! twicrypt will make use of every ocasion to boost trust , value , project , recongition 
-            </p>
+            <ul className='text-neutral-300 text-left'>
+  <li className='text-neutral-300 text-left'>- Continuous planning from the inception.</li>
+  <li className='text-neutral-300 text-left'>- The planning process starts from the very first moment and never stops.</li>
+  <li className='text-neutral-300 text-left'>- Twicrypt capitalizes on every occasion to enhance trust, value, project, and recognition.</li>
+              </ul>
+
+
             <div className='flex justify-end gap-5'>
 
-              <button className='button'> view More </button>
-              <button className='button'> view </button>
+              {/* <button className='button'> view More </button>
+              <button className='button'> view </button> */}
             </div>
           </VerticalTimelineElement>
 
@@ -168,16 +176,20 @@ const RoadMap = () => {
           >
 
 
-            <h3 className="vertical-timeline-element-title text-left">mining launchpad </h3>
-            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">a mining launchpad for project owners</h4>
+            <h3 className="vertical-timeline-element-title text-left">Mining Launchpad</h3>
+            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">Empowering Project Owners with a Specialized Mining Launchpad</h4>
+           
+            <ul className='text-neutral-300 text-left'>
+  <li className='text-neutral-300 text-left'>   - Tailored for project owners and developers.</li>
+  <li className='text-neutral-300 text-left'>   - An automated mining app creation platform, mirroring Twicrypt's mechanism.</li>
+  <li className='text-neutral-300 text-left'>   - Hosted on Twicrypt, it allows quick and easy creation with just one click, completing the process within seconds.</li>
+              </ul>
 
-            <p className='text-neutral-300 text-left text-sm font-light'>
-           twicrypt mining launchpad is an automated mining app where any project owner or developer can create his own mining app like twicrypt , it works with the same  twicrypt mining app mechanism and hosted on twicrypt itself , the process is done in a matter of seconds with 1 click  !! 
-            </p>
+
             <div className='flex justify-end gap-5'>
 
-              <button className='button'> view More </button>
-              <button className='button'> view </button>
+              {/* <button className='button'> view More </button>
+              <button className='button'> view </button> */}
             </div>
           </VerticalTimelineElement>
 
@@ -197,16 +209,23 @@ const RoadMap = () => {
           >
 
 
-            <h3 className="vertical-timeline-element-title text-left">marketPlace launchpad </h3>
-            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">create you own marketplace like openSea in seconds </h4>
+            <h3 className="vertical-timeline-element-title text-left">Marketplace Launchpad</h3>
+            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">Revolutionizing Marketplaces with Twicrypt Launchpad</h4>
 
-            <p className='text-neutral-300 text-left text-sm font-light'>
-            launching a launchpad for marketPlaces , which users / developpers / project owners can create their own marketplace in seconds without need to worry about host , coding or security ! twicrypt does all the coding part ! created marketPlaces will have their own public link and will be shown on twicyprt platform ! get all the cool marketplace features : offers , listing , auction ... 
-            </p>
+            <ul className='text-neutral-300 text-left'>
+  <li className='text-neutral-300 text-left'>   - Effortlessly create a marketplace similar to OpenSea in seconds.</li>
+  <li className='text-neutral-300 text-left'>   - Launching a dedicated launchpad for marketplaces on Twicrypt.</li>
+  <li className='text-neutral-300 text-left'>   - Users, developers, and project owners can swiftly create their own marketplace without concerns about hosting, coding, or security.</li>
+  <li className='text-neutral-300 text-left'>   - Twicrypt handles all the coding aspects.</li>
+  <li className='text-neutral-300 text-left'>   - Created marketplaces get unique public links and visibility on the Twicrypt platform.</li>
+  <li className='text-neutral-300 text-left'>   - Enjoy a suite of marketplace features, including offers, listings, auctions, and more.</li>
+              </ul>
+     
+
             <div className='flex justify-end gap-5'>
-
+{/* 
               <button className='button'> view More </button>
-              <button className='button'> view </button>
+              <button className='button'> view </button> */}
             </div>
           </VerticalTimelineElement>
 
@@ -225,16 +244,20 @@ const RoadMap = () => {
           >
 
 
-            <h3 className="vertical-timeline-element-title text-left">Token Sale launchpad </h3>
-            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">IDOs </h4>
+            <h3 className="vertical-timeline-element-title text-left">Token Sale Launchpad</h3>
+            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">Empowering Token Sales and IDOs with Twicrypt Launchpad</h4>
 
-            <p className='text-neutral-300 text-left text-sm font-light'>
-            twicypt launchpad will be the best choice for project owners , wich includes numerous features and multiple  and unique sale options , it's almost a free service with our free passes , coupons and gift cards !! 
-            </p>
+            <ul className='text-neutral-300 text-left'>
+  <li className='text-neutral-300 text-left'>   - Elevate your project with Twicrypt's premier launchpad.</li>
+  <li className='text-neutral-300 text-left'>   - A top choice for project owners, offering numerous features and diverse sale options.</li>
+  <li className='text-neutral-300 text-left'>   - Avail almost free service through our complimentary passes, coupons, and gift cards.</li>
+
+              </ul>
+       
             <div className='flex justify-end gap-5'>
-
+{/* 
               <button className='button'> view More </button>
-              <button className='button'> view </button>
+              <button className='button'> view </button> */}
             </div>
           </VerticalTimelineElement>
 
@@ -253,19 +276,21 @@ const RoadMap = () => {
           >
 
 
-            <h3 className="vertical-timeline-element-title text-left">Dev support </h3>
-            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">automations , clones and ready to deploy instances </h4>
+            <h3 className="vertical-timeline-element-title text-left">Dev Support</h3>
+            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">Empowering Developers with Automations, Clones, and Ready-to-Deploy Instances</h4>
 
-            <p className='text-neutral-300 text-left text-sm font-light'>
+    
+            <ul className='text-neutral-300 text-left'>
+  <li className='text-neutral-300 text-left'>   - Tailored for developers and project owners.</li>
+  <li className='text-neutral-300 text-left'>   - Open APIs for web3 development.</li>
+  <li className='text-neutral-300 text-left'>   - Create and deploy unique smart contract instances effortlessly.</li>
+  <li className='text-neutral-300 text-left'>   - Manage various elements such as tokens, marketplaces, staking dApps, NFTs, P2E, and more—all from a user-friendly interface.</li>
+              </ul>
 
-            a dedicated section for devs, project owners to create / deploy several unique smart contract instances and manage them from their user interface like :  
-            tokens , marketplaces , staking dapps , nfts , p2e ... and so much more
-
-            </p>
             <div className='flex justify-end gap-5'>
 
-              <button className='button'> view More </button>
-              <button className='button'> view </button>
+              {/* <button className='button'> view More </button>
+              <button className='button'> view </button> */}
             </div>
           </VerticalTimelineElement>
 
@@ -284,18 +309,20 @@ const RoadMap = () => {
           >
 
 
-            <h3 className="vertical-timeline-element-title text-left">dc email and dc profile </h3>
-            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">decentralized email and profile</h4>
+            <h3 className="vertical-timeline-element-title text-left">DC Email and DC Profile</h3>
+            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">Revolutionizing User Experience with Decentralized Email and Profile</h4>
 
-            <p className='text-neutral-300 text-left text-sm font-light'>
+            <ul className='text-neutral-300 text-left'>
+  <li className='text-neutral-300 text-left'>   - Linked to the user's address for enhanced security and privacy.</li>
+  <li className='text-neutral-300 text-left'>   - User stats displayed, enabling following others, chatting with friends, and setting NFTs as your profile picture.</li>
+  <li className='text-neutral-300 text-left'>   - Elevating communication with a decentralized email system.</li>
+  <li className='text-neutral-300 text-left'>   - Users can securely and privately send emails, incorporating wallet addresses for seamless transactions.</li>
+              </ul>
 
-a decentralized user profile associated to the user address and a decentralized email , where user stats appears can follow others , chat with friends , set nfts as your profile pic , send emails with your wallet address , securely and privately ! 
-
-            </p>
             <div className='flex justify-end gap-5'>
-
+{/* 
               <button className='button'> view More </button>
-              <button className='button'> view </button>
+              <button className='button'> view </button> */}
             </div>
           </VerticalTimelineElement>
 
@@ -313,17 +340,18 @@ a decentralized user profile associated to the user address and a decentralized 
           >
 
 
-            <h3 className="vertical-timeline-element-title text-left">swap </h3>
-            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">a quick swap in your user interface</h4>
+            <h3 className="vertical-timeline-element-title text-left">Quick Swap with Twicrypt </h3>
+            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">Effortless Token Exchange at Your Fingertips</h4>
+            <ul className='text-neutral-300 text-left'>
+  <li className='text-neutral-300 text-left'>   - Enjoy a quick swap feature seamlessly integrated into your dashboard.</li>
+  <li className='text-neutral-300 text-left'>   - Exchange tokens swiftly across multiple chains.</li>
+              </ul>
 
-            <p className='text-neutral-300 text-left text-sm font-light'>
-twicrypt swap will be included in your same dashboard to quick swap and exchange tokens in numerous chains
 
-            </p>
             <div className='flex justify-end gap-5'>
 
-              <button className='button'> view More </button>
-              <button className='button'> view </button>
+              {/* <button className='button'> view More </button>
+              <button className='button'> view </button> */}
             </div>
           </VerticalTimelineElement>
 
@@ -373,13 +401,16 @@ twicrypt swap will be included in your same dashboard to quick swap and exchange
           >
 
 
-            <h3 className="vertical-timeline-element-title text-left">twictyp Library for React js and Next Js </h3>
-            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">a web3 library for devs </h4>
+            <h3 className="vertical-timeline-element-title text-left">Twicrypt Library for React.js and Next.js </h3>
+            <h4 className="vertical-timeline-element-subtitle  text-left text-pink-500">Empowering Developers with Web3 Excellence</h4>
 
-            <p className='text-neutral-300 text-left text-sm font-light'>
-a libray for devs wich implements best practices and simplifies web3 and contract interactions , includes the most used interfaces , converters ect ... 
+            <ul className='text-neutral-300 text-left'>
+  <li className='text-neutral-300 text-left'>   - Tailored for React.js and Next.js frameworks.</li>
+  <li className='text-neutral-300 text-left'>   - A comprehensive library implementing best practices, simplifying web3, and streamlining contract interactions.</li>
+  <li className='text-neutral-300 text-left'>   - Inclusive of widely used interfaces, converters, and more for enhanced development efficiency.</li>
+              </ul>
 
-            </p>
+
             <div className='flex justify-end gap-5'>
 
               <button className='button'> view More </button>

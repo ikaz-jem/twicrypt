@@ -85,7 +85,7 @@ const SliderSponsor = ({show,setShow}) => {
             <div className=' w-[50%]   rounded-2xl  border-opacity-30 border border-white py-5 shadow-lg '>
 
     <button className='button' onClick={() => setShow(!show)}> Main Cazousel</button>
-                <p className='text-gray-400'>Sponsor us and get on twicrypt for long periods even lifetime ! ... </p>
+                <p className='text-neutral-200 z-50'>Sponsor us and get viewed on twicrypt !  </p>
               
               <CarouselTransition show={show}>
                 <SliderDemo data={ad} />
