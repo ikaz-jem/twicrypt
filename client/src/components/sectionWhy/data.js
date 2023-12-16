@@ -15,47 +15,47 @@ export const data = [
     {
       icon: AiOutlineMail,
       title:'Decentralized Email',
-      desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
+      // desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
     },
     {
       icon: RiExchangeLine,
       title:'Launchpad',
-      desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
+      // desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
     },
     {
       icon: CgProfile,
       title:'Decentralized social Media',
-      desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
+      // desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
     },
     {
       icon: GiAutoRepair,
       title:'Web3 Automations',
-      desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
+      // desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
     },
     {
       icon: BsCreditCard2Front,
       title:'KYC and Audits',
-      desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
+      // desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
     },
     {
       icon: RiFileList2Line,
       title:'Listing Services',
-      desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
+      // desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
     },
     {
       icon: PiSwapThin,
       title:'Swap',
-      desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
+      // desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
     },
     {
       icon: FaConnectdevelop,
       title:'development and assistance',
-      desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
+      // desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
     },
     {
       icon: GiPayMoney,
       title:'income',
-      desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
+      // desc:'The modular structure provides excellent compression. Oh yes, it weights only ~28kb (~8kb gzipped) with every functionality included.',
     },
 
   ]

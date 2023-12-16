@@ -26,13 +26,13 @@ import logo from '../media/3d.png'
 import AccordionTabs from "../shared/AccordionTabs/AccordionTabs";
 import { useGetAllAds } from "./sponsorUs/hooks/useGetAllAds";
 import HomeNfts from "../components/HomeNfts/HomeNfts";
-import Footer from "../components/Footer"; 
+import Footer from "../components/Footer";
 import TokenMetrics from "../components/TokenMetrics/TokenMetrics";
 import NftMetrics from "../components/NftMetrics/NftMetrics";
 import Solutions from "./Solutions/Solutions";
 
 const Carousel = lazy(() => import('../components/carousel/Carousel'));
-const HomeSlider = lazy(()=> import("../components/HomeNfts/HomeSlider/HomeSlider"))
+const HomeSlider = lazy(() => import("../components/HomeNfts/HomeSlider/HomeSlider"))
 
 const Home = () => {
 
@@ -99,10 +99,10 @@ const Home = () => {
     <>
 
       <div className="index__header   ">
-        <div className="space space--xlarge color-ball">
+        <div className="space space--xlarge color-ball fixed ">
 
           {/* <Navbar /> */}
-          <div className="hero__wrapper   ">
+          <div className="hero__wrapper    ">
             <Carousel />
             {/* <UserModal show={true} /> */}
             {/*  */}
@@ -123,25 +123,25 @@ const Home = () => {
         </div>
       </div>
       <div className="flex flex-col justify-start  items-center py-20">
-        <div className="flex justify-between ">
+        <div className="flex justify-between  ">
 
           <h3 className="text-left my-5 p-0 border-b border-neutral-900 w-auto">  <span className="m-0 pl-5 text-neutral-400 text-xl">Highest Reward Nfts</span>  </h3>
         </div>
 
 
-        <span className="m-0 pl-5 text-neutral-400 text-sm">Win up to 1BTC ! each NFT contains claimable cache Rewards ! enjoy 2 utilities in one Art !</span>
+        <span className="m-0 pl-5 text-neutral-400 text-sm ">Win up to 1BTC ! each NFT contains claimable cache Rewards ! enjoy 2 utilities in one Art !</span>
 
 
-          <HomeNfts />
-          
+        <HomeNfts />
+
       </div>
 
 
       <Cta />
 
-<Suspense fallback='loading ...'>
-      <HomeSlider />
-</Suspense>
+      <Suspense fallback='loading ...'>
+        <HomeSlider />
+      </Suspense>
 
 
       <EarnHome />
@@ -149,13 +149,12 @@ const Home = () => {
       <NftMetrics />
       <div className="container container--xxlarge container--center sticky top-0">
 
-      <Solutions />
+        <Solutions />
       </div>
 
       <SectionWhy />
       {/* <SectionToken /> */}
       <Sponsors />
-      <Footer />
 
     </>
   )

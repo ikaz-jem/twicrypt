@@ -134,7 +134,7 @@ const sendMessage = useTelegramBotMedia({
 
             toast.custom(
                 (t) => (
-                  <Popup productImage={image && image || null} show={true} t={t} button={{title:'view your listings',link:'/dashboard/marketplace/my-listings'}} title={`${name&&name} Listed successfully !`} desc={`${name&&name} Has been listed for sale : ${formatEther(Number(price))} BNB`}/>
+                  <Popup productImage={image && image || null} show={true} t={t} button={{title:'view your listings',link:'/dashboard/marketplace/my-listings'}} title={`${name&&name} Listed successfully !`} desc={`${name&&name} Has been listed for Auction `}/>
                 ),
                 { position: "bottom-center", duration: 5000 }
               )

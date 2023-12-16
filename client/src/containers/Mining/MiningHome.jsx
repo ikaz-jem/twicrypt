@@ -37,7 +37,7 @@ const MiningSession = lazy(() => import('./components/MiningSession/MiningSessio
 
 const MiningHome = () => {
     const [searchParams,setSearchParams] = useSearchParams()
-    console.log(searchParams)
+
     const dispatch = useDispatch()
     const setPage = (data) => dispatch(setMiningPage(data))
     const id = searchParams.get('id')

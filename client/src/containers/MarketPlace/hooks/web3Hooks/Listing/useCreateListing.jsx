@@ -111,7 +111,7 @@ a new listing has been created !
           sendMessage()
             toast.custom(
                 (t) => (
-                  <Popup productImage={image && image || null} show={true} t={t} button={{title:'view your listings',link:'/dashboard/marketplace/my-listings'}} title={`${name&&name} Listed successfully !`} desc={`${name&&name} Has been listed for sale : ${price} BNB`}/>
+                  <Popup productImage={image && image || null} show={true} t={t} button={{title:'view your listings',link:'/dashboard/marketplace/my-listings'}} title={`${name&&name} Listed successfully !`} desc={`${name&&name} Has been listed for sale : ${parseFloat(Number(price).toFixed(2))} BNB`}/>
                 ),
                 { position: "bottom-center", duration: 5000 }
               )

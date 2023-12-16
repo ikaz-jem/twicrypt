@@ -26,7 +26,7 @@ const SectionWhy = () => {
             {
               data.map((item,i) => {
                 return (
-                  <div className="grid__column grid__column--4 space space--xlarge  " dataref="fadereveal[el]" key={i}>
+                  <div className="grid__column grid__column--4 space space--xlarge border border-neutral-800 text-center  " dataref="fadereveal[el]" key={i}>
 
                    
 

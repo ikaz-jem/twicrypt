@@ -51,7 +51,7 @@ const Dashboard = () => {
         },
         {
             title: "Gallery",
-            link: '/gallery'
+            link: '/dashboard/gallery'
         },
         {
             title: "Claim Reward",

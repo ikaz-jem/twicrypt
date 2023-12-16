@@ -10,7 +10,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const TabFilter=({page,setSearchParams})=> {
+const  TabFilter=({page,setSearchParams})=> {
 
 const {chain} = useSelector(state=>state.marketPlace.nftFilter)
 const dispatch = useDispatch()

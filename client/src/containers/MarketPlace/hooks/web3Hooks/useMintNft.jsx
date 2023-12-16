@@ -19,7 +19,7 @@ export const useMintNft = ()=> {
  
     const nftMintDetails= useSelector(state=>state?.states?.mint)
     const setNft =(data)=> dispatch(setMintNft(data))
-    let price = 0.2 * Number(nftMintDetails?.nftCount)
+    let price = 0.15 * Number(nftMintDetails?.nftCount)
     let totalPrice = toDecimals(price,18)
     
         const toNumber = (num)=> {
@@ -87,7 +87,7 @@ visit : <a>https://twicrypt.com/dashboard/mint</a>
         onSuccess(data) {
             toast.custom(
                 (t) => (
-                  <Popup productImage={ null} show={true} t={t} button={{title:'view your Nfts',link:'dashboard/marketplace/my-nfts'}} title={`Nft Minted successfully !`} desc={`  Minted successfully a total of ${Number(nftMintDetails?.nftCount).toFixed(2) || 'uknown number'} nfts for ${price || 'uknown price '} BNB`}/>
+                  <Popup productImage={ null} show={true} t={t} button={{title:'view your Nfts',link:'dashboard/marketplace/my-nfts'}} title={`Nft Minted successfully !`} desc={`  Minted successfully a total of ${parseFloat(Number(nftMintDetails?.nftCount).toFixed(2)) || 'uknown number'} nfts for ${price || 'uknown price '} BNB`}/>
                 ),
                 { position: "bottom-center", duration: 2000 }
               )

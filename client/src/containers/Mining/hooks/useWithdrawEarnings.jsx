@@ -8,7 +8,7 @@ import { useTelegramBotMessage } from "../../../bot/useTelegramBotMessage"
 import { useSelector } from "react-redux"
 
 
-export const useAddToBank = ()=>{
+export const useWithdrawEarnings = ()=>{
 
 const {address}=useSelector(state=>state.session)
 
@@ -20,24 +20,24 @@ const {address}=useSelector(state=>state.session)
 const sendMessage = useTelegramBotMessage(mess)
 
 
-    const addToBank=useContractWrite({
+    const withdraw=useContractWrite({
         address:mining_contract && mining_contract,
         abi: abi && abi,
-        functionName:'addToBank',
+        functionName:'withdraw_earnings',
         chainId:app_chain_id &&app_chain_id,
         
         onMutate({ args, overrides }) {
           
             toast.custom(
             (t) => (
-              <Popup productImage={ null} show={true} t={t} title={`sending Funds To Bank ...`} desc={`please complete transaction `}/>
+              <Popup productImage={ null} show={true} t={t} title={`Claiming Tokens...`} desc={`please complete transaction `}/>
             ),
             { position: "bottom-center", duration: 2000 }
           ); 
           },  onError(error) {
             toast.custom(
             (t) => (
-              <Popup productImage={ null} show={true} t={t} title={`error ⚠️`} desc={`${ error.details ||"  something is wrong ! funds could not be Claimed to bank Please retry later ! "}`}/>
+              <Popup productImage={ null} show={true} t={t} title={`error ⚠️`} desc={`${ error.details ||"  something is wrong ! funds could not be Claimed  Please retry later ! "}`}/>
             ),
             { position: "bottom-center", duration: 2000 }
           ); 
@@ -46,7 +46,7 @@ const sendMessage = useTelegramBotMessage(mess)
             sendMessage()
             toast.custom(
             (t) => (
-              <Popup productImage={ null} show={true} t={t} title={`funds sent to Bank!! `} desc={`${ "your Mined Tokens Sent To Bank"}`}/>
+              <Popup productImage={ null} show={true} t={t} title={`Tokens Has been Sent `} desc={`${ "your Mined Tokens Sent To your wallet "}`}/>
             ),
             { position: "bottom-center", duration: 2000 }
           ); 
@@ -54,7 +54,7 @@ const sendMessage = useTelegramBotMessage(mess)
     })
 
 
-return addToBank
+return withdraw
 
 
 

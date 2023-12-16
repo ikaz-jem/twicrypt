@@ -40,7 +40,7 @@ const solutions = [
   {
     name: 'Art Collections',
     description: 'NFT Art Gallery',
-    href: '/gallery',
+    href: '/dashboard/gallery',
     icon: BiCollection,
     target:'_self'
   },

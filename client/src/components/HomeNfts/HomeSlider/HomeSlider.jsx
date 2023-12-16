@@ -1,5 +1,5 @@
 import React, { useEffect, useId } from "react";
-import Card from "./Card";
+import HomeCard from "./HomeCard";
 
 import Glide from "@glidejs/glide";
 import { useSelector } from "react-redux";
@@ -14,6 +14,8 @@ const random = Math.floor(Math.random()*200)
         `https://api.twicrypt.com/eth/img/${random+2}.png`,
         `https://api.twicrypt.com/eth/img/${random+169}.png`,
     ]
+
+    const desc = ['Quality art' ,'Utility' , 'Value','Advantages','Rewards']
 
 const HomeSlider = () => {
   const id = useId();
@@ -75,11 +77,11 @@ const HomeSlider = () => {
 
 placeHolders?.map((item, index) => (
   <li key={index} className='glide__slide  flex gap-0 m-0 p-0 items-center justify-center w-full h-full' >
-    <Card
+    <HomeCard
       name={'twicrypt'}
       img={item}
-      icon={item}
-      website={'/'}
+      icon={false}
+      website={''}
     /> 
   </li>
 ))  

@@ -27,8 +27,7 @@ const MarketplaceSliders = () => {
 
                 <div>
                     <div className="flex justify-between overflow-visible ">
-                        <h3 className="text-left my-2 p-0 border-b border-neutral-800 w-auto pb-2 text-pink-600 font-bold text-xl ">Auctions <span className="m-0 pl-5 text-neutral-400 text-base ">Newest auctions</span>  </h3>
-                        <ButtonPrimary className="w-auto">Get your chance  !</ButtonPrimary>
+                        <h3 className="text-left my-2 p-0 border-b border-neutral-800 w-autot pb-2 text-pink-600 font-bold text-xl ">Auctions <span className="m-0 pl-5 text-neutral-400 text-base ">Newest auctions</span>  </h3>
                     </div>
                     {
                         <Suspense fallback={

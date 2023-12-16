@@ -38,6 +38,7 @@ import WiningNfts from "../containers/Earn/components/WinningNfts/WiningNfts";
 import Solutions from "../containers/Solutions/Solutions";
 import Lottery from "../containers/Earn/components/Lottery/Lottery";
 import Gallery from "../containers/Gallery/Gallery";
+import Footer from "../components/Footer";
 
 const Pages = [
     {
@@ -242,10 +243,10 @@ const AppRoutes = () => {
                                   
 
 
-
                         </Route>
                     </Routes>
                 </div>
+<Footer/>
 
             </MyProvider>
 

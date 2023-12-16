@@ -46,7 +46,7 @@ const [selectedNft,setSelectedNft]=useState([])
     })
   }
 
-console.log(selectedNft)
+
   const isRoomAvailable = ()=> {
     return selectedNft?.length < onWorkNfts?.length
   }

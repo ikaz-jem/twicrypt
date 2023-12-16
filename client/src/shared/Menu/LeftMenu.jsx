@@ -33,6 +33,7 @@ const  NAVIGATION_DEMO_2 = [
     icon:false,
     image:logo,
     component:"./solutions",
+    target:'_self'
    
   },
 
@@ -44,6 +45,7 @@ const  NAVIGATION_DEMO_2 = [
     icon:FcShop,
     component:'./marketplace/all-listings',
     page:'home',
+    target:'_self',
    children:[
     {
 
@@ -53,6 +55,7 @@ const  NAVIGATION_DEMO_2 = [
       icon:FcIpad,
       component:'/dashboard/marketplace/my-nfts',
       page:'home',
+      target:'_self'
      
     },
     {
@@ -63,6 +66,7 @@ const  NAVIGATION_DEMO_2 = [
       icon:FcIpad,
       component:'/dashboard/marketplace/my-listings',
       page:'home',
+      target:'_self',
      
     },
     {
@@ -73,6 +77,7 @@ const  NAVIGATION_DEMO_2 = [
       icon:FcIpad,
       component:'/dashboard/marketplace/all-listings',
       page:'home',
+      target:'_self'
      
     },
     {
@@ -83,6 +88,7 @@ const  NAVIGATION_DEMO_2 = [
       icon:FcIpad,
       component:'/dashboard/marketplace/create-listing',
       page:'home',
+      target:'_self'
      
     },
     {
@@ -93,6 +99,7 @@ const  NAVIGATION_DEMO_2 = [
       icon:FcIpad,
       component:'/dashboard/marketplace/create-auction',
       page:'home',
+      target:'_self'
      
     },
    ]
@@ -107,6 +114,7 @@ const  NAVIGATION_DEMO_2 = [
     icon:FcSafe,
     component:'/dashboard/auto-p2e?id=mining-session',
     page:'home',
+    target:'_self'
    
   },
   // {
@@ -125,6 +133,7 @@ const  NAVIGATION_DEMO_2 = [
     icon:FcDonate,
     component:"/dashboard/winning-nfts",
     page:'home',
+    target:'_self',
     children:[
       {
         name: "mint & Win !",
@@ -132,6 +141,7 @@ const  NAVIGATION_DEMO_2 = [
         icon:FcIpad,
         component:'/dashboard/mint',
         page:'home',
+        target:'_self'
        
       },
       {
@@ -140,6 +150,7 @@ const  NAVIGATION_DEMO_2 = [
         icon:FcIpad,
         component:'/dashboard/claim',
         page:'home',
+        target:'_self'
        
       },
       {
@@ -148,6 +159,7 @@ const  NAVIGATION_DEMO_2 = [
         icon:FcIpad,
         component:'/dashboard/winning-nfts',
         page:'home',
+        target:'_self'
        
       },
   {
@@ -156,6 +168,7 @@ const  NAVIGATION_DEMO_2 = [
         icon:FcIpad,
         component:'/dashboard/mint',
         page:'home',
+        target:'_self'
        
       },
 
@@ -168,6 +181,7 @@ const  NAVIGATION_DEMO_2 = [
         component:'',
         page:'home',
         comingSoon:true,
+        
        
       },
       {
@@ -203,7 +217,8 @@ const  NAVIGATION_DEMO_2 = [
     icon:FcCurrencyExchange,
     
     component:'/dashboard/claim',
-    page:'stats'
+    page:'stats',
+    target:'_self'
   },
   
 
@@ -233,40 +248,8 @@ const  NAVIGATION_DEMO_2 = [
     tooltip: "Inbox",
     icon:FcAnswers,
     component:"./support",
-    children:[
-      {
-    
-        href: "/page-collection-2",
-        name: "whitepaper",
-        tooltip: "Inbox",
-        icon:FcPortraitMode,
-        component:"/whitepaper"
-      },
-      {
-    
-        href: "/page-collection-2",
-        name: "documentation",
-        tooltip: "Inbox",
-        icon:FcPortraitMode,
-        component:"/documentation"
-      },
-      {
-    
-        href: "/page-collection-2",
-        name: "frequently asked questions",
-        tooltip: "Inbox",
-        icon:FcPortraitMode,
-        component:"/frequently asked questions"
-      },
-      {
-    
-        href: "/page-collection-2",
-        name: "get live support",
-        tooltip: "Inbox",
-        icon:FcPortraitMode,
-        component:"/frequently asked questions"
-      },
-    ]
+    target:'_self',
+
   },
   
 ];
@@ -328,6 +311,7 @@ return  <button
               to={{
                 pathname: i.component || undefined,
               }}
+              target={i.target}
               className={({ isActive }) =>
                 `flex text-xs font-bold rounded-lg hover:bg-neutral-800 mt-0.5 pr-4  border-b border-neutral-900${itemClass} ${
                   isActive ? "text-secondary bg-none " : ""

@@ -12,7 +12,7 @@ import { useChargeBoost } from "../../hooks/useChargeBoost"
 import { unixCountDown } from "../../../../utils/unixToDate"
 import { TiBatteryCharge } from 'react-icons/ti'
 import { useUnstakeMiners } from "../../hooks/useUnstakeMiners"
-import { useAddToBank } from "../../hooks/useAddToBank"
+import { useWithdrawEarnings } from "../../hooks/useWithdrawEarnings"
 
 const cssOverride = {
   batteryBody: {
@@ -54,7 +54,7 @@ const MiningSession = ({ nftWarning }) => {
 
   const startMining = useStartMining()
   const claimBank = useClaimBank();
-  const addToBank = useAddToBank()
+  const withdrawEarnings = useWithdrawEarnings()
   // balance check from nft contract
   const nftBalance = useNftBalanceOf()
   const chargeBoost = useChargeBoost()
@@ -69,7 +69,8 @@ const MiningSession = ({ nftWarning }) => {
   const currentTime = Math.floor(new Date().getTime() / 1000);
   
   
-  
+  console.log(stats)
+
   const boostEndTime = Number(miningSessionData?.boostEndTime)
   
   let remainingTime = boostEndTime - currentTime;
@@ -81,7 +82,16 @@ const MiningSession = ({ nftWarning }) => {
 
   {/* <BatteryGauge value={10} animated={true} aspectRatio={0.23} size={150} maxValue={boostEndTime} customization={cssOverride} /> */ }
 
+const checkWithdraw = ()=>{
+const min = Number(stats?.result?.min_funds_to_withdraw)
+const balance = Number(sessionData?.result?.bankData?.funds)
+const enabled = stats?.result?.claim_enabled
+if (balance>=min && enabled){
+  return false
+} return true
 
+
+}
 
 
   const minbBalance = Number(miningSessionData?.nftBalance)
@@ -136,9 +146,9 @@ const MiningSession = ({ nftWarning }) => {
   }
 
 
-  const handleAddToBank = ()=> {
+  const handlewithdrawEarnings = ()=> {
 
-addToBank?.write()
+    withdrawEarnings?.write()
 
   }
 
@@ -199,7 +209,7 @@ addToBank?.write()
           {miningSessionData?.staked?.length > 0 && currentTime >= miningSessionData?.userData?.miningStartTime ? <button onClick={handleClick} disabled={isFull} className={`rounded-lg px-5  py-2 bg-blue-500 hover:bg-neutral-200 hover:text-black transition-all duration-300 text-xs disabled:cursor-not-allowed`}>Start mining</button> :
             null
           }
-          {miningSessionData?.staked?.length > 0 && currentTime && !isFull >= miningSessionData?.userData?.miningStartTime ? <button onClick={handleAddToBank} className={`rounded-lg px-5  py-2 bg-orange-500 hover:bg-neutral-200 hover:text-black transition-all duration-300 text-xs disabled:cursor-not-allowed`}>Add To Bank</button> :
+          {miningSessionData?.staked?.length > 0 && currentTime && !isFull >= miningSessionData?.userData?.miningStartTime ? <button onClick={handlewithdrawEarnings} disabled={checkWithdraw()} className={`rounded-lg px-5 disabled:cursor-not-allowed py-2 bg-orange-500 hover:bg-neutral-200 hover:text-black transition-all duration-300 text-xs disabled:bg-neutral-400 disabled:text-neutral-800`}>Withdraw tokens</button> :
             null
           }
 

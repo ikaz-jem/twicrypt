@@ -126,7 +126,7 @@ const NftMetrics = () => {
 
               nftRows?.map((row, index) =>
                 <tr class="text-gray-300 text-xs " key={index} >
-                  <td class="px- py-1 border border-neutral-700 ">
+                  <td class="px-4 py-1 border border-neutral-700 ">
                     <div class="flex items-center  text-sm">
                       <div>
                         <p class="font-semibold">{row?.reward}</p>
