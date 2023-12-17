@@ -7,7 +7,7 @@ import { useUnstakeMiners } from "../../hooks/useUnstakeMiners";
 
 
 
-const StakedNfts = () => {
+const StakedNfts = ({miningSessionData,currentTime}) => {
 const [selectedNft,setSelectedNft]=useState([])
 
 
@@ -28,9 +28,7 @@ const [selectedNft,setSelectedNft]=useState([])
       ids:Ids
     })
 
-    const unstakeAll = ()=> {
-            unstakeMiners.write()
-    }
+  
 
   const handleSelect= (nft) => {
     if (!selectedNft.some((item) => item.tokenId === nft.tokenId)) {
@@ -93,8 +91,13 @@ const Buttons = ()=> {
 
 return (
     <div className="flex items-center justify-center gap-5 font-neutral-200 font-sans text-xs w-full my-5 ">
-    <button onClick={handleUnstake} className={`py-1 text-xs  hover:bg-neutral-200 hover:text-black transition-all duration-300 bg-blue-500 rounded flex items-center justify-center px-2  ${!isRoomAvailable() && "bg-red-500" }  `}>{isRoomAvailable() ?  'withdraw Selected' : "withdraw all workers"}</button>
+{  miningSessionData?.userData?.miningStartTime != "0" && currentTime <= miningSessionData?.userData?.miningStartTime ? <p className="text-[12px] text-yellow-500">you can't withdraw your Nfts until your current mining session ends</p> :
+<>
+<button onClick={handleUnstake} className={`py-1 text-xs  hover:bg-neutral-200 hover:text-black transition-all duration-300 bg-blue-500 rounded flex items-center justify-center px-2  ${!isRoomAvailable() && "bg-red-500" }  `}>{isRoomAvailable() ?  'withdraw Selected' : "withdraw all workers"}</button>
+
     {isRoomAvailable() && <button onClick={ selectAll} className={`py-1 text-xs  hover:bg-neutral-200 hover:text-black transition-all duration-300 bg-blue-500 rounded flex items-center justify-center  px-2 `}> withdraw All</button>}
+</>
+}
 </div>  
 )
 
@@ -114,7 +117,7 @@ return (
                             onWorkNfts &&   onWorkNfts?.map((item, i) => <Card data={item} key={i}  />)
                         }
                         </div>  
-                       {selectedNft?.length > 0 && <Buttons/>}
+                       {selectedNft?.length > 0 &&  miningSessionData?.staked?.length > 0  ? null : <Buttons/>}
                     
                     </div>
                     : 

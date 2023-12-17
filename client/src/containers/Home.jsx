@@ -30,6 +30,7 @@ import Footer from "../components/Footer";
 import TokenMetrics from "../components/TokenMetrics/TokenMetrics";
 import NftMetrics from "../components/NftMetrics/NftMetrics";
 import Solutions from "./Solutions/Solutions";
+import TokenCode from "../components/TokenCode/TokenCode";
 
 const Carousel = lazy(() => import('../components/carousel/Carousel'));
 const HomeSlider = lazy(() => import("../components/HomeNfts/HomeSlider/HomeSlider"))
@@ -99,7 +100,7 @@ const Home = () => {
     <>
 
       <div className="index__header   ">
-        <div className="space space--xlarge color-ball fixed ">
+        <div className="space space--xlarge color-ball  ">
 
           {/* <Navbar /> */}
           <div className="hero__wrapper    ">
@@ -120,6 +121,7 @@ const Home = () => {
           </Nav> */}
 
           <CallToAction />
+          <TokenCode/>
         </div>
       </div>
       <div className="flex flex-col justify-start  items-center py-20">

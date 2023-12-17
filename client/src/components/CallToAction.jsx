@@ -6,7 +6,7 @@ const navigate = useNavigate()
 
     return (
 
-        <div  className="wrapper container container--large container--center space space--xlarge light-ball"style={{marginTop: 30 , marginBottom:120 }}>
+        <div  className="wrapper container container--xxxlarge container--center space space--xlarge light-ball"style={{marginTop: 30 , marginBottom:120 }}>
         <div className="space space--xlarge">
           <h4 className="font-sans text-neutral-200 font-semibold traking-widest">All your Web3 and investing Needs in one Place !</h4>
 
@@ -22,9 +22,11 @@ const navigate = useNavigate()
               '>
             <button className='text-neutral-200 text-sm rounded-sm px-5 border py-3 border-neutral-400 hover:bg-pink-900 transition-all duration-300  hover:text-white'onClick={(e)=>navigate('/dashboard/claim')} >claim reward</button>
             <button className='text-neutral-800 text-sm rounded-sm px-5  py-3 border border-neutral-800 bg-neutral-200 transition-all duration-300 hover:bg-black hover:text-neutral-200' onClick={(e)=>navigate('/dashboard/mint')}>Mint Nft</button>
+          
           </div>
           </div>
         </div>
+
       </div>
 
     )

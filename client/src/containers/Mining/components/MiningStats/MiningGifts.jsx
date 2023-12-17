@@ -31,32 +31,32 @@ return(
 
                 <p className=" text-xs text-yellow-500">you can only claim gifts one by one</p>
             <div className="flex items-center justify-between px-2 py-1 text-xs">
-                <p className="text-white">mine 100 tokens</p>
-              { <button onClick={handleClick} disabled={isDisabled('1',100)} className={`px-3 py-1  rounded ${bankData &&  userData?.giftCount >'1' ? ' disabled:bg-black' :'bg-orange-500 disabled:bg-gray-400' } disabled:bg-gray-400 text-white` }>{ bankData &&  userData?.giftCount >'1' ?  'gift claimed' : 'claim gift'}</button>}
+                <p className="text-neutral-200 text-[12px]">mine 100K Tokens & get 10K tw gift</p>
+              { <button onClick={handleClick} disabled={isDisabled('1',100000)} className={`px-3 py-1  rounded ${bankData &&  userData?.giftCount >'1' ? ' disabled:bg-black' :'bg-orange-500 disabled:bg-gray-400' } disabled:bg-gray-400 text-neutral-200 text-[12px]` }>{ bankData &&  userData?.giftCount >'1' ?  'gift claimed' : 'claim gift'}</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1 text-xs">
-                <p>mine 500 tokens</p>
-              { <button onClick={handleClick} disabled={isDisabled('2',500)} className="px-3 py-1  rounded bg-orange-500 hover:bg-green-500 transition-all disabled:bg-gray-400 text-white ">{ bankData &&  userData?.giftCount >'2' ?  'gift claimed' : 'claim gift'}</button>}
+                <p>mine 1M Tokens & get 100K tw gift</p>
+              { <button onClick={handleClick} disabled={isDisabled('2',1000000)} className="px-3 py-1  rounded bg-orange-500 hover:bg-green-500 transition-all disabled:bg-gray-400 text-neutral-200 text-[12px] ">{ bankData &&  userData?.giftCount >'2' ?  'gift claimed' : 'claim gift'}</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1 text-xs">
-                <p>mine 1000 tokens</p>
-              { <button onClick={handleClick} disabled={isDisabled('3',1000)} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">{ bankData &&  userData?.giftCount >'3' ?  'gift claimed' : 'claim gift'}</button>}
+                <p>mine 5M Tokens & get 500k tw gift</p>
+              { <button onClick={handleClick} disabled={isDisabled('3',5000000)} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-neutral-200 text-[12px] ">{ bankData &&  userData?.giftCount >'3' ?  'gift claimed' : 'claim gift'}</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1 text-xs">
-                <p>mine 1500 tokens</p>
-              { <button onClick={handleClick} disabled={isDisabled('4',1500)} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">{ bankData &&  userData?.giftCount >'4' ?  'gift claimed' : 'claim gift'}</button>}
+                <p>mine 10M Tokens & get 1M tw gift</p>
+              { <button onClick={handleClick} disabled={isDisabled('4',10000000)} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-neutral-200 text-[12px] ">{ bankData &&  userData?.giftCount >'4' ?  'gift claimed' : 'claim gift'}</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1 text-xs">
-                <p>mine 2000 tokens</p>
-              { <button onClick={handleClick} disabled={isDisabled('5',2000)} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">{ bankData &&  userData?.giftCount >'5' ?  'gift claimed' : 'claim gift'}</button>}
+                <p>mine 20M Tokens & get 2M tw gift</p>
+              { <button onClick={handleClick} disabled={isDisabled('5',20000000)} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-neutral-200 text-[12px] ">{ bankData &&  userData?.giftCount >'5' ?  'gift claimed' : 'claim gift'}</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1 text-xs">
-                <p>mine 2500 tokens</p>
-              { <button onClick={handleClick} disabled={isDisabled('6',2500)} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">{ bankData &&  userData?.giftCount >'6' ?  'gift claimed' : 'claim gift'}</button>}
+                <p>mine 50M Tokens & get 5M tw gift</p>
+              { <button onClick={handleClick} disabled={isDisabled('6',50000000)} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-neutral-200 text-[12px] ">{ bankData &&  userData?.giftCount >'6' ?  'gift claimed' : 'claim gift'}</button>}
             </div>
             <div className="flex items-center justify-between px-2 py-1 text-xs">
-                <p>mine 3000 tokens</p>
-              { <button onClick={handleClick} disabled={isDisabled('7',3000)} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-white ">{ bankData &&  userData?.giftCount >'7' ?  'gift claimed' : 'claim gift'}</button>}
+                <p>mine 100M Tokens & get 10M tw gift</p>
+              { <button onClick={handleClick} disabled={isDisabled('7',1000000000)} className="px-3 py-1  rounded bg-orange-500 disabled:bg-gray-400 text-neutral-200 text-[12px] ">{ bankData &&  userData?.giftCount >'7' ?  'gift claimed' : 'claim gift'}</button>}
             </div>
         </div>
     )

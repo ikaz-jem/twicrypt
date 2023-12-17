@@ -18,7 +18,6 @@ const MiningStats = () => {
 
 
     
-    
 
 return (
         <div className=" w-full lg:w-[52%]  h-full rounded-xl  bg-gradient-to-r from-[#0d0025] via-[#270823] to-[#0d0025] px-5 pb-5 shadow-xl shadow-blue-900">

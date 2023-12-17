@@ -22,6 +22,9 @@ const RewardCounter = () => {
     const sessionData = useSelector(state => state.mining.session)
     const allData = useSelector(state => state.mining)
 
+    const miningStats = allData?.stats?.result || []
+
+
     const miningData = sessionData?.result
     
     const totalSessions= miningData?.userData?.totalSessions

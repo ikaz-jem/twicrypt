@@ -69,7 +69,6 @@ const MiningSession = ({ nftWarning }) => {
   const currentTime = Math.floor(new Date().getTime() / 1000);
   
   
-  console.log(stats)
 
   const boostEndTime = Number(miningSessionData?.boostEndTime)
   
@@ -170,7 +169,7 @@ if (balance>=min && enabled){
     <div className="w-full" >
 
       <div className="flex flex-wrap gap-2 px-0 justify-center my-2">
-        <StakedNfts />
+        <StakedNfts miningSessionData={miningSessionData} currentTime={currentTime} />
 
 
         {miningSessionData?.staked?.length > 0 ?
