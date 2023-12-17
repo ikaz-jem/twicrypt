@@ -24,7 +24,7 @@ const links = [
     },
     {
         name:'Live Support',
-        to:'https://t.me/twisupport'
+        to:'https://t.me/TwicryptSupport'
     },
 ]
 
@@ -38,7 +38,7 @@ return (
 
 <div className="w-full flex items-center  justify-center gap-2 sm:gap-5 flex-wrap py-5">
 {
-    links?.map((link,i)=><Link to={link?.to} target="blank" className='border rounded py-4 font-sans text-xs md:text-sm text-left pl-3 w-full sm:w-1/3 bg-neutral-800 hover:bg-neutral-700 border-neutral-600' key={i}> {link?.name} </Link>
+    links?.map((link,i)=><Link to={link?.to} target="blank" className='border rounded py-4 font-sans text-xs md:text-sm text-left text-neutral-200 pl-3 w-full sm:w-1/3 bg-neutral-800 hover:bg-neutral-700 border-neutral-600' key={i}> {link?.name} </Link>
     )
 }
 

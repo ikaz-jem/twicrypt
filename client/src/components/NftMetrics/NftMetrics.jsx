@@ -61,35 +61,35 @@ const NftMetrics = () => {
 
       <>
         <h5 className='text-yellow-500 font-bold text-left p-0 m-0 text-sm'>Twicrypt Nft utility and use Cases </h5>
-        <table class="w-full shadow-lg">
+        <table className="w-full shadow-lg">
           <thead className=''>
-            <tr class="text-xs font-semibold   text-left text-neutral-300 bg-neutral-600 uppercase  border-gray-600 ">
+            <tr className="text-xs font-semibold   text-left text-neutral-300 bg-neutral-600 uppercase  border-gray-600 ">
 
               {
-                titles?.map((title, i) => <>
-                  <th class="px-0 text-xs text-center py-1" key={i} >{title}</th>
-                </>
+                titles?.map((title, i) =><th className="px-0 text-xs text-center py-1" key={'d'+i} >{title}</th>
+                  
+              
                 )
               }
             </tr>
           </thead>
-          <tbody class="bg-neutral-800 ">
+          <tbody className="bg-neutral-800 ">
             {
 
               rows?.map((row, index) =>
-                <tr class="text-gray-300 text-xs " key={index} >
-                  <td class="px-4 py-1 border border-neutral-700 ">
-                    <div class="flex items-center text-sm">
+                <tr className="text-gray-300 text-xs " key={'c'+index} >
+                  <td className="px-4 py-1 border border-neutral-700 ">
+                    <div className="flex items-center text-sm">
                       <div>
-                        <p class="font-semibold">{row?.holdings}</p>
+                        <p className="font-semibold">{row?.holdings}</p>
                       </div>
                     </div>
                   </td>
-                  <td class="px-4 py-1 border border-neutral-700 text-md font-semibold">{row?.mining}</td>
-                  <td class="px-4 py-1 border border-neutral-700 text-xs">{row?.cashReward}</td>
-                  <td class="px-4 py-1 border border-neutral-700 text-xs">{row?.tokenSale}</td>
-                  <td class="px-4 py-1 border border-neutral-700 text-xs">{row?.referral}</td>
-                  <td class="px-4 py-1 border border-neutral-700 text-sm">{row?.gift}</td>
+                  <td className="px-4 py-1 border border-neutral-700 text-md font-semibold">{row?.mining}</td>
+                  <td className="px-4 py-1 border border-neutral-700 text-xs">{row?.cashReward}</td>
+                  <td className="px-4 py-1 border border-neutral-700 text-xs">{row?.tokenSale}</td>
+                  <td className="px-4 py-1 border border-neutral-700 text-xs">{row?.referral}</td>
+                  <td className="px-4 py-1 border border-neutral-700 text-sm">{row?.gift}</td>
                 </tr>)}
 
           </tbody>
@@ -109,31 +109,31 @@ const NftMetrics = () => {
 
 
         <h5 className='text-yellow-500 font-bold text-left text-sm p-0 m-0'>Twicrypt cash reward allocation </h5>
-        <table class="w-full shadow-lg ">
+        <table className="w-full shadow-lg ">
           <thead className='th'>
-            <tr class="text-xs font-semibold   text-left text-neutral-300 bg-neutral-600 uppercase  border-gray-600 ">
+            <tr className="text-xs font-semibold   text-left text-neutral-300 bg-neutral-600 uppercase  border-gray-600 ">
 
               {
-                nftTitles?.map((title, i) => <>
-                  <th class="px-4 py-1" key={i} >{title}</th>
-                </>
+                nftTitles?.map((title, i) => 
+                <th className="px-4 py-1" key={'b'+i} >{title}</th>
+                
                 )
               }
             </tr>
           </thead>
-          <tbody class="bg-neutral-800 ">
+          <tbody className="bg-neutral-800 ">
             {
 
               nftRows?.map((row, index) =>
-                <tr class="text-gray-300 text-xs " key={index} >
-                  <td class="px-4 py-1 border border-neutral-700 ">
-                    <div class="flex items-center  text-sm">
+                <tr className="text-gray-300 text-xs " key={'t-'+index} >
+                  <td className="px-4 py-1 border border-neutral-700 ">
+                    <div className="flex items-center  text-sm">
                       <div>
-                        <p class="font-semibold">{row?.reward}</p>
+                        <p className="font-semibold">{row?.reward}</p>
                       </div>
                     </div>
                   </td>
-                  <td class="px-4 py-1 border border-neutral-700 text-md  text-left font-semibold">{row?.unit}</td>
+                  <td className="px-4 py-1 border border-neutral-700 text-md  text-left font-semibold">{row?.unit}</td>
                 </tr>)}
 
           </tbody>

@@ -19,27 +19,34 @@ const Bank = ({ nftWarning }) => {
     let data = sessionData?.result
     let banks = allBanks?.result
 
+
+
     const nftBalance = useNftBalanceOf()
     const minBalance = 1
-
 
 
     // const banks = useGetBanks()
     const bankData = data?.bankData || null
     const userData = data?.userData || null
-
+    
+  
+  
 
     const extractIndex = () => {
-        if (bankData?.level) {
-            return (Number(bankData?.level)) + 1
+        const currentLevel = Number(bankData?.level )
+        if ( currentLevel>=1) {
+            return currentLevel + 1
         } else return 0;
-    }
+    }   
     const extractPrice = () => {
         const index = extractIndex()
-        if (banks?.data && index) {
-            return banks?.data[index && index].price
+        if (banks?.length >0  && index >0) {
+            return banks[index && index]?.price
         }
     }
+
+
+   
 
     const price = extractPrice();
 

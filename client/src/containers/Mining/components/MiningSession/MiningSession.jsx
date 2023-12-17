@@ -66,16 +66,24 @@ const MiningSession = ({ nftWarning }) => {
   
   const miningSessionData = stats ? sessionData?.result : [];
   
-  const currentTime = Math.floor(new Date().getTime() / 1000);
-  
-  
 
+
+
+
+
+  const currentTime = Math.floor(new Date().getTime() / 1000);
+  const claimEnabled = stats?.result?.claim_enabled  
   const boostEndTime = Number(miningSessionData?.boostEndTime)
   
+  const miningStartTime = Number(miningSessionData?.userData?.miningStartTime) ;
+  const miningEndTime = Number(miningSessionData?.userData?.miningEndTime)
+
+
   let remainingTime = boostEndTime - currentTime;
   let boostDuration = stats ? Number(stats?.result?.boost_duration) : 0
   //2h
   //1 
+
 
   let rechargeFees = stats?.result ? formatEther(stats?.result?.boost_fees) : 0;
 
@@ -85,12 +93,18 @@ const checkWithdraw = ()=>{
 const min = Number(stats?.result?.min_funds_to_withdraw)
 const balance = Number(sessionData?.result?.bankData?.funds)
 const enabled = stats?.result?.claim_enabled
-if (balance>=min && enabled){
+if (balance>=min && enabled && isSessionStarted() === false ){
   return false
 } return true
-
-
 }
+
+
+
+const isSessionStarted = ()=> {
+  
+  return currentTime < miningEndTime
+}
+
 
 
   const minbBalance = Number(miningSessionData?.nftBalance)
@@ -164,7 +178,6 @@ if (balance>=min && enabled){
   }
 
 
-
   return (
     <div className="w-full" >
 
@@ -204,20 +217,27 @@ if (balance>=min && enabled){
       </div>
       <div className="flex justify-between px-5 py-5">
 
-        <div className="flex  gap-1 items-center justify-center w-full">
-          {miningSessionData?.staked?.length > 0 && currentTime >= miningSessionData?.userData?.miningStartTime ? <button onClick={handleClick} disabled={isFull} className={`rounded-lg px-5  py-2 bg-blue-500 hover:bg-neutral-200 hover:text-black transition-all duration-300 text-xs disabled:cursor-not-allowed`}>Start mining</button> :
-            null
-          }
-          {miningSessionData?.staked?.length > 0 && currentTime && !isFull >= miningSessionData?.userData?.miningStartTime ? <button onClick={handlewithdrawEarnings} disabled={checkWithdraw()} className={`rounded-lg px-5 disabled:cursor-not-allowed py-2 bg-orange-500 hover:bg-neutral-200 hover:text-black transition-all duration-300 text-xs disabled:bg-neutral-400 disabled:text-neutral-800`}>Withdraw tokens</button> :
-            null
-          }
-
+        <div className="flex flex-col  gap-1 items-center justify-center w-full">
+<div className="w-full">
           {
-
-            miningSessionData?.staked?.length > 0 && miningSessionData?.userData?.miningStartTime != "0" && currentTime <= miningSessionData?.userData?.miningStartTime ? <p className="text-xs text-green-500">session started !! you can come back later when the next session is available if you want , note that your earnings will be transfered to bank after a new session is started ! happy earnings 🥳🥳</p>
-              : null
+            
+            miningSessionData?.staked?.length > 0 && miningStartTime != "0" && currentTime <= miningStartTime? <p className="text-xs text-green-500">session started !! you can come back later when the next session is available if you want , note that your earnings will be transfered to bank after a new session is started ! happy earnings 🥳🥳</p>
+            : null
+          }
+</div>
+          <div className="flex  gap-1 items-center justify-center w-full">
+            
+          {miningSessionData?.staked?.length > 0 && currentTime >= miningStartTime? <button onClick={handleClick} disabled={isFull} className={`rounded-lg px-5  py-2 bg-blue-500 hover:bg-neutral-200 hover:text-black transition-all duration-300 text-xs disabled:curs or-not-allowed`}>Start mining</button> :
+            null
+          }
+          { claimEnabled ? <button onClick={handlewithdrawEarnings} disabled={checkWithdraw()} className={`rounded-lg px-5 disabled:cursor-not-allowed py-2 bg-orange-500 hover:bg-neutral-200 hover:text-black transition-all duration-300 text-xs disabled:bg-neutral-400 disabled:text-neutral-800`}>Withdraw tokens</button> :
+            null
           }
           {miningSessionData?.bankData?.capacity > 0 ? null : <button onClick={handleClaimBank} className=" rounded-lg px-5 py-2 bg-orange-500 hover:bg-neutral-200 hover:text-black transition-all duration-300 text-xs">Claim free Bank</button>}
+
+          </div>
+
+
         </div>
 
       </div>

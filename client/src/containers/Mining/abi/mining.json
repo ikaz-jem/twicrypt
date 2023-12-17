@@ -1,5 +1,12 @@
 [
 	{
+		"inputs": [],
+		"name": "addToBank",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "contract IERC721",
@@ -106,6 +113,13 @@
 			}
 		],
 		"name": "enable_Claim_Rewards",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "GetFreeBoost",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -781,6 +795,16 @@
 						"internalType": "uint256",
 						"name": "maxclaim_amount",
 						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxWorkers",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "MiningPoolBalance",
+						"type": "uint256"
 					}
 				],
 				"internalType": "struct TwicryptMiner.stats",
@@ -833,6 +857,19 @@
 				"internalType": "address",
 				"name": "",
 				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "poolBalance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",

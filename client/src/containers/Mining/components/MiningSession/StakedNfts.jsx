@@ -13,7 +13,7 @@ const [selectedNft,setSelectedNft]=useState([])
 
     const staked = useSelector(state => state.mining.session)
     const onWorkNfts = staked ? staked?.result?.staked : []
-
+    const miningEndTime =  Number(miningSessionData?.userData?.miningEndTime) 
 // prepares array of ids for Unstaking
     const prepareData = () => {
         const Ids = [];
@@ -28,12 +28,26 @@ const [selectedNft,setSelectedNft]=useState([])
       ids:Ids
     })
 
-  
+    const unstakeAll = ()=> {
+            unstakeMiners.write()
+    }
+
+
+const isSessionStarted = ()=> {
+  return currentTime < miningEndTime
+}
+
+
 
   const handleSelect= (nft) => {
-    if (!selectedNft.some((item) => item.tokenId === nft.tokenId)) {
-        setSelectedNft((prev) => [...prev, nft]);
+    if (isSessionStarted() === false  ){
+        if (!selectedNft.some((item) => item.tokenId === nft.tokenId)) {
+            setSelectedNft((prev) => [...prev, nft]);
+        }
+    }else {
+            return
     }
+    
   }
   const selectAll = () => {
     onWorkNfts?.map((nft) => {
@@ -82,22 +96,25 @@ const deselectAll = (nft) => {
         )
     }
 
-
 const Buttons = ()=> {
 
     const handleUnstake = ()=> {
         unstakeMiners?.write()
     }
 
+    
 return (
     <div className="flex items-center justify-center gap-5 font-neutral-200 font-sans text-xs w-full my-5 ">
-{  miningSessionData?.userData?.miningStartTime != "0" && currentTime <= miningSessionData?.userData?.miningStartTime ? <p className="text-[12px] text-yellow-500">you can't withdraw your Nfts until your current mining session ends</p> :
-<>
-<button onClick={handleUnstake} className={`py-1 text-xs  hover:bg-neutral-200 hover:text-black transition-all duration-300 bg-blue-500 rounded flex items-center justify-center px-2  ${!isRoomAvailable() && "bg-red-500" }  `}>{isRoomAvailable() ?  'withdraw Selected' : "withdraw all workers"}</button>
-
+   
+   { isSessionStarted()  ? null :  <>
+   
+    <button onClick={handleUnstake} className={`py-1 text-xs  hover:bg-neutral-200 hover:text-black transition-all duration-300 bg-blue-500 rounded flex items-center justify-center px-2  ${!isRoomAvailable() && "bg-red-500" }  `}>{isRoomAvailable() ?  'withdraw Selected' : "withdraw all workers"}</button>
     {isRoomAvailable() && <button onClick={ selectAll} className={`py-1 text-xs  hover:bg-neutral-200 hover:text-black transition-all duration-300 bg-blue-500 rounded flex items-center justify-center  px-2 `}> withdraw All</button>}
-</>
+
+   </>
+
 }
+
 </div>  
 )
 
@@ -117,14 +134,18 @@ return (
                             onWorkNfts &&   onWorkNfts?.map((item, i) => <Card data={item} key={i}  />)
                         }
                         </div>  
-                       {selectedNft?.length > 0 &&  miningSessionData?.staked?.length > 0  ? null : <Buttons/>}
-                    
+                       {selectedNft?.length > 0 ?  <Buttons/> :null}
+                       {
+    isSessionStarted()  && <p className="text-yellow-500 text-xs">⚠️ you can't withdraw Nft or tokens unil current session ends ⚠️</p>
+
+}
                     </div>
                     : 
                     <div className="flex gap-2 items-center justify-center border rounded-xl bg-[#00000081] h-auto border-purple-500">
                                     <Spinner message={'loading Nfts on work ...'} />
                       </div>
                     }
+                    
             </>
         )
     }

@@ -168,7 +168,6 @@ const random = Math.floor(Math.random()*5000)
                                 <div className="frame " dataref="hero[el]">
 
                                     <div className="frame-front ">
-                                    <img src={`https://twicrypt.com/media/sponsor.png`} alt="" className=" absolute top-0  " />
 
                                         <img src={PlaceHolder[2]} alt="" className="carousel-img" />
 
@@ -233,7 +232,6 @@ const random = Math.floor(Math.random()*5000)
                                 <div className="frame " dataref="hero[el]">
 
                                     <div className="frame-front ">
-                                    <img src={`https://twicrypt.com/media/sponsor.png`} alt="" className=" absolute top-0  " />
 
                                     <img src={item} alt="" className="carousel-img" />
                                         <div className="flex items-center justify-center">

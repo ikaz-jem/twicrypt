@@ -1,8 +1,8 @@
 
 
 const PreviewCard = ({ids})=> {
-    console.log(ids)
 
+    
     
     
     const Card  = ({id})=>{

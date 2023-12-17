@@ -2,7 +2,8 @@
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 
-import { AiOutlineUserAdd } from 'react-icons/ai'
+import { IoMdDoneAll } from "react-icons/io";
+import { IoMdTime } from "react-icons/io";
 
 
 const RoadMap = () => {
@@ -22,10 +23,10 @@ const RoadMap = () => {
               background: 'linear-gradient(90deg , rgb(150, 150, 243 ,.1), rgb(250, 0, 100,.1))', color: '#fff'
             }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-            date="2011 - present"
-            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+            date="2023"
+            iconStyle={{ background: 'rgb(0, 200, 50)', color: '#fff' }}
 
-            icon={<AiOutlineUserAdd />}
+            icon={<IoMdDoneAll />}
           >
 
 
@@ -43,13 +44,13 @@ const RoadMap = () => {
 
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            date="2010 - 2011"
+            date="2023"
             contentStyle={{
               borderTop: '4px solid rgb(150, 150, 243 ,.1)',
               background: 'linear-gradient(90deg , rgb(150, 150, 243 ,.1), rgb(250, 0, 100,.1))', color: '#fff'
             }}
-            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-            icon={<AiOutlineUserAdd />}
+            iconStyle={{ background: 'rgb(0, 200, 50)', color: '#fff' }}
+            icon={<IoMdDoneAll />}
           >
             <h3 className="vertical-timeline-element-title text-left">twictypt Nfts Minting</h3>
             <h4 className="vertical-timeline-element-subtitle  text-pink-600 text-left ">twicrypt nfts and its importance & use case</h4>
@@ -81,8 +82,8 @@ const RoadMap = () => {
               borderTop: '4px solid rgb(150, 150, 243 ,.1)',
               background: 'linear-gradient(90deg , rgb(150, 150, 243 ,.1), rgb(250, 0, 100,.1))', color: '#fff'
             }}
-            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-            icon={<AiOutlineUserAdd />}
+            iconStyle={{ background: 'rgb(0, 200, 50)', color: '#fff' }}
+            icon={<IoMdDoneAll />}
           >
             <h3 className="vertical-timeline-element-title text-left">Mining App</h3>
             <h4 className="vertical-timeline-element-subtitle  text-pink-600 text-left ">The Twicrypt Mining App takes the lead:</h4>
@@ -107,9 +108,9 @@ const RoadMap = () => {
             }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
             date="2011 - present"
-            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+            iconStyle={{ background: 'rgb(0, 200, 50)', color: '#fff' }}
 
-            icon={<AiOutlineUserAdd />}
+            icon={<IoMdDoneAll />}
           >
 
 
@@ -138,7 +139,7 @@ const RoadMap = () => {
             date="2011 - present"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
-            icon={<AiOutlineUserAdd />}
+            icon={<IoMdTime />}
           >
 
 
@@ -172,7 +173,7 @@ const RoadMap = () => {
             date="2011 - present"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
-            icon={<AiOutlineUserAdd />}
+            icon={<IoMdTime />}
           >
 
 
@@ -205,7 +206,7 @@ const RoadMap = () => {
             date="2011 - present"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
-            icon={<AiOutlineUserAdd />}
+            icon={<IoMdTime />}
           >
 
 
@@ -240,7 +241,7 @@ const RoadMap = () => {
             date="2011 - present"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
-            icon={<AiOutlineUserAdd />}
+            icon={<IoMdTime />}
           >
 
 
@@ -272,7 +273,7 @@ const RoadMap = () => {
             date="2011 - present"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
-            icon={<AiOutlineUserAdd />}
+            icon={<IoMdTime />}
           >
 
 
@@ -305,7 +306,7 @@ const RoadMap = () => {
             date="2011 - present"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
-            icon={<AiOutlineUserAdd />}
+            icon={<IoMdTime />}
           >
 
 
@@ -336,7 +337,7 @@ const RoadMap = () => {
             date="2011 - present"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
-            icon={<AiOutlineUserAdd />}
+            icon={<IoMdTime />}
           >
 
 
@@ -397,7 +398,7 @@ const RoadMap = () => {
             date="2011 - present"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
-            icon={<AiOutlineUserAdd />}
+            icon={<IoMdTime />}
           >
 
 
@@ -420,7 +421,7 @@ const RoadMap = () => {
 
           {/* <VerticalTimelineElement
     iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
-    icon={<AiOutlineUserAdd />}
+    icon={<IoMdTime />}
   /> */}
         </VerticalTimeline>
 

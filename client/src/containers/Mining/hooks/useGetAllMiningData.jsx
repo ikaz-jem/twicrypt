@@ -40,7 +40,7 @@ contracts :[
     abi: mining_abi && mining_abi,
     chainId: app_chain_id && app_chain_id,
     functionName: 'getStats',
-    cacheTime: 10_000,
+   
 },
 {
     address:mining_contract && mining_contract,
@@ -53,6 +53,7 @@ contracts :[
 ],watch:true
 
 })
+
 
 let sessionData = data?.length>0 && data[0]
 let bankData = data?.length>0 && data[1]

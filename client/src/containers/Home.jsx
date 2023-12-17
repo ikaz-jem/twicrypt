@@ -155,7 +155,7 @@ const Home = () => {
       </div>
 
       <SectionWhy />
-      {/* <SectionToken /> */}
+      <SectionToken />
       <Sponsors />
 
     </>

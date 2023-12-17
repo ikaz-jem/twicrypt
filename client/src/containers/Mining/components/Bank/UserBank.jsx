@@ -8,6 +8,16 @@ const UserBank = ({bankData,handleUpgrade,banks})=>{
     const myBankCapacity = capacity && formatEther(capacity) || null
     const myBankLevel = Number(bankData?.level) || null
     const nextLevel = myBankLevel && myBankLevel+1 || null
+
+    const isMax = ()=> {
+
+    if (myBankLevel == 8){
+        return true
+    }else{
+        return false
+    }
+}
+
         return (
     
             <div className="flex justify-between items-center border border-blue-900 px-5 py-2 rounded-xl">
@@ -20,9 +30,19 @@ const UserBank = ({bankData,handleUpgrade,banks})=>{
             </div>
             
             <div className="flex flex-col items-start gap-1 justify-center ">
-                <p className="text-xs text-neutral-300">next level : {nextLevel || '...'}</p>
-                <button  onClick={handleUpgrade} className="bg-orange-500 px-5 py-2 text-xs rounded"> upgrade</button>
-            </div>
+                
+
+{ isMax() ? <>
+<p className="text-xs text-yellow-500 font-bold ">you reached max level !</p>
+
+</> : 
+
+<>
+
+<p className="text-xs text-neutral-300">next level : {nextLevel || '...'}</p>
+<button disabled={isMax()} onClick={handleUpgrade} className="bg-orange-500 px-5 py-2 text-xs rounded"> upgrade</button>
+</>
+}            </div>
         </div>
         )
     }

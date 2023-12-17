@@ -22,6 +22,7 @@ const data = useSelector(state=>state.mining.session.result)
   upgrade your bank level to store more tokens !
   `
 
+
   const sendMessage = useTelegramBotMessage(mess)
 
 const upgrade = useContractWrite({

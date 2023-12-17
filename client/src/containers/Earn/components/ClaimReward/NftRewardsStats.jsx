@@ -16,8 +16,8 @@ const NftRewardsStats = () => {
 
 const {data,isLoading,isError} = useGetClaimedRewards()
 
-console.log(data)
-    useEffect(() => {
+
+useEffect(() => {
     }, [address])
 
 

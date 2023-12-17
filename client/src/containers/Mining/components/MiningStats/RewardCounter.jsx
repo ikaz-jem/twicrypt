@@ -38,7 +38,9 @@ const RewardCounter = () => {
     const currentTime = Math.floor(new Date().getTime() / 1000);
 
     const sessionLength = endTime - startTime;
-    const totalSessionRewards = Number(sessionLength) * formatEther(userPower);
+    
+    const totalSessionRewards = Number(sessionLength) * toFormated(userPower,18);
+    
     const realtimeReward = (currentTime - startTime) * userPower
     const miningSpeed = isNaN((totalSessionRewards / (sessionLength))) ? 0 : (totalSessionRewards / (sessionLength))
 
@@ -88,12 +90,12 @@ const RewardCounter = () => {
 
             <div className="flex gap-2 items-center">
                 <p className="font-bold text-xs text-white truncate">estimated earnings  :</p>
-                <p className="font-bold text-md text-pink-500 truncate">{miningData?.userData? totalSessionRewards+ ' Tw Tokens / session ' : 'loading ...'}</p>
+                <p className="font-bold text-md text-pink-500 truncate">{miningData?.userData? parseFloat((totalSessionRewards).toFixed(2)) + ' Tw Tokens / session ' : 'loading ...'}</p>
 
             </div>
             <div className="flex gap-2 items-center">
                 <p className="font-bold text-xs text-white truncate">mining speed/power :</p>
-                <p className="font-bold text-md text-pink-500" >{miningData?.userData ? miningSpeed.toFixed(4) + ' tw/s' : 'loading ...' }</p>
+                <p className="font-bold text-md text-pink-500" >{miningData?.userData ? parseFloat(toFormated(Number(userPower),18).toFixed(2) )+ ' tw/s' : 'loading ...' }</p>
             </div>
         </>
 
@@ -122,7 +124,7 @@ const RewardCounter = () => {
             </div>
             <div className="flex gap-2 items-center">
                 <p className="font-bold text-xs text-white">earnings per 24h :</p>
-                <p className="font-bold text-md text-pink-500" >{miningData?.userData ?  (miningSpeed*3600*24).toFixed(2) + ' tw' : 'loading ...' }</p>
+                <p className="font-bold text-md text-pink-500" >{miningData?.userData ?  (parseFloat(toFormated(Number(userPower),18)*3600*24).toFixed(2)) + ' tw' : 'loading ...' }</p>
             </div>
             <div className="flex gap-2 items-center">
                 <p className="font-bold text-xs text-white">total sessions :</p>

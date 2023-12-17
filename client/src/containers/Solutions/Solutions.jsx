@@ -212,20 +212,20 @@ const Solutions = () => {
                 <h4 className='text-left border-b rounded-xl pl-5 py-2 my-5 border-yellow-950 flex  items-center gap-5 text-yellow-500 font-bold'>  Twicrypt Earn <FcDonate className='text-2xl'/></h4>
                 <div className='flex items-center justify-start flex-wrap gap-4 px-auto mx-auto'>
                     {
-                        earn?.map((sol, i) => <Card sol={sol} />)
+                        earn?.map((sol, i) => <Card key={i} sol={sol} />)
                     }
                 </div>
                 <h4 className='text-left border-b rounded-xl pl-5 py-2 my-5 border-yellow-950  flex  items-center gap-5 text-yellow-500 font-bold'>  web3 solutions <FcDataConfiguration className='text-2xl'/></h4>
                 <div className='flex items-center justify-start flex-wrap gap-4'>
                     {
-                        web3Solutions?.map((sol, i) => <Card sol={sol} />)
+                        web3Solutions?.map((sol, i) => <Card key={i}sol={sol} />)
                     }
                 </div>
 
                 <h4 className='text-left border-b rounded-xl pl-5 py-2 my-5 border-yellow-950  flex  items-center gap-5 text-yellow-500 font-bold'>  Twicrypt services <FcOrganization className='text-2xl'/></h4>
                 <div className='flex items-center justify-start flex-wrap gap-4'>
                     {
-                        services?.map((sol, i) => <Card sol={sol} />)
+                        services?.map((sol, i) => <Card key={i} sol={sol} />)
                     }
                 </div>
             </div>

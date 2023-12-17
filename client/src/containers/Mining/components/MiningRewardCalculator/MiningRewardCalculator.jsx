@@ -20,7 +20,7 @@ const MiningRewardCalculator = () => {
 
 const bankData = useSelector(state=>state.mining.banks)
 const banks = bankData?.result
-console.log(banks)
+
 
 const extractData = ()=> {
     let price = 0
@@ -44,7 +44,7 @@ return {price,level,capacity}
 
 
     const calculateTotal = () => {
-        let power = ((calculate?.nftCount*800000)+(calculate?.banklevel*80000)/2)
+        let power = ((calculate?.nftCount*400000)+(calculate?.banklevel*40000)/2)
         const hours = calculate?.hours *3600
         const result = Number(power)*Number(hours)
         const total = (result/10000)
