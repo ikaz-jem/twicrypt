@@ -6,7 +6,7 @@ import Popup from "../../../shared/popup/Popup"
 import { app_chain_id } from "../../../shared/data/chains"
 import { useTelegramBotMessage } from "../../../bot/useTelegramBotMessage"
 import { useSelector } from "react-redux"
-import { formatEther } from "viem"
+import { toFormated } from "../../../utils/web3Functions"
 
 export const useUpgradeBank = ({price})=> {
 
@@ -18,7 +18,7 @@ const data = useSelector(state=>state.mining.session.result)
   user :  <pre>${address}</pre> upgraded his bank from tier ${data?.bankData?.level}  to tier ${data?.bankData?.level +1}  ! 🏦💵
   his capacity now is augmented !! 
   🔸 user workers : ${data?.nftBalance}  🦺🏦
-  🔸 user mining rate : ${formatEther(Number(data?.userData?.miningPower))} twi/s 💰
+  🔸 user mining rate : ${toFormated(Number(data?.userData?.miningPower),18)} twi/s 💰
   upgrade your bank level to store more tokens !
   `
 

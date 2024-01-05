@@ -4,7 +4,6 @@ import abi from '../abi/mining.json'
 import { useDispatch, useSelector } from "react-redux"
 import { setMiningSession } from "../../../app/features/mining/MiningSlice"
 import { app_chain_id } from "../../../shared/data/chains"
-import { useEffect } from "react"
 
 
 

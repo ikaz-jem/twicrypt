@@ -31,6 +31,9 @@ import TokenMetrics from "../components/TokenMetrics/TokenMetrics";
 import NftMetrics from "../components/NftMetrics/NftMetrics";
 import Solutions from "./Solutions/Solutions";
 import TokenCode from "../components/TokenCode/TokenCode";
+import Solicrypt from "../components/Solicrypt/Solicrypt";
+
+
 
 const Carousel = lazy(() => import('../components/carousel/Carousel'));
 const HomeSlider = lazy(() => import("../components/HomeNfts/HomeSlider/HomeSlider"))
@@ -121,7 +124,7 @@ const Home = () => {
           </Nav> */}
 
           <CallToAction />
-          <TokenCode/>
+          <TokenCode />
         </div>
       </div>
       <div className="flex flex-col justify-start  items-center py-20">
@@ -131,10 +134,16 @@ const Home = () => {
         </div>
 
 
-        <span className="m-0 pl-5 text-neutral-400 text-sm ">Win up to 1BTC ! each NFT contains claimable cache Rewards ! enjoy 2 utilities in one Art !</span>
+        <span className="m-0 pl-5 text-neutral-400 text-sm ">Win up to 100 BNB ! Every NFT contains a cache of claimable Rewards! Enjoy 2 utilities in one Art!</span>
 
 
         <HomeNfts />
+
+        <Solicrypt />
+        <div>
+
+        </div>
+
 
       </div>
 
@@ -155,7 +164,7 @@ const Home = () => {
       </div>
 
       <SectionWhy />
-      <SectionToken />
+      {/* <SectionToken /> */}
       <Sponsors />
 
     </>

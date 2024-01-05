@@ -1,11 +1,8 @@
 
-import { useTelegramBotMessage } from "../../../../bot/useTelegramBotMessage";
-import { nft_contract } from "../../../MarketPlace/data/Addresses";
 import { Link } from "react-router-dom";
 import { useCheckMyWinningNfts } from "./hooks/useCheckMyWinningNfts";
 import { formatEther } from "viem";
 import { useClaimNftReward } from "./hooks/useClaimNftReward";
-import { useSelector } from "react-redux";
 
 
 const CheckRewards = ({ nft }) => {

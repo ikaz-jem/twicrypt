@@ -6,7 +6,7 @@ import CarouselTransition from "../../shared/transitions/CarouselTransition"
 import { Transition } from "@headlessui/react"
 import './sliderSponsor/style.css'
 import { useParams } from "react-router-dom"
-
+import { MetaTags } from "react-meta-tags"
 
 const SponsorUs = () => {
 
@@ -19,6 +19,14 @@ const SponsorUs = () => {
 
 
   return (
+
+<>
+<MetaTags>
+            <title>Sponsor Us and get your project displayed on our main page</title>
+            <meta name="description" content="Sponsor Us and get your project displayed on our main page" />
+          </MetaTags>
+
+
     <div className="flex  flex-col ">
       <div className="h-full  ">
 
@@ -37,7 +45,7 @@ const SponsorUs = () => {
           leave="transition-all duration-1000 z-0 fixed top-[8.3%] w-full h-full"
           leaveFrom="opacity-100 translate-x-0 z-0 "
           leaveTo="opacity-0 translate-x-40  z-0"
-        >
+          >
           <CarouselSponsor show={!show} setShow={setShow}  />
 
         </Transition>
@@ -45,6 +53,7 @@ const SponsorUs = () => {
         {/* <SectionWhy/> */}
       </div>
     </div>
+          </>
 
   )
 }

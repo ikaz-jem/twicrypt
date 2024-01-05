@@ -63,7 +63,17 @@ const solutions = [
     description: 'Contact us',
     href: '/dashboard/support',
     icon: BiSupport,
-    target:'_self'
+    target:'_self',
+    
+  },
+  {
+    name: 'On OpesSea',
+    description: 'visit us on Open Sea',
+    href: 'https://opensea.io/collection/twicrypt',
+    icon: null,
+    target:'blank ',
+    openSea:'https://opensea.io/static/images/logos/opensea-logo.svg'
+    
   },
 ]
 // {
@@ -125,7 +135,7 @@ const AppMenu =()=> {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute bg-gradient-to-r from-pink-500 to-purple-500  rounded-2xl pt-1 left-1/5 z-10 mt-2 w-screen max-w-xs -translate-x-1/2 transform sm:px-0 lg:max-w-4xl ">
+              <Popover.Panel className="absolute bg-gradient-to-r from-pink-500 to-purple-500  rounded-2xl pt-1 left-20 md:left-1/2 z-10 mt-2 w-screen max-w-xs -translate-x-1/2 transform sm:px-0 lg:max-w-4xl ">
 
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-neutral-700 flex ">
                   <div className="flex gap-8  bg-neutral-900 p-7 flex-wrap justify-start items-start w-auto relative  ">
@@ -138,8 +148,9 @@ const AppMenu =()=> {
                         className="-m-4 group  w-auto lg:w-1/3 flex justify-start text-left lg:grow-0 grow  flex-wrap items-center  rounded-lg p-5 transition-all duration-300 ease-in-out hover:bg-white hover:bg-opacity-10 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 "
                       onClick={()=>onMouseLeaveMenu()}
                      >
-                        <div className="flex transition-all duration-300 shrink-0 items-center justify-center rounded-xl w-12 h-12 group-hover:bg-white text-white bg-pink-800 sm:h-12 sm:w-12">
-                          <item.icon aria-hidden="true" className='text-3xl transition-all duration-300 group-hover:text-pink-500' />
+                        <div className={`flex transition-all duration-300 shrink-0 items-center justify-center rounded-xl w-12 h-12 group-hover:bg-white text-white ${ item?.openSea  ? "" :'bg-pink-800'} sm:h-12 sm:w-12`}>
+                      {item?.openSea ? <img src='https://opensea.io/static/images/logos/opensea-logo.svg' /> :   
+                       <item.icon aria-hidden="true" className='text-3xl transition-all duration-300 group-hover:text-pink-500' />}
                           
                         </div>
                         <div className="ml-4">

@@ -93,15 +93,15 @@ const testnetData = async ()=> {
 
 
     const fetchData = async () => {
-       
-        if (data?.chain === 'bsctestnet' || data?.chain ==='goerli' ){
-            await testnetData()
-        }else if(data?.chain === 'twicrypt'){
+        mainnetData()
+        // if (data?.chain === 'bsctestnet' || data?.chain ==='goerli' ){
+        //     await testnetData()
+        // }else if(data?.chain === 'twicrypt'){
             
-            await testnetData()
-        } else {
-            await mainnetData()
-        }
+        //     await testnetData()
+        // } else {
+        //     await mainnetData()
+        // }
 
     }
 

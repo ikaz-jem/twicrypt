@@ -6,7 +6,6 @@ import Popup from "../../../shared/popup/Popup"
 import { app_chain_id } from "../../../shared/data/chains"
 import { useTelegramBotMessage } from "../../../bot/useTelegramBotMessage"
 import { useSelector } from "react-redux"
-import { formatEther } from "viem"
 
 export const useClaimBank = ()=>{
 

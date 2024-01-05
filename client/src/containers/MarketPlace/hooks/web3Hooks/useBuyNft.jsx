@@ -6,6 +6,7 @@ import toast from "react-hot-toast"
 import Popup from "../../../../shared/popup/Popup"
 import { useWaitForTransaction } from "wagmi"
 import { useState } from "react"
+import { app_chain_id } from "../../../../shared/data/chains"
 
 export const useBuyNft = ({price})=> {
 
@@ -20,7 +21,9 @@ const buy = useContractWrite({
     abi : marketPlaceAbi && marketPlaceAbi ,
     functionName:'buyNft',
     args:[tokenId&&tokenId],
+    chainId : app_chain_id ,
     value:price&&price,
+  
     onMutate({ args, overrides }) {
          toast.custom(
          (t) => (

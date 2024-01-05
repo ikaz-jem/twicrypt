@@ -10,7 +10,7 @@ import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
 
 
 //wallet config 
-const chains = [bsc, polygon, mainnet ,bscTestnet,goerli,localhost]
+const chains = [bsc]
 const projectId = 'de4ffe006432dcdd103fde1b34b54824';
 
 // const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])

@@ -28,7 +28,7 @@ import { unixCountDown } from "../../utils/unixToDate";
 import { useGetAllMiningData } from "./hooks/useGetAllMiningData";
 import { app_chain_id } from "../../shared/data/chains";
 import {useLocation} from 'react-router-dom'
-
+import { MetaTags } from "react-meta-tags";
 
 
 const NftBalance = lazy(() => import('./components/Nfts/NftBalance'))
@@ -142,6 +142,12 @@ const stakedNftsCount = data?.staked?.length || 0
 
 
     return (
+<>
+<MetaTags>
+            <title>use your Nfts and Start mining twicrypt tokens</title>
+            <meta name="description" content="use your Nfts and Start mining twicrypt tokens" />
+          </MetaTags>
+
         <div className=" w-auto container--xxxlarge container--center  bg-gradient-to-r from-indigo-900 via-purple-900 to-[#3b002173] rounded-3xl opacity-90  overflow-hidden mb-40 px-5 pb-5 relative">
 
 
@@ -182,6 +188,7 @@ const stakedNftsCount = data?.staked?.length || 0
 
 
         </div>
+                </>
     )
 
 

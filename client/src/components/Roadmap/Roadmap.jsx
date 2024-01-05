@@ -77,7 +77,7 @@ const RoadMap = () => {
 
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            date="2010 - 2011"
+            date="2023"
             contentStyle={{
               borderTop: '4px solid rgb(150, 150, 243 ,.1)',
               background: 'linear-gradient(90deg , rgb(150, 150, 243 ,.1), rgb(250, 0, 100,.1))', color: '#fff'
@@ -107,7 +107,7 @@ const RoadMap = () => {
               background: 'linear-gradient(90deg , rgb(150, 150, 243 ,.1), rgb(250, 0, 100,.1))', color: '#fff'
             }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-            date="2011 - present"
+            date="2024"
             iconStyle={{ background: 'rgb(0, 200, 50)', color: '#fff' }}
 
             icon={<IoMdDoneAll />}
@@ -136,7 +136,7 @@ const RoadMap = () => {
               background: 'linear-gradient(90deg , rgb(150, 150, 243 ,.1), rgb(250, 0, 100,.1))', color: '#fff'
             }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-            date="2011 - present"
+            date="2024"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
             icon={<IoMdTime />}
@@ -170,7 +170,7 @@ const RoadMap = () => {
               background: 'linear-gradient(90deg , rgb(150, 150, 243 ,.1), rgb(250, 0, 100,.1))', color: '#fff'
             }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-            date="2011 - present"
+            date="2024"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
             icon={<IoMdTime />}
@@ -203,7 +203,7 @@ const RoadMap = () => {
               background: 'linear-gradient(90deg , rgb(150, 150, 243 ,.1), rgb(250, 0, 100,.1))', color: '#fff'
             }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-            date="2011 - present"
+            date="2024"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
             icon={<IoMdTime />}
@@ -238,7 +238,7 @@ const RoadMap = () => {
               background: 'linear-gradient(90deg , rgb(150, 150, 243 ,.1), rgb(250, 0, 100,.1))', color: '#fff'
             }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-            date="2011 - present"
+            date="2024"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
             icon={<IoMdTime />}
@@ -270,7 +270,7 @@ const RoadMap = () => {
               background: 'linear-gradient(90deg , rgb(150, 150, 243 ,.1), rgb(250, 0, 100,.1))', color: '#fff'
             }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-            date="2011 - present"
+            date="2024"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
             icon={<IoMdTime />}
@@ -303,7 +303,7 @@ const RoadMap = () => {
               background: 'linear-gradient(90deg , rgb(150, 150, 243 ,.1), rgb(250, 0, 100,.1))', color: '#fff'
             }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-            date="2011 - present"
+            date="2024"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
             icon={<IoMdTime />}
@@ -334,7 +334,7 @@ const RoadMap = () => {
               background: 'linear-gradient(90deg , rgb(150, 150, 243 ,.1), rgb(250, 0, 100,.1))', color: '#fff'
             }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-            date="2011 - present"
+            ddate="2024"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
             icon={<IoMdTime />}
@@ -395,7 +395,7 @@ const RoadMap = () => {
               background: 'linear-gradient(90deg , rgb(150, 150, 243 ,.1), rgb(250, 0, 100,.1))', color: '#fff'
             }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-            date="2011 - present"
+            ddate="2024"
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
 
             icon={<IoMdTime />}

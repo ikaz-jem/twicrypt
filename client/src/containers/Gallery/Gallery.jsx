@@ -5,6 +5,7 @@ import ImageCard from './ImageCard'
 
 import { Masks,Bakgrounds,Clothing,Hair,Hand,Eyes,Glass } from "./traits"
 import { useTotalSupply } from "./hooks/useTotalSupply"
+import { MetaTags } from "react-meta-tags"
 // import NftFilter from "./NftFilter/NftFilter"
 
 ///////////////////////
@@ -81,7 +82,6 @@ const Gallery = () => {
 
 //////////////////////////////////////////////////////////
 
-console.log(filterData)
 
 const handleSearch = (item) => {
 
@@ -400,6 +400,11 @@ setFilterData((prev) => ({
   return (
 
     <>
+
+<MetaTags>
+            <title>Nft Gallery , Browse Minted Nfts </title>
+            <meta name="description" content="Nft Gallery , Browse Minted Nfts " />
+          </MetaTags>
       
       <div className="w-full min-w-full h-full flex flex-col items-center justify-center">
         {/* <div className="w-full bg-neutral-400 h-20">

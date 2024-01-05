@@ -4,10 +4,8 @@ import mining_abi from '../abi/mining.json'
 import { app_chain_id } from "../../../shared/data/chains"
 import Popup from "../../../shared/popup/Popup"
 import toast from "react-hot-toast"
-import IERC721 from '../../../hooks/web3/interfaces/IERC721.json'
 import { useState } from "react"
 import { useSelector } from "react-redux"
-import { nft_contract } from "../../MarketPlace/data/Addresses"
 
 export const useUnstakeMiners = ({ids })=>{
 const [hash,setHash] = useState(null);

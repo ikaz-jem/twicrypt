@@ -1,7 +1,6 @@
 import { useContractReads } from "wagmi"
 import { app_chain_id } from "../../../shared/data/chains"
 import { mining_contract } from "../data/addresses"
-import { nft_contract } from "../../MarketPlace/data/Addresses"
 import mining_abi from '../abi/mining.json'
 import { useDispatch, useSelector } from "react-redux"
 import { setBanks, setMiningSession } from "../../../app/features/mining/MiningSlice"

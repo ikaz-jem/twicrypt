@@ -13,7 +13,7 @@ import Referrals from "./Referrals/Referrals";
 import { useGetMinterStats } from "../hooks/useGetMinterStats";
 import UserModal from "../../../../../shared/userModal/UserModal";
 import { app_chain_id } from "../../../../../shared/data/chains";
-
+import { MetaTags } from "react-meta-tags";
 
 
 
@@ -37,6 +37,12 @@ useEffect(()=>{
 
     return (
 
+        <>
+
+<MetaTags>
+            <title>Mint Twicrypt Nft and get the Chance to win 100 BNB + !</title>
+            <meta name="description" content="Mint Twicrypt Nft and get the Chance to win 100 BNB + !" />
+          </MetaTags>
 
         <div className=" w-auto container--xxxlarge container--center  bg-gradient-to-r from-indigo-900 via-purple-900 to-[#3b002173] rounded-3xl opacity-90  overflow-hidden mb-20 mt-10 px-5 py-10 relative">
             <div className="grid grid-cols-2 gap-10  w-auto container--xxxlarge px-5 container--center  place-items-start place-content-start relative   ">
@@ -76,6 +82,7 @@ useEffect(()=>{
             </div>
         </div>
 
+                        </>
 
 
     )

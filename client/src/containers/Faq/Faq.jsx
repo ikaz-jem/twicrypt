@@ -1,6 +1,8 @@
 
 import AccordionTabs from "../../shared/AccordionTabs/AccordionTabs"
 import {Link} from 'react-router-dom'
+import { MetaTags } from "react-meta-tags"
+
 
 const Faq = ()=>{
 
@@ -32,6 +34,13 @@ const links = [
 
 return (
 <>
+
+<MetaTags>
+            <title>Twicrypt Support </title>
+            <meta name="description" content="Twicrypt Support" />
+          </MetaTags>
+
+
 <div className="container container--xxlarge px-2 py-10">
 
 {/* <h1>Faq Page</h1> */}

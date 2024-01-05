@@ -1,11 +1,6 @@
 
-import { useContractRead } from "wagmi"
-import { mining_contract } from "../data/addresses"
-import abi from '../abi/mining.json'
 import { useSelector } from "react-redux"
 import { useSessionData } from "./useSessionData"
-import { app_chain_id } from "../../../shared/data/chains"
-import { useEffect } from "react"
 
 export const useCalculateRewards = ()=>{
     const {address}= useSelector(state=>state?.session)

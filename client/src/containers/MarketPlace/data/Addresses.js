@@ -1,10 +1,12 @@
 
-const marketplace_contract = '0xa122fCE0301713C73d9d43a94961127A29069726' // market trest
+const marketplace_contract = '0xd9Ba9De1a744fdD373C742B62BeacFB68f5C7015' // mainnet
+const nft_contract = '0xa94F1Cef00affC7d271F9264785e278e712F37aC' // mainnet
+
+
+// const marketplace_contract = '0xa122fCE0301713C73d9d43a94961127A29069726' // market trest
 // const marketplace_contract = '0xeA69098B2992FD3B289ABD89904622d0ef88Fb1D' // market trest
 
-
-const nft_contract = '0x6f1e8B285B38c6E07da3f44DF8BD7635350f37Ce' //twi collection
-
+// const nft_contract = '0x6f1e8B285B38c6E07da3f44DF8BD7635350f37Ce' //twi collection
 // const nft_contract = '0x019c8f52Bb07F0431C54A7C893b85f8D1A8e81bD' //9testnet
 // const nft_contract = '0x2844f8666Ad4063e96252a2f565715f2DA9dE3F1' //ganach
 // const nft_contract = '0x7686AF4C41812D6c72C93EC2322a2B59D762ed39' //9testnet

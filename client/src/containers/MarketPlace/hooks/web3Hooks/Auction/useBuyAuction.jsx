@@ -7,6 +7,7 @@ import { useState } from "react"
 import { toDecimals } from "../../../../../utils/web3Functions"
 import { marketplace_contract } from "../../../data/Addresses"
 import marketPlaceAbi from '../../../abi/marketPlace2.json'
+import { app_chain_id } from "../../../../../shared/data/chains"
 
 export const useBuyAuction = ()=> {
 
@@ -26,6 +27,7 @@ const buy = useContractWrite({
     abi : marketPlaceAbi && marketPlaceAbi ,
     functionName:'buyNowAuction',
     args:[tokenId&&tokenId],
+    chainId:app_chain_id,
     value:extractBuyPrice() ,
     onMutate({ args, overrides }) {
          toast.custom(

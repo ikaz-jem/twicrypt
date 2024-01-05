@@ -17,7 +17,7 @@ const {data,isLoading,isError} = useContractRead({
 address : nft_contract && nft_contract,
 abi : NftAbi && NftAbi,
 functionName:'totalSupply',
-chainId:app_chain_id&& app_chain_id || null,
+chainId:app_chain_id&& app_chain_id,
 })
 
 

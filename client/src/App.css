@@ -136,7 +136,7 @@ details, menu {
 canvas {
   display: inline-block;
 }
-[hidden], template {
+ template {
   display: none;
 }
 html {

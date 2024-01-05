@@ -41,8 +41,10 @@ const rootReducer = combineReducers({
 
 const middleware = [ thunk];
 
+const mode = 'production'
+
 const composeEnhancers =
-  process.env.NODE_ENV !== 'production'
+  mode !== 'production'
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
     : compose;
 
@@ -50,6 +52,6 @@ export const store = configureStore({
   reducer: rootReducer,
   middleware,
   enhancers: [applyMiddleware(thunk)],
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: mode !== 'production',
   compose: composeEnhancers,
 });

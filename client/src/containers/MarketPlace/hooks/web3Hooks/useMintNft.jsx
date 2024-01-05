@@ -33,12 +33,12 @@ const mess = `<b> 💰🏦 New Nft/s minted !  🏦💰</b>
 
 user :  <code>${address}</code> has minted a total of :  ${toNumber(nftMintDetails?.nftCount)} Nft/s !
 🔸 total price : ${price} BNB
-🔸 user now is eligible for referral and partners program 🥳🥳🥳🥳
+
 
 transaction : ${'https://testnet.bscscan.com/tx/'+nftMintDetails?.hash}
 
-🔸 win up to 1BTC 💰💰 in value while minting ! 
-🔸 get referral commision  👥, up to 10% each nft sale , instant withdraw and realtime stats ! 💰💰
+🔸 win up to 100 BNB 💰💰 in value while minting ! 
+🔸 get referral commision  👥, up to 20% each nft sale , instant withdraw and realtime stats ! 💰💰
 
 visit : <a>https://twicrypt.com/dashboard/mint</a>
 `
@@ -87,7 +87,7 @@ visit : <a>https://twicrypt.com/dashboard/mint</a>
         onSuccess(data) {
             toast.custom(
                 (t) => (
-                  <Popup productImage={ null} show={true} t={t} button={{title:'view your Nfts',link:'dashboard/marketplace/my-nfts'}} title={`Nft Minted successfully !`} desc={`  Minted successfully a total of ${parseFloat(Number(nftMintDetails?.nftCount).toFixed(2)) || 'uknown number'} nfts for ${price || 'uknown price '} BNB`}/>
+                  <Popup productImage={ null} show={true} t={t} button={{title:'view your Nfts',link:'dashboard/marketplace/my-nfts'}} title={`Nft Minted successfully !`} desc={`  Minted successfully a total of ${parseFloat(Number(nftMintDetails?.nftCount).toFixed(2)) || 'uknown number'} nfts for ${parseFloat((price).toFixed(2)) || 'uknown price '} BNB`}/>
                 ),
                 { position: "bottom-center", duration: 2000 }
               )

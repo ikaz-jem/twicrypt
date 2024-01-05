@@ -69,17 +69,15 @@ const Dashboard = () => {
 
 
 <MetaTags>
-            <title>user ffff Dashboard</title>
-            <meta name="description" content="user vbvv dashboard" />
-            <meta property="og:title" content="title" />
-            <meta property="og:image" content="path/to/image.jpg" />
+            <title>user Dashboard , discover all tools</title>
+            <meta name="description" content="user Dashboard , discover all tools " />
           </MetaTags>
 
 
 
             <div className="lg:flex bg-gradient-to-b from-[#111111] to-black bg-opacity-70 relative h-auto w-full   ">
 
-                <div className="h-full lg:z-10 lg:sticky xl:sticky xl:top-5 lg-top-8  overflow-x-none fixed top-10  z-10  ">
+                <div className="h-full lg:z-50 lg:sticky xl:sticky xl:top-5 lg-top-8  overflow-x-none fixed top-10  z-10  ">
                     <Menu />
                 </div>
                

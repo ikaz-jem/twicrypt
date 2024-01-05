@@ -1,8 +1,8 @@
 import { formatEther } from "viem"
 import { useGetUiNftRewardStats } from "./hooks/useGetUiNftRewardStats"
 import { Link } from "react-router-dom"
-
-
+import { Winings } from "./data"
+import { MetaTags } from "react-meta-tags"
 
 
 const WiningNfts = () => {
@@ -12,7 +12,6 @@ const WiningNfts = () => {
     const totalClaimedNfts = allClaimedNfts?.length
     const totalWinningNfts = allWinningNfts?.length + totalClaimedNfts
     const remaining = allWinningNfts?.length
-
 
 
 
@@ -29,11 +28,17 @@ const WiningNfts = () => {
 
     const RenderStats = () => {
         const stats = [
-            { id: 1, name: 'remaining rewards', value: `${formatEther(Number(totalRewards)) + " BNB"}` },
-            { id: 2, name: 'claimed already', value: `${formatEther(Number(claimedAlredy)) + " BNB"}` },
-            { id: 3, name: 'total winning Nfts ', value: totalWinningNfts },
-            { id: 4, name: 'remaining chances', value: remaining },
+            { id: 1, name: 'remaining rewards', value: '400 BNB' },
+            { id: 2, name: 'claimed already', value: "0 BNB" },
+            { id: 3, name: 'total winning Nfts ', value: '100 NFT' },
+            { id: 4, name: 'remaining chances', value: '100' },
         ]
+        // const stats = [
+        //     { id: 1, name: 'remaining rewards', value: `${formatEther(Number(totalRewards)) + " BNB"}` },
+        //     { id: 2, name: 'claimed already', value: `${formatEther(Number(claimedAlredy)) + " BNB"}` },
+        //     { id: 3, name: 'total winning Nfts ', value: totalWinningNfts },
+        //     { id: 4, name: 'remaining chances', value: remaining },
+        // ]
 
         return (
             <div className="bg-neutral-800 py-5 sm:py-2 rounded-md w-full my-2 mb-5">
@@ -71,21 +76,27 @@ const WiningNfts = () => {
         )
     }
 
-
     return (
 
         <>
-
+<MetaTags>
+            <title>Discover Wining Nfts and Lucky Users !</title>
+            <meta name="description" content="Discover Wining Nfts and Lucky Users !" />
+          </MetaTags>
 
             <div className="container container--xxxlarge  rounded-2xl mb-20 pb-10 ">
+        
+              
                 <div className="container container--xxlarge container--center  rounded-xl">
                     <RenderStats />
-                    <h3 className="text-left my-5 p-0 border-b border-purple-700 w-full rounded-2xl px-5 pb-2 text-yellow-500 font-bold text-xl ">All winning NFTs <span className="m-0 pl-5 text-neutral-200 text-base ">{ " remaing winning Nfts : " + remaining + " units" }  </span>  </h3>
+                    <h3 className="text-left my-5 p-0 border-b border-purple-700 w-full rounded-2xl px-5 pb-2 text-yellow-500 font-bold text-xl ">All winning NFTs <span className="m-0 pl-5 text-neutral-200 text-base ">{ " remaing winning Nfts : " + '100' + " units" }  </span>  </h3>
+                    {/* <h3 className="text-left my-5 p-0 border-b border-purple-700 w-full rounded-2xl px-5 pb-2 text-yellow-500 font-bold text-xl ">All winning NFTs <span className="m-0 pl-5 text-neutral-200 text-base ">{ " remaing winning Nfts : " + remaining + " units" }  </span>  </h3> */}
                     <div className="flex gap-2 flex-wrap flex-col">
 
                         <div className="flex gap-3 flex-wrap ">
                             {
-                              allWinningNfts &&  allWinningNfts?.map((item, i) => {
+                            //   allWinningNfts && 
+                            Winings?.map((item, i) => {
                                    
                                         return <Card key={i} item={item} />
                             

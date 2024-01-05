@@ -1,13 +1,10 @@
 
-import { useGetNftByAccount } from "../hooks/useGetNftByAccount";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import CardCategory1 from "../../../shared/Cards/NftCards/NftsCard";
-import Spinner from "../../../shared/Spinner/Spinner";
 import { useNavigate } from "react-router-dom";
 import { userData } from "../../../app/features/session/sessionSlice";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import ConnectWalletError from "../../../shared/ConnectWalletError/ConnectWalletError";
-import { nft_contract } from "../data/Addresses";
 import { useWalletOfOwner } from "../../Earn/components/ClaimReward/hooks/useWalletOfOwner";
 import { Link } from "react-router-dom";
 

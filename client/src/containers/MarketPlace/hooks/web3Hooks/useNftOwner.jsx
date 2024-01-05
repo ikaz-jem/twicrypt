@@ -5,6 +5,7 @@ import abi from '../../abi/ERC721.json'
 import { useDispatch } from "react-redux"
 import { setNftDetailsPageState } from "../../../../app/features/MarketPlace/MarketplaceSlice"
 import { useEffect } from "react"
+import { app_chain_id } from "../../../../shared/data/chains"
 
 export const useNftOwner = () => {
 
@@ -23,8 +24,8 @@ export const useNftOwner = () => {
         abi: abi && abi,
         functionName: 'ownerOf',
         args: [nftDetails?.tokenId && Number(nftDetails?.tokenId)],
-        enabled: nftDetails?.tokenId && nftDetails?.contractAddress && nftDetails?.chainId && true,
-        chainId: nftDetails?.chainId && nftDetails?.chainId,
+        enabled: nftDetails?.tokenId && nftDetails?.contractAddress && app_chain_id&& true,
+        chainId: app_chain_id && app_chain_id,
         onError(){
             return null
         }

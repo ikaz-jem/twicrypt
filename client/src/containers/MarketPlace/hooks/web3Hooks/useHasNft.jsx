@@ -2,6 +2,7 @@
 import {useSelector } from "react-redux/es/hooks/useSelector"
 import { useContractRead, useNetwork } from "wagmi"
 import abi from '../../abi/ERC721.json'
+import { app_chain_id } from "../../../../shared/data/chains"
 
 export const useHasNft = ({contract ,execute ,chain})=> {
 
@@ -15,7 +16,7 @@ abi:abi && abi,
 functionName:'tokensOfOwner',
 args:[address && address],
 enabled:execute,
-chainId: chain && chain,
+chainId: app_chain_id && app_chain_id,
 enabled:address ? true : false
 
 })

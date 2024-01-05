@@ -13,7 +13,7 @@ return(
     <div className="index__footer footer">
     <div className="footer__panel panel">
       <div className="wrapper container space space--xlarge">
-        <h3 className="heading">It’s All for you</h3>
+        <h3 className="heading">Everything for you !</h3>
 
         <div className="container container--medium container--center">
            <h4 className=" text-neutral-200">Join the community and enjoy all the great Features !</h4>

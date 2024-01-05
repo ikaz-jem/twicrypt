@@ -15,7 +15,7 @@ import CreateListing from "./CreateListing/CreateListing";
 import AllListings from "./AllListings/AllListings";
 //all-nfts
 import CreateAuction from "./CreateAuction/CreateAuction";
-
+import { MetaTags } from "react-meta-tags";
 
 const MarketPlace = () => {
 
@@ -52,6 +52,12 @@ return ()=> controller.abort()
 
     return (
         <React.Fragment>
+
+<MetaTags>
+            <title>Twicrypt MarketPlace ! create Listing or Auction Fast and easy !</title>
+            <meta name="description" content="Twicrypt MarketPlace ! create Listing or Auction Fast and easy !" />
+          </MetaTags>
+
             <div className="lg:flex  relative h-auto w-full  ">
 
                 <div className="flex flex-col gap-0  w-full relative  h-full container--xxxlarge px-0 pl-5 mx-auto sm:pl-25 md:pl-26 lg:pl-0  container--center ">

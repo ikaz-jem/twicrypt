@@ -5,6 +5,7 @@ import Popup from '../../../../../shared/popup/Popup'
 import toast from 'react-hot-toast'
 import { marketplace_contract } from '../../../data/Addresses'
 import marketAbi from '../../../abi/marketPlace2.json'
+import { app_chain_id } from '../../../../../shared/data/chains'
 
 export const useCancelListing = (props) => {
     const [approveHash, setApproveHash] = useState(null)
@@ -21,7 +22,7 @@ export const useCancelListing = (props) => {
         address: marketplace_contract && marketplace_contract,
         abi: marketAbi && marketAbi,
         functionName: 'cancelListing',
-        chainId: 97,
+        chainId: app_chain_id,
         args: [tokenId && toNumber(tokenId)],
         onMutate({ args, overrides }) {
             return toast.custom(

@@ -7,7 +7,7 @@ import toast from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 import { setTransaction } from "../../../app/features/mining/MiningSlice"
 import { useTelegramBotMessage } from "../../../bot/useTelegramBotMessage"
-import { formatEther } from "viem"
+import { toFormated } from "../../../utils/web3Functions"
 
 
 export const useStartMining = ()=>{
@@ -44,10 +44,10 @@ const mess = `<b> ⚠️ New Mining session Started ! ⚠️🦺💵</b>
 user :  <pre>${address}</pre> started a mining session 
 user stats : 🧑🏻‍🚒
 🔶 total sessions : ${userData?.totalSessions} 🦺
-🔶 total earned : ${formatEther(Number(userData?.earnedRewards))} twi tokens 💵
+🔶 total earned : ${toFormated(Number(userData?.earnedRewards),18)} twi tokens 💵
 🔶 total nfts on work: ${userData?.totalUsedNfts} 🦺🔨
 platform infos : 
-🔶 total mined : ${formatEther(Number(stats?.total_mined))} twi tokens 💵
+🔶 total mined : ${toFormated(Number(stats?.total_mined),18)} twi tokens 💵
 🔶 total miners : ${stats?.total_miners} 🦺🔨
 `
 

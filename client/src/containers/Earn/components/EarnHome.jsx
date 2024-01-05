@@ -8,14 +8,14 @@ const Data = [
     {
         comingSoon:false,
         title: 'Nft',
-        desc: 'hand made art planted with a reward from 1k$ to 30k$ with numerous utilities',
+        desc: ' Handmade Art developed with prizes ranging from 1k$ to 3k$ with various utilities',
         page: 'home',
         component:'/dashboard/mint',
         img:"https://twicrypt.com/media/features/nfts.jpg"    },
     {
         comingSoon:false,
         title: 'AP2E',
-        desc: 'vm (virtual mining) or auto-p2e , make your nfts works for you',
+        desc: 'Vm (Virtual mining) or Auto-P2E, make your NFT work for you',
         page: 'stats',
         component:'/dashboard/auto-p2e?id=mining-session',
         img:"https://twicrypt.com/media/features/mining.png"
@@ -23,8 +23,8 @@ const Data = [
     },
     {
         comingSoon:true,
-        title: 'user profile',
-        desc: 'DC user profile , follow users see their stats and share content',
+        title: 'User Profile',
+        desc: 'DC user profiles, follow users, view their stats, and share content',
         page:'sectionWhy',
         component:'/dashboard/section-why',
         img:"https://twicrypt.com/media/features/profile.png"
@@ -32,58 +32,58 @@ const Data = [
     {
         comingSoon:true,
         title: 'Gift Cards and Coupons',
-        desc: 'gift cards , coupons and discounts for twicrypt users and nft holders exclusively ',
+        desc: 'Gift cards, coupons, and discounts for Twicrypt users and NFT holders exclusively',
         link: 1,
         img:"https://twicrypt.com/media/features/gift-cards.png"
     },
     {
         comingSoon:false,
-        title: 'Nft MarketPlace',
-        desc: 'buy / sell twicrypt nfts , organize auctions , create sales ',
+        title: 'NFT Marketplace',
+        desc: 'Buy/Sell Twicrypt NFTs, organize auctions, create sales',
         link: 1,
         component:'/dashboard/marketplace/all-listings',
         img:"https://twicrypt.com/media/features/marketplace.png"
     },
     {
         comingSoon:false,
-        title: 'sponsorship system',
-        desc: 'automated web3 sponsorship system , sponsor twicrypt and appear on our main page',
+        title: 'Sponsorship System',
+        desc: 'Automated Web3 sponsorship system, sponsor Twicrypt and appear on our main page',
         link: 1,
         img:"https://twicrypt.com/media/features/sponsorship.png"
     },
     {
         comingSoon:true,
-        title: 'token staking',
-        desc: 'stake twicrypt token for a varity of tokens with flixible and fixed staking plans',
+        title: 'Token Staking',
+        desc: 'Staking Twicrypt tokens for a wide range of tokens with customizable and fixed staking packages',
         link: 1,
         img:"https://api.twicrypt.com/eth/img/15.png"
     },
     {
         comingSoon:false,
-        title: 'affiliate system',
-        desc: 'become an affiliate or a partner and earn up to 10% or more each sale ',
+        title: 'Affiliate System',
+        desc: 'Become an affiliate or partner and earn up to 20% or more from each sale',
         link: 1,
         img:"https://twicrypt.com/media/features/affiliate.png"
 
     },
     {
         comingSoon:true,
-        title: 'lottery',
-        desc: 'different lotteries with different unique mechanisms up to 1M$ ! yes it is real !',
+        title: 'Lottery',
+        desc: 'Different lotteries with different unique mechanics up to $1 million! Yes, this is real!',
         link: 1,
         img:"https://api.twicrypt.com/eth/img/15.png"
     },
     {
         comingSoon:true,
-        title: 'launchpad',
-        desc: 'create different type of sale for your project ! exclusive discounts and free memberships for twicrypt users',
+        title: 'Launchpad',
+        desc: 'Create different types of sales for your project! Exclusive discounts and free membership for Twicrypt users',
         link: 1,
         img:"https://twicrypt.com/media/features/launchpad.png"
     },
     {
         comingSoon:false,
         title: 'Twibot',
-        desc: 'twibot is an Intelligent telegram bot that keep users informed of all actions on website',
+        desc: 'Twibot is a smart telegram bot that informs users about all actions on the website',
         link: 1,
         img:"https://twicrypt.com/media/features/twibot.png"
     },

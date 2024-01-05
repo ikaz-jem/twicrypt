@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { marketplace_contract } from "../../../data/Addresses";
 import { setMyListings } from "../../../../../app/features/MarketPlace/MarketplaceSlice";
 import abi from '../../../abi/marketPlace2.json'
-
+import { app_chain_id } from "../../../../../shared/data/chains";
 
 
 export const useGetUserListing = ()=> {
@@ -20,7 +20,7 @@ const setData = (data)=> dispatch(setMyListings(data))
             address: marketplace_contract && marketplace_contract,
             abi :abi && abi,
             functionName:'getAllUserListings',
-            chainId:97,
+            chainId:app_chain_id,
             args:[address && address],
             enabled: address ? true : false
             

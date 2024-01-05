@@ -1,4 +1,5 @@
-export const mining_contract = '0x4EcECBFADA46Cb31AeF86E6dbFC03acdBdF35f14'
+export const mining_contract = '0xf3C587F0a7ACcbEB5f4439A4aDB4A7272f4A301A' // mainnet
+export const mining_contrccact = '0x4EcECBFADA46Cb31AeF86E6dbFC03acdBdF35f14'
 export const mining_contracxxt = '0x8Bd84472705Bd746312dd0ed3cc28558Da1077f2'
 export const mining_contvvract = '0x45b709B18E92f5679688f49919CD9A64a1759b6A'
 export const mining_contract2 = '0xb1a4e1357feb7325F5e58abf9c5fDD50e936B141'

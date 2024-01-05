@@ -1,11 +1,7 @@
 import {useEffect ,useState} from "react";
 import { useAccount } from 'wagmi'
 import { useDispatch} from 'react-redux'
-import { useSignMessage } from "wagmi";
-import { disconnect } from '@wagmi/core'
-import UserModal from "../shared/userModal/UserModal";
 import { logIn,logOut } from "../app/features/session/sessionSlice";
-import { getUserSession } from "../app/features/session/sessionThunks";
 import { watchAccount } from '@wagmi/core'
 
 export const UseStartSession = (data)=>{

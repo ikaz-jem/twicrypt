@@ -155,8 +155,8 @@ const NftMetrics = () => {
         <div className='container container--xxlarge container--center py-20 '>
 
 
-          <h1 className='p-0 pb-10 m-0 text-center font-bold'>Twicrypt Nft Metrics <span className='text-yellow-500'>and Rewards </span> </h1>
-          <p className='p-0 m-0 text-center font-bold'>mint  <span className='text-yellow-500 p-0 m-0'>win cash 💲 </span> </p>
+          <h1 className='p-0 pb-10 m-0 text-center font-bold'>Twicrypt NFT Metrics <span className='text-yellow-500'>and Rewards </span> </h1>
+          <p className='p-0 m-0 text-center font-bold'>Mint  <span className='text-yellow-500 p-0 m-0'>Win Cash 💲 </span> </p>
 
 
 
@@ -171,13 +171,14 @@ const NftMetrics = () => {
 
             <div className=' text-left  bg-neutral-950 bg-opacity-20  rounded-md py-10 shadow-lg '>
 
-                <div className='flex   justify-start gap-2'>
+                <div className='flex justify-start gap-2 flex-wrap sm:flex-nowrap'>
                   <ul className=' text-neutral-300'>
                     <li className=' text-lg font-extrabold text-pink-500'>Total/Max supply</li>
-                    <li className=' text-sm font-bold text-neutral-200'>max nft per wallet  </li>
-                    <li className=' text-sm font-bold text-neutral-200'>max mint per transaction </li>
-                    <li className=' text-sm font-bold text-neutral-200'>Total included rewards </li>
-                    <li className=' text-sm font-bold text-neutral-200'>Total planted nfts (includes a cash reward) </li>
+                    <li className=' text-sm font-bold text-neutral-200'>Max nft per wallet </li>
+                    <li className=' text-sm font-bold text-neutral-200'>Max mint per transaction</li>
+                    <li className=' text-sm font-bold text-neutral-200'>Total included rewards</li>
+                    <li className=' text-sm font-bold text-neutral-200'>Total planted NFTs (Includes a cash reward)
+</li>
                   </ul>
 
                   <ul className='font-bold text-neutral-300'>

@@ -33,15 +33,16 @@ return (
              <div className="flex h-full justify-between px-5">
                     
                 <Link className='logo ' to={'./'} >
-                        <img src={logo} alt="logo" className="w-6 h-6 mr-1 " />
-                            <p className="ml-1 p-0 text-xs text-pink-600 font-bold bg-yellow-400 invisible md:visible ">Twi<span className="text-yellow-300 ml-1 bg-pink-600">Crypt</span></p>
+                        <img src={logo} alt="logo" className="w-6 h-6 mr-1 animate-spin" />
+                            {/* <p className="ml-1 p-0 text-xs text-pink-600 font-bold bg-yellow-400 invisible md:visible ">Twi<span className="text-yellow-300 ml-1 bg-pink-600">Crypt</span></p> */}
+                            <p className="ml-1 pl-2 text-neutral-100 font-bold font-sans tracking-wide text-base invisible w-0 md:w-auto md:visible   ">Twicrypt</p>
                 </Link>
 
 
 
 
-                        <nav className=" flex items-center">
-                            <ul className="list list--inline list--unstyle gutter gutter--medium collapse lg:visible  " >
+                        <nav className=" flex items-center justify-between">
+                            <ul className="list list--inline list--unstyle gutter gutter--medium collapse w-0 lg:w-full lg:visible  " >
                                 {
                                     navigation && navigation?.map(
                                         (link,i) => {
@@ -63,7 +64,7 @@ return (
  
                     <div className=" flex items-center justify-center px-2">
                        {/* <Web3Button icon="hide" label="Connect" avatar="hide"/> */}
-                       <w3m-button />
+                       <w3m-button  size ={"sm"} label={'connect'}/>
                         {/* <Link to={`/dashboard/account/${userChanged}`} className="collapse lg:visible" >   <FcBusinessman className="text-4xl p-2 mx-4 bg-neutral-800 hover:bg-pink-600 transition-all rounded-full cursor-pointer " /> </Link>  */}
                     </div>
 

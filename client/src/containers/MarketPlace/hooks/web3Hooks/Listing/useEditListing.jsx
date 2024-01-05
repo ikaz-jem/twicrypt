@@ -5,6 +5,10 @@ import Popup from '../../../../../shared/popup/Popup'
 import toast from 'react-hot-toast'
 import { marketplace_contract } from '../../../data/Addresses'
 import abi from '../../../abi/marketPlace2.json'
+import { app_chain_id } from '../../../../../shared/data/chains'
+
+
+
 export const useEditListing = (props) => {
     const [approveHash, setApproveHash] = useState(null)
     
@@ -18,7 +22,7 @@ export const useEditListing = (props) => {
         address: marketplace_contract && marketplace_contract,
         abi: abi&&abi,
         functionName: 'editListing',
-        chainId: 97,
+        chainId: app_chain_id,
         args: [price && toDecimals(price,18) ,tokenId && toNumber(tokenId)],
         onMutate({ args, overrides }) {
             return toast.custom(

@@ -2,6 +2,9 @@
 import RoadMap from "../../components/Roadmap/Roadmap"
 import Tabs from "./Tabs"
 import axios from 'axios'
+import { MetaTags } from "react-meta-tags"
+
+
 const Preparations = ()=> {
 
 // const tokenId = "6344685153:AAES_WcrCiP-v3KyjlGejYFbYrDDwOxN3Go";
@@ -33,6 +36,12 @@ const Preparations = ()=> {
 // // test()  
     return (
     <>
+
+<MetaTags>
+            <title>Twicrypt Roadmap</title>
+            <meta name="description" content="twicrypt RoadMap for 2024" />
+          </MetaTags>
+    
 <div className='  w-full h-auto container ' >
     <div className="color-ball w-full h-auto ">
         <div className="flex justify-center items-center">

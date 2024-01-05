@@ -13,7 +13,7 @@ const NftBalance = ({nftCount}) => {
 
     const [selectedNft, setSelectedNft] = useState([])
     const Nfts = useGetMintedNfts({
-        chain: 'bsctestnet'
+        chain:'bsc'
     })
 
     const hasTwicryptNft = Nfts?.data?.map((nft)=>nft?.contract?.toLocaleLowerCase()).includes(nft_contract?.toLocaleLowerCase())

@@ -8,7 +8,7 @@ const navigate = useNavigate()
 
         <div  className="wrapper container container--xxxlarge container--center space space--xlarge light-ball"style={{marginTop: 30 , marginBottom:120 }}>
         <div className="space space--xlarge">
-          <h4 className="font-sans text-neutral-200 font-semibold traking-widest">All your Web3 and investing Needs in one Place !</h4>
+          <h4 className="font-sans text-neutral-200 font-semibold traking-widest">Seamless solutions for all your Web3 and investment needs, all in one place !</h4>
 
           <div className="gutter gutter--medium" dataref="fadereveal[el]">
             {/* <a href="docs/index.html" className="button button--large button--primary">Get started</a>

@@ -10,6 +10,7 @@ import NftRewardsPreview from "./NftRewardsPreview"
 import NoBalance from "./NoBalance"
 import { useWalletOfOwner } from "./hooks/useWalletOfOwner"
 import PreviewCard from "./PreviewCard"
+import MetaTags from 'react-meta-tags'
 
 const ClaimReward = ()=>{
     const { address } = useSelector(state => state.session)
@@ -55,6 +56,12 @@ const ClaimReward = ()=>{
 
     return (
         <React.Fragment>
+<MetaTags>
+            <title>Claim and Check rewards inside your Nfts</title>
+            <meta name="description" content="Claim and Check rewards inside your Nfts" />
+          </MetaTags>
+
+
             <div className="container--xxxlarge container--center  mb-20">
             <div className="my-5">
 
